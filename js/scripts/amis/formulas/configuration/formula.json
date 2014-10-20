@@ -326,26 +326,17 @@
                 "otherColumns":false,
                 "columnNumber":"",
                 "conditions":"",
-                "formulasBinded":[1,2,4,5,6,7]
+                "formulasBinded":[1,2,6]
 
             },
             {
-                "updateFormulaID" : 3,
+                "updateFormulaID" : 6,
                 "key":[15],
                 "otherColumns":false,
                 "columnNumber":"",
                 "conditions":"",
-                "formulasBinded":[4,5,1,6]
-            },
-            {
-                "updateFormulaID" : 3,
-                "key":[5],
-                "otherColumns":false,
-                "columnNumber":"",
-                "conditions":"",
-                "formulasBinded":[1,2,6]
+                "formulasBinded":[4,5,6]
             }
-
         ]
     },
     "editableValues":{

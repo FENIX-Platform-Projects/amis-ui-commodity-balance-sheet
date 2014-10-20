@@ -19,6 +19,7 @@ define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databas
         }
 
     LoadingController.prototype.init = function(preloadingData) {
+        NProgress.start()
 
         var notPreviousYear = false;
         dataFiltered = preloadingData;
@@ -63,15 +64,13 @@ define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databas
             firstIstance = true
             // Choice of DSD dependent on the product (if rice has been chosen)
             url = (product == 4)?  urlDSDRice: urlDSD;
-            NProgress.start()
             balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
         }else {
             if(product !=4) {
                 url = urlDSD
-                NProgress.start()
                 balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
             }else{
-                NProgress.start()
+
                 url = urlDSDRice;
                 balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
             }

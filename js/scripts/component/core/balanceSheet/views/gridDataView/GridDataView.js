@@ -163,7 +163,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             var columns = [];
             arrDiffDates = Object.keys(differentDates)
 
-            columns.push({id : "data0",width:400,header:'Elements', css:"firstColumn" })
+            columns.push({id : "data0",width:300,header:'Elements', css:"firstColumn" })
 
             for(var i =0; i< arrDiffDates.length; i++){
                 if(i==0) {
@@ -171,7 +171,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                    //   {text: ''},
                         {text: 'Input dates' ,colspan: arrDiffDates.length},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text'})
+                    ], editor: 'text',  css:"datesColumns"})
                 }else{
                     if(i == arrDiffDates.length -1){
 
@@ -179,7 +179,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                     columns.push({id: "data" + (i+1),header: [
                       //{text: ''},
                         {text: null},
-                        {text: arrDiffDates[i]}], editor: 'text'})
+                        {text: arrDiffDates[i]}], editor: 'text', css:"datesColumns"})
                 }
             }
             return columns;
@@ -229,8 +229,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 datatype: "jsarray",
                 data: dataSource
             });
-        window.scrollTo(xCoordinate,yCoordinate)
-
+        grid.scrollTo(xCoordinate,yCoordinate)
         generalController.createListeners(grid)
 
     }
@@ -279,8 +278,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                     data: dataSource
                 });
 
-
-
+       grid.scrollTo(xCoordinate,yCoordinate)
        generalController.createListeners(grid);
     }
 

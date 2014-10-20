@@ -52,8 +52,9 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 console.log('GC: afterOnItemClick')
                 this.blockEvent();
                 console.log('GC: after itemclick.blockEvent')
-                xCoordinate = window.pageXOffset;
-                yCoordinate = window.pageYOffset;
+                var coordinates = grid.getScrollState()
+                xCoordinate = coordinates.x;
+                yCoordinate = coordinates.y;
 
                 // no clikc on the first column
                 if (id.column != 'data0' && resultedClicked != -1) {
@@ -103,7 +104,10 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             })
 
 
-            $('#newForecast').on("click", function () {
+            $('#newForecast').on("click", function (evt) {
+                evt.preventDefault();
+                evt.stopImmediatePropagation();
+                debugger;
                 self.updateWithNewForecast()
             })
         }
@@ -183,15 +187,28 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             var modelWithFormulas = $.extend(true, [], tableModel);
 
             formulaController.init(modelWithFormulas, Configurator, filterData)
+            var formulas = formulaController.getFormulasBindedFromKey(5)
+
             var rowsChanged = []
+            formulaController.sortByDateAtStart(modelWithFormulas);
+
             for (var i = 0; i < newCalculatedData.length; i++) {
                 for (var j = 0; j < indexes.length; j++) {
                     if (newCalculatedData[i][0] == indexes[j]['key']) {
-                        rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
+                        if(newCalculatedData[i][0] == 5) {
+                            var rowsFormula = formulaController.applyUpdateFormulas(modelWithFormulas, formulas, cellClickedInfo.columnGridIndex, cellClickedInfo.rowGridIndex);
+                            for(var k = 0, length=rowsFormula.length; k<length; k++){
+                                rowsChanged.push(rowsFormula[k])
+                            }
+                            rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
+                        }else{
+                            rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
+                        }
                     }
                 }
             }
             console.log('generalController: saveDataFromProductionForm, before updateBatchGridView')
+            formulaController.sortInitialValue(modelWithFormulas);
             ViewGrid.updateBatchGridView(modelWithFormulas, rowsChanged, xCoordinate, yCoordinate);
 
         }
@@ -204,14 +221,27 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             var modelWithFormulas = $.extend(true, [], tableModel);
 
             formulaController.init(modelWithFormulas, Configurator, filterData)
+            var formulas = formulaController.getFormulasBindedFromKey(5)
+
             var rowsChanged = []
+            formulaController.sortByDateAtStart(modelWithFormulas);
+
             for (var i = 0; i < newCalculatedData.length; i++) {
                 for (var j = 0; j < indexes.length; j++) {
                     if (newCalculatedData[i][0] == indexes[j]['key']) {
-                        rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
+                        if(newCalculatedData[i][0] == 5) {
+                          var rowsFormula = formulaController.applyUpdateFormulas(modelWithFormulas, formulas, cellClickedInfo.columnGridIndex, cellClickedInfo.rowGridIndex);
+                          for(var k = 0, length=rowsFormula.length; k<length; k++){
+                              rowsChanged.push(rowsFormula[k])
+                          }
+                          rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
+                        }else{
+                          rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
+                        }
                     }
                 }
             }
+            formulaController.sortInitialValue(modelWithFormulas);
             ViewGrid.updateBatchGridView(modelWithFormulas, rowsChanged, xCoordinate, yCoordinate);
         }
 
