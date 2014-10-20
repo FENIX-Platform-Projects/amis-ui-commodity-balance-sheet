@@ -1,0 +1,390 @@
+{
+    "initFormulas":[
+        {
+            "variable":
+            {
+                "formulaId":1,
+                "dataType":"code",
+                "value":[
+                    27
+                ],
+                "otherColumn":false,
+                "columnNumber":""
+            },
+            "addendums":[
+                {
+                    "dataType":"code",
+                    "value":[
+                        18
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"operation",
+                    "value":"+",
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"code",
+                    "value":[
+                        5
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                }
+            ]
+        },
+        {
+            "variable":{
+                "formulaId":2,
+                "dataType":"code",
+                "value":[
+                    19
+                ],
+                "otherColumn":false,
+                "columnNumber":""
+            },
+            "addendums":[
+                {
+                    "dataType":"code",
+                    "value":[
+                        27
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"operation",
+                    "value":"+",
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"code",
+                    "value":[
+                        7
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                }
+            ]
+        },
+        {
+            "variable":{
+                "formulaId":3,
+                "dataType":"code",
+                "value":[
+                    4
+                ],
+                "otherColumn":false,
+                "columnNumber":""
+            },
+            "addendums":[
+                {
+                    "dataType":"code",
+                    "value":[
+                        5
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"operation",
+                    "value":"/",
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"code",
+                    "value":[
+                        2
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                }
+            ]
+        },
+        {
+            "variable":{
+                "formulaId":4,
+                "dataType":"code",
+                "value":[
+                    20
+                ],
+                "otherColumn":false,
+                "columnNumber":""
+            },
+            "addendums":[
+                {
+                    "dataType":"code",
+                    "value":[
+                        14
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"operation",
+                    "value":"+",
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"code",
+                    "value":[
+                        13
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"operation",
+                    "value":"+",
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"code",
+                    "value":[
+                        15
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                }
+            ]
+        },
+        {
+            "variable":{
+                "formulaId":5,
+                "dataType":"code",
+                "value":[
+                    35
+                ],
+                "otherColumn":false,
+                "columnNumber":""
+            },
+            "addendums":[
+                {
+                    "dataType":"code",
+                    "value":[
+                        20
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"operation",
+                    "value":"+",
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"code",
+                    "value":[
+                        10
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"operation",
+                    "value":"+",
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"code",
+                    "value":[
+                        16
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                }
+            ]
+        },
+        {
+            "variable":{
+                "formulaId":6,
+                "dataType":"code",
+                "value":[
+                    999
+                ],
+                "otherColumn":false,
+                "columnNumber":""
+            },
+            "addendums":[
+                {
+                    "dataType":"code",
+                    "value":[
+                        19
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"operation",
+                    "value":"-",
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"code",
+                    "value":[
+                        35
+                    ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                }
+            ]
+        },
+        {
+            "variable":{
+                "formulaId":7,
+                "dataType":"code",
+                "value":[
+                    25
+                ],
+                "otherColumn":false,
+                "columnNumber":""
+            },
+            "addendums":[
+                {
+                    "dataType":"code",
+                    "value":[14],
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"operation",
+                    "value":"*",
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"constant",
+                    "value":1000000,
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"operation",
+                    "value":"/",
+                    "otherColumn":false,
+                    "columnNumber":""
+                },
+                {
+                    "dataType":"code",
+                    "value":[ 1 ],
+                    "otherColumn":false,
+                    "columnNumber":""
+                }
+            ]
+        }
+    ],
+    "onUpdate":{
+        "bindedKeys":[
+            7, 14, 13, 10
+        ],
+        "formulas":[
+            {
+                "updateFormulaID" : 1,
+                "key":[7],
+                "otherColumns":false,
+                "columnNumber":"",
+                "conditions":"",
+                "formulasBinded":[3,6]
+            },
+            {
+                "updateFormulaID" : 2,
+                "key":[14],
+                "otherColumns":false,
+                "columnNumber":"",
+                "conditions":"",
+                "formulasBinded":[4,5,1,6]
+            },
+            {
+                "updateFormulaID" : 3,
+                "key":[13],
+                "otherColumns":false,
+                "columnNumber":"",
+                "conditions":"",
+                "formulasBinded":[4,5,1,6]
+            },
+            {
+                "updateFormulaID" : 4,
+                "key":[10],
+                "otherColumns":false,
+                "columnNumber":"",
+                "conditions":"",
+                "formulasBinded":[1,6]
+            },
+            {
+                "updateFormulaID" : 5,
+                "key":[5],
+                "otherColumns":false,
+                "columnNumber":"",
+                "conditions":"",
+                "formulasBinded":[1,2,4,5,6,7]
+
+            },
+            {
+                "updateFormulaID" : 3,
+                "key":[15],
+                "otherColumns":false,
+                "columnNumber":"",
+                "conditions":"",
+                "formulasBinded":[4,5,1,6]
+            },
+            {
+                "updateFormulaID" : 3,
+                "key":[5],
+                "otherColumns":false,
+                "columnNumber":"",
+                "conditions":"",
+                "formulasBinded":[1,2,6]
+            }
+
+        ]
+    },
+    "editableValues":{
+        "directEditing" : {
+            "values" : [8,7,12,10,14,13,16,17]
+        },
+        "specialEditing": {
+           "values" : [ 2,37, 4, 5, 15, 998]}
+    },
+    "specialFormulas": [
+        {
+            "id" : 1,
+            "cellsClicked" :    [2,4,5,37],
+            "itemsInvolved":    [2,4,5,37],
+            "exogeneous"   :    false,
+            "location"     : {
+                "insideBalance" : [],
+                "outsideBalance" : []
+            }
+        },
+        {
+            "id" : 2,
+            "cellsClicked" : [15],
+            "itemsInvolved": [15,21,28,29,30,31,32,33,34],
+            "exogeneous"   :    true,
+            "location"     : {
+                "insideBalance" : [],
+                "outsideBalance" : []
+            }
+        },
+        {
+            "id" : 3,
+            "cellsClicked" : [998],
+            "itemsInvolved": [2,998, 3,4,5,37, 996],
+            "exogeneous"   :    true,
+            "location"     : {
+                "insideBalance" : [998,2],
+                "outsideBalance" : [997]
+            }
+        }
+    ]
+}

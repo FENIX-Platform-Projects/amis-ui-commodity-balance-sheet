@@ -1,0 +1,155 @@
+{
+    "gridConfiguration": {
+        "generalOptions":{
+            "language": "EN",
+            "fullRowsRepresentation": true
+        },
+        "columnsKey": {
+            "left": [
+                {
+                    "columnId": 1,
+                    "values": {
+                        "dataRepresentation": "domain",
+                        "emptyValue": true
+                    },
+                    "properties": {
+                        "cellProperties": {
+                            "dependencyRule": "",
+                            "dateFormat" : "DD/MM/YYYY",
+                            "numericFormat": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        },
+                        "columnProperties": {
+                            "dependencyRules": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        }
+                    }
+                }
+
+            ],
+            "up": [
+                {
+                    "columnId": 3,
+                    "values": {
+                        "dataRepresentation": "domain",
+                        "emptyValue": true
+                    },
+                    "properties": {
+                        "cellProperties": {
+                            "dependencyRule": "",
+                            "dateFormat" : "DD/MM/YYYY",
+                            "numericFormat": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        },
+                        "columnProperties": {
+                            "dependencyRules": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        }
+                    }
+                }
+            ]
+        },
+        "otherColumns": {
+            "valueColumn": {
+                "columnId": 4,
+                "label": "#value|$value ~#flag| $flag  ~|",
+                "values": {
+                    "dataRepresentation": "domain",
+                    "emptyValue": true,
+                    "editable": true,
+                    "numberOfDecimals": 1
+                },
+                "properties": {
+                    "cellProperties": {
+                        "dependencyRule": "",
+                        "dateFormat" : "",
+                        "numericFormat": "0,0.0",
+                        "coloursCharacters": "",
+                        "coloursBackground": ""
+                    },
+                    "columnProperties": {
+                        "dependencyRules": "",
+                        "coloursCharacters": "",
+                        "coloursBackground": ""
+                    }
+                }
+            },
+            "accessorsColumns": [
+                {
+                    "columnId": 2,
+                    "values": {
+                        "dataRepresentation": "domain",
+                        "emptyValue": true,
+                        "editable": false
+                    },
+                    "properties": {
+                        "cellProperties": {
+                            "dependencyRule": "",
+                            "dateFormat" : "",
+                            "numericFormat": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        },
+                        "columnProperties": {
+                            "dependencyRules": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        }
+                    }
+                },
+                {
+                    "columnId": 5,
+                    "values": {
+                        "dataRepresentation": "domain",
+                        "emptyValue": true,
+                        "editable": true
+                    },
+                    "properties": {
+                        "cellProperties": {
+                            "dependencyRule": "",
+                            "dateFormat" : "DD-MM-YYYY LT",
+                            "numericFormat": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        },
+                        "columnProperties": {
+                            "dependencyRules": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        }
+                    }
+                },
+                {
+                    "columnId": 6,
+                    "values": {
+                        "dataRepresentation": "domain",
+                        "emptyValue": true,
+                        "editable": true
+                    },
+                    "properties": {
+                        "cellProperties": {
+                            "dependencyRule": "",
+                            "dateFormat" : "",
+                            "numericFormat": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        },
+                        "columnProperties": {
+                            "dependencyRules": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        }
+                    }
+                }
+
+            ]
+        },
+        "HTMLproperties" : {
+            "idGrid" : "pivotGrid"
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+  "maps":
+  [
+      {
+          "B" :"Balancing Element"
+      },
+      {
+          "C": "Calculated Element"
+      },
+      {
+          "F" : "Fixed Coefficients"
+      },
+      {
+          "G" : "Government Data"
+      },
+      {
+          "I" : "Satellitary Imagery"
+      },
+      {
+          "M" : "Models"
+      },
+      {
+          "O" : "Other Methodologies"
+      },
+      {
+          "R" : "Repeated"
+      },
+      {
+          "S" : "Survey"
+      },
+      {
+          "T" : "Trend"
+      },
+      {
+          "X" : "Combination of different methodologies"
+      },
+      {
+          "*" : "Unknown"
+      }
+  ]
+}

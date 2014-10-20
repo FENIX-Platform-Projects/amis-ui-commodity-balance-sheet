@@ -1,0 +1,820 @@
+{
+    "uid": "",
+    "dsd": {
+        "contextSystem": "",
+        "datasource": "",
+        "aggregationRules": "",
+        "columns": [
+            {
+                "dimension": {
+                    "link": "",
+                    "uid": "",
+                    "title": {
+                        "EN": "",
+                        "FR": ""
+                    }
+                },
+                "dataTypes": [
+                    "code"
+                ],
+                "values": [
+                ],
+                "domain": {
+                    "codes": [
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "999",
+                                "title": {
+                                    "EN": "Unbalanced",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "19",
+                                "title": {
+                                    "EN": "Total Supply (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "27",
+                                "title": {
+                                    "EN": "Domestic Supply (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "18",
+                                "title": {
+                                    "EN": "Opening Stocks (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "5",
+                                "title": {
+                                    "EN": "Production (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "7",
+                                "title": {
+                                    "EN": "Imports - NMY (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "35",
+                                "title": {
+                                    "EN": "Total Utilization (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "20",
+                                "title": {
+                                    "EN": "Domestic Utilization (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "14",
+                                "title": {
+                                    "EN": "Food Use (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "13",
+                                "title": {
+                                    "EN": "Feed Use (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "15",
+                                "title": {
+                                    "EN": "Other Uses (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "10",
+                                "title": {
+                                    "EN": "Exports - NMY (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "16",
+                                "title": {
+                                    "EN": "Closing Stocks (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "8",
+                                "title": {
+                                    "EN": "Imports - ITY (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "12",
+                                "title": {
+                                    "EN": "Exports - ITY (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "17",
+                                "title": {
+                                    "EN": "Government Stocks (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "998",
+                                "title": {
+                                    "EN": "Production Paddy (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "996",
+                                "title": {
+                                    "EN": "Yield Paddy (Tonnes/Ha)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "2",
+                                "title": {
+                                    "EN": "Area Harvested (Thousand Ha)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "37",
+                                "title": {
+                                    "EN": "Area Planted (Thousand Ha)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "4",
+                                "title": {
+                                    "EN": "Yield Milled (Tonnes/Ha)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "1",
+                                "title": {
+                                    "EN": "Population (1000s)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "3",
+                                "title": {
+                                    "EN": "Extraction Rate (%)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "25",
+                                "title": {
+                                    "EN": "Per capita food use (Kg/Yr)",
+                                    "FR": ""
+                                }
+                            }
+                        }
+
+
+                    ],
+                    "customCodes": [
+                        {
+                            "code": "",
+                            "title": {
+                                "EN": "",
+                                "FR": ""
+                            }
+                        }
+                    ],
+                    "enumeration": "",
+                    "period": {
+                        "from": "",
+                        "to":   ""
+                    },
+                    "columnLink": "",
+                    "key": true,
+                    "transposed": true,
+                    "virtual": true,
+                    "id": 1,
+                    "title": {
+                        "EN": "Elements",
+                        "FR": ""
+                    },
+                    "supplemental": {
+                        "EN": "This is the element",
+                        "FR": ""
+                    }
+                }
+            },
+            {
+                "dimension": {
+                    "link": "",
+                    "uid": "",
+                    "title": {
+                        "EN": "Measurement Units",
+                        "FR": ""
+                    }
+                },
+                "dataTypes": [
+                    "string"
+                ],
+                "values": [
+                ],
+                "domain": {
+                    "codes": [
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "1",
+                                "title": {
+                                    "EN": "Maize",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "2",
+                                "title": {
+                                    "EN": "Rice",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "3",
+                                "title": {
+                                    "EN": "Wheat",
+                                    "FR": ""
+                                }
+                            }
+                        }
+                    ],
+                    "customCodes": [
+                        {
+                            "code": "",
+                            "title": {
+                                "EN": "",
+                                "FR": ""
+                            }
+                        }
+                    ],
+                    "enumeration": "",
+                    "period": {
+                        "from": "",
+                        "to": "20140624"
+                    },
+                    "columnLink": "",
+                    "key": false,
+                    "transposed": true,
+                    "virtual": true,
+                    "id": 2,
+                    "title": {
+                        "EN": "Measurement Unit",
+                        "FR": ""
+                    },
+                    "supplemental": {
+                        "EN": "Progressive Id",
+                        "FR": ""
+                    }
+                }
+            },
+            {
+                "dimension": {
+                    "link": "",
+                    "uid": "",
+                    "title": {
+                        "EN": "date",
+                        "FR": ""
+                    }
+                },
+                "dataTypes": [
+                    "date"
+                ],
+                "values": [
+                ],
+                "domain": {
+                    "codes": [],
+                    "customCodes": [
+                        {
+                            "code": "",
+                            "title": {
+                                "EN": "",
+                                "FR": ""
+                            }
+                        }
+                    ],
+                    "enumeration": "",
+                    "period": {
+                        "from": "20000101",
+                        "to": "20150601"
+                    },
+                    "columnLink": "",
+                    "key": true,
+                    "transposed": true,
+                    "virtual": true,
+                    "id": 3,
+                    "title": {
+                        "EN": "Input Date",
+                        "FR": ""
+                    },
+                    "supplemental": {
+                        "EN": "This is the country",
+                        "FR": ""
+                    }
+                }
+            },
+            {
+                "dimension": {
+                    "link": "",
+                    "uid": "",
+                    "title": {
+                        "EN": "value",
+                        "FR": ""
+                    }
+                },
+                "dataTypes": [
+                    "number"
+                ],
+                "values": [
+
+                ],
+                "domain": {
+                    "codes": [],
+                    "customCodes": [
+                        {
+                            "code": "",
+                            "title": {
+                                "EN": "",
+                                "FR": ""
+                            }
+                        }
+                    ],
+                    "enumeration": "",
+                    "period": {
+                        "from": "0",
+                        "to": "100000"
+                    },
+                    "columnLink": "",
+                    "key": false,
+                    "transposed": true,
+                    "virtual": true,
+                    "id": 4,
+                    "title": {
+                        "EN": "value",
+                        "FR": ""
+                    },
+                    "supplemental": {
+                        "EN": "",
+                        "FR": ""
+                    }
+                }
+            },
+            {
+                "dimension": {
+                    "link": "",
+                    "uid": "",
+                    "title": {
+                        "EN": "flag",
+                        "FR": ""
+                    }
+                },
+                "dataTypes": [
+                    "string"
+                ],
+                "values": [
+
+                ],
+                "domain": {
+                    "codes": [],
+                    "customCodes": [
+                        {
+                            "code": "",
+                            "title": {
+                                "EN": "",
+                                "FR": ""
+                            }
+                        }
+                    ],
+                    "enumeration": "",
+                    "period": {
+                        "from": "",
+                        "to": ""
+                    },
+                    "columnLink": "",
+                    "key": false,
+                    "transposed": true,
+                    "virtual": true,
+                    "id": 5,
+                    "title": {
+                        "EN": "Flags",
+                        "FR": ""
+                    },
+                    "supplemental": {
+                        "EN": "Values",
+                        "FR": ""
+                    }
+                }
+            },
+            {
+                "dimension": {
+                    "link": "",
+                    "uid": "",
+                    "title": {
+                        "EN": "note",
+                        "FR": ""
+                    }
+                },
+                "dataTypes": [
+                    "string"
+                ],
+                "values": [
+
+                ],
+                "domain": {
+                    "codes": [
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
+                                "code": "",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            }
+                        }
+                    ],
+                    "customCodes": [
+                        {
+                            "code": "",
+                            "title": {
+                                "EN": "",
+                                "FR": ""
+                            }
+                        }
+                    ],
+                    "enumeration": "",
+                    "period": {
+                        "from": "",
+                        "to": ""
+                    },
+                    "columnLink": "",
+                    "key": false,
+                    "transposed": true,
+                    "virtual": true,
+                    "id": 6,
+                    "title": {
+                        "EN": "Note",
+                        "FR": ""
+                    },
+                    "supplemental": {
+                        "EN": "",
+                        "FR": ""
+                    }
+                }
+            }
+        ]
+    }
+}

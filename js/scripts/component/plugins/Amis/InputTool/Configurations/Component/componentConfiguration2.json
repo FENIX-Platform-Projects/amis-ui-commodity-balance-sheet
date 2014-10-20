@@ -1,0 +1,80 @@
+{
+    "gridConfiguration": {
+        "generalOptions":{
+          "language": "EN"
+        },
+        "columnsKey": {
+            "left": [
+                {
+                    "columnId": 1,
+                    "values": {
+                        "dataRepresentation": "domain",
+                        "emptyValue": true
+                    },
+                    "properties": {
+                        "cellProperties": {
+                            "dependencyRule": "",
+                            "dateFormat" : "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        },
+                        "rowProperties": {
+                            "dependencyRules": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        }
+                    }
+                }
+            ],
+            "up": [
+                {
+                    "columnId": 2,
+                    "values": {
+                        "dataRepresentation": "domain",
+                        "emptyValue": true
+                    },
+                    "properties": {
+                        "cellProperties": {
+                            "dependencyRule": "",
+                            "dateFormat" : "DD-MM-YYYY LT",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        },
+                        "columnProperties": {
+                            "dependencyRules": "",
+                            "coloursCharacters": "",
+                            "coloursBackground": ""
+                        }
+                    }
+                }
+            ]
+        },
+        "otherColumns": {
+            "valueColumn": {
+                "numberFormat" : "",
+                "columnId": "",
+                "label": "#value|$value~#measurementUnit| ($measurementUnit) ~#flag| $flag ~|",
+                "valuesValid": [
+                    "value"
+                ],
+                "properties": {
+                    "cellProperties": {
+                        "dependencyRule": "",
+                        "label": "",
+                        "coloursCharacters": "",
+                        "coloursBackground": ""
+                    }
+                }
+            },
+            "accessorsColumns": [
+                {
+                    "columnId": "",
+                    "properties": ""
+                }
+            ]
+        },
+        "HTMLproperties" : {
+            "idGrid" : "pivotGrid"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "services":[
+        {
+            "filters": [
+                {
+                    "dataSourceUrl": "http://168.202.28.178:8080/dataset/datasource"
+                },
+                {
+                    "yearUrl": "http://168.202.28.178:8080/dataset/year"
+                },
+                {
+                    "countryUrl": "http://hqlprfenixapp2.hq.un.fao.org:7777/msd/cl/system/AMIS_GAUL/1.0"
+                },
+                {
+                    "commodityUrl" : "http://hqlprfenixapp2.hq.un.fao.org:7777/msd/cl/system/AMIS_PRODUCTS/1.0"
+                }
+            ]
+        },
+        {
+            "loading": [
+                {
+                    "loadingElements" : "http://168.202.28.178:8080/dataset/national"
+                },
+                {
+                    "loadingPopulation" :"http://168.202.28.178:8080/dataset/population"
+                },
+                {
+                    "mostRecentDate" : "http://168.202.28.178:8080/dataset/recentDate"
+                },
+                {
+                    "previousYear" : "http://168.202.28.178:8080/dataset/previousYear"
+                },
+                {
+                    "numberOfCrops" : "http://168.202.28.178:8080/dataset/crops"
+                }
+            ]
+        },
+        {
+            "savingData" : "http://168.202.28.178:8080/dataset/national"
+        }
+    ]
+}

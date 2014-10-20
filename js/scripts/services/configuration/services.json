@@ -1,0 +1,42 @@
+{
+    "services":[
+        {
+            "filters": [
+                {
+                    "dataSourceUrl": "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/datasource"
+                },
+                {
+                    "yearUrl": "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/year"
+                },
+                {
+                    "countryUrl": "http://hqlprfenixapp2.hq.un.fao.org:7777/msd/cl/system/AMIS_GAUL/1.0"
+                },
+                {
+                    "commodityUrl" : "http://hqlprfenixapp2.hq.un.fao.org:7777/msd/cl/system/AMIS_PRODUCTS/1.0"
+                }
+            ]
+        },
+        {
+            "loading": [
+                {
+                    "loadingElements" : "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/national"
+                },
+                {
+                    "loadingPopulation" :"http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/population"
+                },
+                {
+                    "mostRecentDate" : "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/recentDate"
+                },
+                {
+                    "previousYear" : "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/previousYear"
+                },
+                {
+                    "numberOfCrops" : "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/crops"
+                }
+           ]
+        },
+        {
+            "savingData" : ""
+        }
+   ]
+}
