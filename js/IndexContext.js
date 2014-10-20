@@ -10,7 +10,7 @@ define(["preloading/PreloadingObserver"], function( PreloadingObserver ) {
     };
 
     IndexContext.prototype.init = function() {
-        observerpreLoading.init();
+        observerpreLoading.init() ;
     };
 
     return IndexContext;

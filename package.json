@@ -1,0 +1,25 @@
+{
+  "name": "amis-ui-balanceSheet",
+  "version": "0.0.1",
+  "description": "amis ui component",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FENIX-Platform-Projects/amis-ui-commodity-balance-sheet.git"
+  },
+  "keywords": [
+    "amis",
+    "commodity",
+    "balance",
+    "sheet"
+  ],
+  "author": "FENIX Development Team",
+  "license": "GPL3",
+  "bugs": {
+    "url": "https://github.com/FENIX-Platform-Projects/amis-ui-commodity-balance-sheet/issues"
+  },
+  "homepage": "https://github.com/FENIX-Platform-Projects/amis-ui-commodity-balance-sheet"
+}
