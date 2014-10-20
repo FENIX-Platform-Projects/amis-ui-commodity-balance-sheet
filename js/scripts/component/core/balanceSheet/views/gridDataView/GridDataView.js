@@ -73,9 +73,11 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 datatype: "jsarray",
                 data: dataSource
             });
+        debugger;
 
 
         generalController.createListeners(grid);
+
 
         return grid;
     }

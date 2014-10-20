@@ -7,7 +7,8 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
     function ($, GridDataView, EditorController, ExportController, Adapter, FormulaController, SpecialEditorController, GeneralObserver, EditHandler) {
 
         var ViewGrid, ModelController, FormController, dsd, Configurator, adapterGrid, formulaController, supportUtility,
-            specialControlEditor, editingOnCell, generalObserver, filterData, xCoordinate, yCoordinate, grid, editHandler
+            specialControlEditor, editingOnCell, generalObserver, filterData, xCoordinate, yCoordinate, grid, editHandler,
+            eventClick, eventStop
 
 
         function GeneralController() {
@@ -47,8 +48,10 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             console.log('GCONTROLLER : createListenersgrid')
 
             var resultedClicked
-            grid.attachEvent("onItemClick", function (id, e, node) {
+             eventClick = grid.attachEvent("onItemClick", function (id, e, node) {
+                console.log('GC: afterOnItemClick')
                 this.blockEvent();
+                console.log('GC: after itemclick.blockEvent')
                 xCoordinate = window.pageXOffset;
                 yCoordinate = window.pageYOffset;
 
@@ -69,7 +72,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 }
             });
 
-            var eventStop = grid.attachEvent("onBeforeEditStop", function (state, editor) {
+             eventStop = grid.attachEvent("onBeforeEditStop", function (state, editor) {
 
                 if (state.value == resultedClicked.clickedCell[3]) {
                     this.blockEvent()
@@ -214,11 +217,11 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         GeneralController.prototype.updateWithNewForecast = function () {
             console.log('GC: updateWithNewForecast')
+            debugger;
             var tableModel = ModelController.createNewForecast();
             var tableModelWithFormula = $.extend(true, [], tableModel);
             formulaController.init(tableModelWithFormula, Configurator, filterData)
-            var grid = ViewGrid.init(tableModelWithFormula, Configurator, supportUtility)
-            this.createListeners(grid)
+            grid = ViewGrid.init(tableModelWithFormula, Configurator, supportUtility, this)
             this.onChangeModalityEditing()
         }
 
