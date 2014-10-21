@@ -114,15 +114,9 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         GeneralController.prototype.startSpecialEditing = function (resultedClicked) {
             console.log('GC: startSpecialEditing')
-            if (resultedClicked.clickedCell[0] == 5 || resultedClicked.clickedCell[0] == 2 || resultedClicked.clickedCell[0] == 4) {
-                var allData = $.extend(true, {}, ModelController.getData());
-                var tableData = $.extend(true, {}, ModelController.getTableDataModel());
-                specialControlEditor.init(allData, tableData, resultedClicked, formulaController, Configurator, supportUtility, this, filterData.productCode);
-            } else {
-                var allData = ModelController.getData();
-                var tableData = $.extend(true, {}, ModelController.getTableDataModel());
-                specialControlEditor.init(allData, tableData, resultedClicked, formulaController, Configurator, supportUtility, this, filterData.productCode);
-            }// other form
+            var allData = ModelController.getData();
+            var tableData = $.extend(true, {}, ModelController.getTableDataModel());
+            specialControlEditor.init(allData, tableData, resultedClicked, formulaController, Configurator, supportUtility, this, filterData.productCode);
         }
 
         GeneralController.prototype.startFullEditing = function (resultedClicked) {

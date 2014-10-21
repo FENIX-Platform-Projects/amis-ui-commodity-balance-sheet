@@ -1,11 +1,12 @@
 /**
  * Created by fabrizio on 10/1/14.
  */
-define(['jquery','otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/OtherObserver', 'otherUsesEditor/creator/OtherCreator'],  function($,
-       OtherModel, OtherObserver,OtherEditor){
+define(['jquery','otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/OtherObserver', 'otherUsesEditor/creator/OtherCreator',
+    "specialFormulaConf/formulaHandler/FormulaHandler"],
+    function($,OtherModel, OtherObserver,OtherEditor, FormulaHandler){
 
     var editorsController, observer, modelOther, editorOther, supportUtility,
-        originalTotCropsModel;
+        originalTotCropsModel, formulaHandler;
 
     // ---------------------- SUPPORT FUNCTIONS -------------------------------------------
 
@@ -26,60 +27,128 @@ define(['jquery','otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/O
         observer = new OtherObserver;
         modelOther = new OtherModel;
         editorOther = new OtherEditor;
+        formulaHandler = new FormulaHandler
     }
 
     OtherController.prototype.init = function(clickedItem, itemsInvolved, codesInvolved, configurator, Utility, ControllerEditors){
-        observer.init(this)
+
         editorsController = ControllerEditors;
         var involvedItems = $.extend(true, [], itemsInvolved);
         supportUtility = Utility;
         // take data and calculate initial formulas
-        debugger;
 
         modelOther.createTotalValuesModel(involvedItems, supportUtility);
         var originalTotCropsModel = modelOther.getTotalValuesModel();
 
         editorOther.init(originalTotCropsModel, observer)
+        observer.init(this)
     }
 
     OtherController.prototype.updateTotGridOnEditing = function(rowNumber, newValue, formulaToApply, columnValue){
-        /* TODO
-         var formulaToUpdate
-         if (formulaToApply == 'init') {
-         formulaToUpdate = formulaHandler.getInitFormulaFromConf(1, 'totalValues')
-         } else {
-         formulaToUpdate = formulaHandler.getUpdateFormula(1, 'totalValues', formulaToApply)
-         }*/
-        modelOther.setOriginalTotalData(rowNumber, newValue, columnValue);
-        var dataUpdated = modelOther.getTotalValuesModel()
-        var modelTotalCrops = $.extend(true, [], dataUpdated)
-        /* TODO
-         var calculatedModel = formulaHandler.createFormula(modelTotalCrops, formulaToUpdate)
-         var modelCalculated =  $.extend(true, [], calculatedModel);
-         modelProduction.setCalculatedTotalModel(modelCalculated)
-         */
+
+
+        switch(rowNumber){
+            case 0:
+                console.log('case 0')
+                // Direct Editing
+                modelOther.setOriginalTotalData(rowNumber, newValue, columnValue);
+                var dataUpdated = modelOther.getTotalValuesModel()
+                console.log('dataUpdated:')
+                console.log(dataUpdated)
+                break;
+            case 1:
+            case 2:
+            case 3:
+                // Other Uses
+                console.log('otherUSes case')
+                modelOther.setOriginalTotalData(rowNumber,newValue, columnValue)
+                var model = modelOther.getTotalValuesModel()
+
+                if(this.containsValuesFormula(rowNumber, 1,model)){
+                    this.applyFormula(1,model)
+                }
+                var dataUpdated = modelOther.getTotalValuesModel()
+                console.log('dataUpdated:')
+                console.log(dataUpdated)
+                break;
+
+            default :
+                // Industrial Uses
+                console.log('Industrial Uses case')
+                modelOther.setOriginalTotalData(rowNumber,newValue, columnValue)
+                var model = modelOther.getTotalValuesModel()
+
+                if(this.containsValuesFormula(rowNumber, 2,model)){
+                    this.applyFormula(2,model)
+                    if(this.containsValuesFormula(rowNumber,1, model))
+                        this.applyFormula(1,model)
+
+                }else{
+                    modelOther.setOriginalTotalData(rowNumber,newValue, columnValue)
+                }
+                var dataUpdated = modelOther.getTotalValuesModel()
+                console.log('dataUpdated:')
+                console.log(dataUpdated)
+                break;
+
+        }
         observer.closeEventsBindedToTotGrid()
-        editorOther.updateTotGrid(modelTotalCrops);
-        observer.applyListeners()
+        var grid = editorOther.updateTotGrid(dataUpdated);
+        observer.applyListeners(grid)
+    }
 
+    OtherController.prototype.containsValuesFormula  = function(rowNumber,numberFormula, model){
+       var result = true;
+        if(numberFormula ===1) {
+            for (var i = 0; i < 4 && result; i++) {
+                    result = (!isNaN(model[i][3]) && model[i][3] != null && model[i][3] != "")
+            }
+        }
+        else{
+             for(var i =4; i<model.length && result; i++){
+                 result = (!isNaN(model[i][3]) && model[i][3] != null && model[i][3] !="")
+             }
+        }
+        return result
+    }
+
+    OtherController.prototype.applyFormula = function(number,model){
+
+        switch (number){
+            case 1:
+                // O Uses
+                var sum = 0, indexSum
+                for(var i = 0, length = model.length; i<length; i++){
+                    if(model[i][0] == 15 ) {
+                        indexSum = i;
+                    }
+                    else if(model[i][0] == 21 || model[i][0] == 34 || model[i][0] == 28){
+                        sum += model[i][3]
+                    }
+                }
+                modelOther.setOriginalModelValueFromIndex(indexSum, sum, true)
+                break;
+            case 2:
+                // Industrial USes
+                var sum = 0, indexSum
+                for(var i = 0, length = model.length; i<length; i++){
+                    if(model[i][0] == 28 ) {
+                        indexSum = i;
+                    }
+                    else if(model[i][0] == 29 || model[i][0] == 30 || model[i][0] == 31 ||model[i][0] == 32 || model[i][0] == 33 ){
+                        sum += model[i][3]
+                    }
+                }
+                modelOther.setOriginalModelValueFromIndex(indexSum, sum, false)
+                break;
+            default :
+                break;
+        }
 
     }
 
-    OtherController.prototype.updateSingleCropsGridOnEditing  = function(rowNumber, newValue, formulaToApply, columnValue){
-        // TODO
-    }
-
-    OtherController.prototype.updateTotGridOnFormulaChanges = function(formulaToApply){
-        // TODO
-
-    }
-
-    OtherController.prototype.updateSingleCropsGridOnFormulaChanges = function(formulaToApply){
-        // TODO
-    }
 
     OtherController.prototype.saveTotalValues = function(formulaToApply){
-        // TODO
 
         console.log('OtherController: saveTotalValues')
         var dataOriginal = modelOther.getAndConvertOriginalTotValues();
@@ -94,9 +163,6 @@ define(['jquery','otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/O
         editorOther.destroyAll()
     }
 
-    OtherController.prototype.onSwitchingCropsValues = function(formulaSingleToApply){
-        // TODO
-    }
 
     return OtherController;
 })

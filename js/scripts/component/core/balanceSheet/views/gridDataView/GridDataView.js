@@ -8,7 +8,6 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         dataSource, columns ,arrDiffDates, grid, generalController, NProgress
 
     function GridDataView2() {
-
         NProgress = Nprogress
         NProgress.done()
     }
@@ -59,10 +58,11 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             webix.ui({
                 container: "pivotGrid",
                 view: "datatable",
-                navigation:true,
                 clipboard:"selection",
                 id: "grid",
                 editable:true,
+          //    select:"cell",
+                navigation:true,
                 leftSplit:1,
                 scheme: {
                     $change: function (item) {
@@ -73,12 +73,8 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 datatype: "jsarray",
                 data: dataSource
             });
-        debugger;
-
 
         generalController.createListeners(grid);
-
-
         return grid;
     }
 

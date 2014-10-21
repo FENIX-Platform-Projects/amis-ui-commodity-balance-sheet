@@ -156,3 +156,11 @@ h1 {
   /* must be half of the width, minus scrollbar on the left (30px) */ }
 
 /*# sourceMappingURL=balance-sass.css.map */
+
+/* Other Uses */
+
+div[view_id="otherUsesTree"]{
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+
+}

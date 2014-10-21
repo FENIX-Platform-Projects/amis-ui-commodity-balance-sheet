@@ -3,24 +3,21 @@
  */
 define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function($, Formatter){
 
-    var controllerPaddy, formulaToApplyTot, formulaToApplySingle, totalValuesModified, singleCropsValuesModified
+    var otherController, formulaToApplyTot, totalValuesModified, singleCropsValuesModified, grid
 
-    // ------------ Support method ------------------//
-    var checkAll = function(object){
-        return typeof object!=='undefined' && object != null && object != '';}
-    // ---------------------------------------------//
+    var itemClickEvent, afterEditStopEvent
+    var idCell;
 
     function OtherObserver(){}
 
     OtherObserver.prototype.init = function(Controller){
-        controllerPaddy = Controller;
+        otherController = Controller;
         formulaToApplyTot = 'init';
-        formulaToApplySingle = 'init';
         totalValuesModified = false;
-        singleCropsValuesModified =false;
     }
 
-    OtherObserver.prototype.applyListeners = function(){
+    OtherObserver.prototype.applyListeners = function(Grid){
+        grid  = Grid
 
        // this.listenToCheckboxesTotal();
         this.listenToEditCellTotGrid();
@@ -31,40 +28,45 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function($, Form
 
     OtherObserver.prototype.listenToEditCellTotGrid = function() {
 
-        $("#gridTotalValues").on('cellBeginEdit', function (event) {
+
+
+        itemClickEvent = grid.attachEvent("onItemClick", function (id, e, node) {
+            e.preventDefault();
+            e.stopImmediatePropagation()
+            idCell = id;
+        })
+
+
+
+        afterEditStopEvent = grid.attachEvent("onAfterEditStop", function(state, editor, ignoreUpdate){
+            console.log('state')
             event.preventDefault();
             event.stopImmediatePropagation();
             debugger;
+            // columnIndex
+            var columnIndex  = grid.getColumnIndex(idCell.column)-1;
+            var numberOfRow = grid.getIndexById(idCell);
 
             console.log('cellEdit: listener Active')
             totalValuesModified = true;
-            var columnValue = event.args.datafield;
-            var oldvalue = event.args.oldvalue;
-            var value = event.args.value;
+            var columnValue = editor.column;
+            var oldvalue = state.old;
+            var value = state.value;
             var rowKey = args.key;
 
 
-            switch(rowKey ){
-                case 0:
-                    break;
-                default :
-                    break;
-
+            if ( columnValue == 3) {
+                oldvalue = isNaN(oldvalue)? oldvalue : parseFloat(oldvalue)
+                value = isNaN(oldvalue)? value : parseFloat(value)
             }
-            if (checkAll(oldvalue) && columnValue == 3) {
-                oldvalue = parseFloat(oldvalue)
-            }
-            if (checkAll(value) && columnValue == 3) {
-                value = parseFloat(value)
-            }
+           
 
             if (columnValue == 3 && (oldvalue != value)) {
-                var numberOfRow = event.args.rowindex;
                 var value2 = parseFloat(value)
-                controllerPaddy.updateTotGridOnEditing(numberOfRow, value2, formulaToApplyTot, columnValue)
+                otherController.updateTotGridOnEditing(numberOfRow, value2, formulaToApplyTot, columnValue)
             } else if (columnValue != 3 && (oldvalue != value)) {
                 var numberOfRow = event.args.rowindex;
-                controllerPaddy.updateTotGridOnEditing(numberOfRow, value, formulaToApplyTot, columnValue)
+                otherController.updateTotGridOnEditing(numberOfRow, value, formulaToApplyTot, columnValue)
             }
         })
     }
@@ -76,26 +78,27 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function($, Form
             event.preventDefault();
             event.stopImmediatePropagation();
             if (totalValuesModified) {
-                controllerPaddy.saveTotalValues(formulaToApplyTot)
+                otherController.saveTotalValues(formulaToApplyTot)
             }
         })
     }
 
     OtherObserver.prototype.closeEventsBindedToTotGrid = function(){
+        grid.detachEvent(itemClickEvent);
+        grid.detachEvent(afterEditStopEvent);
         $("#gridTotalValues").off();
-
         $('#saveTotalValues').off()
     }
 
     OtherObserver.prototype.listenToCloseModal = function(){
         $('#specialForm').on('hidden.bs.modal', function () {
-            controllerPaddy.destroyAll()
+            otherController.destroyAll()
         })
     }
 
     OtherObserver.prototype.listenToCloseButton = function(){
         $('#closeModal').on('click', function(){
-            controllerPaddy.destroyAll()
+            otherController.destroyAll()
         })
     }
 
