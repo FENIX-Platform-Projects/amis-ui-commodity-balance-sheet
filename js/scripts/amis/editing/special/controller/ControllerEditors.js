@@ -65,6 +65,11 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
         generalController.saveDataFromProductionRiceForm(calculatedData,originalData,clickedCellInfo)
     }
 
+    ControllerEditors.prototype.saveFormOtherUses = function( calculatedData, originalData){
+        console.log('saveFormRice Production: Controller Editors')
+        generalController.saveDataFromOtherUsesForm(calculatedData,originalData,clickedCellInfo)
+    }
+
     return ControllerEditors;
 
     })

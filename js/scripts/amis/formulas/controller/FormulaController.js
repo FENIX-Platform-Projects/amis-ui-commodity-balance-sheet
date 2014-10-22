@@ -172,6 +172,7 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
         var newValues = [];
         for (var i = 0; i < formulas.length; i++) {
             var indexFormula = formulas[i];
+            debugger;
             var formula = configurator.getEntireFormulaFromNumber(indexFormula);
             var newValue = this.createFormula(model, formula, indexColumn, indexRow)
             if(newValue != null && typeof newValue !== 'undefined')

@@ -11,14 +11,10 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         formatter = new Formatter;
         Services = new ServicesURL;
         Services.init()
+
         urlActualForecast = Services.getAllDataUrl()
-        console.log(urlActualForecast)
         urlPopulation = Services.getPopulationUrl();
-        console.log(urlPopulation)
-
         urlMostRecentDate = Services.getMostRecentDateUrl();
-        console.log(urlMostRecentDate)
-
         urlPreviousYear = Services.getPreviousYearUrl();
 
 
@@ -44,7 +40,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         for (var i = 0; i < actualForecast.length - 1; i++) {
             var data = actualForecast[i][2]
             actualForecast[i][2] = formatter.fromVisualizationToDSDFormat(data, "date")
-            // also for updateDate
         }
 
         var populationActual;
@@ -66,7 +61,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         if (populationActual.length > 0) {
             populationActual[0].splice(2, 0, firstForecastDateToInsert);
 
-            // Insert population into actual forecast
             actualForecast.push(populationActual[0])
         }
 

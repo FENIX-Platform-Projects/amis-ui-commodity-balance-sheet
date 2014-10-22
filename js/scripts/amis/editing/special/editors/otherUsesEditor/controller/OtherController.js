@@ -44,6 +44,10 @@ define(['jquery','otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/O
         observer.init(this)
     }
 
+    OtherController.prototype.simpleUpdateOnEditing = function(rowNumber, newValue, formulaToApply, columnValue){
+        modelOther.setOriginalTotalData(rowNumber, newValue, columnValue);
+    }
+
     OtherController.prototype.updateTotGridOnEditing = function(rowNumber, newValue, formulaToApply, columnValue){
 
 
@@ -82,7 +86,6 @@ define(['jquery','otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/O
                     this.applyFormula(2,model)
                     if(this.containsValuesFormula(rowNumber,1, model))
                         this.applyFormula(1,model)
-
                 }else{
                     modelOther.setOriginalTotalData(rowNumber,newValue, columnValue)
                 }
@@ -152,11 +155,10 @@ define(['jquery','otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/O
 
         console.log('OtherController: saveTotalValues')
         var dataOriginal = modelOther.getAndConvertOriginalTotValues();
-        // var dataCalculated = modelOther.getCalculatedTotalModel();
-        // TRUE!  editorProduction.saveDataTotGrid(dataCalculated,dataOriginal);
+
         console.log('dataToSave:')
         console.log(dataOriginal)
-        editorsController.saveFormRiceProduction(dataOriginal,dataOriginal); // this is FALSE!! true is up
+        editorsController.saveFormOtherUses(dataOriginal,dataOriginal); // this is FALSE!! true is up
     }
 
     OtherController.prototype.destroyAll = function(){

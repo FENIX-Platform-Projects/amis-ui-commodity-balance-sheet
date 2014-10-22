@@ -44,8 +44,6 @@ define(["jquery","preloading/filterDatafields/CountrySelector",
 
             // Database
             databaseText=  dbSelector.init(regionCode);
-            console.log('qui!')
-            console.log(databaseText)
             that.updateDBSel(databaseText);
 
             // Commodity

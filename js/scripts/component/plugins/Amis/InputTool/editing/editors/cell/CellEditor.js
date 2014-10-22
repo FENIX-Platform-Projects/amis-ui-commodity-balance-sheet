@@ -85,7 +85,7 @@ define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/Flag
         var containerVal = "valueInput";
 
         // value column
-        this.appendRigthInputFormat(titleVal, valueVal, columnDSDVal, columnCONFVal, containerVal);
+        this.appendRigthInputFormat('Value', valueVal, columnDSDVal, columnCONFVal, containerVal);
 
         // accessorColumn
         for (var i = 0; i < accessorIndexes.length; i++) {
@@ -102,7 +102,6 @@ define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/Flag
         $('#spaceForButtons').append("<br><br><div class='row'><div class='col-lg-6 '>" +
             "<button class='btn btn-lg btn-danger' id='saveButton'>Save</button></div>" +
             "<div class='col-lg-1 col-lg-offset-4'><button class='btn btn-primary' id='resetButton'>Reset</button></div></div></div>")
-
 
 
         var that = this;

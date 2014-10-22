@@ -48,10 +48,10 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             console.log('GCONTROLLER : createListenersgrid')
 
             var resultedClicked
-             eventClick = grid.attachEvent("onItemClick", function (id, e, node) {
-                console.log('GC: afterOnItemClick')
+            eventClick = grid.attachEvent("onItemClick", function (id, e, node) {
+                //   console.log('GC: afterOnItemClick')
                 this.blockEvent();
-                console.log('GC: after itemclick.blockEvent')
+                //    console.log('GC: after itemclick.blockEvent')
                 var coordinates = grid.getScrollState()
                 xCoordinate = coordinates.x;
                 yCoordinate = coordinates.y;
@@ -73,7 +73,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 }
             });
 
-             eventStop = grid.attachEvent("onBeforeEditStop", function (state, editor) {
+            eventStop = grid.attachEvent("onBeforeEditStop", function (state, editor) {
 
                 if (state.value == resultedClicked.clickedCell[3]) {
                     this.blockEvent()
@@ -121,7 +121,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         GeneralController.prototype.startFullEditing = function (resultedClicked) {
 
-            console.log('GC: startFullEditing')
+            //  console.log('GC: startFullEditing')
             var clickedCell = resultedClicked["clickedCell"]
             var indTable = resultedClicked["indTable"];
             var rowGridIndex = resultedClicked["rowGridIndex"];
@@ -172,6 +172,42 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             }
         }
 
+        GeneralController.prototype.saveDataFromOtherUsesForm = function (newCalculatedData, newOriginalData, cellClickedInfo) {
+            console.log('GC: saveDataFromOtherUsesForm')
+
+            console.log('before Saveing data')
+            console.log('ModelController')
+            console.log(ModelController)
+
+            var indexes = ModelController.saveDataFromOUsesForm(newOriginalData, cellClickedInfo.indTable, cellClickedInfo.rowGridIndex, cellClickedInfo.columnGridIndex)
+
+            var tableModel = ModelController.getTableDataModel();
+
+            var modelWithFormulas = $.extend(true, [], tableModel);
+
+            formulaController.init(modelWithFormulas, Configurator, filterData)
+            var formulas = formulaController.getFormulasBindedFromKey(15)
+
+            formulaController.sortByDateAtStart(modelWithFormulas);
+            var rowsChanged = formulaController.applyUpdateFormulas(modelWithFormulas, formulas, cellClickedInfo.columnGridIndex,
+                cellClickedInfo.rowGridIndex);
+
+            for(var i=0; i< indexes.length; i++){
+                if(indexes[i].key == 15){
+                    var indTable = indexes[i].index;
+                    break
+                }
+            }
+            var newCell = ModelController.getTableDataModel()[indTable]
+
+            rowsChanged.push({'index': indTable, 'row': newCell})
+
+            // at the end, order like initially
+            formulaController.sortInitialValue(modelWithFormulas);
+            ViewGrid.updateBatchGridView(modelWithFormulas, rowsChanged, xCoordinate, yCoordinate);
+
+        }
+
         GeneralController.prototype.saveDataFromProductionRiceForm = function (newCalculatedData, newOriginalData, cellClickedInfo) {
 
             console.log('GC: saveDataFromProductionRiceForm')
@@ -189,13 +225,13 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             for (var i = 0; i < newCalculatedData.length; i++) {
                 for (var j = 0; j < indexes.length; j++) {
                     if (newCalculatedData[i][0] == indexes[j]['key']) {
-                        if(newCalculatedData[i][0] == 5) {
+                        if (newCalculatedData[i][0] == 5) {
                             var rowsFormula = formulaController.applyUpdateFormulas(modelWithFormulas, formulas, cellClickedInfo.columnGridIndex, cellClickedInfo.rowGridIndex);
-                            for(var k = 0, length=rowsFormula.length; k<length; k++){
+                            for (var k = 0, length = rowsFormula.length; k < length; k++) {
                                 rowsChanged.push(rowsFormula[k])
                             }
                             rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
-                        }else{
+                        } else {
                             rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
                         }
                     }
@@ -223,14 +259,14 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             for (var i = 0; i < newCalculatedData.length; i++) {
                 for (var j = 0; j < indexes.length; j++) {
                     if (newCalculatedData[i][0] == indexes[j]['key']) {
-                        if(newCalculatedData[i][0] == 5) {
-                          var rowsFormula = formulaController.applyUpdateFormulas(modelWithFormulas, formulas, cellClickedInfo.columnGridIndex, cellClickedInfo.rowGridIndex);
-                          for(var k = 0, length=rowsFormula.length; k<length; k++){
-                              rowsChanged.push(rowsFormula[k])
-                          }
-                          rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
-                        }else{
-                          rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
+                        if (newCalculatedData[i][0] == 5) {
+                            var rowsFormula = formulaController.applyUpdateFormulas(modelWithFormulas, formulas, cellClickedInfo.columnGridIndex, cellClickedInfo.rowGridIndex);
+                            for (var k = 0, length = rowsFormula.length; k < length; k++) {
+                                rowsChanged.push(rowsFormula[k])
+                            }
+                            rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
+                        } else {
+                            rowsChanged.push({'index': indexes[j]['index'], 'row': newCalculatedData[i]})
                         }
                     }
                 }
@@ -256,6 +292,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 editHandler.updateEditingOnCell(editingOnCell)
             })
         }
+
 
         return GeneralController;
 

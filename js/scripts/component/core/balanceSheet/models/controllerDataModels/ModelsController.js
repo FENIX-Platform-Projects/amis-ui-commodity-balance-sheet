@@ -113,6 +113,13 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         return d;
     }
 
+    ModelsController.prototype.saveDataFromOUsesForm = function(newData, indTable, rowGridIndex, columnGridIndex){
+        var indexesTableData = TableModel.updateDataFromOtherUsesForm(newData, indTable)
+        // TODO: save also grid data
+        return indexesTableData;
+    }
+
+
     ModelsController.prototype.saveDataFromProduction = function(newData, indTable, rowGridIndex, columnGridIndex){
        var indexesTableData = TableModel.updateDataFromProductionForm(newData, indTable)
         // TODO: save also grid data

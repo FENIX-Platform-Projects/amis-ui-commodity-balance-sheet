@@ -46,9 +46,6 @@ define(["jquery", "formatter/DatatypesFormatter", "webix"], function ($, Formatt
             '</div>' +
             '<div class="modal-body" id ="toappendData">' +
             '<div id="productionTabs">' +
-
-
-
             '<br>' +
             '<div class="row"><div class="col-lg-10 col-lg-offset-1">' +
             '<div id="gridTotalValues"></div></div></div>' +
@@ -88,12 +85,7 @@ define(["jquery", "formatter/DatatypesFormatter", "webix"], function ($, Formatt
     }
 
     OtherCreator.prototype.prepareDataForTreeGrid = function (model) {
-        var toObject = function (arr) {
-            var rv = {};
-            for (var i = 0; i < arr.length; ++i)
-                if (arr[i] !== undefined) rv[i] = arr[i];
-            return rv;
-        }
+
 
         var  result = [
          {"0": model[0][0], "1": model[0][1], "2": model[0][2], "3": model[0][3], "4": model[0][4], "5": model[0[5]], "value": model[0][6], "open": false,
@@ -114,13 +106,34 @@ define(["jquery", "formatter/DatatypesFormatter", "webix"], function ($, Formatt
         return result;
     }
 
+    OtherCreator.prototype.updateDataForTreeGrid = function (model) {
+
+
+        var  result = [
+            {"0": model[0][0], "1": model[0][1], "2": model[0][2], "3": model[0][3], "4": model[0][4], "5": model[0[5]], "value": model[0][6], "open": true,
+                "data": [
+                    {  "0": model[1][0], "1": model[1][1], "2": model[1][2], "3": model[1][3], "4": model[1][4], "5": model[1][5], "value": model[1][6] },
+                    {  "0": model[2][0], "1": model[2][1], "2": model[2][2], "3": model[2][3], "4": model[2][4], "5": model[2][5], "value": model[2][6] },
+                    {  "0": model[3][0], "1": model[3][1], "2": model[3][2], "3": model[3][3], "4": model[3][4], "5": model[3][5], "value": model[3][6], "open": true,
+                        "data":[
+                            {  "0": model[4][0], "1": model[4][1], "2": model[4][2], "3": model[4][3], "4": model[4][4], "5": model[4][5], "value": model[4][6] },
+                            {  "0": model[5][0], "1": model[5][1], "2": model[5][2], "3": model[5][3], "4": model[5][4], "5": model[5][5], "value": model[5][6] },
+                            {  "0": model[6][0], "1": model[6][1], "2": model[6][2], "3": model[6][3], "4": model[6][4], "5": model[6][5], "value": model[6][6] },
+                            {  "0": model[7][0], "1": model[7][1], "2": model[7][2], "3": model[7][3], "4": model[7][4], "5": model[7][5], "value": model[7][6] },
+                            {  "0": model[8][0], "1": model[8][1], "2": model[8][2], "3": model[8][3], "4": model[8][4], "5": model[8][5], "value": model[8][6] }
+                        ]
+                    }
+                ]
+            }]
+        return result;
+    }
+
     OtherCreator.prototype.updateTotGrid = function (calculatedModel) {
 
         var modelWithoutNull = this.eliminateNull(calculatedModel)
-        var totModelForTree = this.prepareDataForTreeGrid(modelWithoutNull)
+        var totModelForTree = this.updateDataForTreeGrid(modelWithoutNull)
 
-        if(grid)
-          grid.destructor();
+        this.destroyAll()
 
         grid = new webix.ui({
             id:"otherUsesTree",
@@ -135,6 +148,7 @@ define(["jquery", "formatter/DatatypesFormatter", "webix"], function ($, Formatt
             autoheight:true,
             autowidth:true,
             editable:true,
+
             data:totModelForTree
         });
 
@@ -142,7 +156,8 @@ define(["jquery", "formatter/DatatypesFormatter", "webix"], function ($, Formatt
     }
 
     OtherCreator.prototype.destroyAll = function(){
-        $("#gridTotalValues").jqxTreeGrid('destroy')
+        if(grid)
+            grid.destructor();
     }
 
     OtherCreator.prototype.eliminateNull= function(model){

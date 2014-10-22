@@ -3,9 +3,10 @@
  */
 define(["jquery"], function($){
 
-    var config;
+
     var ulrFormulaPlugins = './js/scripts/amis/editing/special/configuration/formulaPlugin/formulaPlugins.json'
 
+    var config;
 
     function FormulaConfigurator(){
         $.ajax({
@@ -18,7 +19,6 @@ define(["jquery"], function($){
         })
 
     }
-
 
     // 1: Production; 2: OtherUses; 3: Paddy
     // Get one or mor formulas

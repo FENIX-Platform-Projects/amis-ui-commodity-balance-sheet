@@ -50,6 +50,11 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
         model[index] = row;
     }
 
+    TableDataModel.prototype.setAllDataModel = function(index, row){
+        var model = this.getAllData();
+        model[index] = row;
+    }
+
 
     TableDataModel.prototype.setTableData = function (newData) {
         // TODO
@@ -344,6 +349,33 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
         return this.getTableData()
     }
 
+    TableDataModel.prototype.updateDataFromOtherUsesForm = function(productionData){
+        var dateInvolved = productionData[0][2];
+        var indexes = {"15": true, "21":true, "34":true, "28":true, "29":true,"30":true,"31":true,"32":true,"33":true} ;
+
+        debugger;
+        // if there's Area planted
+        var tableData = this.getTableData();
+        var allData = this.getAllData();
+
+        // take the indexes from the table data and the all data
+        var indexesTableData = this.getAllIndexesRequested(tableData, indexes, dateInvolved);
+        var indexesAllData = this.getAllIndexesRequested(allData, indexes, dateInvolved);
+
+        // put in updatedData
+        for(var i =0; i<productionData.length; i++){
+            this.pushInUpdatedData(productionData[i])
+        }
+
+        // save the data
+        this.saveDataFromIndexes('table',indexesTableData,productionData);
+        if(indexesAllData.length >0) {
+            this.saveDataFromIndexes('original', indexesAllData, productionData);
+        }
+        return indexesTableData;
+
+    }
+
     TableDataModel.prototype.updateDataFromRiceProductionForm = function(productionData){
         var dateInvolved = productionData[0][2];
         var indexes = (productionData.length>3)? {"4": true, "2":true, "5":true, "37":true, "998":true,"3":true} : {"4":true, "5":true, "2":true};
@@ -386,7 +418,6 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
         // take the indexes from the table data and the all data
         var indexesTableData = this.getAllIndexesRequested(tableData, indexes, dateInvolved);
         var indexesAllData = this.getAllIndexesRequested(allData, indexes, dateInvolved);
-
 
         // save the data
         this.saveDataFromIndexes('table',indexesTableData,productionData);
@@ -437,7 +468,8 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
         for (var i=0; i<indexes.length; i++) {
             for (var j = 0; j < productionData.length; j++) {
                 if( modelData[indexes[i]['index']][0] == productionData[j][0]) {
-                    this.setTableDataModel(indexes[i]['index'], productionData[j])
+                    (model == 'table')? this.setTableDataModel(indexes[i]['index'], productionData[j]) :
+                        this.setAllDataModel(indexes[i]['index'], productionData[j])
                 }
             }
         }
