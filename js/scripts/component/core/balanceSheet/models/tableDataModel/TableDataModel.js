@@ -56,10 +56,6 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
     }
 
 
-    TableDataModel.prototype.setTableData = function (newData) {
-        // TODO
-    }
-
     TableDataModel.prototype.createSparseTableData = function (newData) {
         instanceData = newData;
     }

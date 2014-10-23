@@ -40,6 +40,8 @@ define(['jquery'], function($){
         supportUtility = utilitySupport;
         var dataModel = $.extend(true, [], itemsInvolved);
 
+
+        debugger;
         var keys = [15,21,34,28,29,30,31,32,33]
 
         for(var n= 0, length = keys.length; n<length; n++){

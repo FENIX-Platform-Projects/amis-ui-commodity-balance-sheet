@@ -136,6 +136,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             $("#saveButton").on('click', function (e) {
                 e.preventDefault()
                 e.stopImmediatePropagation();
+                debugger;
                 var newCell = FormController.getValue(cell)
                 if (newCell.length > 0) {
                     that.updateGrid(newCell, indTable, rowIndex, columnIndex)
@@ -174,10 +175,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         GeneralController.prototype.saveDataFromOtherUsesForm = function (newCalculatedData, newOriginalData, cellClickedInfo) {
             console.log('GC: saveDataFromOtherUsesForm')
-
-            console.log('before Saveing data')
-            console.log('ModelController')
-            console.log(ModelController)
 
             var indexes = ModelController.saveDataFromOUsesForm(newOriginalData, cellClickedInfo.indTable, cellClickedInfo.rowGridIndex, cellClickedInfo.columnGridIndex)
 
@@ -293,7 +290,5 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             })
         }
 
-
         return GeneralController;
-
     });

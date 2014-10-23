@@ -37,7 +37,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         })
 
         // Put dates in DSD format
-        for (var i = 0; i < actualForecast.length - 1; i++) {
+        for (var i = 0; i < actualForecast.length ; i++) {
             var data = actualForecast[i][2]
             actualForecast[i][2] = formatter.fromVisualizationToDSDFormat(data, "date")
         }

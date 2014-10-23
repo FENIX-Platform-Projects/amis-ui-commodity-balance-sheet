@@ -1,113 +1,157 @@
 /**
  * Created by fabrizio on 10/4/14.
  */
-define(['jquery'], function(){
+define(['jquery'], function($){
 
-    var filterActual, realPreviousDate, realDataToSave, previousYearForecast, actualYearForecasts;
+    var filterActual, realPreviousDataToSave, realActualDataToSave, previousYearForecast, actualYearForecasts,
+        actualYearForecasts, previousYearForecast, supportUtility;
 
     function SavingModel(){}
 
-    SavingModel.prototype.init = function(){}
+    SavingModel.prototype.init = function(SupportUtility){
+        supportUtility =SupportUtility;
+        /*
+        3 type of data: Actual Year, PRev Year, updated Data, New Data
+
+        STEP 0) Divide actualYear from Previous Year
+
+         -------------------------------------
+             Actual Year :
+         -------------------------------------
+         1) Clean calculated Data (V)
+         2) Set right Date format (V)
+         3) Merge with READY updated Data
+         4) Add(if exist) READY newData
+         4) divide on forecast date
+
+
+         -------------------------------------
+             Previous Year:
+         -------------------------------------
+         1) Clean calculated Data(V)
+         2) Put the right Date(V)
+         2) Set right Date format(V)
+         3) Merge with READY updated Data
+
+
+         -------------------------------------
+             Updated Data
+         -------------------------------------
+         1) Clean calculated Data
+         2) Set right Date format
+
+
+         -------------------------------------
+            New Data
+         -------------------------------------
+         1) Clean calculated Data
+         2) Set right Date format
+
+         */
+    }
 
     SavingModel.prototype.prepareData = function(alldata, tableData, newData,actualFilter, realPreviousYearDate){
         realPreviousDate = realPreviousYearDate;
         filterActual = actualFilter;
 
+        //   STEP 0) Divide actualYear from Previous Year
+        this.detachPreviousYearFromActual(alldata);
+
+        // for updatedData and new Data
+        var cleanedUpdatedData = this.cleanAndSetDate(newData.updatedData)
+
+
+        // Actual Year
+        var cleanedActualYear = this.cleanAndSetDate(actualYearForecasts);
+        var actualYearUpdated = this.mergeUpdatedData(cleanedActualYear,cleanedUpdatedData)
+        if(newData.newData.length >0){
+            var cleanedNewForecast = this.cleanAndSetDate(newData.newData)
+            actualYearUpdated = actualYearUpdated.concat(actualYearUpdated, cleanedNewForecast)
+        }
+
+        // Previous Year
+        var cleanedPreviousYear = this.cleanAndSetDate(previousYearForecast);
+        var previousYearUpdated = this.mergeUpdatedData(cleanedPreviousYear,cleanedUpdatedData)
+
+
+
         // dataOriginals
+        realActualDataToSave = actualYearUpdated
+        realPreviousDataToSave = previousYearUpdated
 
-        debugger;
-
-        var allDataCleaned = this.cleanNewData(actualYearForecasts);
-        var allDataWithRealDate = this.setRealDate(allDataCleaned)
-        var allDataRightDate = this.setRightDateFormat(allDataCleaned)
-
-        // data Updated
-        var trueAllData = this.setRealDate(newData.updatedData)
-        var trueNewUpdatedData = this.setRightDateFormat(trueAllData)
-
-        if(typeof newData.newData!= 'undefined' && newData.length > 0){
-
-            var trueNewData = this.cleanNewData(newData.newData)
-            // set the rightDateFormat
-            var newDataRightDate = this.setRightDateFormat(trueNewData)
-            trueNewUpdatedData = this.mergeNewDateWithUpdatedDate(trueNewUpdatedData, newDataRightDate)
-        }
-        // now I have the new Data clean, ready to merge with allData
-        var dataToSplit = this.mergeNewDateWithUpdatedDate(allDataRightDate, trueNewUpdatedData);
-
-        realDataToSave = this.splitDataWithDate(dataToSplit);
         debugger;
     }
 
-    SavingModel.prototype.setRealDate = function(model){
-        previousYearForecast = [];
-        actualYearForecasts = [];
-        var result = []
-        for( var i=0; i< model.length; i++){
-            if(model[i][2] == '20000103'){
-                model[i][2] = realPreviousDate
-                previousYearForecast.push(model[i])
-            }
-            actualYearForecasts.push(model[i])
 
-            result.push(model[i])
-        }
-        return result;
-    }
 
-    SavingModel.prototype.cleanNewData = function(dataNew){
+    SavingModel.prototype.cleanAndSetDate = function(dataNew){
         var result = []
         for(var i =0; i<dataNew.length; i++){
+            // clean data
             if(dataNew[i][0] != 1 && dataNew[i][0] != 999 && dataNew[i] != 22){
+
+                dataNew[i][0] = parseInt(dataNew[i][0])
+                // put real date previous year
+                if(dataNew[i][2] == '20000103') {
+                    dataNew[i][2] = realPreviousDate
+                }
+                // set right format
+                var value = dataNew[i][2]
+
+                if(value.length == 8) {  // if date is in DSD format
+                    var year = value.substr(0, 4);
+                    var month = value.substr(4, 2);
+                    var day = value.substr(6, 2);
+                    var date = new Date(year, month - 1, day);
+                    dataNew[i][2] = moment(date).format('YYYY-MM-DD')
+                    }
+
                 result.push(dataNew[i])
             }
         }
         return result;
     }
 
-    SavingModel.prototype.mergeNewDateWithUpdatedDate = function(dataUnique, dataToMerge){
-        var result = []
-        result = $.extend(true,[],dataUnique);
-        for(var i =0; i<dataToMerge.length; i++){
-            var exist = false
-            for(var j =0; j<dataUnique.length && !exist; j++){
-                // if exist
-                if(dataUnique[j][0] == dataToMerge[i][0] && dataUnique[j][2] == dataToMerge[i][2]){
-                    result[j] = dataToMerge[i]
-                    exist = true;
-                }else if(j == dataUnique.length-1 && !exist){
-                    result.push(dataToMerge[i])
+    SavingModel.prototype.mergeUpdatedData = function(myData, updatedData){
+        var result = $.extend(true,[], myData);
+
+        for(var i = 0, length = updatedData.length; i<length; i++){
+            var found = false;
+            for(var j= 0, lengthUpdated = result.length; j<lengthUpdated; j++){
+                if(result[j][0] == updatedData[i][0]  && result[j][2] == updatedData[i][2]){
+                    result[j] = updatedData[i]
                 }
             }
         }
         return result;
     }
 
-    SavingModel.prototype.setRightDateFormat = function(model){
-     var result = []
-        for(var i =0; i< model.length; i++){
-            var value = model[i][2]
-            // if date is in DSD format
-            if(value.length == 8) {
-                var year = value.substr(0, 4);
-                var month = value.substr(4, 2);
-                var day = value.substr(6, 2);
-                var date = new Date(year, month - 1, day);
-                model[i][2] = moment(date).format('YYYY-MM-DD')
-            }
-            result.push(model[i])
-        }
-        return result;
-    }
 
-    SavingModel.prototype.preparePutPayload = function(){
+    SavingModel.prototype.preparePutPayload = function(isActualYear){
+        var filterData = supportUtility.getFilterData()
+        var prevSeason = supportUtility.getPreviousSeasonLabel()
+
         var result = {};
-        result['filter'] = {
-            "region": filterActual.region,
-            "product": filterActual.product,
-            "year": filterActual.year
+
+        if(isActualYear) {
+            result['filter'] = {
+                "region": filterActual.region,
+                "product": filterActual.product,
+                "year": filterActual.year,
+                "season": filterData.season
+            }
+            result["data"] = realActualDataToSave
         }
-        result["data"] = realDataToSave
+
+        else{
+            result['filter'] = {
+                "region": filterActual.region,
+                "product": filterActual.product,
+                "year": filterActual.year -1,
+                "season": prevSeason
+            }
+            result["data"] = realPreviousDataToSave
+        }
         return result;
     }
 
@@ -129,6 +173,19 @@ define(['jquery'], function(){
         }
         return result;
 
+    }
+
+
+    SavingModel.prototype.detachPreviousYearFromActual = function(model){
+        actualYearForecasts = []
+        previousYearForecast = []
+        for(var i = 0, length = model.length; i<length; i++) {
+            if (model[i][2] == '20000103') {
+                previousYearForecast.push((model[i]))
+            } else {
+                actualYearForecasts.push(model[i])
+            }
+        }
     }
 
     return SavingModel;

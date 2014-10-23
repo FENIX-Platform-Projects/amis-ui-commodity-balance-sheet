@@ -1,18 +1,21 @@
 /**
  * Created by fabrizio on 10/4/14.
  */
-define(['jquery','databaseSaver/model/SavingModel', 'databaseSaver/observer/SavingObserver', 'urlConfigurator'],
-    function($, SavingModel, SavingObserver, ServicesURL){
+define(['jquery','databaseSaver/model/SavingModel', 'databaseSaver/observer/SavingObserver', 'urlConfigurator',
+        'utilities/SupportUtility'],
+    function($, SavingModel, SavingObserver, ServicesURL, SupportUtility){
 
-    var balanceSheet, modelSaving, observerSaving, actualFilter, realPreviousYearDate, servicesURL, urlSaving;
+    var balanceSheet, modelSaving, observerSaving, actualFilter, realPreviousYearDate, servicesURL, urlSaving, supportUtility;
 
     function SavingController(){
+        supportUtility = new SupportUtility
         servicesURL = new ServicesURL;
         servicesURL.init()
         urlSaving = servicesURL.getSavingDataUrl()
     }
 
-    SavingController.prototype.init= function(BalanceSheet, filterActual, previousDate){
+    SavingController.prototype.init= function(BalanceSheet, filterActual, previousDate, dataFiltered){
+        supportUtility.init(dataFiltered)
         realPreviousYearDate = previousDate
         balanceSheet = BalanceSheet;
         modelSaving = new SavingModel;
@@ -31,10 +34,23 @@ define(['jquery','databaseSaver/model/SavingModel', 'databaseSaver/observer/Savi
         var tableData =  $.extend(true, [],tableDataOriginal);
         var newdata =  $.extend(true, [],newDataOriginal);
 
+        modelSaving.init(supportUtility)
         modelSaving.prepareData(allData,tableData,newdata, actualFilter,realPreviousYearDate);
 
-        var payload = modelSaving.preparePutPayload()
+        var payloadActual = modelSaving.preparePutPayload(true)
+        var payloadPrevious = modelSaving.preparePutPayload(true)
         debugger;
+
+        console.log('+++++++++++++++++++++++++++++++++++++++++++++++')
+        console.log('payloadPrevious')
+        console.log(payloadPrevious)
+        console.log('PayloadActual')
+        console.log(payloadActual)
+        console.log('+++++++++++++++++++++++++++++++++++++++++++++++')
+
+        this.finalSave(payloadActual)
+        this.finalSave(payloadPrevious)
+
     }
 
 

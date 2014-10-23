@@ -49,6 +49,7 @@ define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databas
         }
         // take the actual forecast
         var actualForecast = dataLoader.getActualYearForecast(filterActual,filterPopulationActual);
+
         if(!notPreviousYear) { // if exist a previous year
 
             var prevYearForecast = dataLoader.getPreviousYearForecast(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation)
@@ -66,18 +67,20 @@ define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databas
             url = (product == 4)?  urlDSDRice: urlDSD;
             balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
         }else {
-            if(product !=4) {
+            if(product !=4)
+            {
                 url = urlDSD
                 balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
-            }else{
-
+            }
+            else
+            {
                 url = urlDSDRice;
                 balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
             }
         }
 
         var realPreviousYear = dataLoader.getRealPreviousYear()
-        savingController.init(balanceSheet, filterActual,realPreviousYear )
+        savingController.init(balanceSheet, filterActual,realPreviousYear, dataFiltered )
     };
 
 
