@@ -95,8 +95,15 @@ define(['jquery'], function($){
 
     }
 
-    ProductionController.prototype.saveTotalValues = function(formulaToApply){
+    ProductionController.prototype.saveTotalValues = function(){
+
         var dataOriginal = modelProduction.getOriginalTotalCropsModelOriginalConverted();
+        var areaPlanted = modelProduction.getAreaPlanted();
+        debugger;
+        if(areaPlanted){
+            areaPlanted.length = 6;
+            dataOriginal.push(areaPlanted)
+        }
         var dataCalculated = modelProduction.getCalculatedTotalModel();
         editorProduction.saveDataTotGrid(dataCalculated,dataOriginal);
     }

@@ -23,6 +23,7 @@ define(['jquery'], function($){
                 // editable
                 if(editingOnCell){
 
+                    clickedCell[3] = (!clickedCell[3])? null: clickedCell[3];
                     grid.getEditor().setValue(clickedCell[3]) // change the value
                     grid.unblockEvent()
 

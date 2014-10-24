@@ -603,6 +603,9 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                     }
                     break;
             }
+            if(column == 6){
+                toBlock = true;
+            }
             // condition follows
             if (toBlock) {
                 $("#gridTotalValues").jqxGrid('endcelledit', row, column, true);
@@ -661,6 +664,9 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                         toBlock = true;
                     }
                     break;
+            }
+            if(column == 6 || column == 7){
+                toBlock = true;
             }
             // condition follows
             if (toBlock) {

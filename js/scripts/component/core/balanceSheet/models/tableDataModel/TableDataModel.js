@@ -45,10 +45,12 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
         return result;
     }
 
+
     TableDataModel.prototype.setTableDataModel = function(index, row){
         var model = this.getTableData();
         model[index] = row;
     }
+
 
     TableDataModel.prototype.setAllDataModel = function(index, row){
         var model = this.getAllData();
@@ -306,6 +308,7 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
             originalData.push(dataArray[i])
             newData.push(dataArray[i])
         }
+
         visualizedData.sort(function (a,b) {
             if (mapCodes[a["0"]] < mapCodes[b["0"]]) {
                 if (a["2"] < b["2"])

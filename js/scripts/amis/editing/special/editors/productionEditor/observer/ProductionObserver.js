@@ -350,6 +350,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         this.listenToCheckboxesTotal(); //checkboxes
         this.listenToRecalculateButtonTotalValues(); //formulas
         this.listenToSaveTotalValuesButton(); // saving
+        this.listenToTotalEditable()
     }
 
     ProductionObserver.prototype.listenToTotalEditable = function () {
@@ -359,6 +360,8 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield
+            console.log('Column!')
+            console.log(column)
 
             switch (formulaToApplyTot) {
 
@@ -386,6 +389,10 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                     }
                     break;
             }
+            if(column == 6){
+                toBlock = true;
+            }
+
             // condition follows
             if (toBlock) {
                 $("#gridTotalValues").jqxGrid('endcelledit', row, column, true);
@@ -400,6 +407,8 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield
+            console.log('Columns')
+            console.log(column)
 
             switch (formulaToApplyTot) {
 
@@ -426,6 +435,9 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                         toBlock = true;
                     }
                     break;
+            }
+            if(column == 6 || column == 7){
+                toBlock = true;
             }
             // condition follows
             if (toBlock) {

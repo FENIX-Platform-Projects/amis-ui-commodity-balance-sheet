@@ -35,11 +35,12 @@ define(['jquery','databaseSaver/model/SavingModel', 'databaseSaver/observer/Savi
         var newdata =  $.extend(true, [],newDataOriginal);
 
         modelSaving.init(supportUtility)
+        debugger;
         modelSaving.prepareData(allData,tableData,newdata, actualFilter,realPreviousYearDate);
 
         var payloadActual = modelSaving.preparePutPayload(true)
         var payloadPrevious = modelSaving.preparePutPayload(true)
-        debugger;
+
 
         console.log('+++++++++++++++++++++++++++++++++++++++++++++++')
         console.log('payloadPrevious')
@@ -48,8 +49,8 @@ define(['jquery','databaseSaver/model/SavingModel', 'databaseSaver/observer/Savi
         console.log(payloadActual)
         console.log('+++++++++++++++++++++++++++++++++++++++++++++++')
 
-        this.finalSave(payloadActual)
-        this.finalSave(payloadPrevious)
+       // this.finalSave(payloadActual)
+       // this.finalSave(payloadPrevious)
 
     }
 

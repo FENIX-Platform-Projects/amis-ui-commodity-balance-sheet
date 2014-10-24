@@ -30,12 +30,18 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
 
     ProductionModel.prototype.getTotalCropsModel = function(involvedItems, Utility){
         originalData = involvedItems;
+        debugger;
+
         var result;
         supportUtility = Utility;
         var modelData = $.extend([], true, involvedItems)
         result = this.convertOriginalToModelDataTotal('total', modelData);
 
         return result;
+    }
+
+    ProductionModel.prototype.adjustData = function(model){
+
     }
 
     ProductionModel.prototype.getOriginalTotalCropsModelOriginalConverted  =function(){
@@ -252,6 +258,22 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
             var flag = singleCropsData[i][4]
             if(typeof flag != "undefined" && flag != null && flag != "" )
                 result = true;
+        }
+        return result;
+    }
+
+    ProductionModel.prototype.getAreaPlanted = function(){
+        var result;
+        var originalSingleCrops = $.extend(true, [],this.getOriginalSingleCropsModel());
+        for(var i = 0, length = originalSingleCrops.length; i<length; i++){
+           if(originalSingleCrops[i][0] == 37) {
+               if (result) {
+                   result[3] += originalSingleCrops[i][3]
+               }
+               else{
+                   result = originalSingleCrops[i]
+               }
+           }
         }
         return result;
     }

@@ -100,17 +100,33 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         var result = []
         var dateOfForecast = new Date();
         var dateDsdFormat = moment(dateOfForecast).format("YYYYMMDD");
-        for( var i=0; i< codes.length; i++){
-            result[i] = [];
-            result[i][0] = codes[i].code.code;
-            result[i][1] = muArray[i]
-            result[i][2] = dateDsdFormat;
-            result[i][3] = null;
-            result[i][4] = null;
-            result[i][5] = null;
+        var tableModel = TableModel.getTableData();
+
+        // if not exist
+        if(this.checkBeforeCreateNewForecast(tableModel, dateDsdFormat)){
+            for (var i = 0; i < codes.length; i++) {
+                result[i] = [];
+                result[i][0] = codes[i].code.code;
+                result[i][1] = muArray[i]
+                result[i][2] = dateDsdFormat;
+                result[i][3] = null;
+                result[i][4] = null;
+                result[i][5] = null;
+            }
+            debugger;
+            var d = TableModel.addNewForecast(result);
         }
-        var d = TableModel.addNewForecast(result);
         return d;
+    }
+
+    ModelsController.prototype.checkBeforeCreateNewForecast = function(model, date){
+        var notFound = true;
+        for(var i = 0, length = model.length; i<length && notFound; i++){
+            if(date == model[i][2]){
+                notFound = false
+            }
+        }
+        return notFound
     }
 
     ModelsController.prototype.saveDataFromOUsesForm = function(newData, indTable, rowGridIndex, columnGridIndex){

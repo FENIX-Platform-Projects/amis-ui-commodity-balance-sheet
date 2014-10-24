@@ -276,10 +276,12 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             console.log('GC: updateWithNewForecast')
             debugger;
             var tableModel = ModelController.createNewForecast();
-            var tableModelWithFormula = $.extend(true, [], tableModel);
-            formulaController.init(tableModelWithFormula, Configurator, filterData)
-            grid = ViewGrid.init(tableModelWithFormula, Configurator, supportUtility, this)
-            this.onChangeModalityEditing()
+            if(tableModel) {
+                var tableModelWithFormula = $.extend(true, [], tableModel);
+                formulaController.init(tableModelWithFormula, Configurator, filterData)
+                grid = ViewGrid.init(tableModelWithFormula, Configurator, supportUtility, this)
+                this.onChangeModalityEditing()
+            }
         }
 
         GeneralController.prototype.onChangeModalityEditing = function () {

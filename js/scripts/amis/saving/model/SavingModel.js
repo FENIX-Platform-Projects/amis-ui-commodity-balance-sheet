@@ -4,7 +4,7 @@
 define(['jquery'], function($){
 
     var filterActual, realPreviousDataToSave, realActualDataToSave, previousYearForecast, actualYearForecasts,
-        actualYearForecasts, previousYearForecast, supportUtility;
+        actualYearForecasts, previousYearForecast, supportUtility, realPreviousDate;
 
     function SavingModel(){}
 
@@ -40,17 +40,11 @@ define(['jquery'], function($){
          1) Clean calculated Data
          2) Set right Date format
 
-
-         -------------------------------------
-            New Data
-         -------------------------------------
-         1) Clean calculated Data
-         2) Set right Date format
-
          */
     }
 
     SavingModel.prototype.prepareData = function(alldata, tableData, newData,actualFilter, realPreviousYearDate){
+        debugger;
         realPreviousDate = realPreviousYearDate;
         filterActual = actualFilter;
 
@@ -64,10 +58,11 @@ define(['jquery'], function($){
         // Actual Year
         var cleanedActualYear = this.cleanAndSetDate(actualYearForecasts);
         var actualYearUpdated = this.mergeUpdatedData(cleanedActualYear,cleanedUpdatedData)
-        if(newData.newData.length >0){
+
+       /* if(newData.newData.length >0){
             var cleanedNewForecast = this.cleanAndSetDate(newData.newData)
             actualYearUpdated = actualYearUpdated.concat(actualYearUpdated, cleanedNewForecast)
-        }
+        }*/
 
         // Previous Year
         var cleanedPreviousYear = this.cleanAndSetDate(previousYearForecast);
@@ -105,6 +100,10 @@ define(['jquery'], function($){
                     var date = new Date(year, month - 1, day);
                     dataNew[i][2] = moment(date).format('YYYY-MM-DD')
                     }
+
+                if(dataNew[i][3] == ''){
+                    dataNew[i][3] = null;
+                }
 
                 result.push(dataNew[i])
             }
