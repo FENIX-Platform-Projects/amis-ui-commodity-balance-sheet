@@ -37,6 +37,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function($, Form
             // columnIndex
             var columnIndex  = grid.getColumnIndex(idCell.column)-1;
             var numberOfRow = grid.getIndexById(idCell);
+            debugger;
 
             console.log('cellEdit: listener Active')
             totalValuesModified = true;

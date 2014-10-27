@@ -39,7 +39,7 @@ define(['jquery','databaseSaver/model/SavingModel', 'databaseSaver/observer/Savi
         modelSaving.prepareData(allData,tableData,newdata, actualFilter,realPreviousYearDate);
 
         var payloadActual = modelSaving.preparePutPayload(true)
-        var payloadPrevious = modelSaving.preparePutPayload(true)
+        var payloadPrevious = modelSaving.preparePutPayload(false)
 
 
         console.log('+++++++++++++++++++++++++++++++++++++++++++++++')
@@ -51,6 +51,8 @@ define(['jquery','databaseSaver/model/SavingModel', 'databaseSaver/observer/Savi
 
        // this.finalSave(payloadActual)
        // this.finalSave(payloadPrevious)
+
+       // clean updated Data
 
     }
 

@@ -30,19 +30,20 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
         specialFormulaController = formulaController;
         // first take all the involvedCodes
         var codes = specialFormulaController.getInvolvedItems(takenCell, filterProductCode);
+
         var dataInvolved = dataHandler.getInvolvedData(codes, everyData, tableData, takenCell);
 
         var condition =parseInt(takenCell[0])
 
         switch (condition) {
            case 5 :
-            if(filterProductCode !=4) {
-                   productionEditor.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
-               }else{
-                   paddyController.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
-               }
-
-                break;
+                if(filterProductCode !=4) {
+                       productionEditor.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
+                }
+                else{
+                       paddyController.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
+                }
+           break;
 
            case 15:
                otherController.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
@@ -57,17 +58,17 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
 
 
     ControllerEditors.prototype.saveFormProduction = function( calculatedData, originalData){
-        generalController.saveDataFromProductionForm(calculatedData,originalData,clickedCellInfo)
+        generalController.saveDataFromAllForms(calculatedData,originalData,clickedCellInfo, 'production')
     }
 
     ControllerEditors.prototype.saveFormRiceProduction = function(calculatedData, originalData){
         console.log('saveFormRice Production: Controller Editors')
-        generalController.saveDataFromProductionRiceForm(calculatedData,originalData,clickedCellInfo)
+        generalController.saveDataFromAllForms(calculatedData,originalData,clickedCellInfo, 'productionRice')
     }
 
     ControllerEditors.prototype.saveFormOtherUses = function( calculatedData, originalData){
         console.log('saveFormRice Production: Controller Editors')
-        generalController.saveDataFromOtherUsesForm(calculatedData,originalData,clickedCellInfo)
+        generalController.saveDataFromAllForms(calculatedData,originalData,clickedCellInfo, 'otherUses')
     }
 
     return ControllerEditors;

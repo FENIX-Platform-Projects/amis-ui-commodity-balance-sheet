@@ -159,23 +159,20 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             var columns = [];
             arrDiffDates = Object.keys(differentDates)
 
-            columns.push({id : "data0",width:300,header:'Elements', css:"firstColumn" })
+            columns.push({id : "data0",width:300,header:'Elements', css:"firstColumn",sort:"string" })
 
             for(var i =0; i< arrDiffDates.length; i++){
                 if(i==0) {
                     columns.push({id: "data" + 1, header: [
-                   //   {text: ''},
                         {text: 'Input dates' ,colspan: arrDiffDates.length},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text',  css:"datesColumns"})
-                }else{
-                    if(i == arrDiffDates.length -1){
+                    ], editor: 'text',  css:"datesColumns", sort:"string"})
+                }else if(i !=0 && i != arrDiffDates.length){
 
-                    }
                     columns.push({id: "data" + (i+1),header: [
                       //{text: ''},
                         {text: null},
-                        {text: arrDiffDates[i]}], editor: 'text', css:"datesColumns"})
+                        {text: arrDiffDates[i]}], editor: 'text', css:"datesColumns", sort:"int"})
                 }
             }
             return columns;
@@ -214,6 +211,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 navigation:true,
                 id: "grid",
                 editable:true,
+                sortable:true,
                 clipboard:"selection",
                 leftSplit:1,
                 scheme: {
@@ -234,7 +232,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         return grid
     }
 
-    GridDataView2.prototype.updateBatchGridView = function (tableModel, cells, xCoordinate, yCoordinate) {
+    GridDataView2.prototype.updateBatchGridView = function (tableModel, cells, xCoordinate, yCoordinate, events) {
 
         var newCalculatedCells = []
         for(var i =0; i<cells.length; i++){
@@ -249,8 +247,11 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
 
         var self = this
 
-        grid.destructor()
-
+        if(grid) {
+          //  grid.detachEvent(events.click);
+          //  grid.detachEvent(events.stop);
+            grid.destructor()
+        }
         if(document.getElementById('specialForm')) {
             $('#specialForm').modal('hide');
             $('body').removeClass('modal-open');

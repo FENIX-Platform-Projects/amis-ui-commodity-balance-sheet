@@ -9223,7 +9223,8 @@ webix.DataStore.prototype={
 	},
 	//converts index to id
 	getIndexById:function(id){
-		var res = this.order.find(id);	//slower than getIdByIndex
+
+        var res = this.order.find(id);	//slower than getIdByIndex
 		if (!this.pull[id])
 			return -1;
 			

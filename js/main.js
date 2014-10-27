@@ -2,7 +2,8 @@
 requirejs.config({
     "baseUrl":              "js/scripts/libs",
     "paths": {
-        jquery            : "jquery",
+        jquery            :  "jquery",
+        underscore        :  "underscore-min",
         preloading        :  "../amis/preloading",
         loading           :  "../amis/loading",
         utilities         :  "../component/core/balanceSheet/configuration/utilities",
@@ -56,6 +57,7 @@ requirejs.config({
         "bootstrap-dialog":{
             deps: ["bootstrap"]
         }
+
     }
 });
 

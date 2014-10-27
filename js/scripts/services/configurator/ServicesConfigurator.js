@@ -20,7 +20,6 @@ define(['jquery'], function($){
                 configuration = data;
             }
         })
-
     }
 
     ServicesConfigurator.prototype.getDataSourceUrl = function(){

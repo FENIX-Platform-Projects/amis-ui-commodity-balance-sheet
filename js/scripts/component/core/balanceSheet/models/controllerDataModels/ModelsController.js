@@ -129,7 +129,14 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         return notFound
     }
 
-    ModelsController.prototype.saveDataFromOUsesForm = function(newData, indTable, rowGridIndex, columnGridIndex){
+
+    ModelsController.prototype.saveDataFromSpecialForm = function(newData, indTable, rowGridIndex, columnGridIndex, typeOfForm){
+        var indexesTableData = TableModel.updateDataFromSpecialForm(newData, typeOfForm)
+        // TODO: save also grid data
+        return indexesTableData;
+    }
+
+    /*ModelsController.prototype.saveDataFromOUsesForm = function(newData, indTable, rowGridIndex, columnGridIndex){
         var indexesTableData = TableModel.updateDataFromOtherUsesForm(newData, indTable)
         // TODO: save also grid data
         return indexesTableData;
@@ -146,7 +153,7 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         var indexesTableData = TableModel.updateDataFromRiceProductionForm(newData, indTable)
         // TODO: save also grid data
         return indexesTableData;
-    }
+    }*/
 
     return ModelsController;
 })

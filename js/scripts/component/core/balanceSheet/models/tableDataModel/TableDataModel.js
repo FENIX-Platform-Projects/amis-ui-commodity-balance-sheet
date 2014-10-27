@@ -348,6 +348,98 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
         return this.getTableData()
     }
 
+    TableDataModel.prototype.insertNewDataIntoAllData = function(newData){
+        var mapCodes =supportModel.getMapCodes();
+        for(var i =0; i< newData.length; i++){
+            originalData.push(newData[i])
+        }
+
+    }
+
+
+    TableDataModel.prototype.fetchRemainingData = function(data, indexesTableData, indexesAllData){
+        var remainingData = []
+        var keysFound = []
+
+        for( var i=0; i< indexesTableData.length; i++){
+            keysFound.push(parseInt(indexesTableData[i].key))
+        }
+
+        for( var i=0; i< indexesAllData.length; i++){
+            keysFound.push(parseInt(indexesAllData[i].key))
+        }
+
+
+        for (var i = 0; i < data.length ; i++) {
+            var notFound = true;
+
+            for(var h=0; h<keysFound.length && notFound; h++) {
+
+                if(data[i][0] == keysFound[h]){
+                    notFound = false;
+                }
+                else if(data[i][0] !=keysFound[h] && h == (keysFound.length-1)){
+                    remainingData.push(data[i])
+                }
+            }
+        }
+
+        return remainingData;
+
+    }
+
+
+    TableDataModel.prototype.updateDataFromSpecialForm = function(dataFromForm, formChosen){
+        var dateInvolved = dataFromForm[0][2];
+        var indexes;
+        switch (formChosen) {
+
+            case 'otherUses':
+                indexes = {"15": true, "21": true, "34": true, "28": true, "29": true, "30": true, "31": true, "32": true, "33": true}
+                break;
+
+            case "production":
+                indexes = (dataFromForm.length > 3) ? {"4": true, "2": true, "5": true, "37": true} : {"4": true, "5": true, "2": true};
+                break;
+
+            case 'productionRice':
+                indexes = (dataFromForm.length > 3) ? {"4": true, "2": true, "5": true, "37": true, "998": true, "3": true} : {"4": true, "5": true, "2": true};
+                break;
+        }
+
+        var tableData = this.getTableData();
+        var allData = this.getAllData();
+
+        var indexesTableData = this.getAllIndexesRequested(tableData, indexes, dateInvolved);
+        var indexesToFind = dataFromForm.length - indexesTableData.length;
+
+        var backupIndexesAllData = $.extend(true,{}, indexes);
+        var indexesAllData = this.getAllIndexesRequested(allData, indexes, dateInvolved);
+
+        // insert new Data in AllData
+        if(dataFromForm.length - (indexesTableData.length +indexesAllData.length) >0){
+            var remainingData = this.fetchRemainingData(dataFromForm, indexesTableData, indexesAllData);
+            console.log('REMAINING DATA')
+            console.log(remainingData)
+            this.insertNewDataIntoAllData(remainingData)
+            indexesAllData = this.getAllIndexesRequested(allData, backupIndexesAllData, dateInvolved);
+        }
+
+        // put in updatedData
+        for(var i =0; i<dataFromForm.length; i++){
+            this.pushInUpdatedData(dataFromForm[i])
+        }
+
+        // save the data
+        this.saveDataFromIndexes('table',indexesTableData,dataFromForm);
+        if(indexesAllData.length >0) {
+            this.saveDataFromIndexes('original', indexesAllData, dataFromForm);
+        }
+        return indexesTableData;
+
+        }
+
+/*
     TableDataModel.prototype.updateDataFromOtherUsesForm = function(productionData){
         var dateInvolved = productionData[0][2];
         var indexes = {"15": true, "21":true, "34":true, "28":true, "29":true,"30":true,"31":true,"32":true,"33":true} ;
@@ -359,7 +451,19 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
 
         // take the indexes from the table data and the all data
         var indexesTableData = this.getAllIndexesRequested(tableData, indexes, dateInvolved);
+        var indexesToFind = productionData.length - indexesTableData.length
+        debugger;
+        var backupIndexesAllData = $.extend(true,{}, indexes);
         var indexesAllData = this.getAllIndexesRequested(allData, indexes, dateInvolved);
+
+        // insert new Data in AllData
+        if(productionData.length - (indexesTableData.length +indexesAllData.length) >0){
+            var remainingData = this.fetchRemainingData(productionData, indexesTableData, indexesAllData);
+            console.log('REMAINING DATA')
+            console.log(remainingData)
+            this.insertNewDataIntoAllData(remainingData)
+            indexesAllData = this.getAllIndexesRequested(allData, backupIndexesAllData, dateInvolved);
+        }
 
         // put in updatedData
         for(var i =0; i<productionData.length; i++){
@@ -424,7 +528,7 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
             this.saveDataFromIndexes('original', indexesAllData, productionData);
         }
         return indexesTableData;
-    }
+    }*/
 
     TableDataModel.prototype.pushInUpdatedData = function(value){
         var exist = false;
@@ -442,6 +546,7 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
             updatedData.push(value)
         }
     }
+
 
     // take all indexes
     TableDataModel.prototype.getAllIndexesRequested = function(data,indexes,key){

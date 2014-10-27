@@ -403,7 +403,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     ProductionObserver.prototype.listenToSingleCropsEditable = function () {
         $("#gridSingleCrops").bind('cellbeginedit', function (event) {
             event.preventDefault();
-            event.stopImmediatePropagation()
+            event.stopImmediatePropagation();
             var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield

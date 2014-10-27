@@ -103,7 +103,7 @@ define(['jquery','otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/O
     OtherController.prototype.containsValuesFormula  = function(rowNumber,numberFormula, model){
        var result = true;
         if(numberFormula ===1) {
-            for (var i = 0; i < 4 && result; i++) {
+            for (var i = 1; i < 4 && result; i++) {
                     result = (!isNaN(model[i][3]) && model[i][3] != null && model[i][3] != "")
             }
         }
