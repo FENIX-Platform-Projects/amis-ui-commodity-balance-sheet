@@ -113,6 +113,10 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                 }
             }
         }
+
+
+        debugger;
+
         result[indexValues]  = formatter.fromDSDToVisualizationFormat(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator)
         //result[indexValues] = formatter.convertNumberOfDecimals(result[indexValues], configurator.getNumberOfDecimals())
         result[indexValues] = this.expressionLanguage(valueColumn, indexValues, result);

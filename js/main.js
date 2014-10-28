@@ -56,6 +56,9 @@ requirejs.config({
         },
         "bootstrap-dialog":{
             deps: ["bootstrap"]
+        },
+        "underscore": {
+            exports: '_'
         }
 
     }

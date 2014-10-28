@@ -150,9 +150,7 @@ h1 {
   font-size: 12px;
 }
 
-#editingChoice{
-  margin-top: 12px;
-}
+
 
 .calculatedRowGrid{
   background-color: rgba(191, 201, 238, 0.34);
@@ -211,5 +209,26 @@ h1 {
   font-family: 'Roboto', sans-serif ;
 }
 
+#titleSeparator{
+  font-size:12px;
+  font-weight:bold;
+  text-align: left;
+}
+
+#flagNotes{
+  font-size: 12px;
+}
+
+#titleEditing {
+  font-size:12px;
+  font-weight:bold;
+  text-align: left;
+  margin-left: 18px;
+
+}
+
+.thousandSelectors{
+  font-size:12px;
+}
 
 

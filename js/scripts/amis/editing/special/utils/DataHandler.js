@@ -89,34 +89,41 @@ define(['jquery'], function($){
                }
            }
         }
+        result = this.checkIfEveryElementExist(result)
 
-        debugger;
+        return result;
+    }
 
-/*
-        for(var j = 0; j< copyCodes.length && eliminatedValues.length<copyCodes.length; j++) {
-            for (var i = 0; i < tableData.length && eliminatedValues.length < copyCodes.length; i++) {
-                if (tableData[i][0] == copyCodes[j] && tableData[i][2] == date) {
-                    console.log('Copy Codesss')
-                    console.log(copyCodes[j])
-                    console.log('tableData [ i ]')
-                    console.log(tableData[i])
-                    eliminatedValues.push(tableData[i][0])
-                    result.push(tableData[i])
-                }
+
+    DataHandler.prototype.checkIfEveryElementExist = function(model){
+        var result = [];
+
+        for(var i = 0, length = model.length; i<length; i++){
+            if(model[i].length != 6){
+               var measurementUnit;
+               switch(model[i][0]){
+                   case 37:
+                       measurementUnit=  'Thousand Tonnes';
+                       break;
+                   default :
+                       measurementUnit=  'Thousand Tonnes';
+                        break;
+               }
+                var row = []
+               for(var n=0; n<6; n++){
+                   if( n==0 || n==2){
+                       row.push(model[i][n])
+                   }else if(n ==1){
+                       row.push(measurementUnit)
+                   }else{
+                       row.push(null)
+                   }
+               }
+               result.push(row)
+            }else{
+                result.push(model[i])
             }
         }
-        // the remaining list
-        if(eliminatedValues.length < copyCodes.length){
-            for(var j = 0; j< copyCodes.length && eliminatedValues.length<copyCodes.length; j++){
-                for(var i =0; i< data.length && eliminatedValues.length<copyCodes.length; i++){
-                    if(data[i][0] == copyCodes[j] && data[i][2] == date && eliminatedValues.indexOf(data[i][0])){
-                        eliminatedValues.push(data[i][0])
-                        result.push(data[i])
-                    }
-                }
-            }
-        }*/
-
         return result;
     }
 

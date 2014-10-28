@@ -6,20 +6,19 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
     function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller) {
 
 
-
         var cellclassname = function (row, column, value, data) {
             var result;
-            switch(formulaToRenderTotVal){
+            switch (formulaToRenderTotVal) {
                 case 'init':
                 case 'yield':
-                    result = (row == 1)? 'calculatedRowGrid' : 'notCalculatedRows';
+                    result = (row == 1) ? 'calculatedRowGrid' : 'notCalculatedRows';
                     break;
                 case 'areaHarvested':
-                    result = (row == 0)? 'calculatedRowGrid' : 'notCalculatedRows';
+                    result = (row == 0) ? 'calculatedRowGrid' : 'notCalculatedRows';
                     break;
 
                 case 'production':
-                    result = (row == 2)? 'calculatedRowGrid' : 'notCalculatedRows';
+                    result = (row == 2) ? 'calculatedRowGrid' : 'notCalculatedRows';
                     break;
             }
             return result;
@@ -27,17 +26,17 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
         var cellclassnameSingle = function (row, column, value, data) {
             var result;
-            switch(formulaToRenderSingleCrops){
+            switch (formulaToRenderSingleCrops) {
                 case 'init':
                 case 'yield':
-                    result = (row == 1)? 'calculatedRowGrid' : 'notCalculatedRows';
+                    result = (row == 1) ? 'calculatedRowGrid' : 'notCalculatedRows';
                     break;
                 case 'areaHarvested':
-                    result = (row == 0)? 'calculatedRowGrid' : 'notCalculatedRows';
+                    result = (row == 0) ? 'calculatedRowGrid' : 'notCalculatedRows';
                     break;
 
                 case 'production':
-                    result = (row == 2)? 'calculatedRowGrid' : 'notCalculatedRows';
+                    result = (row == 2) ? 'calculatedRowGrid' : 'notCalculatedRows';
                     break;
             }
             return result;
@@ -151,16 +150,16 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 '<div class="row"><br>' +
                 '<div class="col-lg-3 col-lg-offset-1">' +
                 '<div class ="totalValuesBoxes" id="firstCheckBoxTotVal">Production</div>' +
-                '<small  class="labelCheckBoxes">(Thousand tonnes)</small>'+
+                '<small  class="labelCheckBoxes">(Thousand tonnes)</small>' +
                 '</div>' +
 
                 '<div class="col-lg-3">' +
                 '<div class ="totalValuesBoxes" id="secondCheckBoxTotVal">Area Harvested</div>' +
-                '<small  class="labelCheckBoxes">(Thousand Ha)</small>'+
+                '<small  class="labelCheckBoxes">(Thousand Ha)</small>' +
                 '</div>' +
                 '<div class="col-lg-3">' +
                 '<div class ="totalValuesBoxes" id="thirdCheckBoxTotVal">Yield</div>' +
-                '<small  class="labelCheckBoxes">(Tonnes/Ha)</small>'+
+                '<small  class="labelCheckBoxes">(Tonnes/Ha)</small>' +
                 '</div><br><br><br><br>' +
                 '<div class="row">' +
                 '<div class="col-lg-3 col-lg-offset-4">' +
@@ -177,21 +176,21 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 '</div>' +
                 '</div>' +
 
-                 // Single Crops ------------------------------------
+                // Single Crops ------------------------------------
                 '<div id="singleCropValues"><br>' +
                 '<div class="row"><br>' +
                 '<div class="col-lg-3 col-lg-offset-1">' +
                 '<div class ="singleCropsBoxes" id="firstCheckBoxSingleCrops">' + map[5] + '</div>' +
-                '<small  class="labelCheckBoxes">(Thousand tonnes)</small>'+
+                '<small  class="labelCheckBoxes">(Thousand tonnes)</small>' +
                 '</div>' +
 
                 '<div class="col-lg-3">' +
                 '<div class ="singleCropsBoxes" id="secondCheckBoxSingleCrops">' + map[2] + '</div>' +
-                '<small class="labelCheckBoxes">(Thousand Ha)</small>'+
+                '<small class="labelCheckBoxes">(Thousand Ha)</small>' +
                 '</div>' +
                 '<div class="col-lg-3">' +
                 '<div class ="singleCropsBoxes" id="thirdCheckBoxSingleCrops">' + map[4] + '</div>' +
-                '<small  class="labelCheckBoxes">(Tonnes/Ha)</small>'+
+                '<small  class="labelCheckBoxes">(Tonnes/Ha)</small>' +
                 '</div><br><br><br><br>' +
                 '<div class="row">' +
                 '<div class="col-lg-3 col-lg-offset-4">' +
@@ -235,10 +234,10 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 pageable: true,
                 autoheight: true,
                 columns: [
-                    { text: 'Element', datafield: 6,cellclassname:cellclassname ,width:'30%' },
-                    { text: 'Value', datafield: 3  ,cellclassname:cellclassname  ,width:'20%'},
-                    { text: 'Flag', datafield: 4   ,cellclassname:cellclassname   ,width:'10%'},
-                    { text: 'Notes', datafield: 5  ,cellclassname:cellclassname  ,width:'40%'}
+                    { text: 'Element', datafield: 6, cellclassname: cellclassname, width: '30%' },
+                    { text: 'Value', datafield: 3, cellclassname: cellclassname, width: '20%'},
+                    { text: 'Flag', datafield: 4, cellclassname: cellclassname, width: '10%'},
+                    { text: 'Notes', datafield: 5, cellclassname: cellclassname, width: '40%'}
                 ]
             });
 
@@ -252,10 +251,10 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 pageable: true,
                 autoheight: true,
                 columns: [
-                    { text: 'Element', datafield: 6 ,cellclassname:cellclassnameSingle  ,width:'40%' },
-                    { text: 'Crop',    datafield: 7, cellclassname: cellclassnameSingle ,width:'20%' },
-                    { text: 'Value',   datafield: 3, cellclassname: cellclassnameSingle ,width:'30%' },
-                    { text: 'Flag',    datafield: 4, cellclassname: cellclassnameSingle ,width:'10%' }
+                    { text: 'Element', datafield: 6, cellclassname: cellclassnameSingle, width: '40%' },
+                    { text: 'Crop', datafield: 7, cellclassname: cellclassnameSingle, width: '20%' },
+                    { text: 'Value', datafield: 3, cellclassname: cellclassnameSingle, width: '30%' },
+                    { text: 'Flag', datafield: 4, cellclassname: cellclassnameSingle, width: '10%' }
                 ]
             });
 
@@ -279,7 +278,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                     { name: 6, type: 'string' },
                     { name: 3, type: 'float' },
                     { name: 4, type: 'string'},
-                    {name: 5,  type: 'string'}
+                    {name: 5, type: 'string'}
                 ],
                 id: 'ppp',
                 localdata: calculatedModel
@@ -297,10 +296,10 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 pageable: true,
                 autoheight: true,
                 columns: [
-                    { text: 'Element', datafield: 6,cellclassname:cellclassname ,width:'30%'  },
-                    { text: 'Value', datafield: 3 ,cellclassname:cellclassname  ,width:'20%'  },
-                    { text: 'Flag', datafield: 4 ,cellclassname:cellclassname   ,width:'10%'  },
-                    { text: 'Notes', datafield: 5 ,cellclassname:cellclassname  ,width:'40%'  }
+                    { text: 'Element', datafield: 6, cellclassname: cellclassname, width: '30%'  },
+                    { text: 'Value', datafield: 3, cellclassname: cellclassname, width: '20%'  },
+                    { text: 'Flag', datafield: 4, cellclassname: cellclassname, width: '10%'  },
+                    { text: 'Notes', datafield: 5, cellclassname: cellclassname, width: '40%'  }
                 ]
             });
 
@@ -337,36 +336,36 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 pageable: true,
                 autoheight: true,
                 columns: [
-                    { text: 'Element', datafield: 6 ,cellclassname:cellclassnameSingle  ,width:'40%' },
-                    { text: 'Crop',    datafield: 7, cellclassname: cellclassnameSingle ,width:'20%' },
-                    { text: 'Value',   datafield: 3, cellclassname: cellclassnameSingle ,width:'30%' },
-                    { text: 'Flag',    datafield: 4, cellclassname: cellclassnameSingle ,width:'10%' }
+                    { text: 'Element', datafield: 6, cellclassname: cellclassnameSingle, width: '40%' },
+                    { text: 'Crop', datafield: 7, cellclassname: cellclassnameSingle, width: '20%' },
+                    { text: 'Value', datafield: 3, cellclassname: cellclassnameSingle, width: '30%' },
+                    { text: 'Flag', datafield: 4, cellclassname: cellclassnameSingle, width: '10%' }
                 ]
             });
 
         }
 
-        ProductionEditor.prototype.saveDataTotGrid = function(dataCalculated, originalData){
+        ProductionEditor.prototype.saveDataTotGrid = function (dataCalculated, originalData) {
             console.log(dataCalculated)
             console.log(originalData)
-            controllerEditors.saveFormProduction(dataCalculated,originalData);
+            controllerEditors.saveFormProduction(dataCalculated, originalData);
         }
 
-        ProductionEditor.prototype.setTotalValuesOnModified = function(){
+        ProductionEditor.prototype.setTotalValuesOnModified = function () {
             observer.setTotalValuesModified();
         }
 
-        ProductionEditor.prototype.destroyAll = function(){
+        ProductionEditor.prototype.destroyAll = function () {
             $('#gridTotalValues').jqxGrid('destroy')
             $('#gridSingleCrops').jqxGrid('destroy');
 
-            $('#firstCheckBoxTotVal').jqxCheckBox( 'destroy');
+            $('#firstCheckBoxTotVal').jqxCheckBox('destroy');
             $('#secondCheckBoxTotVal').jqxCheckBox('destroy');
-            $('#thirdCheckBoxTotVal').jqxCheckBox( 'destroy');
+            $('#thirdCheckBoxTotVal').jqxCheckBox('destroy');
 
-            $('#firstCheckBoxSingleCrops').jqxCheckBox( 'destroy');
+            $('#firstCheckBoxSingleCrops').jqxCheckBox('destroy');
             $('#secondCheckBoxSingleCrops').jqxCheckBox('destroy');
-            $('#thirdCheckBoxSingleCrops').jqxCheckBox( 'destroy');
+            $('#thirdCheckBoxSingleCrops').jqxCheckBox('destroy');
 
             $('#productionTabs').jqxTabs('destroy');
         }

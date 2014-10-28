@@ -22,12 +22,7 @@ define(['jquery'], function($){
     }
 
     GeneralObserver.prototype.listenToNewForecastButton = function(){
-        $('#newForecast').on('click', function(event){
-            console.log('OBSERVER LISTENer')/*
-            event.preventDefault();
-            event.stopImmediatePropagation()
-            generalController.updateWithNewForecast();*/
-        })
+     $('#')
     }
     return GeneralObserver;
 })

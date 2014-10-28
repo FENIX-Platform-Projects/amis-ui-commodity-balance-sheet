@@ -260,7 +260,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         $('#productionTabs').on('tabclick', function (event) {
             event.preventDefault()
             event.stopImmediatePropagation();
-            debugger;
             var clickedItem = event.args.item;
             if (clickedItem == 0 && singleCropsValuesModified) { // from single crops to total values
                 controllerProduction.onSwitchingCropsValues(formulaToApplySingle)
@@ -305,8 +304,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var columnValue = event.args.datafield;
             var oldvalue = event.args.oldvalue;
             var value = event.args.value;
-            console.log('VALUE')
-            console.log(value)
+
             if (checkAll(oldvalue)&& columnValue == 3) {
                 oldvalue = parseFloat(oldvalue)
             }
@@ -360,8 +358,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield
-            console.log('Column!')
-            console.log(column)
+
 
             switch (formulaToApplyTot) {
 
@@ -407,8 +404,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield
-            console.log('Columns')
-            console.log(column)
 
             switch (formulaToApplyTot) {
 

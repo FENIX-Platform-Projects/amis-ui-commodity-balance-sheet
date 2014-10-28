@@ -8,7 +8,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         var ViewGrid, ModelController, FormController, dsd, Configurator, adapterGrid, formulaController, supportUtility,
             specialControlEditor, editingOnCell, generalObserver, filterData, xCoordinate, yCoordinate, grid, editHandler,
-            eventClick, eventStop
+            eventClick, eventStop, commmaSeparator;
 
 
         function GeneralController() {
@@ -35,6 +35,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             // formula
             formulaController.init(tableModelWithFormula, Configurator, filterData)
 
+            commmaSeparator = true
             // visualization model
             grid = ViewGrid.init(tableModelWithFormula, configurator, supportUtility, this)
 
@@ -47,10 +48,9 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             var self = this;
 
 
-
             var resultedClicked
             eventClick = grid.attachEvent("onItemClick", function (id, e, node) {
-               console.log('GC: afterOnItemClick')
+                console.log('GC: afterOnItemClick')
                 console.log('**************************************')
                 console.log('onAfterItemClick')
                 console.log('**************************************')
@@ -99,6 +99,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                         this.blockEvent()
                         state.value = state.old;
                         this.unblockEvent();
+                        return true;
                     }
                 }
             });
@@ -142,7 +143,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             $("#saveButton").on('click', function (e) {
                 e.preventDefault()
                 e.stopImmediatePropagation();
-                debugger;
                 var newCell = FormController.getValue(cell)
                 if (newCell.length > 0) {
                     that.updateGrid(newCell, indTable, rowIndex, columnIndex)
@@ -183,7 +183,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
         }
 
 
-        GeneralController.prototype.saveDataFromAllForms = function(newCalculatedData, newOriginalData, cellClickedInfo, typeOfForm) {
+        GeneralController.prototype.saveDataFromAllForms = function (newCalculatedData, newOriginalData, cellClickedInfo, typeOfForm) {
             console.log('GC: saveDataFrom All Forms')
             var indexes = ModelController.saveDataFromSpecialForm(newOriginalData, cellClickedInfo.indTable, cellClickedInfo.rowGridIndex, cellClickedInfo.columnGridIndex, typeOfForm)
             var tableModel = ModelController.getTableDataModel();
@@ -193,15 +193,15 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             formulaController.init(modelWithFormulas, Configurator, filterData)
 
             // otherUses
-            if(typeOfForm == 'otherUses'){
+            if (typeOfForm == 'otherUses') {
                 var formulas = formulaController.getFormulasBindedFromKey(15)
 
                 formulaController.sortByDateAtStart(modelWithFormulas);
                 var rowsChanged = formulaController.applyUpdateFormulas(modelWithFormulas, formulas, cellClickedInfo.columnGridIndex,
                     cellClickedInfo.rowGridIndex);
 
-                for(var i=0; i< indexes.length; i++){
-                    if(indexes[i].key == 15){
+                for (var i = 0; i < indexes.length; i++) {
+                    if (indexes[i].key == 15) {
                         var indTable = indexes[i].index;
                         break
                     }
@@ -211,7 +211,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             }
 
             // production or production Rice
-            else if(typeOfForm == 'production' || typeOfForm == 'productionRice'){
+            else if (typeOfForm == 'production' || typeOfForm == 'productionRice') {
                 var formulas = formulaController.getFormulasBindedFromKey(5)
 
                 var rowsChanged = []
@@ -240,9 +240,8 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         GeneralController.prototype.updateWithNewForecast = function () {
             console.log('GC: updateWithNewForecast')
-            debugger;
             var tableModel = ModelController.createNewForecast();
-            if(tableModel) {
+            if (tableModel) {
                 var tableModelWithFormula = $.extend(true, [], tableModel);
                 formulaController.init(tableModelWithFormula, Configurator, filterData)
                 grid = ViewGrid.init(tableModelWithFormula, Configurator, supportUtility, this)

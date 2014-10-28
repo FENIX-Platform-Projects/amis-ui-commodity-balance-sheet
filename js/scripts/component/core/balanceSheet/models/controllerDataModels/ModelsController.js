@@ -109,7 +109,17 @@ define(["jquery", "models/tableDataModel/TableDataModel",
                 result[i][0] = codes[i].code.code;
                 result[i][1] = muArray[i]
                 result[i][2] = dateDsdFormat;
-                result[i][3] = null;
+                if(codes[i].code.code == 1){
+                    var notFound = true;
+                    for(var k = 0; k<tableModel.length && notFound; k++){
+                        if(tableModel[i][2] != "20000103" && tableModel[i][0] == 1){
+                            result[i][3] = (tableModel[i][3])? tableModel[i][3] : null;
+                            notFound = false;
+                        }
+                    }
+                }else {
+                    result[i][3] = null;
+                }
                 result[i][4] = null;
                 result[i][5] = null;
             }

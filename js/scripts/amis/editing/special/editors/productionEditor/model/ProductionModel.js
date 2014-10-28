@@ -40,9 +40,6 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
         return result;
     }
 
-    ProductionModel.prototype.adjustData = function(model){
-
-    }
 
     ProductionModel.prototype.getOriginalTotalCropsModelOriginalConverted  =function(){
         console.log('getOrinalTotalCro')
@@ -117,9 +114,7 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
             console.log('converting!!')
             for (var i = 0; i < dataModel.length; i++) {
                 var index =  (j*dataModel.length )+i;
-                console.log('index!!')
-                console.log(index);
-                console.log(j +", " +i+ "+, +"+index+ " length DM: "+dataModel.length)
+
                 result[index] = []
                 for(var x =0; x< dataModel[i].length +2; x++) {
                     switch (x) {
@@ -143,14 +138,7 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
         return result;
     }
 
-    ProductionModel.prototype.convertModelDataToOriginal = function(){
 
-    }
-
-    ProductionModel.prototype.createSingleCropModel = function(numberOfCrops,modelData){
-        // To create like the modelData, but with something different( the Area Planted)
-
-    }
 
     ProductionModel.prototype.getCropsNumber = function(){
 

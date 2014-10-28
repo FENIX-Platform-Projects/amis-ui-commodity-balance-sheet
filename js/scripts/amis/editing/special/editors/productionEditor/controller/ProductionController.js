@@ -99,7 +99,6 @@ define(['jquery'], function($){
 
         var dataOriginal = modelProduction.getOriginalTotalCropsModelOriginalConverted();
         var areaPlanted = modelProduction.getAreaPlanted();
-        debugger;
         if(areaPlanted){
             areaPlanted.length = 6;
             dataOriginal.push(areaPlanted)

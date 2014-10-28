@@ -15,7 +15,6 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
         otherController = new OtherController
     }
 
-    // Simple production
     ControllerEditors.prototype.init = function(allData,modelDataTable,resultedClicked, formulaController, DsdConfigurator, Utility,GeneralController,
         filterProductCode){
 
@@ -32,26 +31,25 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
         var codes = specialFormulaController.getInvolvedItems(takenCell, filterProductCode);
 
         var dataInvolved = dataHandler.getInvolvedData(codes, everyData, tableData, takenCell);
+        debugger;
+
 
         var condition =parseInt(takenCell[0])
 
         switch (condition) {
-           case 5 :
-                if(filterProductCode !=4) {
-                       productionEditor.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
+            case 5 :
+                if (filterProductCode != 4) {
+                    productionEditor.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
                 }
-                else{
-                       paddyController.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
+                else {
+                    paddyController.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
                 }
-           break;
+                break;
 
-           case 15:
-               otherController.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
+            case 15:
+                otherController.init(takenCell, dataInvolved, codes, dsdConfigurator, supportUtility, this)
 
-               break;
-
-           case 998:
-               break;
+                break;
         }
 
     }

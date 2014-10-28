@@ -17,7 +17,9 @@ define(['jquery'], function ($) {
         indexValueColumns,
         accessorMap,                 // It is a map with KEYS = titles of accessor fields and VALUES = indexes on the DSD structure
         mapCodesLabel,
-        mapCodesIndexes;
+        mapCodesIndexes,
+        labelValue,
+        decimalNumberValue;
 
     function Configurator() {
     }
@@ -294,6 +296,41 @@ define(['jquery'], function ($) {
     // Get the factor of conversion between different Masurement Units
     Configurator.prototype.getNumberOfDecimals = function(){
        return compConfiguration.gridConfiguration.otherColumns.valueColumn.values.numberOfDecimals;
+    }
+
+
+    Configurator.prototype.setValueLabel = function(isFlagEnabled, isNoteEnabled){
+
+    }
+
+    Configurator.prototype.setThousandSeparator = function(number){
+
+        // 1: comma
+        // 2: period
+        switch (number){
+            case 1:
+                decimalNumberValue = "0,0"
+                break;
+            case 2:
+                decimalNumberValue = "0.0"
+                break;
+        }
+
+    }
+
+    Configurator.prototype.getThousandSeparator = function(){
+
+        if(!decimalNumberValue){
+            decimalNumberValue = compConfiguration.gridConfiguration.otherColumns.valueColumn.properties.cellProperties.numericFormat
+        }
+
+        return decimalNumberValue;
+
+    }
+
+    Configurator.prototype.getValueLabel = function(){
+        // Get the value
+        labelValue = compConfiguration
     }
 
 

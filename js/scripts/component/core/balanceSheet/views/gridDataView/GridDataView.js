@@ -1,19 +1,20 @@
 /**
  * Created by fabrizio on 7/7/14.
  */
-define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "webix"], function ($, ViewModel, AdapterGrid, Nprogress) {
+define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "webix"],
+    function ($, ViewModel, AdapterGrid, Nprogress) {
 
     var model, table, Configurator, titlesUp, titlesLeft, accessorMap, fullModel, configurationKeys, indexValues, modelView,
         leftDimensions, upDimensions, valueColumn, language, viewModel, adapterGrid, supportUtility,
-        dataSource, columns ,arrDiffDates, grid, generalController, NProgress
+        dataSource, columns , arrDiffDates, grid, generalController, NProgress
 
-    function GridDataView2() {
+    function GridDataView() {
         NProgress = Nprogress
         NProgress.done()
     }
 
 
-    GridDataView2.prototype.init = function (tableModel, configurator, utility, GeneralController) {
+    GridDataView.prototype.init = function (tableModel, configurator, utility, GeneralController) {
 
         generalController = GeneralController;
         supportUtility = utility
@@ -26,7 +27,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         return grid;
     }
 
-    GridDataView2.prototype.createFullGrid = function () {
+    GridDataView.prototype.createFullGrid = function () {
 
         fullModel = Configurator.getAllColumnModels();
         configurationKeys = Configurator.getKeyColumnConfiguration();
@@ -38,7 +39,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         return grid;
     }
 
-    GridDataView2.prototype.renderGrid = function (model) {
+    GridDataView.prototype.renderGrid = function (model) {
         adapterGrid.createPropertiesFromModel(model)
         var columnsNumber = adapterGrid.getNumberOfColumns(model)
         var differentDates = adapterGrid.getDifferentDates();
@@ -48,9 +49,9 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
 
         columns = this.createColumns(dataSource, differentDates)
 
-       this.createOtherOptions()
+        this.createOtherOptions()
 
-        if(grid)
+        if (grid)
             grid.destructor()
 
         var self = this;
@@ -58,12 +59,11 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             webix.ui({
                 container: "pivotGrid",
                 view: "datatable",
-                clipboard:"selection",
+                clipboard: "selection",
                 id: "grid",
-                editable:true,
-          //    select:"cell",
-                navigation:true,
-                leftSplit:1,
+                editable: true,
+                navigation: true,
+                leftSplit: 1,
                 scheme: {
                     $change: function (item) {
                         self.createColourConfiguration(item);
@@ -78,7 +78,12 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         return grid;
     }
 
-    GridDataView2.prototype.createOtherOptions = function(){
+    GridDataView.prototype.updateViewOnChangeVisualization = function(){
+        modelView = viewModel.init(table, Configurator, supportUtility)
+        var grid = this.renderGrid(modelView)
+    }
+
+    GridDataView.prototype.createOtherOptions = function () {
         var filterData = supportUtility.getFilterData()
 
         document.getElementById('box').style.visibility = "visible";
@@ -105,21 +110,35 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         }
 
         var titleGrid = document.getElementById('titlepivotGrid')
-        titleGrid.innerHTML = "Forecast for season: "+filterData.season+" , "+filterData.country+
-            " , "+filterData.product+" , "+filterData.dataSource
+        titleGrid.innerHTML = "Forecast for season: " + filterData.season + " , " + filterData.country +
+            " , " + filterData.product + " , " + filterData.dataSource
 
-        $('#options').append('<div class="btn-group"><button class="btn btn-primary" id="newForecast">Create a new forecast for season '+filterData.season+'</button></div><div class="btn-group-vertical" id="optionsPivotGrid">' +
+        $('#options').append('<div class="btn-group"><button class="btn btn-primary" id="newForecast">Create a new forecast for season ' + filterData.season + '</button></div><div class="btn-group-vertical" id="optionsPivotGrid">' +
             '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">' +
             '<span class="caret"></span><span>Options</span></button>' +
             '<ul class="dropdown-menu" role="menu"><li>' +
-            '<div class="row"><div class="col-lg-1"><div id="editingChoice"/></div>' +
-            '<div class="col-lg-9"><span>Edit flag and notes</span></div></div><hr></li></ul></div>') ;
+            '<div class="row">' +
+            '<h5 id="titleEditing">Editing options</h5></div>' +
+            '<div class="row">' +
+            '<div class="col-lg-1"><div id="editingChoice"/></div>' +
+            '<div class="col-lg-9"><p id="flagNotes">Edit flag and notes</p></div></div><hr></li>' +
+            '<li>' +
+            '<div class="selectorThousand">' +
+            '<h5 id="titleSeparator">Thousand separator</h5>' +
+            '<div id="commaButton"  class="thousandSelectors">'+
+            '  Comma(e.g. 1,000)</div>'+
+            '<div id="periodButton" class="thousandSelectors">'+
+            '  Period(e.g. 1.000)</div>'+
+            '</div>'+
+            '</li></ul></div>');
         $('#editingChoice').jqxCheckBox({width: 30, height: 25});
+        $('#commaButton').jqxRadioButton({width: 30, height: 25, checked:true});
+        $('#periodButton').jqxRadioButton({width: 30, height: 25});
 
     }
 
-    GridDataView2.prototype.createColourConfiguration = function(item){
-        switch(item.data0) {
+    GridDataView.prototype.createColourConfiguration = function (item) {
+        switch (item.data0) {
             case 'Population (1000s)':
             case 'Total Supply (Thousand tonnes)':
             case 'Domestic Supply (Thousand tonnes)':
@@ -153,38 +172,39 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         }
     }
 
-    GridDataView2.prototype.createColumns = function(dataSource, differentDates){
-            var filterData = supportUtility.getFilterData()
+    GridDataView.prototype.createColumns = function (dataSource, differentDates) {
+        var filterData = supportUtility.getFilterData()
 
-            var columns = [];
-            arrDiffDates = Object.keys(differentDates)
+        var columns = [];
+        arrDiffDates = Object.keys(differentDates)
 
-            columns.push({id : "data0",width:300,header:'Elements', css:"firstColumn",sort:"string" })
+        columns.push({id: "data0", width: 300, header: 'Elements', css: "firstColumn", sort: "string" })
 
-            for(var i =0; i< arrDiffDates.length; i++){
-                if(i==0) {
-                    columns.push({id: "data" + 1, header: [
-                        {text: 'Input dates' ,colspan: arrDiffDates.length},
-                        {text: arrDiffDates[i]}
-                    ], editor: 'text',  css:"datesColumns", sort:"string"})
-                }else if(i !=0 && i != arrDiffDates.length){
+        for (var i = 0; i < arrDiffDates.length; i++) {
+            if (i == 0) {
+                columns.push({id: "data" + 1, header: [
+                    {text: 'Input dates', colspan: arrDiffDates.length},
+                    {text: arrDiffDates[i]}
+                ], editor: 'text', css: "datesColumns", sort: "string"})
+            } else if (i != 0 && i != arrDiffDates.length) {
 
-                    columns.push({id: "data" + (i+1),header: [
-                      //{text: ''},
-                        {text: null},
-                        {text: arrDiffDates[i]}], editor: 'text', css:"datesColumns", sort:"int"})
-                }
+                columns.push({id: "data" + (i + 1), header: [
+                    //{text: ''},
+                    {text: null},
+                    {text: arrDiffDates[i]}
+                ], editor: 'text', css: "datesColumns", sort: "int"})
             }
-            return columns;
         }
+        return columns;
+    }
 
-    GridDataView2.prototype.createDataSource = function(columnsNumber,differentDates,titlesMap, model  ){
+    GridDataView.prototype.createDataSource = function (columnsNumber, differentDates, titlesMap, model) {
 
         var viewRowModel = []
-        var index =0;
-        for(var key in titlesMap){
+        var index = 0;
+        for (var key in titlesMap) {
             viewRowModel[index] = [key];
-            for(var i =0; i<titlesMap[key].length; i++){
+            for (var i = 0; i < titlesMap[key].length; i++) {
                 var indexValue = titlesMap[key][i]
                 viewRowModel[index].push(model[indexValue][3])
             }
@@ -194,12 +214,12 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         return viewRowModel;
     }
 
-    GridDataView2.prototype.updateGridView = function (newCell, indexCell, xCoordinate, yCoordinate) {
+    GridDataView.prototype.updateGridView = function (newCell, indexCell, xCoordinate, yCoordinate) {
 
         var cellTransformed = viewModel.updateItem(newCell)
         modelView[indexCell] = cellTransformed;
 
-        var result =this.updateDataSourceSingleCell(cellTransformed)
+        var result = this.updateDataSourceSingleCell(cellTransformed)
 
         grid.destructor()
 
@@ -208,12 +228,12 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             webix.ui({
                 container: "pivotGrid",
                 view: "datatable",
-                navigation:true,
+                navigation: true,
                 id: "grid",
-                editable:true,
-                sortable:true,
-                clipboard:"selection",
-                leftSplit:1,
+                editable: true,
+                sortable: true,
+                clipboard: "selection",
+                leftSplit: 1,
                 scheme: {
                     $change: function (item) {
                         self.createColourConfiguration(item);
@@ -223,84 +243,84 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 datatype: "jsarray",
                 data: dataSource
             });
-        grid.scrollTo(xCoordinate,yCoordinate)
+        grid.scrollTo(xCoordinate, yCoordinate)
         generalController.createListeners(grid)
 
     }
 
-    GridDataView2.prototype.getGrid = function(){
+    GridDataView.prototype.getGrid = function () {
         return grid
     }
 
-    GridDataView2.prototype.updateBatchGridView = function (tableModel, cells, xCoordinate, yCoordinate, events) {
+    GridDataView.prototype.updateBatchGridView = function (tableModel, cells, xCoordinate, yCoordinate, events) {
 
         var newCalculatedCells = []
-        for(var i =0; i<cells.length; i++){
+        for (var i = 0; i < cells.length; i++) {
             modelView[cells[i]["index"]] = viewModel.updateItem(cells[i]["row"])
-            newCalculatedCells.push( modelView[cells[i]["index"]])
+            newCalculatedCells.push(modelView[cells[i]["index"]])
         }
 
-        for(var i=0; i<newCalculatedCells.length; i++){
+        for (var i = 0; i < newCalculatedCells.length; i++) {
             this.updateDataSourceSingleCell(newCalculatedCells[i])
         }
 
 
         var self = this
 
-        if(grid) {
-          //  grid.detachEvent(events.click);
-          //  grid.detachEvent(events.stop);
+        if (grid) {
+            //  grid.detachEvent(events.click);
+            //  grid.detachEvent(events.stop);
             grid.destructor()
         }
-        if(document.getElementById('specialForm')) {
+        if (document.getElementById('specialForm')) {
             $('#specialForm').modal('hide');
             $('body').removeClass('modal-open');
             $('.modal-backdrop').remove();
         }
 
-        grid =  webix.ui({
-                    container: "pivotGrid",
-                    view: "datatable",
-                    navigation:true,
-                    id: "grid",
-                    editable:true,
-                    leftSplit:1,
-                    scheme: {
-                        $change: function (item) {
-                            self.createColourConfiguration(item);
-                        }
-                    },
-                    columns: columns,
-                    datatype: "jsarray",
-                    data: dataSource
-                });
+        grid = webix.ui({
+            container: "pivotGrid",
+            view: "datatable",
+            navigation: true,
+            id: "grid",
+            editable: true,
+            leftSplit: 1,
+            scheme: {
+                $change: function (item) {
+                    self.createColourConfiguration(item);
+                }
+            },
+            columns: columns,
+            datatype: "jsarray",
+            data: dataSource
+        });
 
-       grid.scrollTo(xCoordinate,yCoordinate)
-       generalController.createListeners(grid);
+        grid.scrollTo(xCoordinate, yCoordinate)
+        generalController.createListeners(grid);
     }
 
-    GridDataView2.prototype.getDataSource = function(){
+    GridDataView.prototype.getDataSource = function () {
         return dataSource
     }
 
-    GridDataView2.prototype.updateDataSourceSingleCell = function(newCell){
+    GridDataView.prototype.updateDataSourceSingleCell = function (newCell) {
         var result = {}
         var found = false;
-        for(var i =0; i< dataSource.length && !found; i++){
-                if(dataSource[i][0] == newCell[0] ){
-                    for( var j=0; j< arrDiffDates.length && !found; j++){
-                        if(newCell[2] == arrDiffDates[j]){
-                            found = true;
-                            dataSource[i][j+1] = newCell[3]
-                            result['row'] =  dataSource[i]
-                            result['idRow'] = i;
-                        }
+        for (var i = 0; i < dataSource.length && !found; i++) {
+            if (dataSource[i][0] == newCell[0]) {
+                for (var j = 0; j < arrDiffDates.length && !found; j++) {
+                    if (newCell[2] == arrDiffDates[j]) {
+                        found = true;
+                        dataSource[i][j + 1] = newCell[3]
+                        result['row'] = dataSource[i]
+                        result['idRow'] = i;
                     }
                 }
             }
+        }
         return result;
     }
 
-    return GridDataView2;
+    return GridDataView;
 
 })
