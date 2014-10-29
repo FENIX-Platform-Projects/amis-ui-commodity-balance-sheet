@@ -239,7 +239,6 @@ define(['jquery'], function ($) {
         mapCodesLabel.push(map)
     }
 
-
     Configurator.prototype.getMapDomainCodes = function () {
         return mapCodesLabel;
     }
@@ -299,8 +298,30 @@ define(['jquery'], function ($) {
     }
 
 
-    Configurator.prototype.setValueLabel = function(isFlagEnabled, isNoteEnabled){
+    Configurator.prototype.setValueLabel = function(number){
+        if(labelValue && labelValue!= null){
+            switch (number){
+                case 1:
+                    // everyThing
+                    labelValue = "#value|$value ~#flag| $flag  ~#note| $note ~|";
 
+                    break;
+                case 2:
+                    // only Flag
+                    labelValue ="#value|$value ~#flag| $flag ~|";
+                    break;
+
+                case 3:
+                    // only notes
+                    labelValue = "#value|$value ~#note| $note ~|";
+                    break;
+
+                case 4:
+                    // only value
+                    labelValue = "#value|$value ~|";
+                    break;
+            }
+        }
     }
 
     Configurator.prototype.setThousandSeparator = function(number){
@@ -313,6 +334,10 @@ define(['jquery'], function ($) {
                 break;
             case 2:
                 decimalNumberValue = "0.0"
+                break;
+
+            case 3:
+                decimalNumberValue = "0 0"
                 break;
         }
 
@@ -330,7 +355,11 @@ define(['jquery'], function ($) {
 
     Configurator.prototype.getValueLabel = function(){
         // Get the value
-        labelValue = compConfiguration
+        if(!labelValue) {
+            labelValue = compConfiguration.gridConfiguration.otherColumns.valueColumn.label
+        }
+
+        return labelValue
     }
 
 

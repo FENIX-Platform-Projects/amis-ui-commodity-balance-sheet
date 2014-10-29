@@ -112,8 +112,8 @@ define(["jquery", "models/tableDataModel/TableDataModel",
                 if(codes[i].code.code == 1){
                     var notFound = true;
                     for(var k = 0; k<tableModel.length && notFound; k++){
-                        if(tableModel[i][2] != "20000103" && tableModel[i][0] == 1){
-                            result[i][3] = (tableModel[i][3])? tableModel[i][3] : null;
+                        if(tableModel[k][2] != "20000103" && tableModel[k][0] == 1){
+                            result[i][3] = (tableModel[k][3])? tableModel[k][3] : null;
                             notFound = false;
                         }
                     }
@@ -123,7 +123,6 @@ define(["jquery", "models/tableDataModel/TableDataModel",
                 result[i][4] = null;
                 result[i][5] = null;
             }
-            debugger;
             var d = TableModel.addNewForecast(result);
         }
         return d;
@@ -145,25 +144,6 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         // TODO: save also grid data
         return indexesTableData;
     }
-
-    /*ModelsController.prototype.saveDataFromOUsesForm = function(newData, indTable, rowGridIndex, columnGridIndex){
-        var indexesTableData = TableModel.updateDataFromOtherUsesForm(newData, indTable)
-        // TODO: save also grid data
-        return indexesTableData;
-    }
-
-
-    ModelsController.prototype.saveDataFromProduction = function(newData, indTable, rowGridIndex, columnGridIndex){
-       var indexesTableData = TableModel.updateDataFromProductionForm(newData, indTable)
-        // TODO: save also grid data
-       return indexesTableData;
-    }
-
-    ModelsController.prototype.saveDataFromRiceProduction = function(newData, indTable, rowGridIndex, columnGridIndex){
-        var indexesTableData = TableModel.updateDataFromRiceProductionForm(newData, indTable)
-        // TODO: save also grid data
-        return indexesTableData;
-    }*/
 
     return ModelsController;
 })

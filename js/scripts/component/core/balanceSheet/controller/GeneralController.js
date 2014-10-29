@@ -8,7 +8,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         var ViewGrid, ModelController, FormController, dsd, Configurator, adapterGrid, formulaController, supportUtility,
             specialControlEditor, editingOnCell, generalObserver, filterData, xCoordinate, yCoordinate, grid, editHandler,
-            eventClick, eventStop, commmaSeparator;
+            eventClick, eventStop, thousandSeparator, elementShown;
 
 
         function GeneralController() {
@@ -23,7 +23,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
         };
 
         GeneralController.prototype.init = function (gridModel, tableModel, configurator, modelController, utility, NProgress) {
-            generalObserver.init(this)
             ModelController = modelController;
             dsd = configurator.getDSD();
             Configurator = configurator;
@@ -35,9 +34,11 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             // formula
             formulaController.init(tableModelWithFormula, Configurator, filterData)
 
-            commmaSeparator = true
+            thousandSeparator = 1
+            elementShown = 1
             // visualization model
             grid = ViewGrid.init(tableModelWithFormula, configurator, supportUtility, this)
+            generalObserver.init(this, thousandSeparator, elementShown)
 
             NProgress.done()
 
@@ -50,10 +51,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
             var resultedClicked
             eventClick = grid.attachEvent("onItemClick", function (id, e, node) {
-                console.log('GC: afterOnItemClick')
-                console.log('**************************************')
-                console.log('onAfterItemClick')
-                console.log('**************************************')
+
                 this.blockEvent();
                 //    console.log('GC: after itemclick.blockEvent')
                 var coordinates = grid.getScrollState()
@@ -153,9 +151,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
         GeneralController.prototype.updateGrid = function (newCell, indTable, rowIndex, columnIndex, eventGrid) {
             console.log('GC: updateGrid ')
 
-            eventGrid.blockEvent()
-            eventGrid.detachEvent(eventClick)
-
             var bindedKeys = formulaController.getBindedKeys();
             ModelController.updateModels(newCell, indTable, rowIndex, columnIndex)
             // check if need to apply a formula
@@ -245,6 +240,8 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 var tableModelWithFormula = $.extend(true, [], tableModel);
                 formulaController.init(tableModelWithFormula, Configurator, filterData)
                 grid = ViewGrid.init(tableModelWithFormula, Configurator, supportUtility, this)
+                generalObserver.listenToVisualizationOptions(thousandSeparator)
+                generalObserver.listenToElementsOptions(elementShown)
                 this.onChangeModalityEditing()
             }
         }
@@ -255,6 +252,40 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 editingOnCell = !event.args.checked;
                 editHandler.updateEditingOnCell(editingOnCell)
             })
+        }
+
+        GeneralController.prototype.onChangeVisualizationOption = function (visualizationMode, typeOfVisualization) {
+            if (typeOfVisualization != thousandSeparator || typeOfVisualization != elementShown) {
+
+                if (visualizationMode == 'separator' && typeOfVisualization != thousandSeparator) {
+                    Configurator.setThousandSeparator(typeOfVisualization)
+                    thousandSeparator = typeOfVisualization;
+                }
+
+                else if (visualizationMode == 'elements' && typeOfVisualization != elementShown) {
+                    Configurator.setValueLabel(typeOfVisualization)
+                    elementShown = typeOfVisualization;
+
+                }
+
+                // create a copy
+                var tableModel = ModelController.getTableDataModel();
+
+                var tableModelWithFormula = $.extend(true, [], tableModel);
+                filterData = supportUtility.getFilterData()
+
+                // formula
+                formulaController.init(tableModelWithFormula, Configurator, filterData)
+
+                // visualization model
+                grid = ViewGrid.init(tableModelWithFormula, Configurator, supportUtility, this)
+
+                    generalObserver.listenToVisualizationOptions(thousandSeparator)
+                    generalObserver.listenToElementsOptions(elementShown)
+                
+                this.onChangeModalityEditing(typeOfVisualization)
+
+            }
         }
 
         return GeneralController;

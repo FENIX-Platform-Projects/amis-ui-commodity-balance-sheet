@@ -108,9 +108,23 @@ define(["jquery", "moment", "numeral"], function ($) {
                 break;
 
             case "number":
-                result = (typeof value != 'undefined' && value !== 'undefined' && value != null) ?
-                    numeral(value).format(configurationKeyColumn.properties.cellProperties.numericFormat) :
-                    value;
+                if(typeof value != 'undefined' && value !== 'undefined' && value != null){
+                    var formatConf = configurator.getThousandSeparator();
+                    if(formatConf == '0 0'){
+                        result = numeral(value).format('0,0')
+                        result = result.replace(',',' ')
+
+                    }else if(formatConf == '0.0'){
+                        result = numeral(value).format('0,0')
+                        result =result.replace(',','.')
+                    }else {
+                        result = numeral(value).format(formatConf)
+                    }
+                }
+                else
+                {
+                    result = value;
+                }
                 break;
         }
         return result;

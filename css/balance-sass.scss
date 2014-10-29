@@ -9,7 +9,7 @@ h1 {
   font-weight: 300;
 }
 
-
+/* ------------------- */
 /* Box */
 
 .amis-box{
@@ -24,6 +24,8 @@ h1 {
   position: relative;
   visibility: hidden;
 }
+
+/* ------------------- */
 
 
 .label-default{
@@ -49,6 +51,7 @@ h1 {
 }
 
 /* TIMEPICKER  */
+
 .ui-timepicker-div dl { text-align: left; }
 .ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
 .ui-timepicker-div dl dd { margin: 0 10px 10px 40%; }
@@ -61,7 +64,8 @@ h1 {
 .ui-timepicker-rtl dl dd { margin: 0 40% 10px 10px; }
 
 /*
-    GRID
+------------------------------------------------------------
+   START  GRID
 */
 .blueLine{
   color: #0082AD;
@@ -85,14 +89,6 @@ h1 {
   cursor: pointer;
 }
 
-#options {
-  visibility : hidden;
-  text-align: right;
-  color: #333;
-  width : 100%;
-  height: 40px;
-  widows: inherit;
-}
 
 .label {
   color: #333 !important;
@@ -125,49 +121,6 @@ h1 {
   border: 5px solid #3498db;
 }
 
-/* EDITING SPECIAL */
-
-.modal {
-  text-align: center;
-}
-
-.modal:before {
-  display: inline-block;
-  vertical-align: middle;
-  content: " ";
-  height: 100%;
-}
-
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-}
-
-
-.firstColumn{
-  background-color: #FAFAFA;
-  font-size: 12px;
-}
-
-
-
-.calculatedRowGrid{
-  background-color: rgba(191, 201, 238, 0.34);
-}
-.labelRice{
-  color: #0082AD;
-}
-
-.labelCheckBoxes{
-  color: #00738A;
-}
-
-.modal .modal-dialog{
-  /* new custom width */
-  width: 800px;
-  /* must be half of the width, minus scrollbar on the left (30px) */
-}
 .webix_dd_drag_column, .webix_ss_header TD, .webix_ss_vscroll_header {
   color: #4a4a4a;
   font-size: 15px;
@@ -179,7 +132,11 @@ h1 {
   font-weight: normal;
   font-size: 12px;
   font-family: 'Roboto', sans-serif;
+}
 
+.firstColumn{
+  background-color: #FAFAFA;
+  font-size: 12px;
 }
 
 .webix_dt_editor input, .webix_dt_editor select {
@@ -204,31 +161,83 @@ h1 {
   font-family: 'Roboto', sans-serif ;
 }
 
+/* END  GRID  */
+/* -------------------------------------------- */
+
+
+/*
+
+  START SPECIAL EDITING
+*/
+
+.modal {
+  text-align: center;
+}
+
+.modal:before {
+  display: inline-block;
+  vertical-align: middle;
+  content: " ";
+  height: 100%;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.calculatedRowGrid{
+  background-color: rgba(191, 201, 238, 0.34);
+}
+.labelRice{
+  color: #0082AD;
+}
+
+.labelCheckBoxes{
+  color: #00738A;
+}
+
+.modal .modal-dialog{
+  /* new custom width */
+  width: 800px;
+  /* must be half of the width, minus scrollbar on the left (30px) */
+}
+
+
+/* END SPECIAL EDITING   */
+/* -------------------------------------------- */
+
+/*
+  Dialog form
+*/
 #dialogForm{
   font-size: 12px;
   font-family: 'Roboto', sans-serif ;
 }
 
-#titleSeparator{
+/* -------------------------------------------- */
+/* START OPTIONS  */
+
+#options {
+  visibility : hidden;
+  text-align: right;
+  color: #333;
+  width : 100%;
+  height: 40px;
+  widows: inherit;
+}
+
+.optionTitles{
   font-size:12px;
   font-weight:bold;
   text-align: left;
 }
 
-#flagNotes{
-  font-size: 12px;
-}
-
-#titleEditing {
-  font-size:12px;
-  font-weight:bold;
-  text-align: left;
-  margin-left: 18px;
+.optionText{
+  font-size: 11px;
 
 }
 
-.thousandSelectors{
-  font-size:12px;
-}
-
-
+/* END OPTIONS */
+/* -------------------------------------------- */

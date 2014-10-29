@@ -99,9 +99,9 @@ define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/Flag
 
         }
 
-        $('#spaceForButtons').append("<br><br><div class='row'><div class='col-lg-6 '>" +
+        $('#spaceForButtons').append("<br><br><div class='row'><div class='col-lg-2 col-lg-offset-8 '>" +
             "<button class='btn btn-lg btn-danger' id='saveButton'>Save</button></div>" +
-            "<div class='col-lg-1 col-lg-offset-4'><button class='btn btn-primary' id='resetButton'>Reset</button></div></div></div>")
+            "<div class='col-lg-2'><button class='btn btn-lg btn-primary' id='resetButton'>Reset</button></div></div></div>")
 
 
         var that = this;

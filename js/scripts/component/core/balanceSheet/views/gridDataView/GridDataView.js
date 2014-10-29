@@ -113,27 +113,51 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         titleGrid.innerHTML = "Forecast for season: " + filterData.season + " , " + filterData.country +
             " , " + filterData.product + " , " + filterData.dataSource
 
-        $('#options').append('<div class="btn-group"><button class="btn btn-primary" id="newForecast">Create a new forecast for season ' + filterData.season + '</button></div><div class="btn-group-vertical" id="optionsPivotGrid">' +
+        $('#options').append('<div class="btn-group">' +
+            '<button class="btn btn-primary" id="newForecast">Create a new forecast for season ' + filterData.season + '</button>' +
+            '</div>' +
+            '<div class="btn-group-vertical" id="optionsPivotGrid">' +
             '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">' +
             '<span class="caret"></span><span>Options</span></button>' +
             '<ul class="dropdown-menu" role="menu"><li>' +
-            '<div class="row">' +
-            '<h5 id="titleEditing">Editing options</h5></div>' +
-            '<div class="row">' +
-            '<div class="col-lg-1"><div id="editingChoice"/></div>' +
-            '<div class="col-lg-9"><p id="flagNotes">Edit flag and notes</p></div></div><hr></li>' +
+            '<h5  class ="optionTitles">Editing options</h5>' +
+            '<div id="editingChoice"  class="optionText"> Edit flag and notes</div>' +
+            '<hr></li>' +
             '<li>' +
             '<div class="selectorThousand">' +
-            '<h5 id="titleSeparator">Thousand separator</h5>' +
-            '<div id="commaButton"  class="thousandSelectors">'+
-            '  Comma(e.g. 1,000)</div>'+
-            '<div id="periodButton" class="thousandSelectors">'+
-            '  Period(e.g. 1.000)</div>'+
-            '</div>'+
-            '</li></ul></div>');
-        $('#editingChoice').jqxCheckBox({width: 30, height: 25});
-        $('#commaButton').jqxRadioButton({width: 30, height: 25, checked:true});
-        $('#periodButton').jqxRadioButton({width: 30, height: 25});
+            '<h5 class ="optionTitles">Thousand separator</h5>' +
+            '<div id="commaButton"  class="optionText">'+
+            '  Comma (e.g. 1,000)</div>'+
+            '<div id="periodButton" class="optionText">'+
+            '  Period  &nbsp  (e.g. 1.000)</div>'+
+            '<div id="spaceButton" class="optionText">'+
+            '  Space   &nbsp (e.g. 1 000)</div>'+
+            '</div><hr></li>' +
+            '<li>' +
+            '<div class="selectorView">' +
+            '<h5  class ="optionTitles">Elements in the cell</h5>' +
+            '<div id="everyElButtons"  class="optionText">'+
+            ' Show All ( Flags & Notes )</div>'+
+            '<div id="flagButton" class="optionText">'+
+            ' Show Flag and values  </div>'+
+            '<div id="noteButton" class="optionText">'+
+            ' Show Notes and values</div>'+
+            '<div id="valueButton" class="optionText">'+
+            ' Show only values  </div>'+
+            '</div></li>'+
+            '</ul></div>');
+
+
+        $('#editingChoice').jqxCheckBox({width: 30, height: 25 });
+        $('#commaButton').jqxRadioButton({groupName :"thousandSeparator",width: 30, height: 25});
+        $('#periodButton').jqxRadioButton({groupName :"thousandSeparator",width: 30, height: 25});
+        $('#spaceButton').jqxRadioButton({groupName :"thousandSeparator",width: 30, height: 25});
+
+        $('#everyElButtons').jqxRadioButton({groupName :"elementSelectors",width: 30, height: 25});
+        $('#flagButton').jqxRadioButton({groupName :"elementSelectors",width: 30, height: 25});
+        $('#noteButton').jqxRadioButton({groupName :"elementSelectors",width: 30, height: 25});
+        $('#valueButton').jqxRadioButton({groupName :"elementSelectors",width: 30, height: 25});
+
 
     }
 

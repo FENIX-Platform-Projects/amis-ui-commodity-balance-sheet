@@ -3,6 +3,8 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     var configurator, fullModel, configurationKeys, valueColumn, indexValues, idOlapGrid, accessorMap, dsd, accessorModel,
         formatter, supportUtility;
 
+    var _IMG_URL = "../../../../../../../repository/amis-cbs/css/images/notes/paperclip-icon.png"
+
     function ViewModel() {
     }
 
@@ -115,26 +117,25 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         }
 
 
-        debugger;
-
         result[indexValues]  = formatter.fromDSDToVisualizationFormat(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator)
         //result[indexValues] = formatter.convertNumberOfDecimals(result[indexValues], configurator.getNumberOfDecimals())
-        result[indexValues] = this.expressionLanguage(valueColumn, indexValues, result);
+        var label = configurator.getValueLabel()
+        result[indexValues] = this.expressionLanguage(label, indexValues, result);
         // Binded to Amis, if there is a note show an image
-        if(notesInserted && result[indexValues]!= null && typeof result[indexValues] != 'undefined' && result[indexValues] != "") {
+      /*  if(notesInserted && result[indexValues]!= null && typeof result[indexValues] != 'undefined' && result[indexValues] != "") {
             result[indexValues] += "&nbsp<img src='../../../../../../../repository/amis-cbs/css/images/notes/paperclip-icon.png' width='16' height='16'>"
-        }
+        }*/
         return result;
     }
 
-    ViewModel.prototype.expressionLanguage = function (columnValue, indexValue, item) {
+    ViewModel.prototype.expressionLanguage = function (expressionValue, indexValue, item) {
 
         var conditionRegExpression = /(#(\w+)(\|))/;
         var valuesRegExpression = /(((\W)|(\s))*(\$\w+)((\W)|(\s))*(\~))/;
         var onlyValue = /(\$\w+)/;
         var result = "";
 
-        var expression = columnValue.label;
+        var expression = expressionValue;
         while (expression != "" && expression != "|") {
             var firstCondition = expression.match(conditionRegExpression)[0]
             expression = expression.replace(conditionRegExpression, "")
@@ -161,8 +162,15 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                     expression = expression.replace(valuesRegExpression, "")
                     secondCondition = secondCondition.slice(0, -1);
                     var stringAppend = secondCondition.replace(onlyValue, function (match) {
+
                         var returnedValue;
-                        returnedValue = (match.substring(1) == "value") ? item[indexValue] : " &nbsp  "+item[accessorMap[match.substring(1)]];
+
+                        if(match.substring(1) == "note"){
+                            returnedValue = "&nbsp<img src='"+_IMG_URL+"' width='16' height='16'>";
+                        }else{
+                            returnedValue = " &nbsp  "+item[accessorMap[match.substring(1)]];
+                        }
+
                         return returnedValue;
                     })
                     result +=stringAppend;
