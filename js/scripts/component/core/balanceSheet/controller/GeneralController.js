@@ -106,6 +106,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             $("#export").click(function () {
                 var ExportControl = new ExportController;
                 var table = ModelController.getTableDataModel();
+                debugger;
                 ExportControl.init(table, Configurator)
             })
 
@@ -265,7 +266,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 else if (visualizationMode == 'elements' && typeOfVisualization != elementShown) {
                     Configurator.setValueLabel(typeOfVisualization)
                     elementShown = typeOfVisualization;
-
                 }
 
                 // create a copy
@@ -280,9 +280,9 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 // visualization model
                 grid = ViewGrid.init(tableModelWithFormula, Configurator, supportUtility, this)
 
-                    generalObserver.listenToVisualizationOptions(thousandSeparator)
-                    generalObserver.listenToElementsOptions(elementShown)
-                
+                generalObserver.listenToVisualizationOptions(thousandSeparator)
+                generalObserver.listenToElementsOptions(elementShown)
+
                 this.onChangeModalityEditing(typeOfVisualization)
 
             }

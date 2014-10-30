@@ -116,15 +116,10 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             }
         }
 
-
         result[indexValues]  = formatter.fromDSDToVisualizationFormat(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator)
-        //result[indexValues] = formatter.convertNumberOfDecimals(result[indexValues], configurator.getNumberOfDecimals())
         var label = configurator.getValueLabel()
         result[indexValues] = this.expressionLanguage(label, indexValues, result);
-        // Binded to Amis, if there is a note show an image
-      /*  if(notesInserted && result[indexValues]!= null && typeof result[indexValues] != 'undefined' && result[indexValues] != "") {
-            result[indexValues] += "&nbsp<img src='../../../../../../../repository/amis-cbs/css/images/notes/paperclip-icon.png' width='16' height='16'>"
-        }*/
+
         return result;
     }
 

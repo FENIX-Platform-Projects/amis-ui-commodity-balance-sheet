@@ -63,7 +63,9 @@ define(["jquery","formatter/DatatypesFormatter", "jqwidgets"], function($, Forma
         return result;
     };
 
-    function PaddyCreator(){}
+    function PaddyCreator(){
+
+    }
 
     PaddyCreator.prototype.init = function(totalValuesModel, singleCropsModel, Observer){
         formulaToRenderTotVal = 'init';
@@ -268,14 +270,17 @@ define(["jquery","formatter/DatatypesFormatter", "jqwidgets"], function($, Forma
             ]
         });
 
-        $('#specialForm').on('shown.bs.modal', function (e) {
-            $('#productionTabs').jqxTabs();
-        })
+
         $("#specialForm").modal({ backdrop: 'static',
             keyboard: false});
 
+        $('#specialForm').on('shown.bs.modal', function (e) {
+            $('#productionTabs').jqxTabs();
+        })
+
 
         observer.applyListeners()
+      //  $('#productionTabs').jqxTabs();
     }
 
     PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply) {

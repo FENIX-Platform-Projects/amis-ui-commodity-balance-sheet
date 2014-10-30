@@ -40,7 +40,7 @@ define(["jquery"], function($){
                 if(type == "totalValues"){
                     result = typeOfForm.totalValues.init
                 }else if(type == "singleCrops"){
-                    result = typeOfForm.singleCrops.init[0]
+                    result = typeOfForm.singleCrops.init
                 }
                 break;
         }

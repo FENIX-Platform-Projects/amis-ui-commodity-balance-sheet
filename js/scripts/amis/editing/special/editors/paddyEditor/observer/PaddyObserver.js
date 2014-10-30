@@ -61,6 +61,11 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             event.stopImmediatePropagation();
             (event.args.checked) ? that.onCheckBoxSingleCrops(4) : that.onUncheckBoxSingleCrops(4);
         })
+        $("#fifthCheckBoxSingleCrops").on('change', function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            (event.args.checked) ? that.onCheckBoxSingleCrops(5) : that.onUncheckBoxSingleCrops(5);
+        })
 
     }
 
@@ -76,15 +81,15 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
                 if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'
                     && $('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'milled'
+                    formulaToApplySingle = 'milled'
                 }
                 else if ($('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true'
                     && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'productionMilled'
+                    formulaToApplySingle = 'productionMilled'
                 }
                 else if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'
                     && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'areaHarvestedMilled'
+                    formulaToApplySingle = 'areaHarvestedMilled'
                 }
                 break;
 
@@ -98,15 +103,15 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 }
                 if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'
                     && $('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'yieldPaddy'
+                    formulaToApplySingle = 'yieldPaddy'
                 }
                 else if ($('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true'
                     && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'productionPaddy'
+                    formulaToApplySingle = 'productionPaddy'
                 }
                 else if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'
                     && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'areaHarvestedPaddy'
+                    formulaToApplySingle = 'areaHarvestedPaddy'
                 }
 
                 break;
@@ -115,17 +120,17 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 if ($("#fourthCheckBoxSingleCrops").attr("aria-checked") == 'true') {
                     $("#fifthCheckBoxSingleCrops").jqxCheckBox('disable');
                     if ($("#firstCheckBoxSingleCrops").attr("aria-checked") == 'true') {
-                        formulaToApplyTot = 'yieldPaddy';
+                        formulaToApplySingle = 'yieldPaddy';
                     } else {
-                        formulaToApplyTot = 'milled';
+                        formulaToApplySingle = 'milled';
                     }
                 }
                 else if ($("#fifthCheckBoxSingleCrops").attr("aria-checked") == 'true') {
                     $("#fourthCheckBoxSingleCrops").jqxCheckBox('disable');
                     if ($("#firstCheckBoxSingleCrops").attr("aria-checked") == 'true') {
-                        formulaToApplyTot = 'areaHarvestedPaddy';
+                        formulaToApplySingle = 'areaHarvestedPaddy';
                     } else {
-                        formulaToApplyTot = 'areaHarvestedMilled';
+                        formulaToApplySingle = 'areaHarvestedMilled';
                     }
                 }
                 break;
@@ -135,17 +140,17 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                     $("#fifthCheckBoxSingleCrops").jqxCheckBox('uncheck');
                     $("#fifthCheckBoxSingleCrops").jqxCheckBox('disable');
                     if ($("#firstCheckBoxSingleCrops").attr("aria-checked") == 'true') {
-                        formulaToApplyTot = 'yieldPaddy';
+                        formulaToApplySingle = 'yieldPaddy';
                     } else {
-                        formulaToApplyTot = 'milled';
+                        formulaToApplySingle = 'milled';
                     }
 
                 } else if ($("#fifthCheckBoxSingleCrops").attr("aria-checked") == 'true') {
                     $("#thirdCheckBoxSingleCrops").jqxCheckBox('disable');
                     if ($("#firstCheckBoxSingleCrops").attr("aria-checked") == 'true') {
-                        formulaToApplyTot = 'productionPaddy';
+                        formulaToApplySingle = 'productionPaddy';
                     } else {
-                        formulaToApplyTot = 'productionMilled';
+                        formulaToApplySingle = 'productionMilled';
                     }
                 }
                 break;
@@ -156,18 +161,18 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                     $("#fourthCheckBoxSingleCrops").jqxCheckBox('disable');
 
                     if ($("#firstCheckBoxSingleCrops").attr("aria-checked") == 'true') {
-                        formulaToApplyTot = 'areaHarvestedPaddy';
+                        formulaToApplySingle = 'areaHarvestedPaddy';
                     } else {
-                        formulaToApplyTot = 'areaHarvestedMilled';
+                        formulaToApplySingle = 'areaHarvestedMilled';
                     }
 
                 }
                 else if ($("#fourthCheckBoxSingleCrops").attr("aria-checked") == 'true') {
                     $("#thirdCheckBoxSingleCrops").jqxCheckBox('disable');
                     if ($("#firstCheckBoxSingleCrops").attr("aria-checked") == 'true') {
-                        formulaToApplyTot = 'productionPaddy';
+                        formulaToApplySingle = 'productionPaddy';
                     } else {
-                        formulaToApplyTot = 'productionMilled';
+                        formulaToApplySingle = 'productionMilled';
                     }
 
                 }
@@ -184,13 +189,13 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
                 }
                 if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'&& $('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'milled'
+                    formulaToApplySingle = 'milled'
                 }
                 else if ( $('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true' && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'productionMilled'
+                    formulaToApplySingle = 'productionMilled'
                 }
                 else if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true' && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'areaHarvestedMilled'
+                    formulaToApplySingle = 'areaHarvestedMilled'
                 }
 
                 break;
@@ -204,15 +209,15 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 }
                 if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'
                     && $('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'yieldPaddy'
+                    formulaToApplySingle = 'yieldPaddy'
                 }
                 else if ($('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true'
                     && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'productionPaddy'
+                    formulaToApplySingle = 'productionPaddy'
                 }
                 else if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'
                     && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true'){
-                    formulaToApplyTot = 'areaHarvestedPaddy'
+                    formulaToApplySingle = 'areaHarvestedPaddy'
                 }
 
                 break;
@@ -620,8 +625,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield
+            debugger;
 
             switch (formulaToApplySingle) {
+
 
                 case 'init':
                     if (row == 1 || row == 3 || row == 6) {
@@ -684,6 +691,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             var columnValue = event.args.datafield;
             var oldvalue = event.args.oldvalue;
             var value = event.args.value;
+            debugger;
             if (checkAll(oldvalue) && columnValue == 3) {
                 oldvalue = parseFloat(oldvalue)
             }
@@ -698,12 +706,12 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                     formulaToApplyTot = 'milled'
                 }
 
-                var specialEditing = controllerPaddy.selectSpecialEditing(formulaToApplySingle, numberOfRow)
+                var specialEditing = 'normal'
 
                 controllerPaddy.updateSingleCropsGridOnEditing(numberOfRow, value2, formulaToApplySingle, columnValue, specialEditing)
             } else if (columnValue != 3 && (oldvalue != value)) { // if modified only flag/notes
                 var numberOfRow = event.args.rowindex;
-                controllerPaddy.updateSingleCropsGridOnEditing(numberOfRow, value, formulaToApplySingle, columnValue, specialEditing)
+                controllerPaddy.updateSingleCropsGridOnEditing(numberOfRow, value, formulaToApplySingle, columnValue, 'normal')
             }
         })
 
@@ -754,7 +762,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         })
     }
 
-
     PaddyObserver.prototype.getFormulaTotalValues = function () {
         var result = formulaToApplyTot;
         return result;
@@ -763,7 +770,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
     PaddyObserver.prototype.setTotalValuesOnModified = function () {
         totalValuesModified = true;
     }
-
 
     return PaddyObserver;
 })
