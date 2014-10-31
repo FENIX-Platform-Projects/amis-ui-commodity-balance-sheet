@@ -106,8 +106,12 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             $("#export").click(function () {
                 var ExportControl = new ExportController;
                 var table = ModelController.getTableDataModel();
-                debugger;
-                ExportControl.init(table, Configurator)
+                var tableModelWithFormula = $.extend(true, [], table);
+                filterData = supportUtility.getFilterData()
+
+                // formula
+                formulaController.init(tableModelWithFormula, Configurator, filterData)
+                ExportControl.init(tableModelWithFormula, Configurator, grid)
             })
 
 

@@ -7,10 +7,10 @@ define(["jquery", "exporter/tableModel/TableExport"], function($, Export ){
 
     var Exporter;
 
-    ExportController.prototype.init = function(table, Configurator){
+    ExportController.prototype.init = function(table, Configurator, grid){
 
     Exporter = new Export;
-    Exporter.init(table, Configurator);
+    Exporter.init(table, Configurator, grid);
 
     }
 

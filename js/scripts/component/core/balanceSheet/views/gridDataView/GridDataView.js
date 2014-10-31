@@ -256,6 +256,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 id: "grid",
                 editable: true,
                 sortable: true,
+                export:true,
                 clipboard: "selection",
                 leftSplit: 1,
                 scheme: {

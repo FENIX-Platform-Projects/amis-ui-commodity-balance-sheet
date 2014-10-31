@@ -26,7 +26,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
 
         var table2 = $.extend(true,[],realTable);
         var table = this.filterValues(table2)
-        debugger;
 
         var string = "<table id='tablePivot'><tr>"
         for (var i = 0; i < dsd.dsd.columns.length; i++) {
@@ -49,24 +48,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
 
         $('#exportToAppend').append(string)
 
-       // excellentExport.excel(document.getElementById('exportToAppend'),'tablePivot', 'SheetNAme')
-
-        debugger;
-
-    //    window.open('data:application/vnd.ms-excel,' +  $('#exportToAppend').html());
-
-
-       /* //var uri = 'data:application/vnd.ms-excel,' + $('#tablePivot').html();
-        var downloadLink = document.createElement("a");
-        downloadLink.href = "#";
-        downloadLink.download = "data.xls";
-
-        document.body.appendChild(downloadLink);
-        downloadLink.click(function(){
-            excellentExport.excel(this, $('#tablePivot').html(), 'MySheet');
-        })
-        document.body.removeChild(downloadLink);*/
-
         var tableName = 'tablePivot'
         var name = 'provaTabellla'
 
@@ -77,6 +58,11 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         if (!tableName.nodeType) tableName = document.getElementById(tableName)
         var ctx = {worksheet: name || 'Worksheet', table: tableName.innerHTML}
         window.location.href = uri + base64(format(template, ctx))
+
+        var f = document.getElementById('tablePivot');
+        if(f){
+            f.remove()
+        }
     }
 
 

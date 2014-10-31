@@ -263,7 +263,10 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 keyboard: false});
 
             observer.applyListeners(this, productionController)
-            $('#productionTabs').jqxTabs();
+            $('#specialForm').on('shown.bs.modal', function (e) {
+                $('#productionTabs').jqxTabs();
+            })
+
         }
 
         ProductionEditor.prototype.updateTotGrid = function (calculatedModel, formulaToApply) {
