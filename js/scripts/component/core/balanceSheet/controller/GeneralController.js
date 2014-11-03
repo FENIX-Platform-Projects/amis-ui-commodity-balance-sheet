@@ -53,6 +53,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             eventClick = grid.attachEvent("onItemClick", function (id, e, node) {
 
                 this.blockEvent();
+                debugger;
                 //    console.log('GC: after itemclick.blockEvent')
                 var coordinates = grid.getScrollState()
                 xCoordinate = coordinates.x;
@@ -103,7 +104,10 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             });
 
 
-            $("#export").click(function () {
+            $("#export").click(function (evt) {
+                evt.preventDefault();
+                evt.stopImmediatePropagation()
+
                 var ExportControl = new ExportController;
                 var table = ModelController.getTableDataModel();
                 var tableModelWithFormula = $.extend(true, [], table);

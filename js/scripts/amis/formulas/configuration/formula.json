@@ -341,7 +341,7 @@
     },
     "editableValues":{
         "directEditing" : {
-            "values" : [8,7,12,10,14,13,16,17]
+            "values" : [8,7,12,10,14,13,16,17,36]
         },
         "specialEditing": {
            "values" : [ 2,37, 4, 5, 15, 998]}

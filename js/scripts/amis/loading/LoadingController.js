@@ -6,7 +6,7 @@ define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databas
 
         var urlDSD = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructure.json'
         var urlDSDRice = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureRice.json'
-
+        var ulrDSDSoyBean = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureSoybeans.json'
         var balanceSheet, dataFiltered, dataLoader, firstIstance, savingController, NProgress ;
 
         function LoadingController() {
@@ -61,22 +61,24 @@ define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databas
         }
         var url;
 
+        // choice of DSD
+        switch (product){
+            case 4:
+                url = urlDSDRice;
+                break;
+            case 6:
+                url = ulrDSDSoyBean;
+                break;
+            default :
+                url = urlDSD;
+        }
+
         if(!firstIstance) {
             firstIstance = true
             // Choice of DSD dependent on the product (if rice has been chosen)
-            url = (product == 4)?  urlDSDRice: urlDSD;
             balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
         }else {
-            if(product !=4)
-            {
-                url = urlDSD
-                balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
-            }
-            else
-            {
-                url = urlDSDRice;
-                balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
-            }
+            balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
         }
 
         var realPreviousYear = dataLoader.getRealPreviousYear()
