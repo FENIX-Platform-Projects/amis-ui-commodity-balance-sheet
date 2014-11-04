@@ -53,7 +53,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             eventClick = grid.attachEvent("onItemClick", function (id, e, node) {
 
                 this.blockEvent();
-                debugger;
                 //    console.log('GC: after itemclick.blockEvent')
                 var coordinates = grid.getScrollState()
                 xCoordinate = coordinates.x;

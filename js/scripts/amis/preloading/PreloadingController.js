@@ -6,10 +6,10 @@ define(["jquery","preloading/filterDatafields/CountrySelector",
         "preloading/filterDatafields/CommoditySelector",
         "preloading/filterDatafields/YearSelector",
         "loading/LoadingController"],
-    function($, CountrySelector, DataBaseSelector, CommSelector, YearSelector, LoadingObserver) {
+    function($, CountrySelector, DataBaseSelector, CommSelector, YearSelector, LoadingController) {
 
         // vars that represent the models
-        var countrySelector,dbSelector,commSelector, yearSelector, loadingObserver;
+        var countrySelector,dbSelector,commSelector, yearSelector, loadingController;
 
         // vars returned from the models
         var regionCode, databaseText,databaseValue, productCode ,yearPost, yearPostNat, yearChosen;
@@ -55,6 +55,8 @@ define(["jquery","preloading/filterDatafields/CountrySelector",
 
 
         PreloadingController.prototype.onChangingCountry = function(event){
+            this.showAlertIfExists()
+
             regionCode =   countrySelector.change(event);
             dbSelector.changeRadio(regionCode);
             this.updateRegionCode(regionCode);
@@ -65,6 +67,8 @@ define(["jquery","preloading/filterDatafields/CountrySelector",
 
 
         PreloadingController.prototype.onChangingCommodity = function(event) {
+            this.showAlertIfExists()
+
             this.updateproductCode(commSelector.change(event));
             this.updateDBSel(databaseText);
             //this.printUpdate();
@@ -83,6 +87,7 @@ define(["jquery","preloading/filterDatafields/CountrySelector",
 
 
         PreloadingController.prototype.onSelectingYear = function(event) {
+            this.showAlertIfExists()
             yearChosen = yearSelector.change(event);
         };
 
@@ -98,6 +103,7 @@ define(["jquery","preloading/filterDatafields/CountrySelector",
 
 
         PreloadingController.prototype.onSelectCBS = function(event) {
+          //  this.showAlertIfExists()
             databaseText = dbSelector.selectCBS(event);
             this.updateDBSel(databaseText);
             //this.printUpdate();
@@ -154,17 +160,39 @@ define(["jquery","preloading/filterDatafields/CountrySelector",
         };
 
         PreloadingController.prototype.passDataToLoading = function(){
-            loadingObserver = new LoadingObserver;
+            loadingController = new LoadingController;
 
             var preloadingData = {
                 post:  yearPost,
                 years: yearChosen
             }
-            loadingObserver.init(preloadingData);
+            loadingController.init(preloadingData);
         }
 
 
-        PreloadingController.prototype.getModalViewToGrid = function(){
+
+        PreloadingController.prototype.showAlertIfExists = function(){
+
+           if(document.querySelectorAll('[view_id]').length >0){
+               if(loadingController.checkIfNewValues() && document.getElementById('alertNewValues').childNodes.length ==0 &&
+                   document.getElementById('alertChangeGrid').childNodes.length ==0) {
+
+                       var alert2 = '<div class="alert alert-warning alert-dismissible" role="alert">' +
+                           '<button type="button" class="close" data-dismiss="alert">' +
+                           '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
+                           '<strong>Attention!</strong> You have edited some values : to save new values,  <strong>click on save data</strong></div>';
+                       $('#alertNewValues').append(alert2);
+                   }
+               else{
+               if(ocument.getElementById('alertNewValues').childNodes.length ==0 && document.getElementById('alertChangeGrid').childNodes.length ==0) {
+                   var alert1 = '<div class="alert alert-info alert-dismissible" role="alert">' +
+                       '<button type="button" class="close" data-dismiss="alert">' +
+                       '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
+                       '<strong>Attention!</strong> To apply the changes of your selection, <strong>click on load data</strong></div>';
+                   $('#alertChangeGrid').append(alert1);
+               }
+               }
+           }
         }
 
 

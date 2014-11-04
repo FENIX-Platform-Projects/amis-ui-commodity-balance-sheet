@@ -7,6 +7,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     var urlActualForecast , urlPopulation ,  urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
         formatter, realPreviousDate, Services;
 
+
     function DataLoader() {
         formatter = new Formatter;
         Services = new ServicesURL;
@@ -17,8 +18,8 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         urlMostRecentDate = Services.getMostRecentDateUrl();
         urlPreviousYear = Services.getPreviousYearUrl();
 
-
     }
+
 
     DataLoader.prototype.getActualYearForecast = function (filterActual, filterPopulationActual) {
 
@@ -66,6 +67,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
         return actualForecast;
     }
+
 
     DataLoader.prototype.getPreviousYearForecast = function (mostRecentDateFilter, filterPreviousYear, filterPrevPopulation) {
         var dates;
@@ -145,9 +147,11 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         return prevYearForecast;
     }
 
+
     DataLoader.prototype.getRealPreviousYear = function(){
         return realPreviousDate;
     }
+
 
     return DataLoader;
 

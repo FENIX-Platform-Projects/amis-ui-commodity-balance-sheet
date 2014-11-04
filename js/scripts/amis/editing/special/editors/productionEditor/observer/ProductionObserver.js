@@ -268,6 +268,14 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         });
     }
 
+    ProductionObserver.prototype.listenToStartCellTotGriEditing = function(){
+        $("#gridTotalValues").on('cellbeginedit', function (event){
+            event.preventDefault()
+            event.stopImmediatePropagation();
+            var columnValue = event.args.datafield;
+        })
+    }
+
     ProductionObserver.prototype.listenToEditCellTotGrid = function () {
 
         $("#gridTotalValues").on('cellendedit', function (event) {

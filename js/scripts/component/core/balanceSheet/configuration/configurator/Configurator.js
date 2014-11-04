@@ -328,6 +328,7 @@ define(['jquery'], function ($) {
 
         // 1: comma
         // 2: period
+        // 3: space
         switch (number){
             case 1:
                 decimalNumberValue = "0,0"

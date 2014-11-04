@@ -90,5 +90,16 @@ define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databas
             return dataFiltered;
         }
 
+        LoadingController.prototype.checkIfNewValues = function(){
+            if(balanceSheet) {
+                console.log('blaanceSheet exists')
+                var data = balanceSheet.getDataToSave()
+                console.log(data)
+                return (data.updatedData.length > 0 || data.newData.length > 0)
+            }else{
+                return false;
+            }
+        }
+
         return LoadingController;
     });
