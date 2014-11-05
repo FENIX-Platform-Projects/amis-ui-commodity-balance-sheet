@@ -1,7 +1,8 @@
 /**
  * Created by fabrizio on 9/13/14.
  */
-define(["jquery", "formatter/DatatypesFormatter", "webix"], function ($, Formatter) {
+define(["jquery", "formatter/DatatypesFormatter","text!otherUsesEditor/view/_otherUsesForm", "webix"],
+    function ($, Formatter, HTMLOtherUSes) {
 
     Element.prototype.remove = function () {
         this.parentElement.removeChild(this);
@@ -15,9 +16,11 @@ define(["jquery", "formatter/DatatypesFormatter", "webix"], function ($, Formatt
         }
     }
 
-    var observer, grid;
+    var observer, grid, modal;
 
     function OtherCreator() {
+        modal = HTMLOtherUSes
+
     }
 
     OtherCreator.prototype.init = function (totalValuesModel, Observer) {
@@ -36,28 +39,6 @@ define(["jquery", "formatter/DatatypesFormatter", "webix"], function ($, Formatt
         if (f !== null) {
             f.remove()
         }
-
-        var modal = '<div class="modal fade" id="specialForm"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
-            '<div class="modal-dialog">' +
-            '<div class="modal-content">' +
-            '<div class="modal-header">' +
-            '<button type="button" class="close" data-dismiss="modal" id="closeModal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
-            '<h4 class="modal-title" id="myModalLabel">Other Uses Form</h4>' +
-            '</div>' +
-            '<div class="modal-body" id ="toappendData">' +
-            '<div id="productionTabs">' +
-            '<br>' +
-            '<div class="row"><div class="col-lg-10 col-lg-offset-1">' +
-            '<div id="gridTotalValues"></div></div></div>' +
-            '<div class="modal-footer">' +
-            '<button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>' +
-            '<button type="button" class="btn btn-primary" data-dismiss="modal" id="saveTotalValues">Save changes</button>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>';
-
 
         $("#pivotGrid").append(modal);
 

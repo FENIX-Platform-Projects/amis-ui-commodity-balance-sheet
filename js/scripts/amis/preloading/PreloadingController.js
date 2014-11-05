@@ -184,7 +184,7 @@ define(["jquery","preloading/filterDatafields/CountrySelector",
                        $('#alertNewValues').append(alert2);
                    }
                else{
-               if(ocument.getElementById('alertNewValues').childNodes.length ==0 && document.getElementById('alertChangeGrid').childNodes.length ==0) {
+               if(document.getElementById('alertNewValues').childNodes.length ==0 && document.getElementById('alertChangeGrid').childNodes.length ==0) {
                    var alert1 = '<div class="alert alert-info alert-dismissible" role="alert">' +
                        '<button type="button" class="close" data-dismiss="alert">' +
                        '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +

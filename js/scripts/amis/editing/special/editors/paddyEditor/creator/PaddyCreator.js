@@ -1,9 +1,10 @@
 /**
  * Created by fabrizio on 9/13/14.
  */
-define(["jquery","formatter/DatatypesFormatter", "jqwidgets"], function($, Formatter){
+define(["jquery","formatter/DatatypesFormatter","flagTranslator/controller/FlagController","text!paddyEditor/view/_paddyForm", "select2" ,"jqwidgets"], function($, Formatter, FlagController,
+    HTMLPaddy){
 
-    var observer, formulaToRenderTotVal, formulaToRenderSingleCrops ;
+    var observer, formulaToRenderTotVal, formulaToRenderSingleCrops, flagController, modal;
 
     var cellclassnameTot = function (row, column, value, data) {
         var result;
@@ -63,11 +64,45 @@ define(["jquery","formatter/DatatypesFormatter", "jqwidgets"], function($, Forma
         return result;
     };
 
-    function PaddyCreator(){
+    var createGridEditor = function(row, cellValue, editor, cellText, width, height){
+        var stringValue = cellValue;
+        var oldInput = document.getElementById(editor[0].id)
+        oldInput.parentNode.className =  oldInput.parentNode.className + " flagClass"
+        var newInput = document.createElement('div')
+        newInput.id = oldInput.id;
+        newInput.className = oldInput.className;
+        oldInput.parentNode.replaceChild(newInput,oldInput)
+        var stringToAppend ='<select multiple tabindex="-1" id="multiFlag" style="width:100%" class="input-group-lg">';
+        stringToAppend += flagController.getOptions(stringValue)
+        debugger;
+        stringToAppend +='</select>'
+        $('#'+editor[0].id).append(stringToAppend)
+
+        // $('#multiflag').select2({placeholder: "Click to select the flags"})
+
 
     }
 
+    var initGridEditor = function (row, cellValue, editor, cellText, width, height) {
+        debugger;
+        $('#multiFlag').select2({placeholder: "Click to select the flags"}) ;
+
+
+    }
+
+    var gridEditorValue = function (row, cellValue, editor) {
+        var codes = $('#multiFlag').select2("val");
+        return  flagController.getStringFromCodes(codes);
+    }
+
+    function PaddyCreator(){
+
+        flagController = new FlagController;
+        modal = HTMLPaddy;
+    }
+
     PaddyCreator.prototype.init = function(totalValuesModel, singleCropsModel, Observer){
+
         formulaToRenderTotVal = 'init';
         formulaToRenderSingleCrops = 'init';
 
@@ -114,118 +149,12 @@ define(["jquery","formatter/DatatypesFormatter", "jqwidgets"], function($, Forma
 
         if (f !== null) {
             // destroy both grids, all checkboxes, tabs
-
             f.remove()
         }
 
-        var modal = '<div class="modal fade" id="specialForm"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
-            '<div class="modal-dialog">' +
-            '<div class="modal-content">' +
-            '<div class="modal-header">' +
-            '<button type="button" class="close" data-dismiss="modal" id="closeModal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
-            '<h4 class="modal-title" id="myModalLabel">Production Rice Form</h4>' +
-            '</div>' +
-            '<div class="modal-body" id ="toappendData">' +
-            '<div id="productionTabs">' +
-            '<ul>' +
-            '<li>Total Values </li>' +
-            '<li>Singe Crop Values </li>' +
-            '</ul>' +
-
-            '<div id="totalValues"><br>' +
-
-            '<div class="col-lg-4 col-lg-offset-1">' +
-            '<small class = "labelRice">Select the <strong>ITEM</strong> to enter</small><br><br>'+
-            '<div class ="totalValuesBoxes" id="firstCheckBoxTotVal">Rice Paddy</div>' +
-            '</div>' +
-            '<br><br>' +
-            '<div class="col-lg-6">' +
-            '<div class ="totalValuesBoxes" id="secondCheckBoxTotVal">Rice Milled</div>' +
-            '</div>' +
-            '<br><br>' +
-            '<br>' +
-            '<div>'+
-            '<div class="col-lg-4 col-lg-offset-1">' +
-            '<small class = "labelRice">Select the <strong>ELEMENT</strong> to enter</small><br><br>'+
-            '<div class ="totalValuesBoxes" id="thirdCheckBoxTotVal">Production</div>' +
-            '<small  class="labelCheckBoxes">(Thousand tonnes)</small>'+
-            '</div>' +
-
-            '<div class="col-lg-4"><br><br>' +
-            '<div class ="totalValuesBoxes" id="fourthCheckBoxTotVal">Area Harvested</div>' +
-            '<small  class="labelCheckBoxes">(Thousand Ha)</small>'+
-            '</div>' +
-            '<div class="col-lg-3"><br><br>' +
-            '<div class ="totalValuesBoxes" id="fifthCheckBoxTotVal">Yield</div>' +
-            '<small  class="labelCheckBoxes">(Tonnes/Ha)</small>'+
-            '</div>' +
-            '<br><br><br><br>' +
-            '<div class="row"><br><br>' +
-            '<div class="col-lg-3 col-lg-offset-4">' +
-            '<button type="button" class="btn btn-primary" id="applyRulesFormulaTot">Confirm Selection</button>' +
-            '</div>' +
-            '</div><div class="row"><br><div class = "col-lg-10 col-lg-offset-1" id="alertTotal"></div></div><hr>' +
-            '</div>' +
-            '<br>' +
-            '<div class="row"><div class="col-lg-10 col-lg-offset-1">' +
-            '<div id="gridTotalValues"></div></div></div>' +
-            '<div class="modal-footer">' +
-            '<button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal" >Close</button>' +
-            '<button type="button" class="btn btn-primary" data-dismiss="modal" id="saveTotalValues">Save changes</button>' +
-            '</div>' +
-            '</div>' +
-
-            // Single Crops ------------------------------------
-            '<div id="singleCrops"><br>' +
-
-            '<div class="col-lg-4 col-lg-offset-1">' +
-            '<small class = "labelRice">Select the <strong>ITEM</strong> to enter</small><br><br>'+
-            '<div class ="singleCropsBoxes" id="firstCheckBoxSingleCrops">Rice Paddy</div>' +
-            '</div>' +
-            '<br><br>' +
-            '<div class="col-lg-6">' +
-            '<div class ="singleCropsBoxes" id="secondCheckBoxSingleCrops">Rice Milled</div>' +
-            '</div>' +
-            '<br><br>' +
-            '<br>' +
-            '<div>'+
-            '<div class="col-lg-4 col-lg-offset-1">' +
-            '<small class = "labelRice">Select the <strong>ELEMENT</strong> to enter</small><br><br>'+
-            '<div class ="singleCropsBoxes" id="thirdCheckBoxSingleCrops">Production</div>' +
-            '<small  class="labelCheckBoxes">(Thousand tonnes)</small>'+
-            '</div>' +
-
-            '<div class="col-lg-4"><br><br>' +
-            '<div class ="singleCropsBoxes" id="fourthCheckBoxSingleCrops">Area Harvested</div>' +
-            '<small  class="labelCheckBoxes">(Thousand Ha)</small>'+
-            '</div>' +
-
-            '<div class="col-lg-3"><br><br>' +
-            '<div class ="singleCropsBoxes" id="fifthCheckBoxSingleCrops">Yield</div>' +
-            '<small  class="labelCheckBoxes">(Tonnes/Ha)</small>'+
-            '</div>' +
-            '<br><br><br><br>' +
-            '<div class="row"><br><br>' +
-            '<div class="col-lg-3 col-lg-offset-4">' +
-            '<button type="button" class="btn btn-primary" id="applyRulesFormulaSingle">Confirm Selection</button>' +
-            '</div>' +
-            '</div><div class="row"><br><div class = "col-lg-10 col-lg-offset-1" id="alertSingle"></div></div><hr>' +
-            '</div>' +
-            '<br>' +
-            '<div class="row"><div class="col-lg-10 col-lg-offset-1">' +
-            '<div id="gridSingleCrops"></div></div></div>' +
-            '<div class="modal-footer">' +
-            '<button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>' +
-            '<button type="button" class="btn btn-primary" data-dismiss="modal" id="saveTotalValues">Save changes</button>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>';
-
 
         $("#pivotGrid").append(modal);
+
         $('#firstCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true});
         $('#secondCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
         $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
@@ -249,7 +178,8 @@ define(["jquery","formatter/DatatypesFormatter", "jqwidgets"], function($, Forma
             columns: [
                 { text: 'Element', datafield: 6,   cellclassname:  cellclassnameTot  },
                 { text: 'Value',   datafield: 3 ,  cellclassname:  cellclassnameTot },
-                { text: 'Flag',    datafield: 4 ,  cellclassname:  cellclassnameTot },
+                { text: 'Flags',    datafield: 4 ,  cellclassname:  cellclassnameTot,
+                    createeditor: createGridEditor, initeditor: initGridEditor, geteditorvalue: gridEditorValue, heigth: 250 },
                 { text: 'Notes',   datafield: 5 ,  cellclassname:  cellclassnameTot }
             ]
         });
@@ -313,7 +243,8 @@ define(["jquery","formatter/DatatypesFormatter", "jqwidgets"], function($, Forma
             columns: [
                 { text: 'Element', datafield: 6,   cellclassname:  cellclassnameTot  },
                 { text: 'Value',   datafield: 3 ,  cellclassname:  cellclassnameTot  },
-                { text: 'Flag',    datafield: 4 ,  cellclassname:  cellclassnameTot  },
+                { text: 'Flags',    datafield: 4 ,  cellclassname:  cellclassnameTot ,
+                    createeditor: createGridEditor, initeditor: initGridEditor, geteditorvalue: gridEditorValue, heigth: 250 },
                 { text: 'Notes',   datafield: 5 ,  cellclassname:  cellclassnameTot  }
             ]
 

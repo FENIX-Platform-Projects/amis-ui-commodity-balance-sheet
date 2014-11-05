@@ -3,8 +3,8 @@
  */
 define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/ProductionObserver",
         "productionEditor/model/ProductionModel", "specialFormulaConf/formulaHandler/FormulaHandler",
-        "productionEditor/controller/ProductionController", "flagTranslator/controller/FlagController", "select2"],
-    function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller, FlagController) {
+        "productionEditor/controller/ProductionController", "text!productionEditor/view/_productionForm","flagTranslator/controller/FlagController", "select2"],
+    function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller,HTLMProduction, FlagController) {
 
 
         var cellclassname = function (row, column, value, data) {
@@ -46,7 +46,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
         var createGridEditor = function(row, cellValue, editor, cellText, width, height){
             var stringValue = cellValue;
             var oldInput = document.getElementById(editor[0].id)
-            debugger;
             oldInput.parentNode.className =  oldInput.parentNode.className + " flagClass"
             var newInput = document.createElement('div')
             newInput.id = oldInput.id;
@@ -54,8 +53,10 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             oldInput.parentNode.replaceChild(newInput,oldInput)
             var stringToAppend ='<select multiple tabindex="-1" id="multiFlag" style="width:100%" class="input-group-lg">';
             stringToAppend += flagController.getOptions(stringValue)
+            debugger;
             stringToAppend +='</select>'
             $('#'+editor[0].id).append(stringToAppend)
+
 
            // $('#multiflag').select2({placeholder: "Click to select the flags"})
 
@@ -64,9 +65,9 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
         var initGridEditor = function (row, cellValue, editor, cellText, width, height) {
             debugger;
-            // set the editor's current value. The callback is called each time the editor is displayed.
-            $('#multiFlag').select2({placeholder: "Click to select the flags"})
-            $('#multiFlag').select2('val', cellValue)
+            $('#multiFlag').select2({placeholder: "Click to select the flags"}) ;
+
+
         }
 
         var gridEditorValue = function (row, cellValue, editor) {
@@ -75,9 +76,9 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
         }
 
         var observer, modelProduction, supportUtility, formulaHandler, originalTotCropsModel, productionController, controllerEditors,
-            clickedCell, flagController;
+            clickedCell, flagController, modal;
 
-        var formulaToRenderTotVal, formulaToRenderSingleCrops
+        var formulaToRenderTotVal, formulaToRenderSingleCrops, _productionForm
         // ---------------------- SUPPORT FUNCTIONS -------------------------------------------
 
         Element.prototype.remove = function () {
@@ -99,6 +100,9 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             formulaHandler = new FormulaHandler;
             productionController = new Controller;
             flagController = new FlagController;
+            _productionForm = HTLMProduction
+             modal = _productionForm;
+
         }
 
         ProductionEditor.prototype.init = function (clickedItem, itemsInvolved, codesInvolved, configurator, Utility, ControllerEditors) {
@@ -166,86 +170,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 f.remove()
             }
 
-            var modal = '<div class="modal fade" id="specialForm"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
-                '<div class="modal-dialog">' +
-                '<div class="modal-content">' +
-                '<div class="modal-header">' +
-                '<button type="button" class="close" data-dismiss="modal" id="closeModal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
-                '<h4 class="modal-title" id="myModalLabel">Production Form</h4>' +
-                '</div>' +
-                '<div class="modal-body" id ="toappendData">' +
-                '<div id="productionTabs">' +
-                '<ul>' +
-                '<li>Total Values </li>' +
-                '<li>Singe Crop Values </li>' +
-                '</ul>' +
-
-                '<div id="totalValues"><br>' +
-                '<div class="row"><br>' +
-                '<div class="col-lg-3 col-lg-offset-1">' +
-                '<div class ="totalValuesBoxes" id="firstCheckBoxTotVal">Production</div>' +
-                '<small  class="labelCheckBoxes">(Thousand tonnes)</small>' +
-                '</div>' +
-
-                '<div class="col-lg-3">' +
-                '<div class ="totalValuesBoxes" id="secondCheckBoxTotVal">Area Harvested</div>' +
-                '<small  class="labelCheckBoxes">(Thousand Ha)</small>' +
-                '</div>' +
-                '<div class="col-lg-3">' +
-                '<div class ="totalValuesBoxes" id="thirdCheckBoxTotVal">Yield</div>' +
-                '<small  class="labelCheckBoxes">(Tonnes/Ha)</small>' +
-                '</div><br><br><br><br>' +
-                '<div class="row">' +
-                '<div class="col-lg-3 col-lg-offset-4">' +
-                '<button type="button" class="btn btn-primary" id="applyRulesFormulaTot">Recalculate Data</button>' +
-                '</div>' +
-                '</div><div class="row"><br><div class = "col-lg-10 col-lg-offset-1" id="alertTotal"></div></div><hr>' +
-                '</div>' +
-                '<br>' +
-                '<div class="row"><div class="col-lg-10 col-lg-offset-1">' +
-                '<div id="gridTotalValues"></div></div></div>' +
-                '<div class="modal-footer">' +
-                '<button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal" >Close</button>' +
-                '<button type="button" class="btn btn-primary" data-dismiss="modal" id="saveTotalValues">Save changes</button>' +
-                '</div>' +
-                '</div>' +
-
-                // Single Crops ------------------------------------
-                '<div id="singleCropValues"><br>' +
-                '<div class="row"><br>' +
-                '<div class="col-lg-3 col-lg-offset-1">' +
-                '<div class ="singleCropsBoxes" id="firstCheckBoxSingleCrops">' + map[5] + '</div>' +
-                '<small  class="labelCheckBoxes">(Thousand tonnes)</small>' +
-                '</div>' +
-
-                '<div class="col-lg-3">' +
-                '<div class ="singleCropsBoxes" id="secondCheckBoxSingleCrops">' + map[2] + '</div>' +
-                '<small class="labelCheckBoxes">(Thousand Ha)</small>' +
-                '</div>' +
-                '<div class="col-lg-3">' +
-                '<div class ="singleCropsBoxes" id="thirdCheckBoxSingleCrops">' + map[4] + '</div>' +
-                '<small  class="labelCheckBoxes">(Tonnes/Ha)</small>' +
-                '</div><br><br><br><br>' +
-                '<div class="row">' +
-                '<div class="col-lg-3 col-lg-offset-4">' +
-                '<button type="button" class="btn btn-primary" id="applyRulesFormulaSingle">Recalculate Data</button>' +
-                '</div>' +
-                '</div><div class="row"><br><div class = "col-lg-10 col-lg-offset-1" id="alertSingle"></div></div><hr>' +
-                '</div>' +
-                '<br>' +
-                '<div class="row"><div class="col-lg-10 col-lg-offset-1">' +
-                '<div id="gridSingleCrops"></div></div></div>' +
-
-                '<div class="modal-footer">' +
-                '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
-                '<button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>' +
-                '</div>' +
-                '</div>' +
-                '</div>' +
-                '</div>' +
-                '</div>' +
-                '</div>';
-
 
             $("#pivotGrid").append(modal);
             $('#firstCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
@@ -262,15 +186,14 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 source: dataAdapter,
                 width: "100%",
                 editable: true,
-                rowsheight: 30,
+                rowsheight: 40,
                 selectionmode: 'singlecell',
-                columnsresize: true,
                 pageable: true,
                 autoheight: true,
                 columns: [
                     { text: 'Element', datafield: 6, cellclassname: cellclassname, width: '25%' },
                     { text: 'Value', datafield: 3, cellclassname: cellclassname, width: '15%'},
-                    { text: 'Flag', datafield: 4, cellclassname: cellclassname, width: '25%',
+                    { text: 'Flags', datafield: 4, cellclassname: cellclassname, width: '25%',
                         createeditor: createGridEditor, initeditor: initGridEditor, geteditorvalue: gridEditorValue, heigth: 250
                     },
                     { text: 'Notes', datafield: 5, cellclassname: cellclassname, width: '35%'}
@@ -283,7 +206,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 width: "100%",
                 editable: true,
                 selectionmode: 'singlecell',
-                columnsresize: true,
                 pageable: true,
                 autoheight: true,
                 columns: [
@@ -336,7 +258,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 columns: [
                     { text: 'Element', datafield: 6, cellclassname: cellclassname, width: '25%' },
                     { text: 'Value', datafield: 3, cellclassname: cellclassname, width: '15%'},
-                    { text: 'Flag', datafield: 4, cellclassname: cellclassname, width: '25%',
+                    { text: 'Flags', datafield: 4, cellclassname: cellclassname, width: '25%',
                         createeditor: createGridEditor, initeditor: initGridEditor, geteditorvalue: gridEditorValue, heigth: 250
                     },
                     { text: 'Notes', datafield: 5, cellclassname: cellclassname, width: '35%'}

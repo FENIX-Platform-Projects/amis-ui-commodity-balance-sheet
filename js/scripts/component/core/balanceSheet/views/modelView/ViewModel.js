@@ -111,7 +111,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             else {
                 result[accessorIndexes[i]] = item[accessorIndexes[i]]
                 if( i ==2 && typeof item[accessorIndexes[i]] !='undefined' &&  item[accessorIndexes[i]] != null &&  item[accessorIndexes[i]] != 'null'){
-                   notesInserted = true;
+                    notesInserted = true;
                 }
             }
         }
@@ -152,7 +152,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                 }
             }
             else {
-                if (typeof item[accessorMap[firstCondition.substring(1)]] !== 'undefined' && item[accessorMap[firstCondition.substring(1)]] !==null) {
+                if (typeof item[accessorMap[firstCondition.substring(1)]] !== 'undefined' && item[accessorMap[firstCondition.substring(1)]] !==null && item[accessorMap[firstCondition.substring(1)]] !== 'null') {
                     var secondCondition = expression.match(valuesRegExpression)[0];
                     expression = expression.replace(valuesRegExpression, "")
                     secondCondition = secondCondition.slice(0, -1);
