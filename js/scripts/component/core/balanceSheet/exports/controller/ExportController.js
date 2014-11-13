@@ -1,17 +1,18 @@
 /**
  * Created by fabrizio on 8/5/14.
  */
-define(["jquery", "exporter/tableModel/TableExport"], function($, Export ){
+define(["jquery", "exporter/excelExporter/ExcelExporter"], function($, Export ){
 
     function ExportController(){}
 
     var Exporter;
 
-    ExportController.prototype.init = function(table, Configurator, grid){
+    ExportController.prototype.init = function(table, Configurator, grid, supportUtility){
+
 
     Exporter = new Export;
-    Exporter.init(table, Configurator, grid);
-
+    //Exporter.init(table, Configurator, grid);
+    Exporter.init(supportUtility);
     }
 
     return ExportController;

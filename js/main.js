@@ -6,6 +6,7 @@ requirejs.config({
         underscore        :  "underscore-min",
         preloading        :  "../amis/preloading",
         loading           :  "../amis/loading",
+        monthlyLoader     :  "../amis/loading/monthlySelection",
         utilities         :  "../component/core/balanceSheet/configuration/utilities",
         balanceSheet      :  "../component/core/balanceSheet",
         models            :  "../component/core/balanceSheet/models",

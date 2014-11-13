@@ -3,7 +3,7 @@
  */
 define(["jquery", "jqwidgets"], function($) {
 
-    var filterData;
+    var filterData, countryCode, productCode;
 
     function SupportUtility() {
     }
@@ -15,8 +15,8 @@ define(["jquery", "jqwidgets"], function($) {
     SupportUtility.prototype.getFilterData = function () {
         var season = filterData.years.currentYearLabel;
         var datasourceFilt = filterData.post.databaseText;
-        var productCode = filterData.post.productCode;
-        var countryCode = filterData.post.regionCode;
+         productCode = filterData.post.productCode;
+         countryCode = filterData.post.regionCode;
         var product = $("#selectionCommodity").jqxComboBox('getItemByValue', productCode).label;
         var country = $("#selectionCountryBox").jqxComboBox('getItemByValue', countryCode).label;
 
@@ -26,6 +26,10 @@ define(["jquery", "jqwidgets"], function($) {
 
     SupportUtility.prototype.getPreviousSeasonLabel = function(){
         return filterData.years.previousYearLabel;
+    }
+
+    SupportUtility.prototype.getPreloadingData = function(){
+        return filterData;
     }
 
     return SupportUtility;

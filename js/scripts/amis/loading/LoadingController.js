@@ -1,25 +1,37 @@
 /**
  * Created by fabrizio on 5/20/14.
  */
-define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databaseSaver/controller/SavingController", "nprogress"],
-    function($, BalanceSheet, DataLoader, SavingController, Nprogress ) {
+define(["jquery", "balanceSheet/BalanceSheet", "monthlyLoader/controller/HandlerSelection", "databaseSaver/controller/SavingController", "nprogress"],
+    function($, BalanceSheet, HandlerMonthlySelection, SavingController, Nprogress ) {
 
         var urlDSD = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructure.json'
         var urlDSDRice = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureRice.json'
         var ulrDSDSoyBean = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureSoybeans.json'
-        var balanceSheet, dataFiltered, dataLoader, firstIstance, savingController, NProgress ;
+        var balanceSheet, dataFiltered, handlerMonthlySelection, firstIstance, savingController, NProgress ;
 
         function LoadingController() {
             NProgress = Nprogress
 
             balanceSheet = new BalanceSheet
-            dataLoader = new DataLoader;
+            handlerMonthlySelection = new HandlerMonthlySelection;
             firstIstance = false;
             savingController = new SavingController;
         }
 
     LoadingController.prototype.init = function(preloadingData) {
         NProgress.start()
+
+        var url;
+
+        // prepare all filters to make queries
+        var region = parseInt(preloadingData.post.regionCode);
+        var product = parseInt(preloadingData.post.productCode);
+        var isExport = true;
+        dataFiltered = preloadingData;
+
+        var totalForecast = handlerMonthlySelection.init(dataFiltered, region, product ,isExport)
+        /*
+        // FROM HERE
 
         var notPreviousYear = false;
         dataFiltered = preloadingData;
@@ -32,9 +44,7 @@ define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databas
             notPreviousYear = true;
         }
 
-        // prepare all filters to make queries
-        var region = parseInt(preloadingData.post.regionCode);
-        var product = parseInt(preloadingData.post.productCode)
+
 
         var filterActual = { "region": region, "product": product, "year": currentYearFilter}
         var filterPreviousYear = { "region": region, "product": product, "year": previousYearFilter}
@@ -58,8 +68,10 @@ define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databas
             var totalForecast = prevYearForecast.concat(actualForecast)
         }else{
             var totalForecast = actualForecast;
-        }
-        var url;
+        }*/
+
+        // TO HERE
+
 
         // choice of DSD
         switch (product){
@@ -81,7 +93,8 @@ define(["jquery", "balanceSheet/BalanceSheet", "dataLoader/DataLoader", "databas
             balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
         }
 
-        var realPreviousYear = dataLoader.getRealPreviousYear()
+        var realPreviousYear = handlerMonthlySelection.getRealPreviousYear()
+        var filterActual = handlerMonthlySelection.getActualFilter();
         savingController.init(balanceSheet, filterActual,realPreviousYear, dataFiltered )
     };
 

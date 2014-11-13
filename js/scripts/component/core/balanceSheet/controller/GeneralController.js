@@ -114,7 +114,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
                 // formula
                 formulaController.init(tableModelWithFormula, Configurator, filterData)
-                ExportControl.init(tableModelWithFormula, Configurator, grid)
+                ExportControl.init(tableModelWithFormula, Configurator, grid, supportUtility)
             })
 
 
