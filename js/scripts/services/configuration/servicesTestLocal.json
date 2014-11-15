@@ -37,6 +37,11 @@
         },
         {
             "savingData" : "http://168.202.28.178:8080/dataset/national"
+
+        },
+        {
+            "exportDataServletUrl": "http://localhost:8080/dataset/national/export"
         }
+
     ]
 }

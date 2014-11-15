@@ -97,5 +97,13 @@ define(['jquery'], function($){
 
     }
 
+
+    ServicesConfigurator.prototype.getExportingUrl = function(){
+        if(!configuration){
+            this.init()
+        }
+        return configuration.services[3].exportDataServletUrl;
+    }
+
     return ServicesConfigurator;
 })
