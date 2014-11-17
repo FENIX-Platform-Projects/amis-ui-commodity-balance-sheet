@@ -65,8 +65,11 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             populationActual = result;
         })
 
+        debugger;
+
         // Inside of population insert the date(s)
         firstForecastDateToInsert = actualForecast[0][2]
+        debugger;
         if (populationActual.length > 0) {
             populationActual[0].splice(2, 0, firstForecastDateToInsert);
             populationActual[0].push(null);

@@ -1,10 +1,12 @@
-define(['jquery', "monthlyLoader/controller/HandlerSelection", "text!exporter/form/_formExcel"], function($, HandlerSelection, FormEXCEL) {
+define(['jquery', "monthlyLoader/controller/HandlerSelection", "text!exporter/form/_formExcel", "urlConfigurator"],
+    function($, HandlerSelection, FormEXCEL, URLConfigurator) {
 
 
-    var handlerSelection, supportUtility, formExcel;
+    var handlerSelection, supportUtility, formExcel, urlConfigurator;
     var COMMODITY_CODES = [1, 4, 5, 6]
 
     function ExcelExporter() {
+        urlConfigurator = new URLConfigurator;
         handlerSelection = new HandlerSelection;
         formExcel = FormEXCEL;
         $("#exportExcelTrue").append(formExcel);
@@ -13,6 +15,8 @@ define(['jquery', "monthlyLoader/controller/HandlerSelection", "text!exporter/fo
 
     ExcelExporter.prototype.init = function (SupportUtility) {
         supportUtility = SupportUtility;
+        var url = urlConfigurator.getExportingUrl()
+        document.getElementById('formAction').setAttribute('action',url)
 
         var totalValues = [];
         var preloadingData = supportUtility.getPreloadingData();
@@ -59,8 +63,6 @@ define(['jquery', "monthlyLoader/controller/HandlerSelection", "text!exporter/fo
         for(var i = 0, length = forecast.length; i<length;i++){
             forecast[i].unshift(commodity);
         }
-
-
 
       return forecast;
     }

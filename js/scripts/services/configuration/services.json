@@ -3,40 +3,43 @@
         {
             "filters": [
                 {
-                    "dataSourceUrl": "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/datasource"
+                    "dataSourceUrl": "http://fenixapps2.fao.org/amis-services/dataset/datasource"
                 },
                 {
-                    "yearUrl": "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/year"
+                    "yearUrl": "http://fenixapps2.fao.org/amis-services/dataset/year"
                 },
                 {
-                    "countryUrl": "http://hqlprfenixapp2.hq.un.fao.org:7777/msd/cl/system/AMIS_GAUL/1.0"
+                    "countryUrl": "http://fenixapps2.fao.org/msd/cl/system/AMIS_GAUL/1.0"
                 },
                 {
-                    "commodityUrl" : "http://hqlprfenixapp2.hq.un.fao.org:7777/msd/cl/system/AMIS_PRODUCTS/1.0"
+                    "commodityUrl" : "http://fenixapps2.fao.org/msd/cl/system/AMIS_PRODUCTS/1.0"
                 }
             ]
         },
         {
             "loading": [
                 {
-                    "loadingElements" : "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/national"
+                    "loadingElements" : "http://fenixapps2.fao.org/amis-services/dataset/national"
                 },
                 {
-                    "loadingPopulation" :"http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/population"
+                    "loadingPopulation" :"http://fenixapps2.fao.org/amis-services/dataset/population"
                 },
                 {
-                    "mostRecentDate" : "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/recentDate"
+                    "mostRecentDate" : "http://fenixapps2.fao.org/amis-services/dataset/recentDate"
                 },
                 {
-                    "previousYear" : "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/previousYear"
+                    "previousYear" : "http://fenixapps2.fao.org/amis-services/dataset/previousYear"
                 },
                 {
-                    "numberOfCrops" : "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/crops"
+                    "numberOfCrops" : "http://fenixapps2.fao.org/amis-services/dataset/crops"
                 }
-           ]
+            ]
         },
         {
-            "savingData" : "http://hqlprfenixapp2.hq.un.fao.org:12900/amis-services/dataset/national"
+            "savingData" : "http://fenixapps2.fao.org/amis-services/dataset/national"
+        },
+        {
+            "exportDataServletUrl": "http://localhost:8080/dataset/national/export"
         }
-   ]
+    ]
 }
