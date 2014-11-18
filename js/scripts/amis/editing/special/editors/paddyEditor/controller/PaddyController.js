@@ -269,6 +269,10 @@ define(['jquery','paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObse
         this.updateTotGridOnFormulaChanges(formulaTotToApply, "normal")
     }
 
+    PaddyController.prototype.onSwitchingSimple = function(formulaToApplySingle){
+
+    }
+
     PaddyController.prototype.destroyAll = function(){
         editorPaddy.destroyAll();
     }

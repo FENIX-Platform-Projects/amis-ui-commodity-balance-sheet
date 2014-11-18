@@ -166,7 +166,6 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             case 'Population (1000s)':
             case 'Total Supply (Thousand tonnes)':
             case 'Domestic Supply (Thousand tonnes)':
-            case 'Opening Stocks (Thousand tonnes)':
             case 'Total Utilization (Thousand tonnes)':
             case 'Domestic Utilization (Thousand tonnes)':
             case 'Per capita food use (Kg/Yr)':

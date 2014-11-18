@@ -1,7 +1,7 @@
 /**
  * Created by fabrizio on 9/13/14.
  */
-define(["jquery","formatter/DatatypesFormatter","flagTranslator/controller/FlagController","text!paddyEditor/view/_paddyForm", "select2" ,"jqwidgets"], function($, Formatter, FlagController,
+define(["jquery","formatter/DatatypesFormatter","flagTranslator/controller/FlagController","text!paddyEditor/view/_paddyForm.html", "select2" ,"jqwidgets"], function($, Formatter, FlagController,
     HTMLPaddy){
 
     var observer, formulaToRenderTotVal, formulaToRenderSingleCrops, flagController, modal;

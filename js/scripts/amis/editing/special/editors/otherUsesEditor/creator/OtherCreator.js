@@ -1,7 +1,7 @@
 /**
  * Created by fabrizio on 9/13/14.
  */
-define(["jquery", "formatter/DatatypesFormatter","text!otherUsesEditor/view/_otherUsesForm", "webix"],
+define(["jquery", "formatter/DatatypesFormatter","text!otherUsesEditor/view/_otherUsesForm.html", "webix"],
     function ($, Formatter, HTMLOtherUSes) {
 
     Element.prototype.remove = function () {

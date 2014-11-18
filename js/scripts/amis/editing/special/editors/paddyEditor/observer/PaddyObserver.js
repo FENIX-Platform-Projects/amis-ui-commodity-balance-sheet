@@ -745,7 +745,8 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             var clickedItem = event.args.item;
             if (clickedItem == 0 && singleCropsValuesModified) { // from single crops to total values
                 controllerPaddy.onSwitchingCropsValues(formulaToApplySingle)
-
+            }else{
+                controllerPaddy.onSwitchingSimple(formulaToApplySingle)
             }
         });
     }

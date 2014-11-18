@@ -285,7 +285,7 @@
     ],
     "onUpdate":{
         "bindedKeys":[
-            7, 14, 13, 10
+            7, 14, 13, 10, 18
         ],
         "formulas":[
             {
@@ -336,12 +336,20 @@
                 "columnNumber":"",
                 "conditions":"",
                 "formulasBinded":[4,5,6]
+            },
+            {
+                "updateFormulaID" : 7,
+                "key":[18],
+                "otherColumns":false,
+                "columnNumber":"",
+                "conditions":"",
+                "formulasBinded":[1,2,6]
             }
         ]
     },
     "editableValues":{
         "directEditing" : {
-            "values" : [8,7,12,10,14,13,16,17,36]
+            "values" : [8,7,12,10,14,13,16,17,18,36]
         },
         "specialEditing": {
            "values" : [ 2,37, 4, 5, 15, 998]}

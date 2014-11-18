@@ -39,7 +39,7 @@
             "savingData" : "http://fenixapps2.fao.org/amis-services/dataset/national"
         },
         {
-            "exportDataServletUrl": "http://localhost:8080/dataset/national/export"
+            "exportDataServletUrl": "http://fenixapps2.fao.org/amis-services/dataset/national/export"
         }
     ]
 }

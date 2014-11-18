@@ -3,7 +3,7 @@
  */
 define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/ProductionObserver",
         "productionEditor/model/ProductionModel", "specialFormulaConf/formulaHandler/FormulaHandler",
-        "productionEditor/controller/ProductionController", "text!productionEditor/view/_productionForm","flagTranslator/controller/FlagController", "select2"],
+        "productionEditor/controller/ProductionController", "text!productionEditor/view/_productionForm.html","flagTranslator/controller/FlagController", "select2"],
     function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller,HTLMProduction, FlagController) {
 
 
