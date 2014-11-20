@@ -1,4 +1,4 @@
-define(['jquery', "monthlyLoader/controller/HandlerSelection", "text!exporter/form/_formExcel.html", "urlConfigurator"],
+define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!exporter/form/_formExcel.html", "urlConfigurator"],
     function($, HandlerSelection, FormEXCEL, URLConfigurator) {
 
 

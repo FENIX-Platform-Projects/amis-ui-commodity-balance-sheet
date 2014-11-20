@@ -1,4 +1,4 @@
-define(['jquery',  "monthlyLoader/logic/DataLoader"], function($, DataLoader){
+define(['jquery',  "exportLoader/logic/DataExportLoader"], function($, DataLoader){
 
     var dataLoader, filterActual;
 
@@ -8,94 +8,95 @@ define(['jquery',  "monthlyLoader/logic/DataLoader"], function($, DataLoader){
     }
 
 
-    HandlerExportSelection.prototype.init = function( preloadingData, region, product ,isExport){
-        var items = $("#cbs-search-form-year").jqxComboBox('getItems');
+    HandlerExportSelection.prototype.createLastForecastCurrentSeason = function(items, region, product, seasonAndYear){
 
-        var selectedIndex =$("#cbs-search-form-year").jqxComboBox('getSelectedIndex');
+        var filterCurrentSeason = this.createFilterForSeasons(region,product,seasonAndYear)
+        console.log('filterCurrentSeason')
+        console.log(filterCurrentSeason)
+        var filterPopulationCurrentSeason = this.createFilterPopulation(region,seasonAndYear)
 
-
-        var seasonChecked=[items[selectedIndex].label]
-        var seasonSelected =[];
-        if(items.length > selectedIndex+2+1){
-            seasonSelected.push(items[selectedIndex+1],items[selectedIndex+2]);
-        }
-        else if(items.length == selectedIndex+2+1){
-            seasonSelected.push(items[selectedIndex+1], null)
-        }
-        else{
-            seasonSelected.push(null)
-            }
-
-
-        console.log('HAndler Selection.init)')
-        var notPreviousYear = false;
-
-        dataFiltered = preloadingData;
-
-        // creatio9n of the filter:
-
-        for(var i =0; i< seasonSelected.length; i++){
-            if(seasonSelected[i] != null){
-
-                console.log("qui!")
-                this.createFilterForNextSeasons(region,product,seasonSelected[i])
-            }
-        }
-        
-
-/*
-        console.log('HAndler Selection.init)')
-        var notPreviousYear = false;
-
-        dataFiltered = preloadingData;
-
-        var isDateFormatted = (isExport)? true: false;
-
-        var currentYearFilter = parseInt(preloadingData.years.currentYearLabel.substring(0, 4));
-
-        // if a previous year exist
-        if(preloadingData.years.previousYearLabel != -1) {
-            var previousYearFilter = parseInt(preloadingData.years.previousYearLabel.substring(0, 4));
-        }else{
-            notPreviousYear = true;
-        }
-
-        filterActual = { "region": region, "product": product, "year": currentYearFilter}
-        var filterPreviousYear = { "region": region, "product": product, "year": previousYearFilter}
-
-        var filterPrevPopulation = {
-            "region": region,
-            "element": 1,
-            "year": previousYearFilter}
-        var mostRecentDateFilter  = {"region": region, "product":product,"year":previousYearFilter }
-
-        var filterPopulationActual = {
-            "region" : region,
-            "element": 1,
-            "year": currentYearFilter
-        }
-        // take the actual forecast
-        var actualForecast = dataLoader.getActualYearForecast(filterActual,filterPopulationActual, isDateFormatted);
-
-        console.log('finished actualForeacst')
-        if(!notPreviousYear) { // if exist a previous year
-
-            var prevYearForecast = dataLoader.getPreviousYearForecast(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, isDateFormatted,preloadingData)
-
-            console.log('finished prevForeacst')
-            console.log(prevYearForecast)
-
-            var totalForecast = prevYearForecast.concat(actualForecast)
-        }else{
-            var totalForecast = actualForecast;
-        }*/
-
-        return totalForecast;
+        return dataLoader.getAndCreateActualYearForecastMostRecent(filterCurrentSeason,filterCurrentSeason,filterPopulationCurrentSeason, seasonAndYear.label)
 
     }
 
+    HandlerExportSelection.prototype.init = function( preloadingData, region, product ,isExport){
 
-    HandlerExportSelection.prototype.createFilterForNextSeasons  = function(region,product, selectedSeason){
+
+        console.log('init')
+       var resultForecast =[]
+        var items = $("#selectionYear").jqxComboBox('getItems');
+
+        var selectedIndex =$("#selectionYear").jqxComboBox('getSelectedIndex');
+
+        resultForecast =this.createLastForecastCurrentSeason(items, region,product, items[selectedIndex]);
+
+
+        console.log('afterCreatedMostRecentForecast')
+
+        console.log('Forecast actual season most recente is : ' +
+        '')
+        console.log(resultForecast);
+
+
+
+        // USe operator of minus(-) for the order of the seasons
+        var seasonChecked=[items[selectedIndex].label]
+        var successiveSeasons =[];
+        // exist two season after the one selected
+
+        if(selectedIndex -2 >= 0){
+            successiveSeasons.push(items[selectedIndex-1],items[selectedIndex-2]);
+        }
+        // exist only one  season after the one selected
+        else if(selectedIndex -2 >= 0){
+            successiveSeasons.push(items[selectedIndex-1])
+        }
+        // exist only the  season  selected
+        else{
+            successiveSeasons =null;
+            }
+
+        var successiveSeasonsForecast = []
+        console.log("successive Seasons ++++++++++++++")
+        console.log(successiveSeasons)
+        console.log("++++++++++++++++++++++++++++++++++++++++++++++++")
+
+
+        if(successiveSeasons != null) {
+            for (var i = 0; i < successiveSeasons.length; i++) {
+                debugger;
+                var filterSeason = this.createFilterForSeasons(region, product, successiveSeasons[i])
+                var filterPopulation = this.createFilterPopulation(region, successiveSeasons[i])
+                var seasonForecasts = dataLoader.getAndCreateTwoMostRecentForecast(filterSeason, filterSeason, filterPopulation, preloadingData, successiveSeasons[i].label)
+                console.log('seasonForeacsts:  ')
+                console.log(seasonForecasts)
+                resultForecast = resultForecast.concat(seasonForecasts[0]);
+
+                console.log('resultForecast:  ')
+                console.log(resultForecast)
+            }
+        }
+
+
+
+        console.log("*************************************************************")
+        console.log(resultForecast)
+        console.log("*************************************************************")
+
+        return resultForecast;
+
+    }
+
+    HandlerExportSelection.prototype.createFilterPopulation = function(region, season){
+        return  {
+            "region" : region,
+            "element": 1,
+            "year": season.value
+        }
+    }
+
+
+    HandlerExportSelection.prototype.createFilterForSeasons  = function(region,product, selectedSeason){
        return { "region": region, "product": product, "year": selectedSeason.value}
     }
 

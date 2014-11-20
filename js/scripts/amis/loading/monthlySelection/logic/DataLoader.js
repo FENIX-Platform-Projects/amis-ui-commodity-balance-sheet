@@ -65,7 +65,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             populationActual = result;
         })
 
-        debugger;
 
         // Inside of population insert the date(s)
         firstForecastDateToInsert = actualForecast[0][2]
@@ -156,7 +155,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
                 populationPrevYear[0].splice(2, 0, previousSeason);
                 populationPrevYear[0].push(null);
             }
-            debugger;
 
             // Insert population into actual forecast
             prevYearForecast.push(populationPrevYear[0])
