@@ -48,7 +48,7 @@ define(['jquery',  "exportLoader/logic/DataExportLoader"], function($, DataLoade
             successiveSeasons.push(items[selectedIndex-1],items[selectedIndex-2]);
         }
         // exist only one  season after the one selected
-        else if(selectedIndex -2 >= 0){
+        else if(selectedIndex -1 >= 0){
             successiveSeasons.push(items[selectedIndex-1])
         }
         // exist only the  season  selected
