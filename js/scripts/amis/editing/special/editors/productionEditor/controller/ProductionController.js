@@ -107,6 +107,16 @@ define(['jquery'], function($){
         editorProduction.saveDataTotGrid(dataCalculated,dataOriginal);
     }
 
+    ProductionController.prototype.onSwitchingSimpleTotal = function(formulaToApplyTot){
+        this.updateTotGridOnFormulaChanges(formulaToApplyTot, "normal")
+
+    }
+
+    ProductionController.prototype.onSwitchingSimpleSingle = function(formulaToApplySingle){
+        this.updateSingleCropsGridOnFormulaChanges(formulaToApplySingle, "normal")
+
+    }
+
     ProductionController.prototype.onSwitchingCropsValues = function(formulaSingleToApply){
 
         var originalSingleCropsModel = modelProduction.getOriginalSingleCropsModel()

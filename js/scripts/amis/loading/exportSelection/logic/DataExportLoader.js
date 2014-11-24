@@ -20,65 +20,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
     }
 
-/*
-    DataExportLoader.prototype.getActualYearForecast = function (filterActual, filterPopulationActual, isDateFormatted) {
-
-        var actualForecast;
-        // first call
-        $.ajax({
-            async: false,
-            url: urlActualForecast,
-            type: 'POST',
-            contentType: "application/json",
-            dataType: 'json',
-            data: JSON.stringify(filterActual)
-
-        }).done(function (result) {
-            actualForecast = result;
-        })
-
-        if(isDateFormatted) {
-            // Put dates in DSD format
-            for (var i = 0; i < actualForecast.length; i++) {
-                var data = actualForecast[i][2]
-
-                actualForecast[i][2] = formatter.fromVisualizationToDSDFormat(data, "date")
-            }
-        }else{
-            // Put dates in DSD format
-            for (var i = 0; i < actualForecast.length; i++) {
-                var data = actualForecast[i][2]
-            }
-        }
-
-        var populationActual;
-        // Second call with actual population
-        $.ajax({
-            async: false,
-            url: urlPopulation,
-            type: 'POST',
-            contentType: "application/json",
-            dataType: 'json',
-            data: JSON.stringify(filterPopulationActual)
-
-        }).done(function (result) {
-            populationActual = result;
-        })
-
-        debugger;
-
-        // Inside of population insert the date(s)
-        firstForecastDateToInsert = actualForecast[0][2]
-        debugger;
-        if (populationActual.length > 0) {
-            populationActual[0].splice(2, 0, firstForecastDateToInsert);
-            populationActual[0].push(null);
-
-            actualForecast.push(populationActual[0])
-        }
-
-        return actualForecast;
-    }*/
 
     DataExportLoader.prototype.getAndCreateTwoMostRecentForecast = function(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation,preloadingData, seasonLabel){
 

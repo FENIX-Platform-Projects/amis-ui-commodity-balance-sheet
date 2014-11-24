@@ -115,7 +115,8 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
 
         $('#options').append('<div class="btn-group">' +
             '<button class="btn btn-primary" id="newForecast">Create a new forecast for season ' + filterData.season + '</button>' +
-            '</div>' +
+             '<button class="btn btn-primary" id="annualSelection">Change To annual Selection</button>' +
+             '</div>' +
             '<div class="btn-group-vertical" id="optionsPivotGrid">' +
             '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">' +
             '<span class="caret"></span><span>Options</span></button>' +
@@ -135,7 +136,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             '</div><hr></li>' +
             '<li>' +
             '<div class="selectorView">' +
-            '<h5  class ="optionTitles">Elements in the cell</h5>' +
+            '<h5  class ="optionTitles">Cell value</h5>' +
             '<div id="everyElButtons"  class="optionText">'+
             ' Show All ( Flags & Notes )</div>'+
             '<div id="flagButton" class="optionText">'+

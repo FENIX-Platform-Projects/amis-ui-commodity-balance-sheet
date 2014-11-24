@@ -3,7 +3,7 @@
  */
 define(["jquery", "view/GridDataView", "editorController/FormController",
         "exporter/controller/ExportController", "adapterGrid", "formulasAmis/controller/FormulaController",
-        "editingSpecial/controller/ControllerEditors", "generalObserver/GeneralObserver" , "editHandler", "jquery.sidebar"],
+        "editingSpecial/controller/ControllerEditors", "generalObserver/GeneralObserver" , "editHandler","", "jquery.sidebar"],
     function ($, GridDataView, EditorController, ExportController, Adapter, FormulaController, SpecialEditorController, GeneralObserver, EditHandler) {
 
         var ViewGrid, ModelController, FormController, dsd, Configurator, adapterGrid, formulaController, supportUtility,

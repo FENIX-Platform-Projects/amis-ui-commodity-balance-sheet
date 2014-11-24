@@ -269,7 +269,13 @@ define(['jquery','paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObse
         this.updateTotGridOnFormulaChanges(formulaTotToApply, "normal")
     }
 
-    PaddyController.prototype.onSwitchingSimple = function(formulaToApplySingle){
+    PaddyController.prototype.onSwitchingSimpleTotal = function(formulaToApplyTot){
+        this.updateTotGridOnFormulaChanges(formulaToApplyTot, "normal")
+
+    }
+
+    PaddyController.prototype.onSwitchingSimpleSingle = function(formulaToApplySingle){
+        this.updateSingleCropsGridOnFormulaChanges(formulaToApplySingle, "normal")
 
     }
 

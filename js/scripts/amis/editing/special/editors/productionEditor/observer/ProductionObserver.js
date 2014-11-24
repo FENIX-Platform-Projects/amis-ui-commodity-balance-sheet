@@ -263,7 +263,10 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var clickedItem = event.args.item;
             if (clickedItem == 0 && singleCropsValuesModified) { // from single crops to total values
                 controllerProduction.onSwitchingCropsValues(formulaToApplySingle)
-
+            }else if(clickedItem == 0 && !singleCropsValuesModified){
+                controllerProduction.onSwitchingSimpleTotal(formulaToApplyTot)
+            }else if(clickedItem ==1){
+                controllerProduction.onSwitchingSimpleSingle(formulaToApplySingle)
             }
         });
     }
