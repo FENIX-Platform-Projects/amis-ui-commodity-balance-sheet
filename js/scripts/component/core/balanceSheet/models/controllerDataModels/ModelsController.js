@@ -23,8 +23,11 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         TableModel.init(tableData, configurator);
         modelForCreation = CreatorModels.init(configurator)
         instanceGridDataModel = GridModel.init(modelForCreation, tableData, indexes)
+
         TableModel.createFullTableData(modelForCreation)
+
         // if a full rows representation need to be visualized
+        debugger;
         var newTable =(configurator.getFullRowsRepresentation())?  TableModel.createColumnSparseTableData(modelForCreation) :
             TableModel.createTableModelFromGrid(instanceGridDataModel);
 

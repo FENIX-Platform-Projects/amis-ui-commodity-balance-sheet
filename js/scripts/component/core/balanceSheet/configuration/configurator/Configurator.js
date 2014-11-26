@@ -1,8 +1,10 @@
 /**
  * Created by fabrizio on 7/10/14.
  */
-define(['jquery'], function ($) {
+define(['jquery', 'amplify'], function ($) {
 
+
+     const INDEX_DATES = 2;
 
     var leftKeyColumns,              // DSD columns that represent the left key columns
         leftKeyIndexes,              // Index of the left key columns on the DSD
@@ -28,6 +30,17 @@ define(['jquery'], function ($) {
     Configurator.prototype.init = function (dsd, component) {
         dsdConf = dsd;
         compConfiguration = component;
+        var storage = amplify.store();
+        if(storage.isMonthlyModality){
+            dsdConf.dsd.columns[INDEX_DATES].dataTypes[0] = "date"
+            dsdConf.dsd.columns[INDEX_DATES].domain.period.from = '20000101'
+            dsdConf.dsd.columns[INDEX_DATES].domain.period.to   =  '20150601';
+        }else{
+            dsdConf.dsd.columns[INDEX_DATES].dataTypes[0] = "season"
+            dsdConf.dsd.columns[INDEX_DATES].domain.period.from = '2000/01'
+            dsdConf.dsd.columns[INDEX_DATES].domain.period.to   =  '2017/18';
+        }
+
         this.createKeyMatrixes();
     }
 

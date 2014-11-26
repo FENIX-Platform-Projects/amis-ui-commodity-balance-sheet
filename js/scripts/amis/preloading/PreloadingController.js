@@ -166,7 +166,7 @@ define(["jquery","preloading/filterDatafields/CountrySelector",
                 post:  yearPost,
                 years: yearChosen
             }
-            loadingController.init(preloadingData);
+            loadingController.init(preloadingData, true);
         }
 
 

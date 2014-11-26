@@ -1,7 +1,7 @@
 /**
  * Created by fabrizio on 7/7/14.
  */
-define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "webix"],
+define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "webix", "amplify"],
     function ($, ViewModel, AdapterGrid, Nprogress) {
 
     var model, table, Configurator, titlesUp, titlesLeft, accessorMap, fullModel, configurationKeys, indexValues, modelView,
@@ -35,6 +35,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         valueColumn = Configurator.getValueColumnConfiguration();
         indexValues = Configurator.getValueIndex();
         modelView = viewModel.init(table, Configurator, supportUtility)
+        console.log(modelView)
         var grid = this.renderGrid(modelView)
         return grid;
     }
@@ -89,6 +90,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         document.getElementById('box').style.visibility = "visible";
         var options = document.getElementById('options')
         options.style.visibility = "visible";
+
         var toappend = document.getElementById('toAppend');
         if (toappend != null) {
             toappend.remove()
@@ -104,6 +106,11 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             f.remove();
         }
 
+        var f = document.getElementById('changeModality');
+        if (typeof f != 'undefined' && f != null) {
+            f.remove();
+        }
+
         var fa = document.querySelectorAll('[view_id="grid"]');
         if (typeof fa != 'undefined' && fa != null) {
             fa.remove();
@@ -113,10 +120,15 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         titleGrid.innerHTML = "Forecast for season: " + filterData.season + " , " + filterData.country +
             " , " + filterData.product + " , " + filterData.dataSource
 
-        $('#options').append('<div class="btn-group">' +
+        var storeModality = amplify.store()
+        var buttonChangeModality = (storeModality.isMonthlyModality)?
             '<button class="btn btn-primary" id="newForecast">Create a new forecast for season ' + filterData.season + '</button>' +
-             '<button class="btn btn-primary" id="annualSelection">Change To annual Selection</button>' +
-             '</div>' +
+            '<button class="btn btn-primary" id="changeModality">Change annual Selection</button>':
+            '<button class="btn btn-primary" id="changeModality">Change monthly Selection</button>';
+
+        $('#options').append('<div class="btn-group">' +
+            buttonChangeModality+
+            '</div>' +
             '<div class="btn-group-vertical" id="optionsPivotGrid">' +
             '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">' +
             '<span class="caret"></span><span>Options</span></button>' +

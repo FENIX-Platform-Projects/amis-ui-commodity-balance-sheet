@@ -3,12 +3,13 @@
  */
 define(["jquery", "view/GridDataView", "editorController/FormController",
         "exporter/controller/ExportController", "adapterGrid", "formulasAmis/controller/FormulaController",
-        "editingSpecial/controller/ControllerEditors", "generalObserver/GeneralObserver" , "editHandler","", "jquery.sidebar"],
-    function ($, GridDataView, EditorController, ExportController, Adapter, FormulaController, SpecialEditorController, GeneralObserver, EditHandler) {
+        "editingSpecial/controller/ControllerEditors", "generalObserver/GeneralObserver" , "editHandler",
+        "annualLoader/observer/ObserverAnnualSelection", "jquery.sidebar"],
+    function ($, GridDataView, EditorController, ExportController, Adapter, FormulaController, SpecialEditorController, GeneralObserver, EditHandler, AnnualObserver) {
 
         var ViewGrid, ModelController, FormController, dsd, Configurator, adapterGrid, formulaController, supportUtility,
             specialControlEditor, editingOnCell, generalObserver, filterData, xCoordinate, yCoordinate, grid, editHandler,
-            eventClick, eventStop, thousandSeparator, elementShown;
+            eventClick, eventStop, thousandSeparator, elementShown, annualObserver;
 
 
         function GeneralController() {
@@ -20,6 +21,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             specialControlEditor = new SpecialEditorController;
             generalObserver = new GeneralObserver;
             editingOnCell = true
+            annualObserver = new AnnualObserver;
         };
 
         GeneralController.prototype.init = function (gridModel, tableModel, configurator, modelController, utility, NProgress) {
@@ -46,8 +48,10 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
         }
 
         GeneralController.prototype.createListeners = function (grid) {
+
             var self = this;
 
+            generalObserver.onChangingLoadingModality(supportUtility.getPreloadingData())
 
             var resultedClicked
             eventClick = grid.attachEvent("onItemClick", function (id, e, node) {
@@ -122,6 +126,13 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 evt.preventDefault();
                 evt.stopImmediatePropagation();
                 self.updateWithNewForecast()
+            })
+
+            $('#annualSelection').on("click", function (evt) {
+                evt.preventDefault();
+                evt.stopImmediatePropagation();
+                $.publish('annual-added','STRINGAA');
+
             })
         }
 

@@ -22,8 +22,10 @@ define(["jquery"], function ($) {
 
         for (var i = 0; i < tableData.length; i++) {
             var fieldsRowTable = tableData[i]
+            debugger;
             xPositions.push(this.findPositionLeftCell(tableData[i], indexes["leftColumnsModel"]["leftKeyIndexes"], model["matrixLeft"]))
             yPositions.push(this.findPositionUpCell(tableData[i], indexes["upColumnsModel"]["upKeyIndexes"], model["matrixUp"]))
+
 
             // Insert DATA
             if (typeof  xPositions[i] !== 'undefined' && typeof  yPositions[i] !== 'undefined') {
@@ -71,6 +73,8 @@ define(["jquery"], function ($) {
 
         var yPosition;
         var found = false;
+
+        debugger;
 
         for (var j = 0; j < upKeyMatrix[0].length && !found; j++) {
             var firstElement = upKeyMatrix[0][j][0]

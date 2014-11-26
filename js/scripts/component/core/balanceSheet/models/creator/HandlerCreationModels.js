@@ -480,7 +480,24 @@ define(["jquery"], function ($) {
                     throw Error
                 }
                 break;
-        }
+
+            case "season":
+                var from = column.domain.period.from
+                var to = column.domain.period.to;
+                var counter = from;
+                var yearFrom = parseInt(from.substr(0, 4));
+                var yearTo = parseInt(to.substr(0, 4));
+                for (var i = yearFrom; i < yearTo; i++) {
+                    var nextYear = i+1;
+                    var nextSeas = (''+nextYear);
+                    var toAppend = nextSeas.substr(2,4);
+                    var season = ''+i+'/'+toAppend;
+                    array.push(season);
+                }
+
+                break;
+            }
+
         return array;
     }
 

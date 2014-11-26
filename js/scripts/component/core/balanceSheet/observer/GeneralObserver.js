@@ -1,7 +1,7 @@
 /**
  * Created by fabrizio on 9/25/14.
  */
-define(['jquery', 'jqwidgets'], function($){
+define(['jquery', 'jqwidgets', 'amplify'], function($){
 
     var generalController
 
@@ -68,6 +68,22 @@ define(['jquery', 'jqwidgets'], function($){
             generalController.onChangeVisualizationOption('separator',3)
 
         });
+    }
+
+    GeneralObserver.prototype.onChangingLoadingModality = function(filterData){
+        $('#changeModality').on('click', function(e){
+
+            console.log('click of on changing modality')
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            var storeValue = amplify.store();
+            var isMonthly = storeValue.isMonthlyModality
+            if(isMonthly){
+                amplify.publish("changeOnAnnualModality",{preloadingData: filterData})
+            }else{
+                amplify.publish("changeOnMonthlyModality",{preloadingData: filterData})
+            }
+        })
     }
 
 

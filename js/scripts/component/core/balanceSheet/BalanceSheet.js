@@ -44,7 +44,6 @@ define(["jquery", "configurator/Configurator", "modelController/ModelsController
             }
         })
 
-
         supportUtility.init(filterData )
 
         configurator.init(dsd, componentConfiguration)

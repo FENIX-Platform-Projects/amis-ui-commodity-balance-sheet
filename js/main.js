@@ -8,6 +8,7 @@ requirejs.config({
         loading           :  "../amis/loading",
         monthlyLoader     :  "../amis/loading/monthlySelection",
         annualLoader      :  "../amis/loading/annualSelection",
+        subscriberLoader  :  "../amis/loading/observer/SubscriberLoader",
         exportLoader      :  "../amis/loading/exportSelection",
         utilities         :  "../component/core/balanceSheet/configuration/utilities",
         balanceSheet      :  "../component/core/balanceSheet",
