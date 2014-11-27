@@ -4,12 +4,12 @@
 define(["jquery", "view/GridDataView", "editorController/FormController",
         "exporter/controller/ExportController", "adapterGrid", "formulasAmis/controller/FormulaController",
         "editingSpecial/controller/ControllerEditors", "generalObserver/GeneralObserver" , "editHandler",
-        "annualLoader/observer/ObserverAnnualSelection", "jquery.sidebar"],
-    function ($, GridDataView, EditorController, ExportController, Adapter, FormulaController, SpecialEditorController, GeneralObserver, EditHandler, AnnualObserver) {
+        "jquery.sidebar"],
+    function ($, GridDataView, EditorController, ExportController, Adapter, FormulaController, SpecialEditorController, GeneralObserver, EditHandler) {
 
         var ViewGrid, ModelController, FormController, dsd, Configurator, adapterGrid, formulaController, supportUtility,
             specialControlEditor, editingOnCell, generalObserver, filterData, xCoordinate, yCoordinate, grid, editHandler,
-            eventClick, eventStop, thousandSeparator, elementShown, annualObserver;
+            eventClick, eventStop, thousandSeparator, elementShown
 
 
         function GeneralController() {
@@ -21,7 +21,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             specialControlEditor = new SpecialEditorController;
             generalObserver = new GeneralObserver;
             editingOnCell = true
-            annualObserver = new AnnualObserver;
+
         };
 
         GeneralController.prototype.init = function (gridModel, tableModel, configurator, modelController, utility, NProgress) {

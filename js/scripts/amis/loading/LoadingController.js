@@ -3,7 +3,7 @@
  */
 define(["jquery", "balanceSheet/BalanceSheet", "monthlyLoader/controller/HandlerSelection",
         "annualLoader/controller/HandlerAnnualSelection",
-        "databaseSaver/controller/SavingController",
+        "databaseSaver/monthlySaving/controller/SavingController",
         "subscriberLoader","nprogress", "amplify"],
     function ($, BalanceSheet, HandlerMonthlySelection,HandlerAnnualSelection, SavingController,SubscriberLoader, Nprogress) {
 

@@ -1,22 +1,23 @@
 /**
  * Created by fabrizio on 10/4/14.
  */
-define(['jquery'], function($){
+define(['jquery'], function ($) {
 
     var filterActual, realPreviousDataToSave, realActualDataToSave, previousYearForecast, actualYearForecasts,
         actualYearForecasts, previousYearForecast, supportUtility, realPreviousDate;
 
-    function SavingModel(){}
+    function SavingModel() {
+    }
 
-    SavingModel.prototype.init = function(SupportUtility){
-        supportUtility =SupportUtility;
+    SavingModel.prototype.init = function (SupportUtility) {
+        supportUtility = SupportUtility;
         /*
-        3 type of data: Actual Year, PRev Year, updated Data, New Data
+         3 type of data: Actual Year, PRev Year, updated Data, New Data
 
-        STEP 0) Divide actualYear from Previous Year
+         STEP 0) Divide actualYear from Previous Year
 
          -------------------------------------
-             Actual Year :
+         Actual Year :
          -------------------------------------
          1) Clean calculated Data (V)
          2) Set right Date format (V)
@@ -26,7 +27,7 @@ define(['jquery'], function($){
 
 
          -------------------------------------
-             Previous Year:
+         Previous Year:
          -------------------------------------
          1) Clean calculated Data(V)
          2) Put the right Date(V)
@@ -35,7 +36,7 @@ define(['jquery'], function($){
 
 
          -------------------------------------
-             Updated Data
+         Updated Data
          -------------------------------------
          1) Clean calculated Data
          2) Set right Date format
@@ -43,31 +44,43 @@ define(['jquery'], function($){
          */
     }
 
-    SavingModel.prototype.prepareData = function(alldata, tableData, newData,actualFilter, realPreviousYearDate){
+    SavingModel.prototype.prepareData = function (alldata, tableData, newData, actualFilter, realPreviousYearDate) {
         debugger;
         realPreviousDate = realPreviousYearDate;
         filterActual = actualFilter;
 
         //   STEP 0) Divide actualYear from Previous Year
+
         this.detachPreviousYearFromActual(alldata);
 
         // for updatedData and new Data
-        var cleanedUpdatedData = this.cleanAndSetDate(newData.updatedData)
+        var newDataCurrentYear = []
+        var newDataPreviousYear = []
+        for (var i = 0, length = newData.updatedData.length; i < length; i++) {
+            if (newData.updatedData[i][2] == '20000103') {
+                newDataPreviousYear.push(newData.updatedData[i])
+            } else {
+                newDataCurrentYear.push(newData.updatedData[i])
+            }
 
+        }
+        var cleanedNewDataCurrentYear = this.cleanAndSetDate(newDataCurrentYear)
+        var cleanedNewDataPreviousYear = this.cleanAndSetDate(newDataPreviousYear)
 
         // Actual Year
         var cleanedActualYear = this.cleanAndSetDate(actualYearForecasts);
-        var actualYearUpdated = this.mergeUpdatedData(cleanedActualYear,cleanedUpdatedData)
+        var cleanedPreviousYear = this.cleanAndSetDate(previousYearForecast);
 
-       /* if(newData.newData.length >0){
-            var cleanedNewForecast = this.cleanAndSetDate(newData.newData)
-            actualYearUpdated = actualYearUpdated.concat(actualYearUpdated, cleanedNewForecast)
-        }*/
+
+        var actualYearUpdated = this.mergeUpdatedData(cleanedActualYear, cleanedNewDataCurrentYear)
+
+        /* if(newData.newData.length >0){
+         var cleanedNewForecast = this.cleanAndSetDate(newData.newData)
+         actualYearUpdated = actualYearUpdated.concat(actualYearUpdated, cleanedNewForecast)
+         }*/
 
         // Previous Year
-        var cleanedPreviousYear = this.cleanAndSetDate(previousYearForecast);
-        var previousYearUpdated = this.mergeUpdatedData(cleanedPreviousYear,cleanedUpdatedData)
-
+        var previousYearUpdated = this.mergeUpdatedData(cleanedPreviousYear, cleanedNewDataPreviousYear)
 
 
         // dataOriginals
@@ -78,30 +91,29 @@ define(['jquery'], function($){
     }
 
 
-
-    SavingModel.prototype.cleanAndSetDate = function(dataNew){
+    SavingModel.prototype.cleanAndSetDate = function (dataNew) {
         var result = []
-        for(var i =0; i<dataNew.length; i++){
+        for (var i = 0; i < dataNew.length; i++) {
             // clean data
-            if(dataNew[i][0] != 1 && dataNew[i][0] != 999 && dataNew[i] != 22){
+            if (dataNew[i][0] != 1 && dataNew[i][0] != 999 && dataNew[i] != 22) {
 
                 dataNew[i][0] = parseInt(dataNew[i][0])
                 // put real date previous year
-                if(dataNew[i][2] == '20000103') {
+                if (dataNew[i][2] == '20000103') {
                     dataNew[i][2] = realPreviousDate
                 }
                 // set right format
                 var value = dataNew[i][2]
 
-                if(value.length == 8) {  // if date is in DSD format
+                if (value.length == 8) {  // if date is in DSD format
                     var year = value.substr(0, 4);
                     var month = value.substr(4, 2);
                     var day = value.substr(6, 2);
                     var date = new Date(year, month - 1, day);
                     dataNew[i][2] = moment(date).format('YYYY-MM-DD')
-                    }
+                }
 
-                if(dataNew[i][3] == ''){
+                if (dataNew[i][3] == '') {
                     dataNew[i][3] = null;
                 }
 
@@ -111,13 +123,13 @@ define(['jquery'], function($){
         return result;
     }
 
-    SavingModel.prototype.mergeUpdatedData = function(myData, updatedData){
-        var result = $.extend(true,[], myData);
+    SavingModel.prototype.mergeUpdatedData = function (myData, updatedData) {
+        var result = $.extend(true, [], myData);
 
-        for(var i = 0, length = updatedData.length; i<length; i++){
+        for (var i = 0, length = updatedData.length; i < length; i++) {
             var found = false;
-            for(var j= 0, lengthUpdated = result.length; j<lengthUpdated; j++){
-                if(result[j][0] == updatedData[i][0]  && result[j][2] == updatedData[i][2]){
+            for (var j = 0, lengthUpdated = result.length; j < lengthUpdated; j++) {
+                if (result[j][0] == updatedData[i][0] && result[j][2] == updatedData[i][2]) {
                     result[j] = updatedData[i]
                 }
             }
@@ -126,48 +138,52 @@ define(['jquery'], function($){
     }
 
 
-    SavingModel.prototype.preparePutPayload = function(isActualYear){
+    SavingModel.prototype.preparePutPayload = function (isActualYear) {
         var filterData = supportUtility.getFilterData()
         var prevSeason = supportUtility.getPreviousSeasonLabel()
 
+        debugger;
+
         var result = {};
 
-        if(isActualYear) {
+        if (isActualYear) {
             result['filter'] = {
                 "region": filterActual.region,
                 "product": filterActual.product,
                 "year": filterActual.year,
-                "season": filterData.season
+                "season": filterData.season,
+                "datasource": filterData.dataSource
             }
             result["data"] = realActualDataToSave
         }
 
-        else{
+        else {
             result['filter'] = {
                 "region": filterActual.region,
                 "product": filterActual.product,
-                "year": filterActual.year -1,
-                "season": prevSeason
+                "year": filterActual.year - 1,
+                "season": prevSeason,
+                "datasource": filterData.dataSource
             }
             result["data"] = realPreviousDataToSave
         }
         return result;
     }
 
-    SavingModel.prototype.splitDataWithDate = function(model){
+    SavingModel.prototype.splitDataWithDate = function (model) {
 
         var result = []
         var date = {}
         date[model[0][2]] = true;
         var index = 0;
-        result[index] =model[0]
-        for(var i=0 ; i< model.length; i++){
-            if( date[model[i][2]]){
+        result[index] = model[0]
+        for (var i = 0; i < model.length; i++) {
+            if (date[model[i][2]]) {
                 result[index].push(model[i])
-            }else{
+            } else {
                 index++;
                 date[model[i][2]] = true;
-                result[index]= model[i]
+                result[index] = model[i]
             }
         }
         return result;
@@ -175,10 +191,10 @@ define(['jquery'], function($){
     }
 
 
-    SavingModel.prototype.detachPreviousYearFromActual = function(model){
+    SavingModel.prototype.detachPreviousYearFromActual = function (model) {
         actualYearForecasts = []
         previousYearForecast = []
-        for(var i = 0, length = model.length; i<length; i++) {
+        for (var i = 0, length = model.length; i < length; i++) {
             if (model[i][2] == '20000103') {
                 previousYearForecast.push((model[i]))
             } else {

@@ -11,11 +11,13 @@ define(['jquery', 'amplify'], function($){
         amplify.subscribe('changeOnAnnualModality', function(preloadingData){
             console.log('annual!!!!')
             loadingController.init(preloadingData.preloadingData,false);
+            return false
         })
 
         amplify.subscribe('changeOnMonthlyModality', function(preloadingData){
             console.log('monthly!!!!')
             loadingController.init(preloadingData.preloadingData,true);
+            return false
         })
 
     }
