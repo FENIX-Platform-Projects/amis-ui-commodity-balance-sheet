@@ -1,26 +1,24 @@
 /**
  * Created by fabrizio on 5/20/14.
  */
-define(["jquery", "balanceSheet/BalanceSheet", "monthlyLoader/controller/HandlerSelection",
-        "annualLoader/controller/HandlerAnnualSelection",
-        "databaseSaver/monthlySaving/controller/SavingController",
+define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFactory",
+        "databaseSaver/proxyFactory/SavingFactory",
         "subscriberLoader","nprogress", "amplify"],
-    function ($, BalanceSheet, HandlerMonthlySelection,HandlerAnnualSelection, SavingController,SubscriberLoader, Nprogress) {
+    function ($, BalanceSheet, SelectionFactory, SavingFactory,SubscriberLoader, Nprogress) {
 
         var urlDSD = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructure.json'
         var urlDSDRice = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureRice.json'
         var ulrDSDSoyBean = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureSoybeans.json'
-        var balanceSheet, dataFiltered, handlerMonthlySelection,handlerAnnualSelection, firstIstance,
-            product, savingController, NProgress, subscriberLoader;
+        var balanceSheet, dataFiltered, handlerSelection,selectionFactory ,firstIstance,
+            product, savingController,savingFactory, NProgress, subscriberLoader, isMonthlyLoading;
 
         function LoadingController() {
             NProgress = Nprogress
 
             balanceSheet = new BalanceSheet
-            handlerAnnualSelection = new HandlerAnnualSelection;
-            handlerMonthlySelection = new HandlerMonthlySelection;
+            selectionFactory = new SelectionFactory
             firstIstance = false;
-            savingController = new SavingController;
+            savingFactory = new SavingFactory;
             subscriberLoader = new SubscriberLoader;
         }
 
@@ -33,23 +31,18 @@ define(["jquery", "balanceSheet/BalanceSheet", "monthlyLoader/controller/Handler
 
             // prepare all filters to make queries
             var region = parseInt(preloadingData.post.regionCode);
-             product = parseInt(preloadingData.post.productCode);
+            product = parseInt(preloadingData.post.productCode);
             var isExport = true;
             dataFiltered = preloadingData;
+            isMonthlyLoading =isMonthlySelection
 
-            if(isMonthlySelection){
-                var totalForecast= handlerMonthlySelection.init(dataFiltered, region, product, isExport)
-                amplify.store('isMonthlyModality',true)
-                this.createBalanceSheet(totalForecast, handlerMonthlySelection)
+            // Inside of selectionFactory module stored the global value on session storage variable
+            handlerSelection = selectionFactory.init(isMonthlyLoading);
+            var totalForecast= handlerSelection.init(dataFiltered, region, product, isExport)
+            this.createBalanceSheet(totalForecast, handlerSelection)
 
-            }else{
-                debugger;
-                var totalForecast= handlerAnnualSelection.init(dataFiltered, region, product, isExport)
-                amplify.store('isMonthlyModality',false)
-                this.createBalanceSheet(totalForecast, handlerAnnualSelection)
-            }
+
         }
-
 
         LoadingController.prototype.createBalanceSheet = function (totalForecast, Selector) {
             var url;
@@ -77,11 +70,19 @@ define(["jquery", "balanceSheet/BalanceSheet", "monthlyLoader/controller/Handler
                 balanceSheet.init(totalForecast, url, dataFiltered, NProgress)
             }
 
-            var realPreviousYear = Selector.getRealPreviousYear()
-            var filterActual = Selector.getPreloadingData();
-            savingController.init(balanceSheet, filterActual, realPreviousYear, dataFiltered)
-        };
+            savingController = savingFactory.getSavingController();
 
+            if(isMonthlyLoading) {
+                var realPreviousYear = Selector.getRealPreviousYear()
+                var filterActual = Selector.getPreloadingData();
+                savingController.init(balanceSheet, filterActual, realPreviousYear, dataFiltered)
+            }else{
+                var filterActual = Selector.getPreloadingData();
+                debugger;
+                savingController.init(balanceSheet, filterActual, dataFiltered, handlerSelection)
+            }
+
+        };
 
         LoadingController.prototype.getFilterData = function () {
             return dataFiltered;

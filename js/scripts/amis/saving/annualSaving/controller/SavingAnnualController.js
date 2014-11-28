@@ -1,4 +1,4 @@
-define(['jquery', 'savingAnnual/model/SavingAnnualModel', 'generalSaving/observer/SavingObserver', 'urlConfigurator',
+define(['jquery', 'databaseSaver/annualSaving/model/SavingAnnualModel', 'databaseSaver/observer/SavingObserver', 'urlConfigurator',
         'utilities/SupportUtility'],
     function ($, SavingModel, SavingObserver, ServicesURL, SupportUtility) {
 
@@ -8,21 +8,22 @@ define(['jquery', 'savingAnnual/model/SavingAnnualModel', 'generalSaving/observe
         function SavingAnnualController() {
             console.log('saving Annual Controller')
             console.log('initSavingController')
+            modelSaving = new SavingModel;
+            observerSaving = new SavingObserver;
             supportUtility = new SupportUtility
             servicesURL = new ServicesURL;
             servicesURL.init()
-            urlSaving = servicesURL.getSavingDataUrl()
+            urlSaving = servicesURL.getSavingDataUrlWithDate()
         }
 
-        SavingAnnualController.prototype.init = function (BalanceSheet, filterActual, previousDate, dataFiltered, Handler) {
+        SavingAnnualController.prototype.init = function (BalanceSheet, filterActual, dataFiltered, Handler) {
+
 
             handlerAnnual = Handler
 
             supportUtility.init(dataFiltered)
-            realPreviousYearDate = previousDate
             balanceSheet = BalanceSheet;
-            modelSaving = new SavingModel;
-            observerSaving = new SavingObserver;
+
             actualFilter = filterActual;
             modelSaving.init()
             observerSaving.init(this)
@@ -40,16 +41,29 @@ define(['jquery', 'savingAnnual/model/SavingAnnualModel', 'generalSaving/observe
 
             // fino a qui!
             modelSaving.init(supportUtility)
+            var dataWithPayload = modelSaving.prepareData(allData, tableData, newdata, actualFilter, handlerAnnual);
 
-            modelSaving.prepareData(allData, tableData, newdata, actualFilter, realPreviousYearDate, handlerAnnual);
 
-            var payloadActual = modelSaving.preparePutPayload(true)
-            var payloadPrevious = modelSaving.preparePutPayload(false)
 
-            this.finalSave(payloadActual)
-            this.finalSave(payloadPrevious)
+            debugger;
+           // this.finalSave(dataWithPayload)
 
             // clean updated Data
+        }
+
+        SavingAnnualController.prototype.finalSave = function(arrayData){
+            for(var i = 0,length = arrayData.length; i<length; i++){
+                $.ajax({
+                    async: false,
+                    url: urlSaving,
+                    type: 'PUT',
+                    contentType: "application/json",
+                    dataType: 'json',
+                    data: JSON.stringify(arrayData[i])
+                }).done(function (result) {
+                    alert('saved')
+                })
+            }
         }
 
         return SavingAnnualController;

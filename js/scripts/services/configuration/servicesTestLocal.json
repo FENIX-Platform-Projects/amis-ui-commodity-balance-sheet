@@ -36,8 +36,12 @@
             ]
         },
         {
-            "savingData" : "http://168.202.28.178:8080/dataset/national"
+            "saving": {
 
+                "savingWithoutDate": "http://168.202.28.178:8080/dataset/national",
+                "savingWithDate": "http://168.202.28.178:8080/dataset/previous/national"
+
+            }
         },
         {
             "exportDataServletUrl": "http://168.202.28.178:8080/dataset/national/export"

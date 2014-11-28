@@ -4,13 +4,14 @@
 define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSaver/observer/SavingObserver', 'urlConfigurator',
     'utilities/SupportUtility'], function ($, SavingModel, SavingObserver, ServicesURL, SupportUtility) {
 
-    var balanceSheet, modelSaving, observerSaving, actualFilter, realPreviousYearDate, servicesURL, urlSaving, supportUtility;
+    var balanceSheet, modelSaving, observerSaving, actualFilter, realPreviousYearDate, servicesURL, urlSavingPreviousYear, urlSavingActualYear, supportUtility;
 
     function SavingController() {
         supportUtility = new SupportUtility
         servicesURL = new ServicesURL;
         servicesURL.init()
-        urlSaving = servicesURL.getSavingDataUrl()
+        urlSavingActualYear = servicesURL.getSavingDataUrlWithoutDate();
+        urlSavingPreviousYear = servicesURL.getSavingDataUrlWithDate();
     }
 
     SavingController.prototype.init = function (BalanceSheet, filterActual, previousDate, dataFiltered) {
@@ -39,14 +40,18 @@ define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSave
         var payloadActual = modelSaving.preparePutPayload(true)
         var payloadPrevious = modelSaving.preparePutPayload(false)
 
-        this.finalSave(payloadActual)
-        this.finalSave(payloadPrevious)
+        debugger;
+
+        this.finalSave(payloadActual,true)
+        this.finalSave(payloadPrevious,false)
 
         // clean updated Data
     }
 
 
-    SavingController.prototype.finalSave = function (payload) {
+    SavingController.prototype.finalSave = function (payload, isActualYear) {
+
+        var urlSaving = (isActualYear)? urlSavingActualYear: urlSavingPreviousYear
         $.ajax({
             async: false,
             url: urlSaving,

@@ -1,26 +1,26 @@
-define(['jquery', 'amplify', 'savingAnnual/controller/SavingAnnualController', 'savingMonthly/controller/SavingController'],
+define(['jquery', 'databaseSaver/annualSaving/controller/SavingAnnualController',
+        'databaseSaver/monthlySaving/controller/SavingController', 'amplify'],
     function ($, AnnualController, MonthlyController) {
 
-        var savingController
+        var monthlySaving, annualSaving
 
         function SavingFactory() {
-            var store = amplify.store();
-            var savingController = new MonthlyController
+            annualSaving = new AnnualController;
+            monthlySaving = new MonthlyController;
         }
 
 
-        SavingFactory.prototype.init = function (balanceSheet, filterActual, realPreviousYear, dataFiltered, handlerSelection) {
+        SavingFactory.prototype.getSavingController = function () {
+            var result;
 
-            if (typeof savingController === 'undefined') {
-                setTimeout(function () {
-                    savingController.init(balanceSheet, filterActual, realPreviousYear, dataFiltered, handlerSelection)
+           var store = amplify.store()
+            if(store.isMonthlyModality){
 
-                }, 1000);
+                result = monthlySaving
+            }else{
+                result = annualSaving
             }
-        }
-
-
-        SavingFactory.prototype.startController = function (balanceSheet, filterActual, realPreviousYear, dataFiltered, handlerSelection) {
+            return result;
         }
 
         return SavingFactory

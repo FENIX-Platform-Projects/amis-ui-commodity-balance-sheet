@@ -89,11 +89,19 @@ define(['jquery'], function($){
 
     }
 
-    ServicesConfigurator.prototype.getSavingDataUrl = function(){
+    ServicesConfigurator.prototype.getSavingDataUrlWithDate = function(){
         if(!configuration){
             this.init()
         }
-        return configuration.services[2].savingData;
+        return configuration.services[2].saving.savingWithDate;
+
+    }
+
+    ServicesConfigurator.prototype.getSavingDataUrlWithoutDate = function(){
+        if(!configuration){
+            this.init()
+        }
+        return configuration.services[2].saving.savingWithoutDate;
 
     }
 

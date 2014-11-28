@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="233390f4-9d56-4ae3-a936-6fea2c279eba" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/observer/ObserverAnnualSelection.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/controller/SavingController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/model/SavingModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js" afterPath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/proxyFactory/SelectionFactory.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/services/configurator/ServicesConfigurator.js" afterPath="$PROJECT_DIR$/js/scripts/services/configurator/ServicesConfigurator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/services/configuration/services.json" afterPath="$PROJECT_DIR$/js/scripts/services/configuration/services.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/services/configuration/servicesTestLocal.json" afterPath="$PROJECT_DIR$/js/scripts/services/configuration/servicesTestLocal.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="amis-ui-balanceSheet.iws" />
@@ -28,27 +30,39 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DockManager">
+    <window id="2">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="SavingModel.js" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.41304347" vertical-offset="2590" max-vertical-offset="3510">
+                    <caret line="165" column="42" selection-start-line="165" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+                    <folding>
+                      <element signature="e#5811#6263#0" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="amis-ui-balanceSheet" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GeneralController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js">
+      <file leaf-file-name="HandlerSelection.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/controller/HandlerSelection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5670">
-              <caret line="309" column="7" selection-start-line="309" selection-start-column="7" selection-end-line="309" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadingController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1926">
-              <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1458">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -57,18 +71,48 @@
       <file leaf-file-name="SavingController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
-              <caret line="4" column="59" selection-start-line="0" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+            <state vertical-scroll-proportion="-20.633333" vertical-offset="515" max-vertical-offset="1350">
+              <caret line="63" column="10" selection-start-line="54" selection-start-column="6" selection-end-line="63" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SavingModel.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js">
+      <file leaf-file-name="services.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/services/configuration/services.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5931308" vertical-offset="0" max-vertical-offset="3816">
-              <caret line="67" column="81" selection-start-line="67" selection-start-column="81" selection-end-line="67" selection-end-column="81" />
+            <state vertical-scroll-proportion="-19.703703" vertical-offset="206" max-vertical-offset="990">
+              <caret line="41" column="31" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="servicesTestLocal.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/services/configuration/servicesTestLocal.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-22.666666" vertical-offset="54" max-vertical-offset="1008">
+              <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HandlerAnnualSelection.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1926">
+              <caret line="81" column="50" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SavingAnnualModel.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7632509" vertical-offset="1620" max-vertical-offset="3096">
+              <caret line="126" column="9" selection-start-line="126" selection-start-column="9" selection-end-line="126" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -77,48 +121,28 @@
       <file leaf-file-name="SavingAnnualController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="213" max-vertical-offset="1134">
-              <caret line="28" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="359" max-vertical-offset="1386">
+              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SavingAnnualModel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js">
+      <file leaf-file-name="DataLoaderAnnual.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/logic/DataLoaderAnnual.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
-              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+            <state vertical-scroll-proportion="-9.0" vertical-offset="0" max-vertical-offset="2160">
+              <caret line="15" column="40" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SavingFactory.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js">
+      <file leaf-file-name="ServicesConfigurator.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/services/configurator/ServicesConfigurator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
-              <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1638">
-              <caret line="38" column="21" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SubscriberLoader.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
-              <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="845" max-vertical-offset="2196">
+              <caret line="94" column="9" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -146,7 +170,6 @@
         <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/BalanceSheet.js" />
         <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/configuration/configurator/Configurator.js" />
         <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/models/controllerDataModels/ModelsController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js" />
         <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/models/gridDataModel/GridDataModel.js" />
         <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/models/creator/HandlerCreationModels.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js" />
@@ -155,20 +178,25 @@
         <option value="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/SavingController.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/saving/controller/SavingController.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/saving/model/SavingModel.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/proxyFactory/SelectionFactory.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js" />
+        <option value="$PROJECT_DIR$/js/scripts/services/configuration/services.json" />
+        <option value="$PROJECT_DIR$/js/scripts/services/configuration/servicesTestLocal.json" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/services/configurator/ServicesConfigurator.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="880" />
-    <option name="y" value="24" />
-    <option name="width" value="1215" />
-    <option name="height" value="1000" />
+    <option name="x" value="1344" />
+    <option name="y" value="-4" />
+    <option name="width" value="1217" />
+    <option name="height" value="1029" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -198,6 +226,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -227,6 +256,58 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configurator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configuration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1143,11 +1224,224 @@
               <option name="myItemId" value="amis" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="preloading" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="preloading" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filterDatafields" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loading" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loading" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monthlySelection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loading" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monthlySelection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loading" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annualSelection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loading" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="annualSelection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1161,6 +1455,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1168,6 +1463,52 @@
       <recent name="$PROJECT_DIR$/js/scripts/amis/saving/controller" />
       <recent name="$PROJECT_DIR$/js/scripts/amis/saving" />
     </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{    &quot;filter&quot;:{       &quot;region&quot;:126,       &quot;product&quot;:4,       &quot;year&quot;:2013,       &quot;season&quot;:&quot;2013/14&quot;,       &quot;date&quot;:&quot;2014-03-15&quot;,       &quot;datasource&quot;:&quot;Ministry of Agriculture, Forestry and Fisheries&quot;    },    &quot;data&quot;:[       [          36,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          34,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          28,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          30,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          32,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          38,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          39,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          19,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          12800,          &quot;&quot;,          null       ],       [          21,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          27,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          12000,          &quot;&quot;,          null       ],       [          18,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          4200,          &quot;&quot;,          null       ],       [          17,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          32432,          &quot;&quot;,          null       ],       [          5,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          7800,          &quot;&quot;,          null       ],       [          7,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          800,          &quot;&quot;,          null       ],       [          4,          &quot;Tonnes/Ha&quot;,          &quot;2014-03-15&quot;,          4.9,          &quot;&quot;,          null       ],       [          3,          &quot;%&quot;,          &quot;2014-03-15&quot;,          72.5,          &quot;&quot;,          null       ],       [          25,          &quot;Kg/Yr&quot;,          &quot;2014-03-15&quot;,          56.56,          &quot;&quot;,          null       ],       [          42,          &quot;Tonnes/Ha&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          43,          &quot;Tonnes/Ha&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          35,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          12800,          &quot;&quot;,          null       ],       [          20,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          8200,          &quot;&quot;,          null       ],       [          13,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          7200,          &quot;&quot;,          null       ],       [          14,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          999999,          &quot;&quot;,          null       ],       [          15,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          500,          &quot;&quot;,          null       ],       [          10,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          100,          &quot;&quot;,          null       ],       [          16,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          4500,          &quot;&quot;,          null       ],       [          8,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          2345,          &quot;&quot;,          null       ],       [          12,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          200,          &quot;&quot;,          null       ],       [          2,          &quot;Thousand Ha&quot;,          &quot;2014-03-15&quot;,          1600,          &quot;&quot;,          null       ],       [          37,          &quot;Thousand Ha&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          40,          &quot;Thousand Ha&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          41,          &quot;Thousand Ha&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ]    ] }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/dataset/national" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{    &quot;filter&quot;:{       &quot;region&quot;:126,       &quot;product&quot;:4,       &quot;year&quot;:2013,       &quot;season&quot;:&quot;2013/14&quot;,       &quot;date&quot;:&quot;2014-03-15&quot;,       &quot;datasource&quot;:&quot;Ministry of Agriculture, Forestry and Fisheries&quot;    },    &quot;data&quot;:[       [          36,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          34,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          28,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          30,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          32,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          38,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          39,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          19,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          12800,          &quot;&quot;,          null       ],       [          21,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          27,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          12000,          &quot;&quot;,          null       ],       [          18,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          4200,          &quot;&quot;,          null       ],       [          17,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          32432,          &quot;&quot;,          null       ],       [          5,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          7800,          &quot;&quot;,          null       ],       [          7,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          800,          &quot;&quot;,          null       ],       [          4,          &quot;Tonnes/Ha&quot;,          &quot;2014-03-15&quot;,          4.9,          &quot;&quot;,          null       ],       [          3,          &quot;%&quot;,          &quot;2014-03-15&quot;,          72.5,          &quot;&quot;,          null       ],       [          25,          &quot;Kg/Yr&quot;,          &quot;2014-03-15&quot;,          56.56,          &quot;&quot;,          null       ],       [          42,          &quot;Tonnes/Ha&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          43,          &quot;Tonnes/Ha&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          35,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          12800,          &quot;&quot;,          null       ],       [          20,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          8200,          &quot;&quot;,          null       ],       [          13,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          7200,          &quot;&quot;,          null       ],       [          14,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          999999,          &quot;&quot;,          null       ],       [          15,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          500,          &quot;&quot;,          null       ],       [          10,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          100,          &quot;&quot;,          null       ],       [          16,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          4500,          &quot;&quot;,          null       ],       [          8,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          2345,          &quot;&quot;,          null       ],       [          12,          &quot;Thousand tonnes&quot;,          &quot;2014-03-15&quot;,          200,          &quot;&quot;,          null       ],       [          2,          &quot;Thousand Ha&quot;,          &quot;2014-03-15&quot;,          1600,          &quot;&quot;,          null       ],       [          37,          &quot;Thousand Ha&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          40,          &quot;Thousand Ha&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ],       [          41,          &quot;Thousand Ha&quot;,          &quot;2014-03-15&quot;,          null,          &quot;&quot;,          null       ]    ] }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -1390,28 +1731,52 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="233390f4-9d56-4ae3-a936-6fea2c279eba" name="Default" comment="" />
       <created>1416995117168</created>
       <updated>1416995117168</updated>
       <workItem from="1416995117785" duration="18552000" />
-      <workItem from="1417106068889" duration="3919000" />
+      <workItem from="1417106068889" duration="4512000" />
+      <workItem from="1417163658376" duration="15766000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22471000" />
+    <option name="totallyTimeSpent" value="38830000" />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="880" y="24" width="1215" height="1000" extended-state="1" />
+    <frame x="1344" y="-4" width="1217" height="1029" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1419,46 +1784,48 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32990575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3609923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3609923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1478,9 +1845,77 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js</url>
+          <line>86</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="1260">
+          <caret line="4" column="59" selection-start-line="0" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="3816">
+          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="504" max-vertical-offset="1134">
+          <caret line="28" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="252">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="576">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="684" max-vertical-offset="1638">
+          <caret line="38" column="21" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="558">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="648" max-vertical-offset="5670">
@@ -1493,7 +1928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="756" max-vertical-offset="1656">
           <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1501,7 +1935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1368" max-vertical-offset="2718">
           <caret line="76" column="17" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1509,7 +1942,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2826">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1517,7 +1949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1422" max-vertical-offset="2844">
           <caret line="79" column="56" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1549,7 +1980,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="8351" max-vertical-offset="9594">
           <caret line="492" column="52" selection-start-line="492" selection-start-column="52" selection-end-line="492" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1573,13 +2003,6 @@
         <state vertical-scroll-proportion="-18.92" vertical-offset="2551" max-vertical-offset="3690">
           <caret line="168" column="55" selection-start-line="168" selection-start-column="55" selection-end-line="168" selection-end-column="55" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/controller/HandlerSelection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1458">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1620,7 +2043,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="875" max-vertical-offset="2844">
           <caret line="79" column="56" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1644,7 +2066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2826">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1652,7 +2073,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="467" max-vertical-offset="1656">
           <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1660,7 +2080,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="972" max-vertical-offset="2718">
           <caret line="76" column="17" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1668,14 +2087,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="8081" max-vertical-offset="9594">
           <caret line="492" column="52" selection-start-line="492" selection-start-column="52" selection-end-line="492" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/main.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/controller/HandlerExportSelection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1638">
-          <caret line="38" column="21" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="21" />
+        <state vertical-scroll-proportion="1.5502392" vertical-offset="0" max-vertical-offset="2160">
+          <caret line="72" column="60" selection-start-line="72" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/logic/DataExportLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3780">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4488" max-vertical-offset="5670">
+          <caret line="309" column="7" selection-start-line="309" selection-start-column="7" selection-end-line="309" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -1688,50 +2120,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/logic/DataLoaderAnnual.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2160">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.56461734" vertical-offset="0" max-vertical-offset="797">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js">
+    <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8181818" vertical-offset="0" max-vertical-offset="1854">
-          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1638">
+          <caret line="38" column="21" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/controller/HandlerExportSelection.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/observer/SavingObserver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5502392" vertical-offset="0" max-vertical-offset="2160">
-          <caret line="72" column="60" selection-start-line="72" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/logic/DataExportLoader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3780">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="786">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/proxyFactory/SelectionFactory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4488" max-vertical-offset="5670">
-          <caret line="309" column="7" selection-start-line="309" selection-start-column="7" selection-end-line="309" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CountrySelector.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1926">
-          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1764">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1739,39 +2163,97 @@
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
-          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="213" max-vertical-offset="1134">
-          <caret line="28" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state vertical-scroll-proportion="-24.466667" vertical-offset="706" max-vertical-offset="1944">
+          <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/logic/DataLoaderAnnual.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="252">
-          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        <state vertical-scroll-proportion="-9.0" vertical-offset="0" max-vertical-offset="2160">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/controller/HandlerSelection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1458">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/services/configuration/services.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.703703" vertical-offset="206" max-vertical-offset="990">
+          <caret line="41" column="31" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/services/configuration/servicesTestLocal.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.666666" vertical-offset="54" max-vertical-offset="1008">
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/services/configurator/ServicesConfigurator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="845" max-vertical-offset="2196">
+          <caret line="94" column="9" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="766" max-vertical-offset="1926">
+          <caret line="81" column="50" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
-          <caret line="4" column="59" selection-start-line="0" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        <state vertical-scroll-proportion="-20.633333" vertical-offset="515" max-vertical-offset="1350">
+          <caret line="63" column="10" selection-start-line="54" selection-start-column="6" selection-end-line="63" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="359" max-vertical-offset="1386">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5931308" vertical-offset="0" max-vertical-offset="3816">
-          <caret line="67" column="81" selection-start-line="67" selection-start-column="81" selection-end-line="67" selection-end-column="81" />
+        <state vertical-scroll-proportion="0.41304347" vertical-offset="2590" max-vertical-offset="3510">
+          <caret line="165" column="42" selection-start-line="165" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+          <folding>
+            <element signature="e#5811#6263#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7632509" vertical-offset="1620" max-vertical-offset="3096">
+          <caret line="126" column="9" selection-start-line="126" selection-start-column="9" selection-end-line="126" selection-end-column="9" />
           <folding />
         </state>
       </provider>
