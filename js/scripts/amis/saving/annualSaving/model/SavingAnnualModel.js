@@ -43,9 +43,7 @@ define(['jquery'], function($){
 
 
     SavingAnnualModel.prototype.prepareData = function (allData, tableData, newdata, actualFilter, handlerAnnual) {
-        debugger;
         filterActual = actualFilter;
-
 
         var dataOriginal = allData;
 
@@ -55,9 +53,7 @@ define(['jquery'], function($){
 
         var dataReadyForPayload = this.createDataForPayload(dataCleaned, handlerAnnual)
 
-        debugger;
         var dataWithPayload = this.preparePutPayload(dataReadyForPayload,handlerAnnual)
-        debugger;
 
         return dataWithPayload;
 
@@ -102,13 +98,10 @@ define(['jquery'], function($){
 
 
     SavingAnnualModel.prototype.createDataForPayload = function (allData, Handler) {
-        debugger;
 
         var result = {}
 
         seasonDateMap = Handler.getSeasonMapDate()
-
-
 
         for(var i = 0, length = allData.length;i<length; i++){
 
@@ -152,10 +145,6 @@ define(['jquery'], function($){
             singlePayload["data"] = dataWithSeason[season]
             payLoads.push(singlePayload)
         }
-
-        debugger;
-
-
 
         return payLoads;
     }

@@ -411,7 +411,6 @@ define(["jquery"], function ($) {
                 break;
 
             case "month":
-                debugger;
                 var from = column.domain.period.from
                 var yearFrom = from.substr(0, 4);
                 var mmFrom = from.substr(4, 2);
@@ -445,7 +444,6 @@ define(["jquery"], function ($) {
                 break;
 
             case "year":
-                debugger;
                 var from = column.domain.period.from
                 var yearFrom = from.substr(0, 4);
                 var dateFrom = new Date(yearFrom)

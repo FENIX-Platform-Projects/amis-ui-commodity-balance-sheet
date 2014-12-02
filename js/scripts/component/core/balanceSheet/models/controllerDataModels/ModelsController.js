@@ -27,7 +27,6 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         TableModel.createFullTableData(modelForCreation)
 
         // if a full rows representation need to be visualized
-        debugger;
         var newTable =(configurator.getFullRowsRepresentation())?  TableModel.createColumnSparseTableData(modelForCreation) :
             TableModel.createTableModelFromGrid(instanceGridDataModel);
 
@@ -58,8 +57,7 @@ define(["jquery", "models/tableDataModel/TableDataModel",
 
     ModelsController.prototype.updateModels = function (cell, indTable, rowIndex, columnIndex) {
         var newCell = cell;
-        console.log("updateMODELS: INDEX table")
-        console.log(indTable)
+
         newValues.push(newCell);
         //fullTableModel[indTable] = newCell;
         TableModel.updateTableData(cell, indTable)

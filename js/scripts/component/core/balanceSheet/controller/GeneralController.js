@@ -191,8 +191,11 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 // at the end, order like initially
                 formulaController.sortInitialValue(modelWithFormulas);
                 ViewGrid.updateBatchGridView(modelWithFormulas, rowsChanged, xCoordinate, yCoordinate);
+                console.log('afterUpdateGridViewBatch')
+
             } else {
                 ViewGrid.updateGridView(newCell, indTable, xCoordinate, yCoordinate);
+                console.log('afterUpdateGridView')
             }
         }
 
@@ -262,14 +265,17 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 generalObserver.listenToVisualizationOptions(thousandSeparator)
                 generalObserver.listenToElementsOptions(elementShown)
                 this.onChangeModalityEditing()
+                console.log('onchangeModalityEditin(GC)')
             }
         }
 
         GeneralController.prototype.onChangeModalityEditing = function () {
             $("#editingChoice").bind('change', function (event) {
-                event.preventDefault()
+                event.preventDefault();
+                event.stopImmediatePropagation();
                 editingOnCell = !event.args.checked;
                 editHandler.updateEditingOnCell(editingOnCell)
+                console.log('row275')
             })
         }
 

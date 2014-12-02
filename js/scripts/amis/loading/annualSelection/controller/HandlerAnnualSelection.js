@@ -19,7 +19,6 @@ define(['jquery',  "annualLoader/logic/DataLoaderAnnual"], function($, DataLoade
 
     HandlerAnnualSelection.prototype.startSelection= function(){
         seasonYearMap = {}
-        console.log('init')
         var resultForecast =[]
         var items = $("#selectionYear").jqxComboBox('getItems');
         for(var i= 0, length= items.length; i<length; i++){
@@ -32,21 +31,14 @@ define(['jquery',  "annualLoader/logic/DataLoaderAnnual"], function($, DataLoade
 
         resultForecast = this.createSeasonMapDate(resultForecast);
 
-        console.log('**********************RESULT FORECAST****************************')
-        console.log(resultForecast)
-        console.log('**********************RESULT FORECAST****************************')
-
         return resultForecast;
-
-
     }
 
 
     HandlerAnnualSelection.prototype.createLastForecastCurrentSeason = function(items, region, product, seasonAndYear){
 
         var filterCurrentSeason = this.createFilterForSeasons(region,product,seasonAndYear)
-        console.log('filterCurrentSeason')
-        console.log(filterCurrentSeason)
+
         var filterPopulationCurrentSeason = this.createFilterPopulation(region,seasonAndYear)
 
         return dataLoader.getAndCreateActualYearForecastMostRecent(filterCurrentSeason,filterCurrentSeason,filterPopulationCurrentSeason, seasonAndYear.label)

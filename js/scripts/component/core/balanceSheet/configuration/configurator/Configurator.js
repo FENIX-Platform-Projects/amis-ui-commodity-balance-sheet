@@ -60,7 +60,6 @@ define(['jquery', 'amplify'], function ($) {
 
 
         var configuration = $.extend(true, {}, compConfiguration);
-        console.log(configuration)
 
         for (var i = 0; i < dsdConf.dsd.columns.length; i++) {
             if (dsdConf.dsd.columns[i].domain.key) {

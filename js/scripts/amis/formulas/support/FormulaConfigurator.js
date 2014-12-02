@@ -21,8 +21,6 @@ define(["jquery" ], function ($) {
             }
         })
 
-        console.log("formulaConfigurator")
-        console.log(config)
 
     }
 

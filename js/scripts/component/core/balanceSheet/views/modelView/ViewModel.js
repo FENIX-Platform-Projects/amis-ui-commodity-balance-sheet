@@ -3,7 +3,8 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     var configurator, fullModel, configurationKeys, valueColumn, indexValues, idOlapGrid, accessorMap, dsd, accessorModel,
         formatter, supportUtility;
 
-    var _IMG_URL = "../../../../../../../repository/amis-cbs/css/images/notes/paperclip-icon.png"
+
+    var _IMG_URL = window.location.href+ "/css/images/notes/paperclip-icon.png"
 
     function ViewModel() {
     }

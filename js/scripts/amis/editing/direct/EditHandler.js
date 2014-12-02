@@ -8,7 +8,6 @@ define(['jquery'], function($){
     function EditHandler(){}
 
     EditHandler.prototype.startEditCell = function(resultedClicked, isEditable, editingOnCell, grid, GeneralController){
-        console.log('startEditCell')
         var clickedCell =   resultedClicked["clickedCell"]
         generalController = GeneralController
 

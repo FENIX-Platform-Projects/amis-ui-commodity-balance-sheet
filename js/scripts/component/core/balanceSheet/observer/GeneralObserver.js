@@ -10,7 +10,6 @@ define(['jquery', 'jqwidgets', 'amplify'], function($){
 
     GeneralObserver.prototype.init = function(GeneralController, initThousand, initElement){
         generalController = GeneralController;
-        console.log('observer.init()')
         this.listenToVisualizationOptions(initThousand);
         this.listenToElementsOptions(initElement);
     }
@@ -73,7 +72,6 @@ define(['jquery', 'jqwidgets', 'amplify'], function($){
     GeneralObserver.prototype.onChangingLoadingModality = function(filterData){
         $('#changeModality').on('click', function(e){
 
-            console.log('click of on changing modality')
             e.preventDefault();
             e.stopImmediatePropagation();
             var storeValue = amplify.store();
@@ -90,7 +88,6 @@ define(['jquery', 'jqwidgets', 'amplify'], function($){
     GeneralObserver.prototype.updateCheckingBox = function(mode,check){
         if(mode == 'separator') {
 
-            console.log('UPDATE SEPARATOR, el: '+check)
             switch (check) {
                 case 1:
                     $('#commaButton').jqxRadioButton('check', function (event) {
@@ -114,7 +111,6 @@ define(['jquery', 'jqwidgets', 'amplify'], function($){
                     break;
             }
         }else{
-            console.log('UPDATE ELEMENTS, el: '+check)
 
             switch (check) {
                 case 1:

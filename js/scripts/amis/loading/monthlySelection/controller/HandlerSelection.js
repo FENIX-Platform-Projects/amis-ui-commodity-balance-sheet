@@ -10,7 +10,6 @@ define(['jquery',  "monthlyLoader/logic/DataLoader"], function($, DataLoader){
 
     HandlerSelection.prototype.init = function( preloadingData, region, product ,isExport){
 
-        console.log('HAndler Selection.init)')
         var notPreviousYear = false;
 
         dataFiltered = preloadingData;
@@ -43,13 +42,9 @@ define(['jquery',  "monthlyLoader/logic/DataLoader"], function($, DataLoader){
         // take the actual forecast
         var actualForecast = dataLoader.getActualYearForecast(filterActual,filterPopulationActual, isDateFormatted);
 
-        console.log('finished actualForeacst')
         if(!notPreviousYear) { // if exist a previous year
 
             var prevYearForecast = dataLoader.getPreviousYearForecast(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, isDateFormatted,preloadingData)
-
-            console.log('finished prevForeacst')
-            console.log(prevYearForecast)
 
             var totalForecast = prevYearForecast.concat(actualForecast)
         }else{

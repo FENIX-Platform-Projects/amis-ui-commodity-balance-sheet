@@ -28,7 +28,6 @@ define(["jquery", "specialFormulaConf/formulaUtils/FormulaConfigurator", "specia
     }
 
     FormulaHandler.prototype.createFormula = function (modelData, formulaData) {
-        console.log("createFormula")
         var model = modelData;
         var formula =  formulaData;
         var addendums = [];

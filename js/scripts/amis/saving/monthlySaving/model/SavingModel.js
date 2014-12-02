@@ -45,7 +45,6 @@ define(['jquery'], function ($) {
     }
 
     SavingModel.prototype.prepareData = function (alldata, tableData, newData, actualFilter, realPreviousYearDate) {
-        debugger;
         realPreviousDate = realPreviousYearDate;
         filterActual = actualFilter;
 
@@ -87,7 +86,6 @@ define(['jquery'], function ($) {
         realActualDataToSave = actualYearUpdated
         realPreviousDataToSave = previousYearUpdated
 
-        debugger;
     }
 
 
@@ -141,8 +139,6 @@ define(['jquery'], function ($) {
     SavingModel.prototype.preparePutPayload = function (isActualYear) {
         var filterData = supportUtility.getFilterData()
         var prevSeason = supportUtility.getPreviousSeasonLabel()
-
-        debugger;
 
         var result = {};
 

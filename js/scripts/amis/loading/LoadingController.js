@@ -27,8 +27,6 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
             subscriberLoader.subscribeOnChangingLoadingModality(this)
             NProgress.start()
 
-            console.log(preloadingData)
-
             // prepare all filters to make queries
             var region = parseInt(preloadingData.post.regionCode);
             product = parseInt(preloadingData.post.productCode);
@@ -78,7 +76,6 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
                 savingController.init(balanceSheet, filterActual, realPreviousYear, dataFiltered)
             }else{
                 var filterActual = Selector.getPreloadingData();
-                debugger;
                 savingController.init(balanceSheet, filterActual, dataFiltered, handlerSelection)
             }
 
@@ -92,7 +89,6 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
             if (balanceSheet) {
                 console.log('blaanceSheet exists')
                 var data = balanceSheet.getDataToSave()
-                console.log(data)
                 return (data.updatedData.length > 0 || data.newData.length > 0)
             } else {
                 return false;

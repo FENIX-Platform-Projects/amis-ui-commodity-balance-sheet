@@ -47,7 +47,6 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
     }
 
     FormulaController.prototype.createFormula = function(modelData, formulaData, indexColumnData, indexRow2, indexFormula) {
-        console.log("createFormula")
         var model = modelData;
         var formula = formulaData;
         var indexColumn = indexColumnData
@@ -172,7 +171,6 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
         var newValues = [];
         for (var i = 0; i < formulas.length; i++) {
             var indexFormula = formulas[i];
-            debugger;
             var formula = configurator.getEntireFormulaFromNumber(indexFormula);
             var newValue = this.createFormula(model, formula, indexColumn, indexRow)
             if(newValue != null && typeof newValue !== 'undefined')

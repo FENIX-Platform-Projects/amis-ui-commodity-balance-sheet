@@ -20,7 +20,6 @@ define(["jquery", "urlConfigurator" ,"jqwidgets"], function($, ServicesConf) {
     DatabaseSelector.prototype.changeRadio = function(regionCode){
 
         var filterRegionCode = {"regionCode" : regionCode}
-        //var url = "http://localhost:8081/wds/rest/amis/cbsmonthly/AMISCBS/databases/"+regionCode;
         var that = this;
         var data;
 
@@ -88,7 +87,6 @@ define(["jquery", "urlConfigurator" ,"jqwidgets"], function($, ServicesConf) {
 
 
     DatabaseSelector.prototype.selectNational = function(event){
-        console.log("SELECT NATIONAL: "+source.localdata.datasource);
         return source.localdata.datasource;
     }
 
@@ -99,7 +97,6 @@ define(["jquery", "urlConfigurator" ,"jqwidgets"], function($, ServicesConf) {
 
 
     DatabaseSelector.prototype.getNatDb = function() {
-        console.log(radioNationDB)
         return radioNationDB;
 
     }

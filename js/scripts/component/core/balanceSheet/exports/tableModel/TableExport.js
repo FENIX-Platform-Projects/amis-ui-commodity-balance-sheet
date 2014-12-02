@@ -72,11 +72,8 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         var result = []
         var keyColumns = configurator.getKeyColumnConfiguration()
         var column0 = keyColumns.leftKeyColumnConfiguration[0]
-        console.log('Column0')
-        console.log(column0)
         var column2 = keyColumns.upKeyColumnConfiguration[0]
-        console.log('Column2')
-        console.log(column2)
+
 
         for(var i= 0, length=table.length; i<length; i++) {
             var row = []

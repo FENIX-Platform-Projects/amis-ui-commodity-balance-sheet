@@ -6,8 +6,7 @@ define(['jquery', 'databaseSaver/annualSaving/model/SavingAnnualModel', 'databas
         var balanceSheet, modelSaving, observerSaving, actualFilter, realPreviousYearDate, servicesURL, urlSaving, supportUtility;
 
         function SavingAnnualController() {
-            console.log('saving Annual Controller')
-            console.log('initSavingController')
+
             modelSaving = new SavingModel;
             observerSaving = new SavingObserver;
             supportUtility = new SupportUtility
@@ -44,11 +43,8 @@ define(['jquery', 'databaseSaver/annualSaving/model/SavingAnnualModel', 'databas
             var dataWithPayload = modelSaving.prepareData(allData, tableData, newdata, actualFilter, handlerAnnual);
 
 
+            this.finalSave(dataWithPayload)
 
-            debugger;
-           // this.finalSave(dataWithPayload)
-
-            // clean updated Data
         }
 
         SavingAnnualController.prototype.finalSave = function(arrayData){

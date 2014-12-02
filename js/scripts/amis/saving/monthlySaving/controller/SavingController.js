@@ -40,8 +40,6 @@ define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSave
         var payloadActual = modelSaving.preparePutPayload(true)
         var payloadPrevious = modelSaving.preparePutPayload(false)
 
-        debugger;
-
         this.finalSave(payloadActual,true)
         this.finalSave(payloadPrevious,false)
 

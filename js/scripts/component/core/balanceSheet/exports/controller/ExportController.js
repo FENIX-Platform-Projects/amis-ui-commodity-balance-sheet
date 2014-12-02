@@ -9,10 +9,8 @@ define(["jquery", "exporter/excelExporter/ExcelExporter"], function($, Export ){
 
     ExportController.prototype.init = function(table, Configurator, grid, supportUtility){
 
-
-    Exporter = new Export;
-    //Exporter.init(table, Configurator, grid);
-    Exporter.init(supportUtility);
+        Exporter = new Export;
+        Exporter.init(supportUtility);
     }
 
     return ExportController;

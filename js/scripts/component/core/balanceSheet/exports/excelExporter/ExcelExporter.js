@@ -25,26 +25,16 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!export
             var commodity = COMMODITY_CODES[i];
             var forecastCommodity = this.createForecastForCommodity(commodity, preloadingData);
             totalValues = totalValues.concat(forecastCommodity);
-            console.log('**********************************')
-            console.log('Tforecast for comm')
-            console.log(forecastCommodity)
+
         }
-        console.log('**********************************')
-        console.log('TOTAL VALUES')
-        console.log(totalValues)
-       // console.log(JSON.stringify(totalValues))
-        debugger;
+
         var filterData = supportUtility.getFilterData();
-        console.log('=====================  FILTER DATA ==========================')
-        console.log(filterData)
 
         var season  =filterData.season
         var region  =filterData.country;
         var product = filterData.product;
         var dataSource  =filterData.dataSource
 
-        console.log('TOTLA VALUES');
-        console.log(totalValues);
         this.createFormAndExport(totalValues,season, region, product, dataSource)
 
     }
@@ -70,7 +60,7 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!export
 
     ExcelExporter.prototype.createFormAndExport = function(totalValues,season, region, product, dataSource){
 
-        var stringToappend = '  <input id="regionIDForm" type="text" name="region" value="'+region+'"/>'+
+        var stringToappend = '<input id="regionIDForm" type="text" name="region" value="'+region+'"/>'+
             '<input id="datasourceIDForm" type="text" name="datasource" value="'+dataSource+'"/>'+
             '<input id="seasonIDForm" type="text" name="season" value="'+season+'"/>'+
             '<input id="productIDForm" type="text" name="product" value="'+product+'"/>'

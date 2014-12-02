@@ -11,8 +11,7 @@ define(['jquery',  "exportLoader/logic/DataExportLoader"], function($, DataLoade
     HandlerExportSelection.prototype.createLastForecastCurrentSeason = function(items, region, product, seasonAndYear){
 
         var filterCurrentSeason = this.createFilterForSeasons(region,product,seasonAndYear)
-        console.log('filterCurrentSeason')
-        console.log(filterCurrentSeason)
+
         var filterPopulationCurrentSeason = this.createFilterPopulation(region,seasonAndYear)
 
         return dataLoader.getAndCreateActualYearForecastMostRecent(filterCurrentSeason,filterCurrentSeason,filterPopulationCurrentSeason, seasonAndYear.label)
@@ -22,22 +21,14 @@ define(['jquery',  "exportLoader/logic/DataExportLoader"], function($, DataLoade
     HandlerExportSelection.prototype.init = function( preloadingData, region, product ,isExport){
 
 
-        console.log('init')
-       var resultForecast =[]
+
+        var resultForecast =[]
+
         var items = $("#selectionYear").jqxComboBox('getItems');
 
         var selectedIndex =$("#selectionYear").jqxComboBox('getSelectedIndex');
 
         resultForecast =this.createLastForecastCurrentSeason(items, region,product, items[selectedIndex]);
-
-
-        console.log('afterCreatedMostRecentForecast')
-
-        console.log('Forecast actual season most recente is : ' +
-        '')
-        console.log(resultForecast);
-
-
 
         // USe operator of minus(-) for the order of the seasons
         var seasonChecked=[items[selectedIndex].label]
@@ -57,31 +48,17 @@ define(['jquery',  "exportLoader/logic/DataExportLoader"], function($, DataLoade
             }
 
         var successiveSeasonsForecast = []
-        console.log("successive Seasons ++++++++++++++")
-        console.log(successiveSeasons)
-        console.log("++++++++++++++++++++++++++++++++++++++++++++++++")
-
 
         if(successiveSeasons != null) {
             for (var i = 0; i < successiveSeasons.length; i++) {
-                debugger;
                 var filterSeason = this.createFilterForSeasons(region, product, successiveSeasons[i])
                 var filterPopulation = this.createFilterPopulation(region, successiveSeasons[i])
                 var seasonForecasts = dataLoader.getAndCreateTwoMostRecentForecast(filterSeason, filterSeason, filterPopulation, preloadingData, successiveSeasons[i].label)
-                console.log('seasonForeacsts:  ')
-                console.log(seasonForecasts)
-                resultForecast = resultForecast.concat(seasonForecasts[0]);
 
-                console.log('resultForecast:  ')
-                console.log(resultForecast)
+                resultForecast = resultForecast.concat(seasonForecasts[0]);
             }
         }
 
-
-
-        console.log("*************************************************************")
-        console.log(resultForecast)
-        console.log("*************************************************************")
 
         return resultForecast;
 

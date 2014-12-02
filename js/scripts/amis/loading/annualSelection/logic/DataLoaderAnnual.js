@@ -23,8 +23,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
     DataLoaderAnnual.prototype.getAndCreateActualYearForecastMostRecent = function(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, seasonLabel){
 
-        console.log('getAndCreate Acutal year cforecasts')
-
         var mostRecentForecast = []
         // tak all dates
         var dates, prevYearForecast;
@@ -41,13 +39,9 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             dates = result;
         })
 
-/*
-        console.log('dates for actual season: ')
-        console.log(dates)*/
+
         var mostRecentDate =dates[dates.length-1][0]
 
-    /*    console.log('dates fchosen ')
-        console.log(mostRecentDate)*/
 
         filterPreviousYear["date"] = mostRecentDate;
 
@@ -62,9 +56,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         }).done(function (result) {
             mostRecentForecast.push( result);
         })
-/*
-        console.log('most recent forecast after taking data ')
-        console.log(mostRecentForecast)*/
 
 
         var population
@@ -78,8 +69,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         }).done(function (result) {
             population = result;
         })
-      /*  console.log('most recent forecast  population ')
-        console.log(population)*/
+
         if (population.length > 0) {
 
             // insert date
@@ -88,12 +78,9 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             population[0].push(null);
         }
 
-
         mostRecentForecast[0].push(population[0])
 
         var result= mostRecentForecast[0]
-    /*    console.log('most recent forecast after population')
-        console.log(mostRecentForecast)*/
 
         result = this.substitueSeasonToDate(result,seasonLabel);
         return result;

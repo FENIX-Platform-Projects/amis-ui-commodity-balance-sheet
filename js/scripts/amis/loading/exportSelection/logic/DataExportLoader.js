@@ -24,8 +24,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     DataExportLoader.prototype.getAndCreateTwoMostRecentForecast = function(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation,preloadingData, seasonLabel){
 
 
-        debugger;
-
         var twoMostREcentForecasts = []
         // tak all dates
         var dates, prevYearForecast;
@@ -51,7 +49,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         console.log(twoMostRecentDates)
 
         for(var i =0; i<twoMostRecentDates.length; i++){
-            debugger;
             var temporaryForecast =[]
             filterPreviousYear["date"] = twoMostRecentDates[i];
 
@@ -97,12 +94,10 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
             temporaryForecast[0] = this.appendSeasonToDate(temporaryForecast[0], seasonLabel)
             if(typeof twoMostREcentForecasts[0] != 'undefined'){
-                debugger;
                 twoMostREcentForecasts[0] = twoMostREcentForecasts[0].concat(temporaryForecast[0])
             }else {
                 twoMostREcentForecasts.push(temporaryForecast[0])
             }
-                debugger;
             console.log('forecastWithoutPopulation')
             console.log(temporaryForecast)
         }

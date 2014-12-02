@@ -35,7 +35,6 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         valueColumn = Configurator.getValueColumnConfiguration();
         indexValues = Configurator.getValueIndex();
         modelView = viewModel.init(table, Configurator, supportUtility)
-        console.log(modelView)
         var grid = this.renderGrid(modelView)
         return grid;
     }
@@ -123,8 +122,8 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         var storeModality = amplify.store()
         var buttonChangeModality = (storeModality.isMonthlyModality)?
             '<button class="btn btn-primary" id="newForecast">Create a new forecast for season ' + filterData.season + '</button>' +
-            '<button class="btn btn-primary" id="changeModality">Change annual Selection</button>':
-            '<button class="btn btn-primary" id="changeModality">Change monthly Selection</button>';
+            '<button class="btn btn-primary" id="changeModality">Switch to annual mode</button>':
+            '<button class="btn btn-primary" id="changeModality">Switch to monthly mode</button>';
 
         $('#options').append('<div class="btn-group">' +
             buttonChangeModality+

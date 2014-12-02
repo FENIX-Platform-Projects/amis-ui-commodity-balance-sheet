@@ -47,7 +47,6 @@ define(['jquery'], function($){
 
     AdapterDataTable.prototype.createPropertiesFromModel = function(model){
             differentDates = {};
-        debugger;
             differentDates[ model[0][2]] = true
             numberOfColumns = 1
             for(var i =0; i< model.length; i++){
