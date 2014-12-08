@@ -69,8 +69,8 @@ define(['jquery'], function($){
         editorProduction.updateSingleGrid(modelCalculated, formulaToApply);
     }
 
-    ProductionController.prototype.updateTotGridOnFormulaChanges = function(formulaToApply){
-        var formulaToUpdate = formulaHandler.getUpdateFormula(1, 'totalValues', formulaToApply)
+    ProductionController.prototype.updateTotGridOnFormulaChanges = function(formulaToApply, isAreaHarvested){
+        var formulaToUpdate = formulaHandler.getUpdateFormula(1, 'totalValues', formulaToApply, isAreaHarvested)
         var dataUpdated = modelProduction.getOriginalTotalCropsModel()
 
         var modelTotalCrops = $.extend(true, [], dataUpdated)
@@ -99,6 +99,7 @@ define(['jquery'], function($){
 
         var dataOriginal = modelProduction.getOriginalTotalCropsModelOriginalConverted();
         var areaPlanted = modelProduction.getAreaPlanted();
+
         if(areaPlanted){
             areaPlanted.length = 6;
             dataOriginal.push(areaPlanted)
@@ -141,6 +142,15 @@ define(['jquery'], function($){
 
     ProductionController.prototype.destroyAll = function(){
         editorProduction.destroyAll()
+    }
+
+    ProductionController.prototype.onChangeAreaSelected = function(formulaToApplyTot, isAreaHarvested){
+
+        if(isAreaHarvested){
+            var typeOfTotGrid = 'totalValues'
+        }
+        this.updateTotGridOnFormulaChanges(formulaToApplyTot, isAreaHarvested);
+        editorProduction.changeLabelToArea(isAreaHarvested);
     }
 
     return ProductionController;

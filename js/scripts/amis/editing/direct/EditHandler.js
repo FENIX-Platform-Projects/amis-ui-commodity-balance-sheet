@@ -31,8 +31,6 @@ define(['jquery'], function($){
                     generalController.startFullEditing(resultedClicked)
                     grid.unblockEvent()
                 }
-
-
                 break;
 
             case 2:

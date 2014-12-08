@@ -30,7 +30,6 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
 
     ProductionModel.prototype.getTotalCropsModel = function(involvedItems, Utility){
         originalData = involvedItems;
-        debugger;
 
         var result;
         supportUtility = Utility;
@@ -39,7 +38,6 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
 
         return result;
     }
-
 
     ProductionModel.prototype.getOriginalTotalCropsModelOriginalConverted  =function(){
         console.log('getOrinalTotalCro')
@@ -87,15 +85,7 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
         var result = [];
         var dataModel = $.extend([],true,modelData);
         var copyMap = $.extend([], true, map);
-        if(modality == 'total') {
-            // delete Area Planted from object
-            delete copyMap[37]
-            for(var i =0; i< dataModel.length; i++){
-                if(dataModel[i][0] == 37){
-                    dataModel.splice(i,1)
-                }
-            }
-        }
+
         for(var i =0; i< dataModel.length; i++){
             result[i] = $.extend([],true,dataModel[i])
             var code = dataModel[i][0]
@@ -137,8 +127,6 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
         originalSingleCropsModel = $.extend(true,[], result);
         return result;
     }
-
-
 
     ProductionModel.prototype.getCropsNumber = function(){
 
@@ -215,7 +203,6 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
         return result;
     }
 
-
     ProductionModel.prototype.unifySingleCropsData = function(singleCropsData){
         var result = [];
         var listChecked = {}
@@ -250,22 +237,37 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
         return result;
     }
 
-    ProductionModel.prototype.getAreaPlanted = function(){
+    ProductionModel.prototype.getAreaPlanted= function(){
         var result;
-        var originalSingleCrops = $.extend(true, [],this.getOriginalSingleCropsModel());
-        for(var i = 0, length = originalSingleCrops.length; i<length; i++){
-           if(originalSingleCrops[i][0] == 37) {
+        var totalValues = $.extend(true, [],this.getOriginalTotalCropsModel());
+        for(var i = 0, length = totalValues.length; i<length; i++){
+           if(totalValues[i][0] == 37) {
                if (result) {
-                   result[3] += originalSingleCrops[i][3]
+                   result[3] += totalValues[i][3]
                }
                else{
-                   result = originalSingleCrops[i]
+                   result = totalValues[i]
                }
            }
         }
         return result;
     }
 
-    return ProductionModel;
+    ProductionModel.prototype.getAreaPlantedFromSingleCrops = function(){
+        var result;
+        var originalSingleCrops = $.extend(true, [],this.getOriginalSingleCropsModel());
+        for(var i = 0, length = originalSingleCrops.length; i<length; i++){
+            if(originalSingleCrops[i][0] == 37) {
+                if (result) {
+                    result[3] += originalSingleCrops[i][3]
+                }
+                else{
+                    result = originalSingleCrops[i]
+                }
+            }
+        }
+        return result;
+    }
 
+    return ProductionModel;
 })

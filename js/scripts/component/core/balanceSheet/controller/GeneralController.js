@@ -73,7 +73,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                     var clickedCell = resultedClicked["clickedCell"]
                     var isEditable = formulaController.checkIfEditableCell(clickedCell)
                     editHandler.startEditCell(resultedClicked, isEditable, editingOnCell, grid, self)
-
                 } else {
                     this.unblockEvent()
                 }
@@ -86,6 +85,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                     state.value = state.old;
                     this.unblockEvent();
                 } else {
+
                     if (state.value != null && state.value != '' && !(isNaN(state.value))) {
                         var newValue = parseFloat(state.value)
                         resultedClicked.clickedCell[3] = newValue

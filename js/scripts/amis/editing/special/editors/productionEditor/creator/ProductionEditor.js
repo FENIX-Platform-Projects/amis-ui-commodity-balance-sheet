@@ -3,8 +3,8 @@
  */
 define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/ProductionObserver",
         "productionEditor/model/ProductionModel", "specialFormulaConf/formulaHandler/FormulaHandler",
-        "productionEditor/controller/ProductionController", "text!productionEditor/view/_productionForm.html","flagTranslator/controller/FlagController", "select2"],
-    function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller,HTLMProduction, FlagController) {
+        "productionEditor/controller/ProductionController", "text!productionEditor/view/_productionForm.html", "flagTranslator/controller/FlagController", "select2"],
+    function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller, HTLMProduction, FlagController) {
 
 
         var cellclassname = function (row, column, value, data) {
@@ -12,14 +12,37 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             switch (formulaToRenderTotVal) {
                 case 'init':
                 case 'yield':
-                    result = (row == 1) ? 'calculatedRowGrid' : 'notCalculatedRows';
+                    if (row == 1) {
+                        result = 'calculatedRowGrid'
+                    } // area harvested disabled
+                    else if ((row == 0 && !areaHarvSelected) || (row == 3 && areaHarvSelected)) {
+                        result = 'areaDisabled';
+                    } else {
+                        result = 'notCalculatedRows'
+                    }
                     break;
                 case 'areaHarvested':
-                    result = (row == 0) ? 'calculatedRowGrid' : 'notCalculatedRows';
+                    if ((row == 0 && areaHarvSelected) || (row == 3 && !areaHarvSelected)) {
+                        result = 'calculatedRowGrid'
+                    }
+                    else if ((row == 0 && !areaHarvSelected) || (row == 3 && areaHarvSelected)) {
+                        result = 'areaDisabled';
+                    } else {
+                        result = 'notCalculatedRows'
+                    }
                     break;
 
                 case 'production':
-                    result = (row == 2) ? 'calculatedRowGrid' : 'notCalculatedRows';
+                    if(row == 2){
+                        result   ='calculatedRowGrid';
+                    }
+                    else if ((row == 0 && !areaHarvSelected) || (row == 3 && areaHarvSelected)) {
+                        result = 'areaDisabled';
+                    }
+                    else{
+                        result = 'notCalculatedRows'
+                    }
+
                     break;
             }
             return result;
@@ -43,31 +66,23 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             return result;
         };
 
-        var createGridEditor = function(row, cellValue, editor, cellText, width, height){
+        var createGridEditor = function (row, cellValue, editor, cellText, width, height) {
             var stringValue = cellValue;
             var oldInput = document.getElementById(editor[0].id)
-            oldInput.parentNode.className =  oldInput.parentNode.className + " flagClass"
+            oldInput.parentNode.className = oldInput.parentNode.className + " flagClass"
             var newInput = document.createElement('div')
             newInput.id = oldInput.id;
             newInput.className = oldInput.className;
-            oldInput.parentNode.replaceChild(newInput,oldInput)
-            var stringToAppend ='<select multiple tabindex="-1" id="multiFlag" style="width:100%" class="input-group-lg">';
+            oldInput.parentNode.replaceChild(newInput, oldInput)
+            var stringToAppend = '<select multiple tabindex="-1" id="multiFlag" style="width:100%" class="input-group-lg">';
             stringToAppend += flagController.getOptions(stringValue)
-            debugger;
-            stringToAppend +='</select>'
-            $('#'+editor[0].id).append(stringToAppend)
-
-
-           // $('#multiflag').select2({placeholder: "Click to select the flags"})
-
+            stringToAppend += '</select>'
+            $('#' + editor[0].id).append(stringToAppend)
 
         }
 
         var initGridEditor = function (row, cellValue, editor, cellText, width, height) {
-            debugger;
-            $('#multiFlag').select2({placeholder: "Click to select the flags"}) ;
-
-
+            $('#multiFlag').select2({placeholder: "Click to select the flags"});
         }
 
         var gridEditorValue = function (row, cellValue, editor) {
@@ -78,7 +93,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
         var observer, modelProduction, supportUtility, formulaHandler, originalTotCropsModel, productionController, controllerEditors,
             clickedCell, flagController, modal;
 
-        var formulaToRenderTotVal, formulaToRenderSingleCrops, _productionForm
+        var formulaToRenderTotVal, formulaToRenderSingleCrops, _productionForm, areaHarvSelected
         // ---------------------- SUPPORT FUNCTIONS -------------------------------------------
 
         Element.prototype.remove = function () {
@@ -101,7 +116,8 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             productionController = new Controller;
             flagController = new FlagController;
             _productionForm = HTLMProduction
-             modal = _productionForm;
+            modal = _productionForm;
+            areaHarvSelected = true;
 
         }
 
@@ -140,6 +156,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 datatype: "array",
                 datafields: [
                     { name: 6, type: 'string' },
+                    { name: 7, type: 'string' },
                     { name: 3, type: 'float' },
                     { name: 4, type: 'string'},
                     {name: 5, type: 'string'}
@@ -176,9 +193,13 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             $('#secondCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
             $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true });
 
+
             $('#firstCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
             $('#secondCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
             $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
+
+            $('#radioBtnAreaHarv').jqxRadioButton({ width: 120, height: 25, checked: true });
+            $('#radioBtnAreaPlanted').jqxRadioButton({ width: 120, height: 25 });
 
             var that = this;
 
@@ -217,7 +238,8 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             });
 
 
-            $("#specialForm").modal({ backdrop: 'static',
+            $("#specialForm").modal({
+                backdrop: 'static',
                 keyboard: false});
 
             observer.applyListeners(this, productionController)
@@ -236,6 +258,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 datatype: "array",
                 datafields: [
                     { name: 6, type: 'string' },
+                    { name: 7, type: 'string'},
                     { name: 3, type: 'float' },
                     { name: 4, type: 'string'},
                     {name: 5, type: 'string'}
@@ -266,8 +289,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             });
 
             observer.reBindEventsFromTotalValues()
-
-
         }
 
         ProductionEditor.prototype.updateSingleGrid = function (calculatedModel, formulaToApply) {
@@ -332,7 +353,15 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             $('#productionTabs').jqxTabs('destroy');
         }
 
+        ProductionEditor.prototype.changeLabelToArea = function (isAreaHarvested) {
 
+            areaHarvSelected = isAreaHarvested
+
+            var areaLabel = (isAreaHarvested) ? "Area Harvested" : "Area Planted";
+            $("#secondCheckBoxTotVal").text(areaLabel)
+
+
+        }
 
         return ProductionEditor;
     })

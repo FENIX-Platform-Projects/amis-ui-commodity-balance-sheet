@@ -29,8 +29,13 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
         specialFormulaController = formulaController;
         // first take all the involvedCodes
         var codes = specialFormulaController.getInvolvedItems(takenCell, filterProductCode);
+        console.log('controller Editosrs.init: after getInvolvedItems of specialFormulaController')
+        console.log(codes)
 
         var dataInvolved = dataHandler.getInvolvedData(codes, everyData, tableData, takenCell);
+
+        console.log('DATA INVOLLVEDE')
+        console.log(dataInvolved)
 
         var condition =parseInt(takenCell[0])
 

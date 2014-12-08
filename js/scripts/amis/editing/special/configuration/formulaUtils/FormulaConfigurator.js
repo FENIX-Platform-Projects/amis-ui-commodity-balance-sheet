@@ -22,14 +22,16 @@ define(["jquery"], function($){
 
     // 1: Production; 2: OtherUses; 3: Paddy
     // Get one or mor formulas
-    FormulaConfigurator.prototype.getInitFormula = function(numberOfFormUsed, type){
+    FormulaConfigurator.prototype.getInitFormula = function(numberOfFormUsed, type, isAreaHarvested){
 
         var result;
         switch (numberOfFormUsed){
             case 1:
+                var label = (isAreaHarvested)? 'areaHSelected': 'areaPlSelected';
                 var typeOfForm = config.formulaPlugins[numberOfFormUsed-1];
                 if(type == "totalValues"){
-                    result = typeOfForm.totalValues.init[0]
+                    //areaHSelected and areaPlSelected
+                    result = typeOfForm.totalValues[label].init[0]
                 }else if(type == "singleCrops"){
                     result = typeOfForm.singleCrops.init[0]
                 }
@@ -48,21 +50,26 @@ define(["jquery"], function($){
     }
 
 
-    FormulaConfigurator.prototype.getUpdateFormula = function(numberOfFormUsed, type, dependentElement, particularForm){
+    FormulaConfigurator.prototype.getUpdateFormula = function(numberOfFormUsed, type, dependentElement, particularForm, isAreaHarvested){
 
         var result;
+
+
         switch (numberOfFormUsed){
             case 1:
+                var label = (isAreaHarvested)? areaHSelected: areaPlSelected;
                 var typeOfForm = config.formulaPlugins[numberOfFormUsed-1];
+
                     var updateFormulas = typeOfForm[type].valuesDisabled;
                 if  (dependentElement == "production") {
-                    result = updateFormulas[0].production;
+
+                    result = updateFormulas[0][label].production;
 
 
                 }else if(dependentElement == "areaHarvested"){
-                        result = updateFormulas[1].areaHarvested;
+                        result = updateFormulas[1][label].areaHarvested;
                     }else if( dependentElement == 'yield'){
-                        result = updateFormulas[2].yield;
+                        result = updateFormulas[2][label].yield;
                     }
                 break;
 

@@ -89,6 +89,7 @@ define(['jquery'], function($){
                }
            }
         }
+        debugger;
         result = this.checkIfEveryElementExist(result)
 
         return result;

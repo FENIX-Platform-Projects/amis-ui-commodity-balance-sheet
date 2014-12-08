@@ -30,6 +30,8 @@ define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSave
         var allDataOriginal = balanceSheet.getData()
         var tableDataOriginal = balanceSheet.getTableData()
         var newDataOriginal = balanceSheet.getDataToSave()
+        console.log('DATA TO SAVE~~')
+        console.log(newDataOriginal)
         var allData = $.extend(true, [], allDataOriginal);
         var tableData = $.extend(true, [], tableDataOriginal);
         var newdata = $.extend(true, [], newDataOriginal);

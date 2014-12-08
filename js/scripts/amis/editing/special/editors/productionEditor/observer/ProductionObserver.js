@@ -4,7 +4,7 @@
 define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
 
     var editorProduction, formulaToApplyTot, formulaToApplySingle, controllerProduction,
-        totalValuesModified, singleCropsValuesModified;
+        totalValuesModified, singleCropsValuesModified, isAreaHarvestedSelected;
 
     function ProductionObserver() {
     }
@@ -19,6 +19,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         controllerProduction = EditorController;
         formulaToApplyTot = 'init';
         formulaToApplySingle = 'init';
+        isAreaHarvestedSelected = true;
         editorProduction = EditorProduction;
         totalValuesModified = false;
         singleCropsValuesModified = false;
@@ -34,6 +35,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         this.listenToSingleCropsEditable()
         this.listenToCloseModal()
         this.listenToCloseButton()
+        this.listenToChangeRadioButton()
     }
 
     ProductionObserver.prototype.listenToCheckboxesTotal = function () {
@@ -271,13 +273,25 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         });
     }
 
-    ProductionObserver.prototype.listenToStartCellTotGriEditing = function(){
-        $("#gridTotalValues").on('cellbeginedit', function (event){
-            event.preventDefault()
+    ProductionObserver.prototype.listenToChangeRadioButton = function(){
+        $('#radioBtnAreaPlanted').on('change', function(event){
+            event.preventDefault();
             event.stopImmediatePropagation();
-            var columnValue = event.args.datafield;
+
+            console.log("EVENT")
+            console.log(event.args.checked)
+            debugger;
+
+            console.log(isAreaHarvestedSelected)
+
+            if(event.args.checked == isAreaHarvestedSelected){
+                isAreaHarvestedSelected = !event.args.checked;
+                controllerProduction.onChangeAreaSelected(formulaToApplyTot, isAreaHarvestedSelected)
+
+            }
         })
     }
+
 
     ProductionObserver.prototype.listenToEditCellTotGrid = function () {
 

@@ -70,13 +70,7 @@ define(['jquery'], function ($) {
         var cleanedActualYear = this.cleanAndSetDate(actualYearForecasts);
         var cleanedPreviousYear = this.cleanAndSetDate(previousYearForecast);
 
-
         var actualYearUpdated = this.mergeUpdatedData(cleanedActualYear, cleanedNewDataCurrentYear)
-
-        /* if(newData.newData.length >0){
-         var cleanedNewForecast = this.cleanAndSetDate(newData.newData)
-         actualYearUpdated = actualYearUpdated.concat(actualYearUpdated, cleanedNewForecast)
-         }*/
 
         // Previous Year
         var previousYearUpdated = this.mergeUpdatedData(cleanedPreviousYear, cleanedNewDataPreviousYear)
