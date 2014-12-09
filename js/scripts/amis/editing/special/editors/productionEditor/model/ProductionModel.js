@@ -48,8 +48,20 @@ define(["jquery",  "urlConfigurator"], function($, ServicesURL){
         return model;
     }
 
+
+    ProductionModel.prototype.eraseOldValues = function(rowNumber){
+        var valueColumnNumber = 3;
+        var flagsColumnNumber = 4;
+        var notesColumnNumber = 5;
+
+        this.setOriginalData(rowNumber,null,valueColumnNumber)
+        this.setOriginalData(rowNumber,null,flagsColumnNumber)
+        this.setOriginalData(rowNumber,null,notesColumnNumber)
+
+    }
+
     ProductionModel.prototype.setOriginalData = function(rowNumber, value, columnNumber){
-        if(columnNumber == 3){
+        if(columnNumber == 3 && (value != "" && value != null && typeof value !== 'undefined')){
             originalTotalCropsModel[rowNumber][columnNumber] = parseFloat(value);
         }else {
             originalTotalCropsModel[rowNumber][columnNumber] = value;

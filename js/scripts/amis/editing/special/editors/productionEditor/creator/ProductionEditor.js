@@ -12,12 +12,15 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             switch (formulaToRenderTotVal) {
                 case 'init':
                 case 'yield':
+                    debugger;
                     if (row == 1) {
                         result = 'calculatedRowGrid'
                     } // area harvested disabled
                     else if ((row == 0 && !areaHarvSelected) || (row == 3 && areaHarvSelected)) {
                         result = 'areaDisabled';
-                    } else {
+                    }
+
+                    else {
                         result = 'notCalculatedRows'
                     }
                     break;
@@ -90,10 +93,8 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             return  flagController.getStringFromCodes(codes);
         }
 
-        var observer, modelProduction, supportUtility, formulaHandler, originalTotCropsModel, productionController, controllerEditors,
-            clickedCell, flagController, modal;
 
-        var formulaToRenderTotVal, formulaToRenderSingleCrops, _productionForm, areaHarvSelected
+
         // ---------------------- SUPPORT FUNCTIONS -------------------------------------------
 
         Element.prototype.remove = function () {
@@ -108,6 +109,13 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             }
         }
         // ------------------------------------------------------------------------------------
+
+
+        var observer, modelProduction, supportUtility, formulaHandler, originalTotCropsModel, productionController, controllerEditors,
+            clickedCell, flagController, modal;
+
+        var formulaToRenderTotVal, formulaToRenderSingleCrops, _productionForm, areaHarvSelected
+
 
         function ProductionEditor() {
             observer = new Observer;
@@ -138,10 +146,9 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
             var singleCropsModel = modelProduction.getSingleCropsModel(involvedItems, supportUtility);
             var copyOriginalModelSingle = $.extend(true, [], singleCropsModel);
+
             formulaToRenderTotVal = 'init'
             formulaToRenderSingleCrops = 'init'
-
-            var valueCodeItem = parseInt(clickedItem[0])
 
             var map = {
                 2: "Area Harvested",
@@ -249,7 +256,9 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
         }
 
-        ProductionEditor.prototype.updateTotGrid = function (calculatedModel, formulaToApply) {
+        ProductionEditor.prototype.updateTotGrid = function (calculatedModel, formulaToApply, isAreaHarv) {
+            areaHarvSelected = isAreaHarv
+
             formulaToRenderTotVal = formulaToApply
 
             observer.unbindEventsFromTotalValues()
@@ -360,8 +369,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             var areaLabel = (isAreaHarvested) ? "Area Harvested" : "Area Planted";
             debugger;
             $("#secondCheckBoxTotValLabel").html(areaLabel)
-
-
         }
 
         return ProductionEditor;

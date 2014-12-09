@@ -90,8 +90,22 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                             if (typeof index != 'undefined' && index != null && typeof model[index][indexValue] != 'undefined' && model[index][indexValue] != null) {
                                 addendums.push(model[index][indexValue])
                             } else {
-                                notRealizeable = true;
-                                break label1;
+                                if(addendum.hasCondition && addendum.condition == 'exists' && addendum.otherValue.length >0){
+                                    code = addendum.otherValue[0];
+                                    if(code ==2){
+                                        debugger;
+                                    }
+                                    index = supportModel.lookForCode(code, model, startIndex, numberOfRows)
+                                    if (typeof index != 'undefined' && index != null && typeof model[index][indexValue] != 'undefined' && model[index][indexValue] != null) {
+                                        addendums.push(model[index][indexValue])
+                                    }else{
+                                        notRealizeable = true;
+                                        break label1;
+                                    }
+                                }else {
+                                    notRealizeable = true;
+                                    break label1;
+                                }
                             }
                             break;
                         case "operation":

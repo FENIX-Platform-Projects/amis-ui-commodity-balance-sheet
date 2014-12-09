@@ -28,14 +28,14 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         this.listenToRecalculateButtonTotalValues();
         this.listenToRecalculateButtonSingleCrops();
         this.listenToTabs();
-        this.listenToEditCellTotGrid()
-        this.listenToEditCellSingleCropsGrid()
+        this.listenToEditCellTotGrid();
+        this.listenToEditCellSingleCropsGrid();
         this.listenToSaveTotalValuesButton();
-        this.listenToTotalEditable()
+        this.listenToTotalEditable();
         this.listenToSingleCropsEditable()
-        this.listenToCloseModal()
-        this.listenToCloseButton()
-        this.listenToChangeRadioButton()
+        this.listenToCloseModal();
+        this.listenToCloseButton();
+        this.listenToChangeRadioButton();
     }
 
     ProductionObserver.prototype.listenToCheckboxesTotal = function () {
@@ -295,7 +295,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         })
     }
 
-
     ProductionObserver.prototype.listenToEditCellTotGrid = function () {
 
         $("#gridTotalValues").on('cellendedit', function (event) {
@@ -387,29 +386,30 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var row = event.args.rowindex;
             var column = event.args.datafield
 
+            var conditionsAreaHarv = (isAreaHarvestedSelected && row==3) ||(!isAreaHarvestedSelected && row==0)
 
             switch (formulaToApplyTot) {
 
                 case 'init':
-                    if (row == 1 ) {
+                    if (row == 1 || (conditionsAreaHarv) ) {
                         toBlock = true;
                     }
                     break;
 
                 case 'production':
-                    if (row == 2) {
+                    if (row == 2 ||(conditionsAreaHarv) ) {
                         toBlock = true;
                     }
                     break;
 
                 case 'areaHarvested':
-                    if (row == 0 ) {
+                    if (row==3 || row==0) {
                         toBlock = true;
                     }
                     break;
 
                 case 'yield':
-                    if (row == 1 ) {
+                    if (row == 1 ||(conditionsAreaHarv) ) {
                         toBlock = true;
                     }
                     break;

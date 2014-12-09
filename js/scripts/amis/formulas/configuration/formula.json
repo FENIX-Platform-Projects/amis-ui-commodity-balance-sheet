@@ -13,24 +13,31 @@
             },
             "addendums":[
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         18
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
                 {
+
                     "dataType":"operation",
                     "value":"+",
                     "otherColumn":false,
                     "columnNumber":""
                 },
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         5
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 }
@@ -48,10 +55,13 @@
             },
             "addendums":[
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         27
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
@@ -62,10 +72,13 @@
                     "columnNumber":""
                 },
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         7
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 }
@@ -83,24 +96,31 @@
             },
             "addendums":[
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         5
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
                 {
                     "dataType":"operation",
                     "value":"/",
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
                 {
+                    "hasCondition" : true,
+                    "condition" : "exists",
                     "dataType":"code",
                     "value":[
                         2
                     ],
+                    "otherValue" : [37],
                     "otherColumn":false,
                     "columnNumber":""
                 }
@@ -118,10 +138,13 @@
             },
             "addendums":[
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         14
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
@@ -132,10 +155,13 @@
                     "columnNumber":""
                 },
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         13
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
@@ -146,10 +172,13 @@
                     "columnNumber":""
                 },
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         15
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 }
@@ -167,10 +196,13 @@
             },
             "addendums":[
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         20
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
@@ -181,10 +213,13 @@
                     "columnNumber":""
                 },
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         10
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
@@ -195,10 +230,13 @@
                     "columnNumber":""
                 },
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         16
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 }
@@ -216,10 +254,13 @@
             },
             "addendums":[
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         19
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
@@ -230,10 +271,13 @@
                     "columnNumber":""
                 },
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[
                         35
                     ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 }
@@ -251,8 +295,11 @@
             },
             "addendums":[
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[14],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
@@ -263,8 +310,11 @@
                     "columnNumber":""
                 },
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"constant",
                     "value":1000000,
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 },
@@ -275,8 +325,11 @@
                     "columnNumber":""
                 },
                 {
+                    "hasCondition" : false,
+                    "condition" : "",
                     "dataType":"code",
                     "value":[ 1 ],
+                    "otherValue" : [],
                     "otherColumn":false,
                     "columnNumber":""
                 }

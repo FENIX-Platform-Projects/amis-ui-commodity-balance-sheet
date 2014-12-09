@@ -61,7 +61,7 @@ define(['jquery', "urlConfigurator"], function($,ServicesUrl){
 
     PaddyModel.prototype.setOriginalTotalData = function(rowNumber, value, columnNumber){
 
-        if(columnNumber == 3 && (value != "" && value != null)){
+        if(columnNumber == 3 && (value != "" && value != null && typeof value !== 'undefined')){
             originalTotalCropsModel[rowNumber][columnNumber] = parseFloat(value);
         }else {
             originalTotalCropsModel[rowNumber][columnNumber] = value;
