@@ -223,7 +223,8 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             totalValuesModified = true;
             if (counter == 2) { //OK
 
-                controllerProduction.updateTotGridOnFormulaChanges(formulaToApplyTot);
+                var typeOfForm = (isAreaHarvestedSelected)? 'totalValues': 'totalValuesAPlanted';
+                controllerProduction.updateTotGridOnFormulaChanges(formulaToApplyTot,typeOfForm);
             } else {
                 var alert = '<div class="alert alert-danger alert-dismissible" role="alert">' +
                     '<button type="button" class="close" data-dismiss="alert">' +
@@ -260,8 +261,10 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
 
     ProductionObserver.prototype.listenToTabs = function () {
         $('#productionTabs').on('tabclick', function (event) {
+
             event.preventDefault()
             event.stopImmediatePropagation();
+            debugger;
             var clickedItem = event.args.item;
             if (clickedItem == 0 && singleCropsValuesModified) { // from single crops to total values
                 controllerProduction.onSwitchingCropsValues(formulaToApplySingle)
@@ -312,10 +315,10 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             if (columnValue == 3 && (oldvalue != value)) {
                 var numberOfRow = event.args.rowindex;
                 var value2 = parseFloat(value)
-                controllerProduction.updateTotGridOnEditing(numberOfRow, value2, formulaToApplyTot, columnValue)
+                controllerProduction.updateTotGridOnEditing(numberOfRow, value2, formulaToApplyTot, columnValue, isAreaHarvestedSelected)
             } else if (columnValue != 3 && (oldvalue != value)) { // if modified only flag/notes
                 var numberOfRow = event.args.rowindex;
-                controllerProduction.updateTotGridOnEditing(numberOfRow, value, formulaToApplyTot, columnValue)
+                controllerProduction.updateTotGridOnEditing(numberOfRow, value, formulaToApplyTot, columnValue, isAreaHarvestedSelected)
             }
         })
 

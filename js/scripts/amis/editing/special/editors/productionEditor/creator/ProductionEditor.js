@@ -358,7 +358,8 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             areaHarvSelected = isAreaHarvested
 
             var areaLabel = (isAreaHarvested) ? "Area Harvested" : "Area Planted";
-            $("#secondCheckBoxTotVal").text(areaLabel)
+            debugger;
+            $("#secondCheckBoxTotValLabel").html(areaLabel)
 
 
         }
