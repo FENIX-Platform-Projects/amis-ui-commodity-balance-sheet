@@ -9,26 +9,36 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
         var cellclassname = function (row, column, value, data) {
             var result;
+            var conditionDisable = ((row === 0 && !areaHarvSelected) || ((row == 3 && areaHarvSelected)) ||
+                ((row === 0 + (4 * 1) && !areaHarvSelected) || ((row == 3 + (4 * 1) && areaHarvSelected))) ||
+                ((row === 0 + (4 * 2) && !areaHarvSelected) || ((row == 3 + (4 * 2) && areaHarvSelected))));
+
+
             switch (formulaToRenderTotVal) {
                 case 'init':
                 case 'yield':
+                    var conditionCalculated = ((row == 1) || row == 1 + (4 * 1) || row == 1 + (4 * 2))
+
                     debugger;
-                    if (row == 1) {
+                    if (conditionCalculated) {
                         result = 'calculatedRowGrid'
                     } // area harvested disabled
-                    else if ((row == 0 && !areaHarvSelected) || (row == 3 && areaHarvSelected)) {
+                    else if (conditionDisable) {
                         result = 'areaDisabled';
                     }
-
                     else {
                         result = 'notCalculatedRows'
                     }
                     break;
                 case 'areaHarvested':
-                    if ((row == 0 && areaHarvSelected) || (row == 3 && !areaHarvSelected)) {
+                    var conditionCalculated = ((row == 0 && areaHarvSelected) || (row == 3 && !areaHarvSelected) ||
+                        (row == 0+4*1 && areaHarvSelected) || (row == 3+4*1 && !areaHarvSelected) ||
+                        (row == 0+4*2 && areaHarvSelected) || (row == 3+4*2 && !areaHarvSelected))
+
+                    if (conditionCalculated) {
                         result = 'calculatedRowGrid'
                     }
-                    else if ((row == 0 && !areaHarvSelected) || (row == 3 && areaHarvSelected)) {
+                    else if (conditionDisable) {
                         result = 'areaDisabled';
                     } else {
                         result = 'notCalculatedRows'
@@ -36,13 +46,15 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                     break;
 
                 case 'production':
-                    if(row == 2){
-                        result   ='calculatedRowGrid';
+                    var conditionCalculated = (row == 2 || row == 2+4*1  || row == 2+4*1)
+
+                    if (conditionCalculated) {
+                        result = 'calculatedRowGrid';
                     }
-                    else if ((row == 0 && !areaHarvSelected) || (row == 3 && areaHarvSelected)) {
+                    else if (conditionDisable) {
                         result = 'areaDisabled';
                     }
-                    else{
+                    else {
                         result = 'notCalculatedRows'
                     }
 
@@ -56,14 +68,19 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             switch (formulaToRenderSingleCrops) {
                 case 'init':
                 case 'yield':
-                    result = (row == 1) ? 'calculatedRowGrid' : 'notCalculatedRows';
+                    var conditionCalculated = ((row == 1) || row == 1 + (4 * 1) || row == 1 + (4 * 2))
+                    result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
                     break;
                 case 'areaHarvested':
-                    result = (row == 0) ? 'calculatedRowGrid' : 'notCalculatedRows';
+                    var conditionCalculated = ((row == 0) || row == 0 + (4 * 1) || row == 0 + (4 * 2))
+
+                    result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
                     break;
 
                 case 'production':
-                    result = (row == 2) ? 'calculatedRowGrid' : 'notCalculatedRows';
+                    var conditionCalculated = ((row == 2) || row == 2 + (4 * 1) || row == 2 + (4 * 2))
+
+                    result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
                     break;
             }
             return result;
@@ -92,7 +109,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             var codes = $('#multiFlag').select2("val");
             return  flagController.getStringFromCodes(codes);
         }
-
 
 
         // ---------------------- SUPPORT FUNCTIONS -------------------------------------------

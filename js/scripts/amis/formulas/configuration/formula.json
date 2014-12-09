@@ -155,13 +155,13 @@
                     "columnNumber":""
                 },
                 {
-                    "hasCondition" : false,
-                    "condition" : "",
+                    "hasCondition" : true,
+                    "condition" : "exists",
                     "dataType":"code",
                     "value":[
                         13
                     ],
-                    "otherValue" : [],
+                    "otherValue" : [36],
                     "otherColumn":false,
                     "columnNumber":""
                 },

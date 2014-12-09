@@ -15,11 +15,6 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
         // initialization of configurator
         supportModel.init(dsdConfigurator)
         mapCodes = supportModel.getMapCodes();
-        console.log('MAP CODES')
-        console.log(mapCodes)
-
-        console.log('model')
-        console.log(model)
 
         configurator.init();
         indexValue = dsdConfigurator.getValueIndex();
