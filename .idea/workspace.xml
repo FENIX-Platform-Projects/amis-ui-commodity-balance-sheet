@@ -2,57 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="233390f4-9d56-4ae3-a936-6fea2c279eba" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_alertSelection.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/BalanceSheet.js" afterPath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/BalanceSheet.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CommoditySelector.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CommoditySelector.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/dataUtils/CommonUtils.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/dataUtils/CommonUtils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/controller/ControllerEditors.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/controller/ControllerEditors.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CountrySelector.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CountrySelector.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/logic/DataExportLoader.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/logic/DataExportLoader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/utils/DataHandler.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/utils/DataHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/logic/DataLoader.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/logic/DataLoader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/logic/DataLoaderAnnual.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/logic/DataLoaderAnnual.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/DatabaseSelector.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/DatabaseSelector.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/direct/EditHandler.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/direct/EditHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaUtils/FormulaConfigurator.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaUtils/FormulaConfigurator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/formulas/support/FormulaConfigurator.js" afterPath="$PROJECT_DIR$/js/scripts/amis/formulas/support/FormulaConfigurator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/formulas/controller/FormulaController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/formulas/controller/FormulaController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaHandler/FormulaHandler.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaHandler/FormulaHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js" afterPath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/controller/HandlerExportSelection.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/controller/HandlerExportSelection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/controller/HandlerSelection.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/controller/HandlerSelection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/controller/OtherController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/controller/OtherController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/creator/OtherCreator.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/creator/OtherCreator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/model/OtherModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/model/OtherModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/observer/OtherObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/observer/OtherObserver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/model/PaddyModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/model/PaddyModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/observer/PaddyObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/observer/PaddyObserver.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingObserver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/controller/ProductionController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/controller/ProductionController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/creator/ProductionEditor.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/creator/ProductionEditor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/model/ProductionModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/model/ProductionModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/observer/ProductionObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/observer/ProductionObserver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/observer/SavingObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/observer/SavingObserver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/proxyFactory/SelectionFactory.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/proxyFactory/SelectionFactory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/formulas/support/SupportModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/formulas/support/SupportModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/YearSelector.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/YearSelector.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_productionForm.html" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_productionForm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/balance-sass.scss" afterPath="$PROJECT_DIR$/css/balance-sass.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/formulas/configuration/formula.json" afterPath="$PROJECT_DIR$/js/scripts/amis/formulas/configuration/formula.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaPlugin/formulaPlugins.json" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaPlugin/formulaPlugins.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="amis-ui-balanceSheet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -150,8 +100,8 @@
       <file leaf-file-name="PreloadingController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.59926015" vertical-offset="2538" max-vertical-offset="3816">
-              <caret line="168" column="32" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.7780518" vertical-offset="2591" max-vertical-offset="3924">
+              <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1087,12 +1037,12 @@
       <workItem from="1417510265500" duration="5150000" />
       <workItem from="1418032946093" duration="16736000" />
       <workItem from="1418114510251" duration="20274000" />
-      <workItem from="1418200600482" duration="22999000" />
+      <workItem from="1418200600482" duration="23486000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113748000" />
+    <option name="totallyTimeSpent" value="114235000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1637,8 +1587,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59926015" vertical-offset="2538" max-vertical-offset="3816">
-          <caret line="168" column="32" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.7780518" vertical-offset="2591" max-vertical-offset="3924">
+          <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
           <folding />
         </state>
       </provider>

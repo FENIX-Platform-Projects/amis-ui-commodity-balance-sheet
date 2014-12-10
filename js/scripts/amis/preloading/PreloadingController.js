@@ -167,11 +167,17 @@ define(["jquery", "preloading/filterDatafields/CountrySelector",
             }
 
             // delete the alerts
-            if(  document.getElementById('alertChangeGrid').firstChild){
+            if (document.getElementById('alertChangeGrid').firstChild || document.getElementById('alertNewValues').firstChild) {
+
                 var myNode = document.getElementById('alertChangeGrid')
+                var myNode2 = document.getElementById('alertNewValues')
                 while (myNode.firstChild) {
                     myNode.removeChild(myNode.firstChild);
                 }
+                while (myNode2.firstChild) {
+                    myNode2.removeChild(myNode2.firstChild);
+                }
+
             }
 
             loadingController.init(preloadingData, true);
