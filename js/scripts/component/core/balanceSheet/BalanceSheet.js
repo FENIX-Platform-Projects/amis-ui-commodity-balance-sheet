@@ -3,15 +3,12 @@
  */
 
 define(["jquery", "configurator/Configurator", "modelController/ModelsController",
-    "generalController/GeneralController", "utilities/SupportUtility"], function ($, Configurator, ModelController, GeneralController,
-    Utility) {
+    "generalController/GeneralController", "utilities/SupportUtility"], function ($, Configurator, ModelController, GeneralController, Utility) {
 
     var urlComponent = './js/scripts/component/core/balanceSheet/configuration/component/componentConfiguration.json'
 
     var tableDataModel, gridDataModel, data, dsd, componentConfiguration,
         configurator, indexes, generalController, modelController, supportUtility, NProgress;
-
-    var dataInput;
 
     function BalanceSheet() {
 
@@ -44,7 +41,7 @@ define(["jquery", "configurator/Configurator", "modelController/ModelsController
             }
         })
 
-        supportUtility.init(filterData )
+        supportUtility.init(filterData)
 
         configurator.init(dsd, componentConfiguration)
         modelController.init(dataInput, configurator)
@@ -78,7 +75,7 @@ define(["jquery", "configurator/Configurator", "modelController/ModelsController
         return modelController.getGridData();
     }
 
-    BalanceSheet.prototype.getDataToSave = function(){
+    BalanceSheet.prototype.getDataToSave = function () {
         return modelController.getDataToSave();
     }
 

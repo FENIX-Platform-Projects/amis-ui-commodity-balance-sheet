@@ -13,11 +13,11 @@ define(['jquery', 'databaseSaver/annualSaving/controller/SavingAnnualController'
         SavingFactory.prototype.getSavingController = function () {
             var result;
 
-           var store = amplify.store()
-            if(store.isMonthlyModality){
+            var store = amplify.store()
+            if (store.isMonthlyModality) {
 
                 result = monthlySaving
-            }else{
+            } else {
                 result = annualSaving
             }
             return result;

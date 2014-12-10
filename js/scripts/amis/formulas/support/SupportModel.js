@@ -16,11 +16,11 @@ define(["jquery" ], function ($) {
 
     SupportModel.prototype.getMapCodes = function () {
         var result;
-            var result = {}
-            var allDSDCodes = configuratorDSD.getLeftKeyColumn().leftColumns[0].domain.codes;
-            for (var i = 0; i < allDSDCodes.length; i++)
-                result[allDSDCodes[i].code.code] = i;
-            mapCodes = result;
+        var result = {}
+        var allDSDCodes = configuratorDSD.getLeftKeyColumn().leftColumns[0].domain.codes;
+        for (var i = 0; i < allDSDCodes.length; i++)
+            result[allDSDCodes[i].code.code] = i;
+        mapCodes = result;
 
 
         return result;
@@ -36,11 +36,11 @@ define(["jquery" ], function ($) {
         var result;
         var found = false;
         var code = codeData;
-        var model =modelData;
+        var model = modelData;
         var startIndex = startIndexData;
         var numberOfRows = numberOfRowsData;
         for (var i = startIndex; !found && i < startIndex + numberOfRows; i++) {
-            if (typeof model[i] !=='undefined' && model[i][0] == code) {
+            if (typeof model[i] !== 'undefined' && model[i][0] == code) {
                 found = true
                 result = i;
             }
@@ -49,7 +49,7 @@ define(["jquery" ], function ($) {
     }
 
 
-    SupportModel.prototype.createIndexOriginalModel = function(numberOfColumns,indexColumn,mapCodes,code){
+    SupportModel.prototype.createIndexOriginalModel = function (numberOfColumns, indexColumn, mapCodes, code) {
         var xCoordinate = mapCodes[code];
         return (numberOfColumns * xCoordinate) + indexColumn
     }

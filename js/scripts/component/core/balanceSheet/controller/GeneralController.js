@@ -131,7 +131,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             $('#annualSelection').on("click", function (evt) {
                 evt.preventDefault();
                 evt.stopImmediatePropagation();
-                $.publish('annual-added','STRINGAA');
+                $.publish('annual-added', 'STRINGAA');
 
             })
         }

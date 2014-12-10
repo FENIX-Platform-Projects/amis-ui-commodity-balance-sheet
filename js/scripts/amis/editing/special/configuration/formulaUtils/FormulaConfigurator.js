@@ -27,7 +27,6 @@ define(["jquery"], function ($) {
         var result;
         switch (numberOfFormUsed) {
             case 1:
-                debugger;
                 var typeOfForm = config.formulaPlugins[numberOfFormUsed - 1];
                 if (type == "totalValues") {
                     //areaHSelected and areaPlSelected
@@ -36,6 +35,8 @@ define(["jquery"], function ($) {
                     result = typeOfForm.singleCrops.init[0]
                 } else if (type == "totalValuesAPlanted") {
                     result = typeOfForm.totalValuesAPlanted.init[0]
+                } else if (type == "singleCropsAPlanted") {
+                    result = typeOfForm.singleCropsAPlanted.init[0]
                 }
                 break;
 
@@ -58,7 +59,6 @@ define(["jquery"], function ($) {
 
         switch (numberOfFormUsed) {
             case 1:
-                debugger;
                 var typeOfForm = config.formulaPlugins[numberOfFormUsed - 1];
 
                 var updateFormulas = typeOfForm[type].valuesDisabled;

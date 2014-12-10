@@ -1,9 +1,10 @@
-define(['jquery'], function($){
+define(['jquery'], function ($) {
 
     var supportUtility, filterActual, seasonDateMap;
 
 
-    function SavingAnnualModel(){}
+    function SavingAnnualModel() {
+    }
 
 
     SavingAnnualModel.prototype.init = function (SupportUtility) {
@@ -47,16 +48,15 @@ define(['jquery'], function($){
 
         var dataOriginal = allData;
 
-        var dataMerged  =this.mergeUpdatedData(dataOriginal, newdata.updatedData)
+        var dataMerged = this.mergeUpdatedData(dataOriginal, newdata.updatedData)
 
         var dataCleaned = this.cleanData(dataMerged);
 
         var dataReadyForPayload = this.createDataForPayload(dataCleaned, handlerAnnual)
 
-        var dataWithPayload = this.preparePutPayload(dataReadyForPayload,handlerAnnual)
+        var dataWithPayload = this.preparePutPayload(dataReadyForPayload, handlerAnnual)
 
         return dataWithPayload;
-
 
 
     }
@@ -103,19 +103,19 @@ define(['jquery'], function($){
 
         seasonDateMap = Handler.getSeasonMapDate()
 
-        for(var i = 0, length = allData.length;i<length; i++){
+        for (var i = 0, length = allData.length; i < length; i++) {
 
             var tempSeason = allData[i][2]
             var tempData = allData[i];
 
-            var season  =tempData[2]
+            var season = tempData[2]
 
-            tempData[2]  =seasonDateMap[season]
+            tempData[2] = seasonDateMap[season]
 
-            if(typeof result[tempSeason] === 'undefined'){
+            if (typeof result[tempSeason] === 'undefined') {
                 result[tempSeason] = []
             }
-                result[tempSeason].push(tempData);
+            result[tempSeason].push(tempData);
 
         }
 
@@ -124,22 +124,21 @@ define(['jquery'], function($){
     }
 
 
-
     SavingAnnualModel.prototype.preparePutPayload = function (dataWithSeason, Handler) {
         var filterData = supportUtility.getFilterData()
-        var seasonYearMap  = Handler.getSeasonYearMap()
+        var seasonYearMap = Handler.getSeasonYearMap()
 
         var payLoads = [];
 
 
-        for(var season in dataWithSeason){
+        for (var season in dataWithSeason) {
             var singlePayload = {};
             singlePayload['filter'] = {
                 "region": filterData.countryCode,
                 "product": filterData.productCode,
                 "year": seasonYearMap[season],
                 "season": season,
-                "date" : seasonDateMap[season],
+                "date": seasonDateMap[season],
                 "datasource": filterData.dataSource
             }
             singlePayload["data"] = dataWithSeason[season]
@@ -148,7 +147,6 @@ define(['jquery'], function($){
 
         return payLoads;
     }
-
 
 
     return SavingAnnualModel;

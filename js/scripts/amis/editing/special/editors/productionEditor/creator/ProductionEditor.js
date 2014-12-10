@@ -3,112 +3,9 @@
  */
 define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/ProductionObserver",
         "productionEditor/model/ProductionModel", "specialFormulaConf/formulaHandler/FormulaHandler",
-        "productionEditor/controller/ProductionController", "text!productionEditor/view/_productionForm.html", "flagTranslator/controller/FlagController", "select2"],
-    function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller, HTLMProduction, FlagController) {
-
-
-        var cellclassname = function (row, column, value, data) {
-            var result;
-            var conditionDisable = ((row === 0 && !areaHarvSelected) || ((row == 3 && areaHarvSelected)) ||
-                ((row === 0 + (4 * 1) && !areaHarvSelected) || ((row == 3 + (4 * 1) && areaHarvSelected))) ||
-                ((row === 0 + (4 * 2) && !areaHarvSelected) || ((row == 3 + (4 * 2) && areaHarvSelected))));
-
-
-            switch (formulaToRenderTotVal) {
-                case 'init':
-                case 'yield':
-                    var conditionCalculated = ((row == 1) || row == 1 + (4 * 1) || row == 1 + (4 * 2))
-
-                    debugger;
-                    if (conditionCalculated) {
-                        result = 'calculatedRowGrid'
-                    } // area harvested disabled
-                    else if (conditionDisable) {
-                        result = 'areaDisabled';
-                    }
-                    else {
-                        result = 'notCalculatedRows'
-                    }
-                    break;
-                case 'areaHarvested':
-                    var conditionCalculated = ((row == 0 && areaHarvSelected) || (row == 3 && !areaHarvSelected) ||
-                        (row == 0+4*1 && areaHarvSelected) || (row == 3+4*1 && !areaHarvSelected) ||
-                        (row == 0+4*2 && areaHarvSelected) || (row == 3+4*2 && !areaHarvSelected))
-
-                    if (conditionCalculated) {
-                        result = 'calculatedRowGrid'
-                    }
-                    else if (conditionDisable) {
-                        result = 'areaDisabled';
-                    } else {
-                        result = 'notCalculatedRows'
-                    }
-                    break;
-
-                case 'production':
-                    var conditionCalculated = (row == 2 || row == 2+4*1  || row == 2+4*1)
-
-                    if (conditionCalculated) {
-                        result = 'calculatedRowGrid';
-                    }
-                    else if (conditionDisable) {
-                        result = 'areaDisabled';
-                    }
-                    else {
-                        result = 'notCalculatedRows'
-                    }
-
-                    break;
-            }
-            return result;
-        };
-
-        var cellclassnameSingle = function (row, column, value, data) {
-            var result;
-            switch (formulaToRenderSingleCrops) {
-                case 'init':
-                case 'yield':
-                    var conditionCalculated = ((row == 1) || row == 1 + (4 * 1) || row == 1 + (4 * 2))
-                    result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                    break;
-                case 'areaHarvested':
-                    var conditionCalculated = ((row == 0) || row == 0 + (4 * 1) || row == 0 + (4 * 2))
-
-                    result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                    break;
-
-                case 'production':
-                    var conditionCalculated = ((row == 2) || row == 2 + (4 * 1) || row == 2 + (4 * 2))
-
-                    result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                    break;
-            }
-            return result;
-        };
-
-        var createGridEditor = function (row, cellValue, editor, cellText, width, height) {
-            var stringValue = cellValue;
-            var oldInput = document.getElementById(editor[0].id)
-            oldInput.parentNode.className = oldInput.parentNode.className + " flagClass"
-            var newInput = document.createElement('div')
-            newInput.id = oldInput.id;
-            newInput.className = oldInput.className;
-            oldInput.parentNode.replaceChild(newInput, oldInput)
-            var stringToAppend = '<select multiple tabindex="-1" id="multiFlag" style="width:100%" class="input-group-lg">';
-            stringToAppend += flagController.getOptions(stringValue)
-            stringToAppend += '</select>'
-            $('#' + editor[0].id).append(stringToAppend)
-
-        }
-
-        var initGridEditor = function (row, cellValue, editor, cellText, width, height) {
-            $('#multiFlag').select2({placeholder: "Click to select the flags"});
-        }
-
-        var gridEditorValue = function (row, cellValue, editor) {
-            var codes = $('#multiFlag').select2("val");
-            return  flagController.getStringFromCodes(codes);
-        }
+        "productionEditor/controller/ProductionController", "text!productionEditor/view/_productionForm.html", "flagTranslator/controller/FlagController",
+        "text!productionEditor/view/_alertSelection.html", "select2"],
+    function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller, HTLMProduction, FlagController, AlertSelection) {
 
 
         // ---------------------- SUPPORT FUNCTIONS -------------------------------------------
@@ -128,20 +25,40 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
 
         var observer, modelProduction, supportUtility, formulaHandler, originalTotCropsModel, productionController, controllerEditors,
-            clickedCell, flagController, modal;
-
-        var formulaToRenderTotVal, formulaToRenderSingleCrops, _productionForm, areaHarvSelected
+            flagController, modal, formulaToRenderTotVal, formulaToRenderSingleCrops, areaHarvSelected, callbackStyleTotGrid, callbackStyleSingleGrid,
+            that, callbackMultiFlagCreation, callbackMultiFlagInit, callbackMultiFlagGetValues, alertSelection
 
 
         function ProductionEditor() {
+            that = this;
+            alertSelection = AlertSelection
             observer = new Observer;
             modelProduction = new ModelProduction;
             formulaHandler = new FormulaHandler;
             productionController = new Controller;
             flagController = new FlagController;
-            _productionForm = HTLMProduction
-            modal = _productionForm;
+            modal = HTLMProduction
             areaHarvSelected = true;
+
+            callbackStyleTotGrid = function (row, column, value, data) {
+                return that.createStyleClassGridTotal(row, column, value, data)
+            }
+
+            callbackStyleSingleGrid = function (row, column, value, data) {
+                return that.createStyleClassGridSingle(row, column, value, data)
+            }
+
+            callbackMultiFlagCreation = function (row, cellValue, editor, cellText, width, height) {
+                that.createMultiFlagEditor(row, cellValue, editor, cellText, width, height)
+            }
+
+            callbackMultiFlagInit = function (row, cellValue, editor, cellText, width, height) {
+                that.createMultiFlagInit(row, cellValue, editor, cellText, width, height)
+            }
+
+            callbackMultiFlagGetValues = function (row, cellValue, editor) {
+                return that.getFromMultiFlag(row, cellValue, editor);
+            }
 
         }
 
@@ -166,12 +83,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             formulaToRenderTotVal = 'init'
             formulaToRenderSingleCrops = 'init'
 
-            var map = {
-                2: "Area Harvested",
-                5: "Production",
-                4: "Yield",
-                37: "Area Planted"
-            }
             console.log('InovolvedItems')
             console.log(involvedItems)
 
@@ -221,8 +132,11 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             $('#secondCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
             $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
 
-            $('#radioBtnAreaHarv').jqxRadioButton({ width: 120, height: 25, checked: true });
-            $('#radioBtnAreaPlanted').jqxRadioButton({ width: 120, height: 25 });
+            $('#radioBtnAreaHarv').jqxRadioButton({ width: 120, height: 25, groupName: "totValueBtn", checked: true });
+            $('#radioBtnAreaPlanted').jqxRadioButton({ width: 120, groupName: "totValueBtn", height: 25 });
+
+            $('#radioBtnAreaHarvSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn", checked: true });
+            $('#radioBtnAreaPltdSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn"});
 
             var that = this;
 
@@ -235,12 +149,12 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 pageable: true,
                 autoheight: true,
                 columns: [
-                    { text: 'Element', datafield: 6, cellclassname: cellclassname, width: '25%' },
-                    { text: 'Value', datafield: 3, cellclassname: cellclassname, width: '15%'},
-                    { text: 'Flags', datafield: 4, cellclassname: cellclassname, width: '25%',
-                        createeditor: createGridEditor, initeditor: initGridEditor, geteditorvalue: gridEditorValue, heigth: 250
+                    { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid, width: '25%' },
+                    { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid, width: '15%'},
+                    { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid, width: '25%',
+                        createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250
                     },
-                    { text: 'Notes', datafield: 5, cellclassname: cellclassname, width: '35%'}
+                    { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid, width: '35%'}
                 ]
             });
 
@@ -253,10 +167,10 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 pageable: true,
                 autoheight: true,
                 columns: [
-                    { text: 'Element', datafield: 6, cellclassname: cellclassnameSingle, width: '40%' },
-                    { text: 'Crop', datafield: 7, cellclassname: cellclassnameSingle, width: '20%' },
-                    { text: 'Value', datafield: 3, cellclassname: cellclassnameSingle, width: '30%' },
-                    { text: 'Flag', datafield: 4, cellclassname: cellclassnameSingle, width: '10%' }
+                    { text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid, width: '40%' },
+                    { text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid, width: '20%' },
+                    { text: 'Value', datafield: 3, cellclassname: callbackStyleSingleGrid, width: '30%' },
+                    { text: 'Flag', datafield: 4, cellclassname: callbackStyleSingleGrid, width: '10%' }
                 ]
             });
 
@@ -304,19 +218,21 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 pageable: true,
                 autoheight: true,
                 columns: [
-                    { text: 'Element', datafield: 6, cellclassname: cellclassname, width: '25%' },
-                    { text: 'Value', datafield: 3, cellclassname: cellclassname, width: '15%'},
-                    { text: 'Flags', datafield: 4, cellclassname: cellclassname, width: '25%',
-                        createeditor: createGridEditor, initeditor: initGridEditor, geteditorvalue: gridEditorValue, heigth: 250
+                    { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid, width: '25%' },
+                    { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid, width: '15%'},
+                    { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid, width: '25%',
+                        createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250
                     },
-                    { text: 'Notes', datafield: 5, cellclassname: cellclassname, width: '35%'}
+                    { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid, width: '35%'}
                 ]
             });
 
             observer.reBindEventsFromTotalValues()
         }
 
-        ProductionEditor.prototype.updateSingleGrid = function (calculatedModel, formulaToApply) {
+        ProductionEditor.prototype.updateSingleGrid = function (calculatedModel, formulaToApply, isAreaHarv) {
+            areaHarvSelected = isAreaHarv
+
             formulaToRenderSingleCrops = formulaToApply
 
             var source = {
@@ -344,10 +260,10 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 pageable: true,
                 autoheight: true,
                 columns: [
-                    { text: 'Element', datafield: 6, cellclassname: cellclassnameSingle, width: '40%' },
-                    { text: 'Crop', datafield: 7, cellclassname: cellclassnameSingle, width: '20%' },
-                    { text: 'Value', datafield: 3, cellclassname: cellclassnameSingle, width: '30%' },
-                    { text: 'Flag', datafield: 4, cellclassname: cellclassnameSingle, width: '10%' }
+                    { text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid, width: '40%' },
+                    { text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid, width: '20%' },
+                    { text: 'Value', datafield: 3, cellclassname: callbackStyleSingleGrid, width: '30%' },
+                    { text: 'Flag', datafield: 4, cellclassname: callbackStyleSingleGrid, width: '10%' }
                 ]
             });
 
@@ -378,14 +294,171 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             $('#productionTabs').jqxTabs('destroy');
         }
 
-        ProductionEditor.prototype.changeLabelToArea = function (isAreaHarvested) {
+        ProductionEditor.prototype.changeLabelToArea = function (isAreaHarvested, isTotalValue) {
+
+            var idLabel = (isTotalValue) ? "secondCheckBoxTotValLabel" : "secondCheckBoxSingCropsLabel";
 
             areaHarvSelected = isAreaHarvested
 
             var areaLabel = (isAreaHarvested) ? "Area Harvested" : "Area Planted";
-            debugger;
-            $("#secondCheckBoxTotValLabel").html(areaLabel)
+            $("#" + idLabel).html(areaLabel)
         }
+
+        ProductionEditor.prototype.createStyleClassGridTotal = function (row, column, value, data) {
+
+            var result;
+            var conditionDisable = ((row === 0 && !areaHarvSelected) || ((row == 3 && areaHarvSelected)) ||
+                ((row === 0 + (4 * 1) && !areaHarvSelected) || ((row == 3 + (4 * 1) && areaHarvSelected))) ||
+                ((row === 0 + (4 * 2) && !areaHarvSelected) || ((row == 3 + (4 * 2) && areaHarvSelected))));
+
+
+            switch (formulaToRenderTotVal) {
+                case 'init':
+                case 'yield':
+                    var conditionCalculated = ((row == 1) || row == 1 + (4 * 1) || row == 1 + (4 * 2))
+                    if (conditionCalculated) {
+                        result = 'calculatedRowGrid'
+                    } // area harvested disabled
+                    else if (conditionDisable) {
+                        result = 'areaDisabled';
+                    }
+                    else {
+                        result = 'notCalculatedRows'
+                    }
+                    break;
+                case 'areaHarvested':
+                    var conditionCalculated = ((row == 0 && areaHarvSelected) || (row == 3 && !areaHarvSelected) ||
+                        (row == 0 + 4 * 1 && areaHarvSelected) || (row == 3 + 4 * 1 && !areaHarvSelected) ||
+                        (row == 0 + 4 * 2 && areaHarvSelected) || (row == 3 + 4 * 2 && !areaHarvSelected))
+
+                    if (conditionCalculated) {
+                        result = 'calculatedRowGrid'
+                    }
+                    else if (conditionDisable) {
+                        result = 'areaDisabled';
+                    } else {
+                        result = 'notCalculatedRows'
+                    }
+                    break;
+
+                case 'production':
+                    var conditionCalculated = (row == 2 || row == 2 + 4 * 1 || row == 2 + 4 * 1)
+
+                    if (conditionCalculated) {
+                        result = 'calculatedRowGrid';
+                    }
+                    else if (conditionDisable) {
+                        result = 'areaDisabled';
+                    }
+                    else {
+                        result = 'notCalculatedRows'
+                    }
+
+                    break;
+            }
+            return result;
+        }
+
+        ProductionEditor.prototype.createStyleClassGridSingle = function (row, column, value, data) {
+
+            var result;
+            var conditionDisable = ((row === 0 && !areaHarvSelected) || ((row == 3 && areaHarvSelected)) ||
+                ((row === 0 + (4 * 1) && !areaHarvSelected) || ((row == 3 + (4 * 1) && areaHarvSelected))) ||
+                ((row === 0 + (4 * 2) && !areaHarvSelected) || ((row == 3 + (4 * 2) && areaHarvSelected))));
+
+
+            switch (formulaToRenderSingleCrops) {
+                case 'init':
+                case 'yield':
+                    var conditionCalculated = ((row == 1) || row == 1 + (4 * 1) || row == 1 + (4 * 2) || row == 1 + (4 * 3) )
+                    if (conditionCalculated) {
+                        result = 'calculatedRowGrid'
+                    } // area harvested disabled
+                    else if (conditionDisable) {
+                        result = 'areaDisabled';
+                    }
+                    else {
+                        result = 'notCalculatedRows'
+                    }
+                    break;
+                case 'areaHarvested':
+                    var conditionCalculated = ((row == 0 && areaHarvSelected) || (row == 3 && !areaHarvSelected) ||
+                        (row == 0 + 4 * 1 && areaHarvSelected) || (row == 3 + 4 * 1 && !areaHarvSelected) ||
+                        (row == 0 + 4 * 2 && areaHarvSelected) || (row == 3 + 4 * 2 && !areaHarvSelected))
+
+                    if (conditionCalculated) {
+                        result = 'calculatedRowGrid'
+                    }
+                    else if (conditionDisable) {
+                        result = 'areaDisabled';
+                    } else {
+                        result = 'notCalculatedRows'
+                    }
+                    break;
+
+                case 'production':
+                    var conditionCalculated = (row == 2 || row == 2 + 4 * 1 || row == 2 + 4 * 1)
+
+                    if (conditionCalculated) {
+                        result = 'calculatedRowGrid';
+                    }
+                    else if (conditionDisable) {
+                        result = 'areaDisabled';
+                    }
+                    else {
+                        result = 'notCalculatedRows'
+                    }
+
+                    break;
+            }
+            return result;
+
+        }
+
+        ProductionEditor.prototype.createMultiFlagEditor = function (row, cellValue, editor, cellText, width, height) {
+            var stringValue = cellValue;
+            var oldInput = document.getElementById(editor[0].id)
+            oldInput.parentNode.className = oldInput.parentNode.className + " flagClass"
+            var newInput = document.createElement('div')
+            newInput.id = oldInput.id;
+            newInput.className = oldInput.className;
+            oldInput.parentNode.replaceChild(newInput, oldInput)
+            var stringToAppend = '<select multiple tabindex="-1" id="multiFlag" style="width:100%" class="input-group-lg">';
+            stringToAppend += flagController.getOptions(stringValue)
+            stringToAppend += '</select>'
+            $('#' + editor[0].id).append(stringToAppend)
+        }
+
+        ProductionEditor.prototype.createMultiFlagInit = function (row, cellValue, editor, cellText, width, height) {
+            $('#multiFlag').select2({placeholder: "Click to select the flags"});
+        }
+
+        ProductionEditor.prototype.getFromMultiFlag = function (row, cellValue, editor) {
+            var codes = $('#multiFlag').select2("val");
+            return  flagController.getStringFromCodes(codes);
+        }
+
+        ProductionEditor.prototype.showAlertTotal = function () {
+
+            if (!document.getElementById('alertTotal').firstChild) {
+                $("#alertTotal").append(alertSelection)
+            }
+        }
+
+        ProductionEditor.prototype.showAlertSingle = function () {
+            if (!document.getElementById('alertSingle').firstChild) {
+                $("#alertSingle").append(alertSelection)
+            }
+        }
+
+        ProductionEditor.prototype.cancelAlerts = function (isTotal) {
+            var myNode = (isTotal) ? document.getElementById('alertTotal') : document.getElementById('alertSingle');
+            while (myNode.firstChild) {
+                myNode.removeChild(myNode.firstChild);
+            }
+
+        }
+
 
         return ProductionEditor;
     })

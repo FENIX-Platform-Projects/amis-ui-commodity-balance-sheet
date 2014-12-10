@@ -43,8 +43,8 @@ define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSave
         var payloadActual = modelSaving.preparePutPayload(true)
         var payloadPrevious = modelSaving.preparePutPayload(false)
 
-        this.finalSave(payloadActual,true)
-        this.finalSave(payloadPrevious,false)
+        this.finalSave(payloadActual, true)
+        this.finalSave(payloadPrevious, false)
 
         // clean updated Data
     }
@@ -52,7 +52,7 @@ define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSave
 
     SavingController.prototype.finalSave = function (payload, isActualYear) {
 
-        var urlSaving = (isActualYear)? urlSavingActualYear: urlSavingPreviousYear
+        var urlSaving = (isActualYear) ? urlSavingActualYear : urlSavingPreviousYear
         $.ajax({
             async: false,
             url: urlSaving,

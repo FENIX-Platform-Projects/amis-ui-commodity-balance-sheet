@@ -4,7 +4,7 @@
 define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function ($, Formatter, ServicesURL) {
 
 
-    var urlActualForecast , urlPopulation ,  urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
+    var urlActualForecast , urlPopulation , urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
         formatter, realPreviousDate, Services;
 
 
@@ -21,7 +21,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     }
 
 
-    DataLoaderAnnual.prototype.getAndCreateActualYearForecastMostRecent = function(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, seasonLabel){
+    DataLoaderAnnual.prototype.getAndCreateActualYearForecastMostRecent = function (mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, seasonLabel) {
 
         var mostRecentForecast = []
         // tak all dates
@@ -40,7 +40,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         })
 
 
-        var mostRecentDate =dates[dates.length-1][0]
+        var mostRecentDate = dates[dates.length - 1][0]
 
 
         filterPreviousYear["date"] = mostRecentDate;
@@ -54,7 +54,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             data: JSON.stringify(filterPreviousYear)
 
         }).done(function (result) {
-            mostRecentForecast.push( result);
+            mostRecentForecast.push(result);
         })
 
 
@@ -80,17 +80,17 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
         mostRecentForecast[0].push(population[0])
 
-        var result= mostRecentForecast[0]
+        var result = mostRecentForecast[0]
 
-        result = this.substitueSeasonToDate(result,seasonLabel);
+        result = this.substitueSeasonToDate(result, seasonLabel);
         return result;
     }
 
 
-    DataLoaderAnnual.prototype.substitueSeasonToDate = function(forecast, season){
+    DataLoaderAnnual.prototype.substitueSeasonToDate = function (forecast, season) {
 
-        for(var i = 0, length = forecast.length; i<length; i++){
-            forecast[i][2]+=season;
+        for (var i = 0, length = forecast.length; i < length; i++) {
+            forecast[i][2] += season;
         }
 
         return forecast;

@@ -1,22 +1,23 @@
-define(['jquery', 'amplify'], function($){
+define(['jquery', 'amplify'], function ($) {
 
     var loadingController
 
-    function SubscriberLoader(){}
+    function SubscriberLoader() {
+    }
 
-    SubscriberLoader.prototype.subscribeOnChangingLoadingModality = function(LoadingController){
+    SubscriberLoader.prototype.subscribeOnChangingLoadingModality = function (LoadingController) {
 
         loadingController = LoadingController;
 
-        amplify.subscribe('changeOnAnnualModality', function(preloadingData){
+        amplify.subscribe('changeOnAnnualModality', function (preloadingData) {
             console.log('annual!!!!')
-            loadingController.init(preloadingData.preloadingData,false);
+            loadingController.init(preloadingData.preloadingData, false);
             return false
         })
 
-        amplify.subscribe('changeOnMonthlyModality', function(preloadingData){
+        amplify.subscribe('changeOnMonthlyModality', function (preloadingData) {
             console.log('monthly!!!!')
-            loadingController.init(preloadingData.preloadingData,true);
+            loadingController.init(preloadingData.preloadingData, true);
             return false
         })
 

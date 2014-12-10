@@ -1,11 +1,11 @@
 /**
  * Created by fabrizio on 5/20/14.
  */
-define(["jquery",  "urlConfigurator","jqwidgets"], function($, ServicesUrl) {
+define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
 
-    var  combo, year, yearsSelected, size, previousYear, Services, urlYear;
+    var combo, year, yearsSelected, size, previousYear, Services, urlYear;
 
-    function YearSelector(){
+    function YearSelector() {
         Services = new ServicesUrl;
         urlYear = Services.getYearUrl()
 
@@ -13,16 +13,16 @@ define(["jquery",  "urlConfigurator","jqwidgets"], function($, ServicesUrl) {
         yearsSelected = {
             currentYear: -1,
             currentYearLabel: -1,
-            previousYear:-1,
+            previousYear: -1,
             previousYearLabel: -1
         }
     }
 
 
-    YearSelector.prototype.init = function(oldBody){
+    YearSelector.prototype.init = function (oldBody) {
 
         var body = {
-            "regionCode" : oldBody.regionCode,
+            "regionCode": oldBody.regionCode,
             "productCode": oldBody.productCode
         }
 
@@ -31,13 +31,13 @@ define(["jquery",  "urlConfigurator","jqwidgets"], function($, ServicesUrl) {
         var sources = [];
 
         $.ajax({
-            async:false,
+            async: false,
             url: urlYear,
             type: 'post',
             contentType: 'application/json',
             dataType: 'json',
             data: JSON.stringify(body),
-            success : function(data){
+            success: function (data) {
 
                 size = data.length;
 
@@ -46,7 +46,7 @@ define(["jquery",  "urlConfigurator","jqwidgets"], function($, ServicesUrl) {
 
                 // comboBox
                 combo.jqxComboBox({
-                    source: dataAdapter ,
+                    source: dataAdapter,
                     displayMember: "yearLabel",
                     valueMember: "year",
                     selectedIndex: 0,
@@ -57,24 +57,24 @@ define(["jquery",  "urlConfigurator","jqwidgets"], function($, ServicesUrl) {
         });
 
         // Take the Preselected Value
-        yearsSelected.currentYear =  combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).value;
-        yearsSelected.currentYearLabel =  combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).label;
+        yearsSelected.currentYear = combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).value;
+        yearsSelected.currentYearLabel = combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).label;
 
-        var index =  combo.jqxComboBox('listBox').selectedIndex
+        var index = combo.jqxComboBox('listBox').selectedIndex
 
-        yearsSelected.previousYear = combo.jqxComboBox('getItem',index+1).value;
-        yearsSelected.previousYearLabel = combo.jqxComboBox('getItem',index+1).label;
+        yearsSelected.previousYear = combo.jqxComboBox('getItem', index + 1).value;
+        yearsSelected.previousYearLabel = combo.jqxComboBox('getItem', index + 1).label;
 
         return yearsSelected;
     };
 
 
-    YearSelector.prototype.getcombo = function(){
+    YearSelector.prototype.getcombo = function () {
         return combo;
     };
 
 
-    YearSelector.prototype.change = function(event) {
+    YearSelector.prototype.change = function (event) {
 
         // To pass the value
         var args = event.args;
@@ -84,11 +84,11 @@ define(["jquery",  "urlConfigurator","jqwidgets"], function($, ServicesUrl) {
         yearsSelected.currentYearLabel = item.label;
 
 
-        if (this.hasPreviousYear(args.index)){
-            yearsSelected.previousYear = combo.jqxComboBox('getItem', args.index +1).value;
-            yearsSelected.previousYearLabel = combo.jqxComboBox('getItem', args.index +1).label;
+        if (this.hasPreviousYear(args.index)) {
+            yearsSelected.previousYear = combo.jqxComboBox('getItem', args.index + 1).value;
+            yearsSelected.previousYearLabel = combo.jqxComboBox('getItem', args.index + 1).label;
 
-        }else{
+        } else {
             yearsSelected.previousYear = -1;
             yearsSelected.previousYearLabel = -1;
 
@@ -98,7 +98,7 @@ define(["jquery",  "urlConfigurator","jqwidgets"], function($, ServicesUrl) {
     };
 
 
-    YearSelector.prototype.prepareComboData = function(data){
+    YearSelector.prototype.prepareComboData = function (data) {
 
         // prepare the data
         var source =
@@ -114,12 +114,12 @@ define(["jquery",  "urlConfigurator","jqwidgets"], function($, ServicesUrl) {
     }
 
 
-    YearSelector.prototype.hasPreviousYear = function(index){
+    YearSelector.prototype.hasPreviousYear = function (index) {
 
-        if(size-1 >= index+1){
+        if (size - 1 >= index + 1) {
             return true
         }
-        else{
+        else {
             return false;
         }
     }

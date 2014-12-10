@@ -2,9 +2,57 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="233390f4-9d56-4ae3-a936-6fea2c279eba" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_alertSelection.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/BalanceSheet.js" afterPath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/BalanceSheet.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CommoditySelector.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CommoditySelector.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/dataUtils/CommonUtils.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/dataUtils/CommonUtils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/controller/ControllerEditors.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/controller/ControllerEditors.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CountrySelector.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CountrySelector.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/logic/DataExportLoader.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/logic/DataExportLoader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/utils/DataHandler.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/utils/DataHandler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/logic/DataLoader.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/logic/DataLoader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/logic/DataLoaderAnnual.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/logic/DataLoaderAnnual.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/DatabaseSelector.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/DatabaseSelector.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/direct/EditHandler.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/direct/EditHandler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaUtils/FormulaConfigurator.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaUtils/FormulaConfigurator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/formulas/support/FormulaConfigurator.js" afterPath="$PROJECT_DIR$/js/scripts/amis/formulas/support/FormulaConfigurator.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/formulas/controller/FormulaController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/formulas/controller/FormulaController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaHandler/FormulaHandler.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaHandler/FormulaHandler.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js" afterPath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/controller/HandlerExportSelection.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/controller/HandlerExportSelection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/controller/HandlerSelection.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/controller/HandlerSelection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/controller/OtherController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/controller/OtherController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/creator/OtherCreator.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/creator/OtherCreator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/model/OtherModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/model/OtherModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/observer/OtherObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/observer/OtherObserver.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/model/PaddyModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/model/PaddyModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/observer/PaddyObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/observer/PaddyObserver.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingObserver.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/controller/ProductionController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/controller/ProductionController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/creator/ProductionEditor.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/creator/ProductionEditor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/model/ProductionModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/model/ProductionModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/observer/ProductionObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/observer/ProductionObserver.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/saving/observer/SavingObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/saving/observer/SavingObserver.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/proxyFactory/SelectionFactory.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/proxyFactory/SelectionFactory.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js" afterPath="$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/formulas/support/SupportModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/formulas/support/SupportModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/YearSelector.js" afterPath="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/YearSelector.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_productionForm.html" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_productionForm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/balance-sass.scss" afterPath="$PROJECT_DIR$/css/balance-sass.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/formulas/configuration/formula.json" afterPath="$PROJECT_DIR$/js/scripts/amis/formulas/configuration/formula.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaPlugin/formulaPlugins.json" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaPlugin/formulaPlugins.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="amis-ui-balanceSheet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,72 +78,91 @@
       <file leaf-file-name="ProductionObserver.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/observer/ProductionObserver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-57.6" vertical-offset="0" max-vertical-offset="2610">
-              <caret line="316" column="54" selection-start-line="316" selection-start-column="37" selection-end-line="316" selection-end-column="59" />
-              <folding>
-                <element signature="e#1585#2378#0" expanded="false" />
-                <element signature="e#2457#3299#0" expanded="false" />
-                <element signature="e#3371#4905#0" expanded="false" />
-                <element signature="e#4983#6593#0" expanded="false" />
-                <element signature="e#6666#7475#0" expanded="false" />
-                <element signature="e#7554#8393#0" expanded="false" />
-                <element signature="e#8479#9706#0" expanded="false" />
-                <element signature="e#9792#10955#0" expanded="false" />
-                <element signature="e#11017#11719#0" expanded="false" />
-                <element signature="e#13687#14841#0" expanded="false" />
-                <element signature="e#14920#15206#0" expanded="false" />
-                <element signature="e#15278#15321#0" expanded="false" />
-                <element signature="e#15396#15476#0" expanded="false" />
-                <element signature="e#15886#17296#0" expanded="false" />
-                <element signature="e#17373#18607#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="1462" max-vertical-offset="9846">
+              <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PaddyCreator.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js">
+      <file leaf-file-name="SavingObserver.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/observer/SavingObserver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="486" max-vertical-offset="5778">
-              <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-              <folding>
-                <marker date="1417106057042" expanded="false" signature="3228:3238" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="702">
+              <caret line="33" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formulaPlugins.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaPlugin/formulaPlugins.json">
+      <file leaf-file-name="SavingFactory.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-34.666668" vertical-offset="0" max-vertical-offset="41508">
-              <caret line="584" column="42" selection-start-line="584" selection-start-column="0" selection-end-line="585" selection-end-column="0" />
-              <folding>
-                <element signature="e#156#7782#0" expanded="false" />
-                <element signature="e#7811#16096#0" expanded="false" />
-                <element signature="e#16133#23763#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductionController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/controller/ProductionController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.464286" vertical-offset="0" max-vertical-offset="792">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
               <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeneralController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="864" max-vertical-offset="5778">
+              <caret line="78" column="15" selection-start-line="78" selection-start-column="15" selection-end-line="78" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1638">
+              <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BalanceSheet.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/BalanceSheet.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="1044">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding>
-                <element signature="e#617#1582#0" expanded="false" />
-                <element signature="e#1710#3357#0" expanded="false" />
-                <element signature="e#3465#4292#0" expanded="false" />
-                <element signature="e#4393#5178#0" expanded="false" />
-                <element signature="e#5243#5659#0" expanded="false" />
-                <element signature="e#5748#5829#0" expanded="false" />
-                <element signature="e#5922#6013#0" expanded="false" />
-                <element signature="e#6105#7030#0" expanded="false" />
-                <element signature="e#7090#7135#0" expanded="false" />
-                <element signature="e#7239#7827#0" expanded="false" />
+                <element signature="e#864#1733#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadingController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="1872">
+              <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PreloadingController.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.59926015" vertical-offset="2538" max-vertical-offset="3816">
+              <caret line="168" column="32" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PreloadingObserver.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingObserver.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.0" vertical-offset="258" max-vertical-offset="1512">
+              <caret line="28" column="34" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,61 +170,25 @@
       <file leaf-file-name="ProductionEditor.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/creator/ProductionEditor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-42.6" vertical-offset="0" max-vertical-offset="7128">
-              <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2789" max-vertical-offset="3600">
+              <caret line="280" column="0" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
               <folding>
-                <marker date="1418139976195" expanded="false" signature="4443:4453" placeholder="..." />
+                <element signature="e#748#809#0" expanded="false" />
+                <element signature="e#893#1119#0" expanded="false" />
+                <element signature="e#1653#2955#0" expanded="false" />
+                <element signature="e#8548#10238#0" expanded="false" />
+                <element signature="e#10349#11776#0" expanded="false" />
+                <element signature="e#11871#12040#0" expanded="false" />
+                <element signature="e#12116#12174#0" expanded="false" />
+                <element signature="e#12236#12799#0" expanded="false" />
+                <element signature="e#12897#13191#0" expanded="false" />
+                <element signature="e#13292#15532#0" expanded="false" />
+                <element signature="e#15634#17903#0" expanded="false" />
+                <element signature="e#18023#18736#0" expanded="false" />
+                <element signature="e#18854#18946#0" expanded="false" />
+                <element signature="e#19036#19165#0" expanded="false" />
+                <marker date="1418235499211" expanded="false" signature="18521:18531" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SupportModel.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/formulas/support/SupportModel.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1134">
-              <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormulaController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/formulas/controller/FormulaController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="5508">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="formula.json" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/scripts/amis/formulas/configuration/formula.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.7240933" vertical-offset="1405" max-vertical-offset="8046">
-              <caret line="152" column="32" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dsdStructureSoybeans.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureSoybeans.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.631579" vertical-offset="3501" max-vertical-offset="13842">
-              <caret line="206" column="43" selection-start-line="206" selection-start-column="41" selection-end-line="206" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dsdStructure.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructure.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.263158" vertical-offset="3501" max-vertical-offset="13842">
-              <caret line="208" column="47" selection-start-line="208" selection-start-column="43" selection-end-line="208" selection-end-column="47" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -175,57 +206,57 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/SavingController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/controller/SavingController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/model/SavingModel.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/loading/proxyFactory/SelectionFactory.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js" />
-        <option value="$PROJECT_DIR$/js/scripts/services/configuration/services.json" />
-        <option value="$PROJECT_DIR$/js/scripts/services/configuration/servicesTestLocal.json" />
-        <option value="$PROJECT_DIR$/js/scripts/services/configurator/ServicesConfigurator.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/logic/DataExportLoader.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/controller/HandlerExportSelection.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/exports/form/_formExcel.html" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/models/creator/HandlerCreationModels.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/models/gridDataModel/GridDataModel.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/models/tableDataModel/TableDataModel.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/views/modelView/ViewModel.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/visualization/webixDtable/adapter/AdapterDataTable.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/logic/DataLoader.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/views/gridDataView/GridDataView.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/DatabaseSelector.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/formulas/support/FormulaConfigurator.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/configuration/configurator/Configurator.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/observer/GeneralObserver.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/controller/HandlerSelection.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/models/controllerDataModels/ModelsController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/logic/DataLoaderAnnual.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/exports/controller/ExportController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/exports/excelExporter/ExcelExporter.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/exports/tableModel/TableExport.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/editors/controller/FormController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/editing/direct/EditHandler.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/controller/ControllerEditors.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/utils/DataHandler.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaUtils/FormulaConfigurator.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_productionForm.html" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaPlugin/formulaPlugins.json" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/observer/ProductionObserver.js" />
+        <option value="$PROJECT_DIR$/js/scripts/component/plugins/Amis/InputTool/utils/flagFormatter/adapter/jqwidgets/AdapterMultiFlagGrid.js" />
         <option value="$PROJECT_DIR$/css/balance-sass.scss" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/model/PaddyModel.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/model/ProductionModel.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_productionForm.html" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_alertSelection.html" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/observer/ProductionObserver.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/controller/ProductionController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaHandler/FormulaHandler.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/creator/ProductionEditor.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/formulas/controller/FormulaController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/direct/EditHandler.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/dataUtils/CommonUtils.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaHandler/FormulaHandler.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaPlugin/formulaPlugins.json" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/controller/ControllerEditors.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/controller/OtherController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/creator/OtherCreator.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/model/OtherModel.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/observer/OtherObserver.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/model/PaddyModel.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/observer/PaddyObserver.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/model/ProductionModel.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/formulas/configuration/formula.json" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/formulas/controller/FormulaController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/formulas/support/FormulaConfigurator.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/formulas/support/SupportModel.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/logic/DataLoaderAnnual.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/controller/HandlerExportSelection.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/logic/DataExportLoader.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/controller/HandlerSelection.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/logic/DataLoader.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/proxyFactory/SelectionFactory.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CommoditySelector.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CountrySelector.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/DatabaseSelector.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/YearSelector.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingObserver.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/saving/observer/SavingObserver.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js" />
+        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/BalanceSheet.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingController.js" />
       </list>
     </option>
   </component>
@@ -263,8 +294,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -314,62 +343,6 @@
               <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configurator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis-ui-balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis-ui-balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configuration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis-ui-balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis-ui-balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -390,10 +363,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="validatorDSD" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -479,57 +448,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configuration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis-ui-balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis-ui-balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configuration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dsd" />
+              <option name="myItemId" value="amis" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -555,7 +474,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="saving" />
+              <option name="myItemId" value="preloading" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -578,6 +497,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="loading" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -604,66 +527,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="formulas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis-ui-balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis-ui-balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="formulas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis-ui-balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis-ui-balanceSheet" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="amis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="formulas" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="configuration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -722,6 +585,162 @@
               <option name="myItemId" value="editing" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="special" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="productionEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="special" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="productionEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="observer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="special" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="productionEditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="creator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="special" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis-ui-balanceSheet" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="amis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -739,6 +758,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -773,6 +794,9 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="LayoutCode.rearrangeEntriesHTML" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJSON" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1063,11 +1087,12 @@
       <workItem from="1417510265500" duration="5150000" />
       <workItem from="1418032946093" duration="16736000" />
       <workItem from="1418114510251" duration="20274000" />
+      <workItem from="1418200600482" duration="22999000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90749000" />
+    <option name="totallyTimeSpent" value="113748000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1098,8 +1123,8 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -1111,20 +1136,20 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49837926" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3395462" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1132,8 +1157,8 @@
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49837926" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3395462" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1170,11 +1195,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaHandler/FormulaHandler.js</url>
-          <line>91</line>
+          <line>90</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/creator/ProductionEditor.js</url>
+          <line>227</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/observer/ProductionObserver.js</url>
+          <line>208</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="12" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1182,280 +1217,130 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/configuration/component/componentConfiguration.json">
+    <entry file="file://$PROJECT_DIR$/css/balance-sass.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6423358" vertical-offset="1350" max-vertical-offset="2880">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/observer/GeneralObserver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2772">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/validator/EditorValidator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/formatter/DatatypesFormatter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2718">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/editors/cell/CellEditor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11772">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/exports/form/_formExcel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="180">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/exports/controller/ExportController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="396">
-          <caret line="16" column="2" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/services/configuration/services.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="990">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/services/configuration/servicesTestLocal.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="828" max-vertical-offset="1008">
-          <caret line="46" column="87" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/exports/tableModel/TableExport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="2052">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/exports/excelExporter/ExcelExporter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1656">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/visualization/ignite/adapter/AdapterPivot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1476">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/visualization/jqxgrid/adapter/AdapterGrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/editors/controller/FormController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="486" max-vertical-offset="1782">
-          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/plugins/Amis/InputTool/visualization/renderingGrid/renderingHandlerNote.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="824">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/views/modelView/ViewModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="4050">
-          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/visualization/webixDtable/adapter/AdapterDataTable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="1584">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.0" vertical-offset="108" max-vertical-offset="2898">
-          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/view/_otherUsesForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="811">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/views/gridDataView/GridDataView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4397" max-vertical-offset="6606">
-          <caret line="290" column="27" selection-start-line="290" selection-start-column="27" selection-end-line="290" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/controller/OtherController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20905924" vertical-offset="918" max-vertical-offset="3168">
-          <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/formulas/support/FormulaConfigurator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2250">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/direct/EditHandler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="990">
-          <caret line="38" column="42" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="5778">
-          <caret line="142" column="36" selection-start-line="142" selection-start-column="33" selection-end-line="142" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/controller/ControllerEditors.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1476">
-          <caret line="34" column="45" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/utils/DataHandler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="590" max-vertical-offset="2466">
-          <caret line="91" column="17" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/observer/OtherObserver.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="683" max-vertical-offset="1764">
-          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1728" max-vertical-offset="3654">
-          <caret line="70" column="77" selection-start-line="70" selection-start-column="77" selection-end-line="70" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/YearSelector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2484">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/DatabaseSelector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69902915" vertical-offset="270" max-vertical-offset="2286">
-          <caret line="47" column="29" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.24291" vertical-offset="2736" max-vertical-offset="3690">
-          <caret line="96" column="43" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="52" />
+        <state vertical-scroll-proportion="-6.8846154" vertical-offset="3224" max-vertical-offset="4806">
+          <caret line="199" column="21" selection-start-line="199" selection-start-column="21" selection-end-line="199" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_productionForm.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.333334" vertical-offset="270" max-vertical-offset="2520">
-          <caret line="44" column="71" selection-start-line="44" selection-start-column="46" selection-end-line="44" selection-end-column="71" />
+        <state vertical-scroll-proportion="-85.333336" vertical-offset="0" max-vertical-offset="3348">
+          <caret line="128" column="45" selection-start-line="128" selection-start-column="45" selection-end-line="128" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingObserver.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/direct/EditHandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3956044" vertical-offset="0" max-vertical-offset="1548">
-          <caret line="18" column="10" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="1008">
+          <caret line="31" column="61" selection-start-line="0" selection-start-column="0" selection-end-line="50" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/dataUtils/CommonUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
+          <caret line="21" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaHandler/FormulaHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="2772">
+          <caret line="36" column="33" selection-start-line="0" selection-start-column="0" selection-end-line="148" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaPlugin/formulaPlugins.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-490.0" vertical-offset="144" max-vertical-offset="54306">
+          <caret line="743" column="42" selection-start-line="0" selection-start-column="0" selection-end-line="3011" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaUtils/FormulaConfigurator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="149" max-vertical-offset="2358">
-          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="653" max-vertical-offset="2358">
+          <caret line="65" column="51" selection-start-line="0" selection-start-column="0" selection-end-line="125" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/balance-sass.scss">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/controller/ControllerEditors.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.346154" vertical-offset="2954" max-vertical-offset="4806">
-          <caret line="194" column="46" selection-start-line="194" selection-start-column="46" selection-end-line="194" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="1350">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/controller/OtherController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="3168">
+          <caret line="86" column="55" selection-start-line="0" selection-start-column="0" selection-end-line="170" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/creator/OtherCreator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2952">
+          <caret line="34" column="40" selection-start-line="0" selection-start-column="0" selection-end-line="158" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/model/OtherModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1818">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/observer/OtherObserver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="539" max-vertical-offset="1746">
+          <caret line="51" column="24" selection-start-line="0" selection-start-column="0" selection-end-line="91" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/otherUsesEditor/view/_otherUsesForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.333334" vertical-offset="0" max-vertical-offset="630">
+          <caret line="29" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3114" max-vertical-offset="5238">
+          <caret line="203" column="41" selection-start-line="0" selection-start-column="0" selection-end-line="285" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="5706">
+          <caret line="64" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="311" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/model/PaddyModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.066667" vertical-offset="892" max-vertical-offset="4590">
-          <caret line="63" column="94" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/model/ProductionModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.766666" vertical-offset="355" max-vertical-offset="5220">
-          <caret line="51" column="44" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="892" max-vertical-offset="4608">
+          <caret line="82" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="250" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -1463,15 +1348,63 @@
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/observer/PaddyObserver.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="11135" max-vertical-offset="14094">
-          <caret line="747" column="67" selection-start-line="747" selection-start-column="42" selection-end-line="747" selection-end-column="67" />
+          <caret line="656" column="34" selection-start-line="0" selection-start-column="0" selection-end-line="777" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1368">
-          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        <state vertical-scroll-proportion="-18.037037" vertical-offset="2105" max-vertical-offset="2916">
+          <caret line="144" column="45" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/controller/ProductionController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2502" max-vertical-offset="4212">
+          <caret line="175" column="22" selection-start-line="0" selection-start-column="0" selection-end-line="228" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/model/ProductionModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3082" max-vertical-offset="5562">
+          <caret line="240" column="43" selection-start-line="0" selection-start-column="0" selection-end-line="303" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_alertSelection.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="288">
+          <caret line="10" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/formulas/configuration/formula.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.62963" vertical-offset="1405" max-vertical-offset="8046">
+          <caret line="103" column="37" selection-start-line="0" selection-start-column="0" selection-end-line="441" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/formulas/controller/FormulaController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="5508">
+          <caret line="34" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="300" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/formulas/support/FormulaConfigurator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2268">
+          <caret line="27" column="34" selection-start-line="0" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1479,133 +1412,233 @@
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/formulas/support/SupportModel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="10" max-vertical-offset="1134">
-          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaPlugin/formulaPlugins.json">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/controller/HandlerAnnualSelection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-34.666668" vertical-offset="0" max-vertical-offset="41508">
-          <caret line="584" column="42" selection-start-line="584" selection-start-column="0" selection-end-line="585" selection-end-column="0" />
-          <folding>
-            <element signature="e#156#7782#0" expanded="false" />
-            <element signature="e#7811#16096#0" expanded="false" />
-            <element signature="e#16133#23763#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3114" max-vertical-offset="5256">
-          <caret line="190" column="30" selection-start-line="190" selection-start-column="30" selection-end-line="190" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1782">
+          <caret line="30" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/configuration/formulaHandler/FormulaHandler.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/annualSelection/logic/DataLoaderAnnual.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28947368" vertical-offset="694" max-vertical-offset="2718">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="e#5001#5097#0" expanded="false" />
-            <element signature="e#5458#5554#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1926">
+          <caret line="33" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="101" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/controller/ProductionController.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/controller/HandlerExportSelection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.464286" vertical-offset="0" max-vertical-offset="792">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1728">
+          <caret line="31" column="44" selection-start-line="0" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/exportSelection/logic/DataExportLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3690">
+          <caret line="32" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="199" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/controller/HandlerSelection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1368">
+          <caret line="31" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/monthlySelection/logic/DataLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3582">
+          <caret line="32" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="193" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/observer/SubscriberLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
+          <caret line="26" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/proxyFactory/SelectionFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+          <caret line="24" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CommoditySelector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1908">
+          <caret line="28" column="35" selection-start-line="0" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/CountrySelector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1764">
+          <caret line="30" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/DatabaseSelector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="2286">
+          <caret line="47" column="31" selection-start-line="0" selection-start-column="0" selection-end-line="121" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/filterDatafields/YearSelector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2484">
+          <caret line="33" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/controller/SavingAnnualController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1314">
+          <caret line="32" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/annualSaving/model/SavingAnnualModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="2862">
+          <caret line="26" column="33" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/controller/SavingController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="1368">
+          <caret line="41" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/monthlySaving/model/SavingModel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3654">
+          <caret line="37" column="37" selection-start-line="0" selection-start-column="0" selection-end-line="197" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/observer/SavingObserver.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="702">
+          <caret line="33" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/saving/proxyFactory/SavingFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/controller/GeneralController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="864" max-vertical-offset="5778">
+          <caret line="78" column="15" selection-start-line="78" selection-start-column="15" selection-end-line="78" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1638">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/BalanceSheet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="125" max-vertical-offset="1044">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
-            <element signature="e#617#1582#0" expanded="false" />
-            <element signature="e#1710#3357#0" expanded="false" />
-            <element signature="e#3465#4292#0" expanded="false" />
-            <element signature="e#4393#5178#0" expanded="false" />
-            <element signature="e#5243#5659#0" expanded="false" />
-            <element signature="e#5748#5829#0" expanded="false" />
-            <element signature="e#5922#6013#0" expanded="false" />
-            <element signature="e#6105#7030#0" expanded="false" />
-            <element signature="e#7090#7135#0" expanded="false" />
-            <element signature="e#7239#7827#0" expanded="false" />
+            <element signature="e#864#1733#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/creator/ProductionEditor.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingObserver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-42.6" vertical-offset="0" max-vertical-offset="7128">
-          <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
-          <folding>
-            <marker date="1418139976195" expanded="false" signature="4443:4453" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="-7.0" vertical-offset="258" max-vertical-offset="1512">
+          <caret line="28" column="34" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/observer/ProductionObserver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-57.6" vertical-offset="0" max-vertical-offset="2610">
-          <caret line="316" column="54" selection-start-line="316" selection-start-column="37" selection-end-line="316" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1462" max-vertical-offset="9846">
+          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/creator/ProductionEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2789" max-vertical-offset="3600">
+          <caret line="280" column="0" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
           <folding>
-            <element signature="e#1585#2378#0" expanded="false" />
-            <element signature="e#2457#3299#0" expanded="false" />
-            <element signature="e#3371#4905#0" expanded="false" />
-            <element signature="e#4983#6593#0" expanded="false" />
-            <element signature="e#6666#7475#0" expanded="false" />
-            <element signature="e#7554#8393#0" expanded="false" />
-            <element signature="e#8479#9706#0" expanded="false" />
-            <element signature="e#9792#10955#0" expanded="false" />
-            <element signature="e#11017#11719#0" expanded="false" />
-            <element signature="e#13687#14841#0" expanded="false" />
-            <element signature="e#14920#15206#0" expanded="false" />
-            <element signature="e#15278#15321#0" expanded="false" />
-            <element signature="e#15396#15476#0" expanded="false" />
-            <element signature="e#15886#17296#0" expanded="false" />
-            <element signature="e#17373#18607#0" expanded="false" />
+            <element signature="e#748#809#0" expanded="false" />
+            <element signature="e#893#1119#0" expanded="false" />
+            <element signature="e#1653#2955#0" expanded="false" />
+            <element signature="e#8548#10238#0" expanded="false" />
+            <element signature="e#10349#11776#0" expanded="false" />
+            <element signature="e#11871#12040#0" expanded="false" />
+            <element signature="e#12116#12174#0" expanded="false" />
+            <element signature="e#12236#12799#0" expanded="false" />
+            <element signature="e#12897#13191#0" expanded="false" />
+            <element signature="e#13292#15532#0" expanded="false" />
+            <element signature="e#15634#17903#0" expanded="false" />
+            <element signature="e#18023#18736#0" expanded="false" />
+            <element signature="e#18854#18946#0" expanded="false" />
+            <element signature="e#19036#19165#0" expanded="false" />
+            <marker date="1418235499211" expanded="false" signature="18521:18531" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="486" max-vertical-offset="5778">
-          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-          <folding>
-            <marker date="1417106057042" expanded="false" signature="3228:3238" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/formulas/controller/FormulaController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="5508">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="216" max-vertical-offset="1872">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureSoybeans.json">
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/preloading/PreloadingController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.631579" vertical-offset="3501" max-vertical-offset="13842">
-          <caret line="206" column="43" selection-start-line="206" selection-start-column="41" selection-end-line="206" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructure.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.263158" vertical-offset="3501" max-vertical-offset="13842">
-          <caret line="208" column="47" selection-start-line="208" selection-start-column="43" selection-end-line="208" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/formulas/configuration/formula.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7240933" vertical-offset="1405" max-vertical-offset="8046">
-          <caret line="152" column="32" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.59926015" vertical-offset="2538" max-vertical-offset="3816">
+          <caret line="168" column="32" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
           <folding />
         </state>
       </provider>

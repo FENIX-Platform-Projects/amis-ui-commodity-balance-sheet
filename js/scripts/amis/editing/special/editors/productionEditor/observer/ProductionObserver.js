@@ -4,9 +4,12 @@
 define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
 
     var editorProduction, formulaToApplyTot, formulaToApplySingle, controllerProduction,
-        totalValuesModified, singleCropsValuesModified, isAreaHarvestedSelected;
+        totalValuesModified, singleCropsValuesModified, isAreaHarvestedSelectedTot, isAreaHarvestedSelectedSingle, isTotalSelectionModified,
+        isSingleCropsModified;
 
     function ProductionObserver() {
+        isTotalSelectionModified = true;
+        isSingleCropsModified = true;
     }
 
     // ------------ Support method ------------------//
@@ -19,7 +22,8 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         controllerProduction = EditorController;
         formulaToApplyTot = 'init';
         formulaToApplySingle = 'init';
-        isAreaHarvestedSelected = true;
+        isAreaHarvestedSelectedTot = true;
+        isAreaHarvestedSelectedSingle = true;
         editorProduction = EditorProduction;
         totalValuesModified = false;
         singleCropsValuesModified = false;
@@ -35,7 +39,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         this.listenToSingleCropsEditable()
         this.listenToCloseModal();
         this.listenToCloseButton();
-        this.listenToChangeRadioButton();
+        this.listenToChangeRadioButtonValue();
     }
 
     ProductionObserver.prototype.listenToCheckboxesTotal = function () {
@@ -45,20 +49,25 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         $("#firstCheckBoxTotVal").on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
+            isTotalSelectionModified = true;
             (event.args.checked) ? that.onCheckBoxTotal(1) : that.onUncheckBoxTotal([2, 3]);
+            controllerProduction.showAlertTotal()
         })
         $("#secondCheckBoxTotVal").on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
+            isTotalSelectionModified = true;
             (event.args.checked) ? that.onCheckBoxTotal(2) : that.onUncheckBoxTotal([1, 3]);
+            controllerProduction.showAlertTotal()
+
         })
         $("#thirdCheckBoxTotVal").on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
+            isTotalSelectionModified = true;
             (event.args.checked) ? that.onCheckBoxTotal(3) : that.onUncheckBoxTotal([1, 2]);
+            controllerProduction.showAlertTotal()
         })
-
-
     }
 
     ProductionObserver.prototype.listenToCheckboxesSingleCrops = function () {
@@ -68,17 +77,26 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         $("#firstCheckBoxSingleCrops").on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
+            isSingleCropsModified = true;
             (event.args.checked) ? that.onCheckBoxSingleCrops(1) : that.onUncheckBoxSingleCrops([2, 3]);
+            controllerProduction.showAlertSingle()
+
         })
         $("#secondCheckBoxSingleCrops").on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
+            isSingleCropsModified = true;
             (event.args.checked) ? that.onCheckBoxSingleCrops(2) : that.onUncheckBoxSingleCrops([1, 3]);
+            controllerProduction.showAlertSingle()
+
         })
         $("#thirdCheckBoxSingleCrops").on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
+            isSingleCropsModified = true;
             (event.args.checked) ? that.onCheckBoxSingleCrops(3) : that.onUncheckBoxSingleCrops([1, 2]);
+            controllerProduction.showAlertSingle()
+
         })
     }
 
@@ -223,8 +241,11 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             totalValuesModified = true;
             if (counter == 2) { //OK
 
-                var typeOfForm = (isAreaHarvestedSelected)? 'totalValues': 'totalValuesAPlanted';
-                controllerProduction.updateTotGridOnFormulaChanges(formulaToApplyTot,typeOfForm);
+                isTotalSelectionModified = false;
+
+                var typeOfForm = (isAreaHarvestedSelectedTot) ? 'totalValues' : 'totalValuesAPlanted';
+                controllerProduction.cancelAllAlerts(true)
+                controllerProduction.updateTotGridOnFormulaChanges(formulaToApplyTot, typeOfForm);
             } else {
                 var alert = '<div class="alert alert-danger alert-dismissible" role="alert">' +
                     '<button type="button" class="close" data-dismiss="alert">' +
@@ -248,7 +269,10 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             singleCropsValuesModified = true;
             console.log(counter)
             if (counter == 2) { //OK
-                controllerProduction.updateSingleCropsGridOnFormulaChanges(formulaToApplySingle);
+                isTotalSelectionModified = false;
+                var typeOfForm = (isAreaHarvestedSelectedTot) ? 'singleCrops' : 'singleCropsAPlanted';
+                controllerProduction.cancelAllAlerts(false)
+                controllerProduction.updateSingleCropsGridOnFormulaChanges(formulaToApplySingle, typeOfForm);
             } else {
                 var alert = '<div class="alert alert-danger alert-dismissible" role="alert">' +
                     '<button type="button" class="close" data-dismiss="alert">' +
@@ -264,35 +288,48 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
 
             event.preventDefault()
             event.stopImmediatePropagation();
-            debugger;
             var clickedItem = event.args.item;
+
+            debugger;
             if (clickedItem == 0 && singleCropsValuesModified) { // from single crops to total values
-                controllerProduction.onSwitchingCropsValues(formulaToApplySingle)
-            }else if(clickedItem == 0 && !singleCropsValuesModified){
-                controllerProduction.onSwitchingSimpleTotal(formulaToApplyTot)
-            }else if(clickedItem ==1){
-                controllerProduction.onSwitchingSimpleSingle(formulaToApplySingle)
+                var typeOfForm = (isAreaHarvestedSelectedTot) ? 'totalValues' : 'totalValuesAPlanted';
+
+                controllerProduction.onSwitchingCropsValues(formulaToApplyTot, typeOfForm)
+            } else if (clickedItem == 0 && !singleCropsValuesModified) {
+                var typeOfForm = (isAreaHarvestedSelectedTot) ? 'totalValues' : 'totalValuesAPlanted';
+
+                controllerProduction.onSwitchingSimpleTotal(formulaToApplyTot, typeOfForm)
+            } else if (clickedItem == 1) {
+                var typeOfForm = (isAreaHarvestedSelectedSingle) ? 'singleCrops' : 'singleCropsAPlanted';
+
+                controllerProduction.onSwitchingSimpleSingle(formulaToApplySingle, typeOfForm)
             }
         });
     }
 
-    ProductionObserver.prototype.listenToChangeRadioButton = function(){
-        $('#radioBtnAreaPlanted').on('change', function(event){
+    ProductionObserver.prototype.listenToChangeRadioButtonValue = function () {
+        $('#radioBtnAreaPlanted').on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
 
-            console.log("EVENT")
-            console.log(event.args.checked)
-            debugger;
-
-            console.log(isAreaHarvestedSelected)
-
-            if(event.args.checked == isAreaHarvestedSelected){
-                isAreaHarvestedSelected = !event.args.checked;
-                controllerProduction.onChangeAreaSelected(formulaToApplyTot, isAreaHarvestedSelected)
+            if (event.args.checked == isAreaHarvestedSelectedTot) {
+                isAreaHarvestedSelectedTot = !event.args.checked;
+                controllerProduction.onChangeAreaSelected(formulaToApplyTot, isAreaHarvestedSelectedTot, true)
 
             }
         })
+
+        $('#radioBtnAreaPltdSingleCrops').on('change', function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            if (event.args.checked == isAreaHarvestedSelectedSingle) {
+                isAreaHarvestedSelectedSingle = !event.args.checked;
+                controllerProduction.onChangeAreaSelected(formulaToApplySingle, isAreaHarvestedSelectedSingle, false)
+
+            }
+        })
+
     }
 
     ProductionObserver.prototype.listenToEditCellTotGrid = function () {
@@ -304,20 +341,20 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var columnValue = event.args.datafield;
             var oldvalue = event.args.oldvalue;
             var value = event.args.value;
-            if (checkAll(oldvalue)&& columnValue == 3) {
+            if (checkAll(oldvalue) && columnValue == 3) {
                 oldvalue = parseFloat(oldvalue)
             }
-            if (checkAll(value)&& columnValue == 3) {
+            if (checkAll(value) && columnValue == 3) {
                 value = parseFloat(value)
             }
 
             if (columnValue == 3 && (oldvalue != value)) {
                 var numberOfRow = event.args.rowindex;
                 var value2 = parseFloat(value)
-                controllerProduction.updateTotGridOnEditing(numberOfRow, value2, formulaToApplyTot, columnValue, isAreaHarvestedSelected)
+                controllerProduction.updateTotGridOnEditing(numberOfRow, value2, formulaToApplyTot, columnValue, isAreaHarvestedSelectedTot)
             } else if (columnValue != 3 && (oldvalue != value)) { // if modified only flag/notes
                 var numberOfRow = event.args.rowindex;
-                controllerProduction.updateTotGridOnEditing(numberOfRow, value, formulaToApplyTot, columnValue, isAreaHarvestedSelected)
+                controllerProduction.updateTotGridOnEditing(numberOfRow, value, formulaToApplyTot, columnValue, isAreaHarvestedSelectedTot)
             }
         })
 
@@ -332,20 +369,27 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var oldvalue = event.args.oldvalue;
             var value = event.args.value;
 
-            if (checkAll(oldvalue)&& columnValue == 3) {
+            if (checkAll(oldvalue) && columnValue == 3) {
                 oldvalue = parseFloat(oldvalue)
             }
-            if (checkAll(value)&& columnValue == 3) {
+            if (checkAll(value) && columnValue == 3) {
                 value = parseFloat(value)
             }
 
+            debugger;
             if (columnValue == 3 && (oldvalue != value)) {
                 var numberOfRow = event.args.rowindex;
                 var value2 = parseFloat(value)
-                controllerProduction.updateSingleCropsGridOnEditing(numberOfRow, value2, formulaToApplyTot, columnValue)
+                console.log('formulaTOApply on edit Single grid:')
+                console.log(formulaToApplySingle)
+
+                controllerProduction.updateSingleCropsGridOnEditing(numberOfRow, value2, formulaToApplySingle, columnValue, isAreaHarvestedSelectedSingle)
             } else if (columnValue != 3 && (oldvalue != value)) { // if modified only flag/notes
                 var numberOfRow = event.args.rowindex;
-                controllerProduction.updateSingleCropsGridOnEditing(numberOfRow, value, formulaToApplyTot, columnValue)
+                console.log('formulaTOApply on edit Single grid:')
+                console.log(formulaToApplySingle)
+
+                controllerProduction.updateSingleCropsGridOnEditing(numberOfRow, value, formulaToApplySingle, columnValue, isAreaHarvestedSelectedSingle)
             }
         })
     }
@@ -364,13 +408,13 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         totalValuesModified = true;
     }
 
-    ProductionObserver.prototype.unbindEventsFromTotalValues = function(){
+    ProductionObserver.prototype.unbindEventsFromTotalValues = function () {
 
         $('#saveTotalValues').off()
         $('#gridTotalValues').off()
     }
 
-    ProductionObserver.prototype.reBindEventsFromTotalValues = function(){
+    ProductionObserver.prototype.reBindEventsFromTotalValues = function () {
         this.listenToEditCellTotGrid(); //edit
         this.listenToCheckboxesTotal(); //checkboxes
         this.listenToRecalculateButtonTotalValues(); //formulas
@@ -386,35 +430,40 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var row = event.args.rowindex;
             var column = event.args.datafield
 
-            var conditionsAreaHarv = (isAreaHarvestedSelected && row==3) ||(!isAreaHarvestedSelected && row==0)
+            var conditionDisable = ((row === 0 && !isAreaHarvestedSelectedTot) || ((row == 3 && isAreaHarvestedSelectedTot)) ||
+                ((row === 0 + (4 * 1) && !isAreaHarvestedSelectedTot) || ((row == 3 + (4 * 1) && isAreaHarvestedSelectedTot))) ||
+                ((row === 0 + (4 * 2) && !isAreaHarvestedSelectedTot) || ((row == 3 + (4 * 2) && isAreaHarvestedSelectedTot))));
 
             switch (formulaToApplyTot) {
-
+                case 'yield':
                 case 'init':
-                    if (row == 1 || (conditionsAreaHarv) ) {
+                    var conditionCalculated = ((row == 1) || row == 1 + (4 * 1) || row == 1 + (4 * 2) || row == 1 + (4 * 3) )
+
+                    if (conditionCalculated || conditionDisable) {
                         toBlock = true;
                     }
                     break;
 
                 case 'production':
-                    if (row == 2 ||(conditionsAreaHarv) ) {
+                    var conditionCalculated = (row == 2 || row == 2 + 4 * 1 || row == 2 + 4 * 1)
+
+                    if (conditionCalculated || conditionDisable) {
                         toBlock = true;
                     }
                     break;
 
                 case 'areaHarvested':
-                    if (row==3 || row==0) {
-                        toBlock = true;
-                    }
-                    break;
+                    var conditionCalculated = ((row == 0 && isAreaHarvestedSelectedTot) || (row == 3 && !isAreaHarvestedSelectedTot) ||
+                        (row == 0 + 4 * 1 && isAreaHarvestedSelectedTot) || (row == 3 + 4 * 1 && !isAreaHarvestedSelectedTot) ||
+                        (row == 0 + 4 * 2 && isAreaHarvestedSelectedTot) || (row == 3 + 4 * 2 && !isAreaHarvestedSelectedTot))
 
-                case 'yield':
-                    if (row == 1 ||(conditionsAreaHarv) ) {
+
+                    if (conditionCalculated || conditionDisable) {
                         toBlock = true;
                     }
                     break;
             }
-            if(column == 6){
+            if (column == 6) {
                 toBlock = true;
             }
 
@@ -433,33 +482,40 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             var row = event.args.rowindex;
             var column = event.args.datafield
 
-            switch (formulaToApplyTot) {
+            var conditionDisable = ((row === 0 && !isAreaHarvestedSelectedSingle) || ((row == 3 && isAreaHarvestedSelectedSingle)) ||
+                ((row === 0 + (4 * 1) && !isAreaHarvestedSelectedSingle) || ((row == 3 + (4 * 1) && isAreaHarvestedSelectedSingle))) ||
+                ((row === 0 + (4 * 2) && !isAreaHarvestedSelectedSingle) || ((row == 3 + (4 * 2) && isAreaHarvestedSelectedSingle))));
 
+            switch (formulaToApplySingle) {
+                case 'yield':
                 case 'init':
-                    if (row == 1 ) {
+                    var conditionCalculated = ((row == 1) || row == 1 + (4 * 1) || row == 1 + (4 * 2) || row == 1 + (4 * 3) )
+
+                    if (conditionCalculated || conditionDisable) {
                         toBlock = true;
                     }
                     break;
 
                 case 'production':
-                    if (row == 2) {
+                    var conditionCalculated = (row == 2 || row == 2 + 4 * 1 || row == 2 + 4 * 1)
+
+                    if (conditionCalculated || conditionDisable) {
                         toBlock = true;
                     }
                     break;
 
                 case 'areaHarvested':
-                    if (row == 0 ) {
-                        toBlock = true;
-                    }
-                    break;
+                    var conditionCalculated = ((row == 0 && isAreaHarvestedSelectedSingle) || (row == 3 && !isAreaHarvestedSelectedSingle) ||
+                        (row == 0 + 4 * 1 && isAreaHarvestedSelectedSingle) || (row == 3 + 4 * 1 && !isAreaHarvestedSelectedSingle) ||
+                        (row == 0 + 4 * 2 && isAreaHarvestedSelectedSingle) || (row == 3 + 4 * 2 && !isAreaHarvestedSelectedSingle))
 
-                case 'yield':
-                    if (row == 1 ) {
+
+                    if (conditionCalculated || conditionDisable) {
                         toBlock = true;
                     }
                     break;
             }
-            if(column == 6 || column == 7){
+            if (column == 6 || column == 7) {
                 toBlock = true;
             }
             // condition follows
@@ -469,14 +525,14 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         });
     }
 
-    ProductionObserver.prototype.listenToCloseModal = function(){
+    ProductionObserver.prototype.listenToCloseModal = function () {
         $('#specialForm').on('hidden.bs.modal', function () {
             controllerProduction.destroyAll()
         })
     }
 
-    ProductionObserver.prototype.listenToCloseButton = function(){
-        $('closeModal').on('click', function(){
+    ProductionObserver.prototype.listenToCloseButton = function () {
+        $('closeModal').on('click', function () {
             controllerProduction.destroyAll()
         })
     }

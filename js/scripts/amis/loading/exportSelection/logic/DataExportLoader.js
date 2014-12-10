@@ -4,7 +4,7 @@
 define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function ($, Formatter, ServicesURL) {
 
 
-    var urlActualForecast , urlPopulation ,  urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
+    var urlActualForecast , urlPopulation , urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
         formatter, realPreviousDate, Services;
 
 
@@ -21,7 +21,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     }
 
 
-    DataExportLoader.prototype.getAndCreateTwoMostRecentForecast = function(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation,preloadingData, seasonLabel){
+    DataExportLoader.prototype.getAndCreateTwoMostRecentForecast = function (mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, preloadingData, seasonLabel) {
 
 
         var twoMostREcentForecasts = []
@@ -40,16 +40,16 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         })
 
         var twoMostRecentDates;
-        if(dates.length>=2) {
-             twoMostRecentDates = [dates[dates.length - 2][0], dates[dates.length - 1][0]]
-        }else{
-             twoMostRecentDates = [dates[dates.length - 1][0]]
+        if (dates.length >= 2) {
+            twoMostRecentDates = [dates[dates.length - 2][0], dates[dates.length - 1][0]]
+        } else {
+            twoMostRecentDates = [dates[dates.length - 1][0]]
         }
         console.log('Two most recent dates')
         console.log(twoMostRecentDates)
 
-        for(var i =0; i<twoMostRecentDates.length; i++){
-            var temporaryForecast =[]
+        for (var i = 0; i < twoMostRecentDates.length; i++) {
+            var temporaryForecast = []
             filterPreviousYear["date"] = twoMostRecentDates[i];
 
             $.ajax({
@@ -61,7 +61,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
                 data: JSON.stringify(filterPreviousYear)
 
             }).done(function (result) {
-                temporaryForecast.push( result);
+                temporaryForecast.push(result);
             })
 
             console.log('forecastWithoutPopulation')
@@ -93,9 +93,9 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
 
             temporaryForecast[0] = this.appendSeasonToDate(temporaryForecast[0], seasonLabel)
-            if(typeof twoMostREcentForecasts[0] != 'undefined'){
+            if (typeof twoMostREcentForecasts[0] != 'undefined') {
                 twoMostREcentForecasts[0] = twoMostREcentForecasts[0].concat(temporaryForecast[0])
-            }else {
+            } else {
                 twoMostREcentForecasts.push(temporaryForecast[0])
             }
             console.log('forecastWithoutPopulation')
@@ -106,7 +106,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     }
 
 
-    DataExportLoader.prototype.getAndCreateActualYearForecastMostRecent = function(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, seasonLabel){
+    DataExportLoader.prototype.getAndCreateActualYearForecastMostRecent = function (mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, seasonLabel) {
 
         console.log('getAndCreate Acutal year cforecasts')
 
@@ -129,40 +129,40 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
         console.log('dates for actual season: ')
         console.log(dates)
-        var mostRecentDate =dates[dates.length-1][0]
+        var mostRecentDate = dates[dates.length - 1][0]
 
         console.log('dates fchosen ')
         console.log(mostRecentDate)
 
-            filterPreviousYear["date"] = mostRecentDate;
+        filterPreviousYear["date"] = mostRecentDate;
 
-            $.ajax({
-                async: false,
-                url: urlPreviousYear,
-                type: 'POST',
-                contentType: "application/json",
-                dataType: 'json',
-                data: JSON.stringify(filterPreviousYear)
+        $.ajax({
+            async: false,
+            url: urlPreviousYear,
+            type: 'POST',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify(filterPreviousYear)
 
-            }).done(function (result) {
-                mostRecentForecast.push( result);
-            })
+        }).done(function (result) {
+            mostRecentForecast.push(result);
+        })
 
         console.log('most recent forecast after taking data ')
         console.log(mostRecentForecast)
 
 
-            var population
-            $.ajax({
-                async: false,
-                url: urlPopulation,
-                type: 'POST',
-                contentType: "application/json",
-                dataType: 'json',
-                data: JSON.stringify(filterPrevPopulation)
-            }).done(function (result) {
-                population = result;
-            })
+        var population
+        $.ajax({
+            async: false,
+            url: urlPopulation,
+            type: 'POST',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify(filterPrevPopulation)
+        }).done(function (result) {
+            population = result;
+        })
         console.log('most recent forecast  population ')
         console.log(population)
         if (population.length > 0) {
@@ -176,19 +176,19 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
         mostRecentForecast[0].push(population[0])
 
-        var result= mostRecentForecast[0]
+        var result = mostRecentForecast[0]
         console.log('most recent forecast after population')
         console.log(mostRecentForecast)
 
-        result = this.appendSeasonToDate(result,seasonLabel);
+        result = this.appendSeasonToDate(result, seasonLabel);
         return result;
     }
 
 
-    DataExportLoader.prototype.appendSeasonToDate = function(forecast, season){
+    DataExportLoader.prototype.appendSeasonToDate = function (forecast, season) {
 
-        for(var i = 0, length = forecast.length; i<length; i++){
-            forecast[i][2]+=' ('+ season+')';
+        for (var i = 0, length = forecast.length; i < length; i++) {
+            forecast[i][2] += ' (' + season + ')';
         }
 
         return forecast;

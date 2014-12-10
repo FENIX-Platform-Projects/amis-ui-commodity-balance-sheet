@@ -153,7 +153,7 @@ define(['jquery'], function ($) {
                 "product": filterActual.product,
                 "year": filterActual.year - 1,
                 "season": prevSeason,
-                "date" : realPreviousDate,
+                "date": realPreviousDate,
                 "datasource": filterData.dataSource
             }
             result["data"] = realPreviousDataToSave

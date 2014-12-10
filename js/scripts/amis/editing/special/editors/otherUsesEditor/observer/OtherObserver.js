@@ -1,23 +1,24 @@
 /**
  * Created by fabrizio on 9/13/14.
  */
-define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function($, Formatter){
+define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, Formatter) {
 
     var otherController, formulaToApplyTot, totalValuesModified, singleCropsValuesModified, grid
 
     var itemClickEvent, afterEditStopEvent
     var idCell;
 
-    function OtherObserver(){}
+    function OtherObserver() {
+    }
 
-    OtherObserver.prototype.init = function(Controller){
+    OtherObserver.prototype.init = function (Controller) {
         otherController = Controller;
         formulaToApplyTot = 'init';
         totalValuesModified = false;
     }
 
-    OtherObserver.prototype.applyListeners = function(Grid){
-        grid  = Grid
+    OtherObserver.prototype.applyListeners = function (Grid) {
+        grid = Grid
 
         this.listenToEditCellTotGrid();
         this.listenToSaveTotalValuesButton()
@@ -25,7 +26,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function($, Form
         this.listenToCloseModal();
     }
 
-    OtherObserver.prototype.listenToEditCellTotGrid = function() {
+    OtherObserver.prototype.listenToEditCellTotGrid = function () {
 
         itemClickEvent = grid.attachEvent("onItemClick", function (id, e, node) {
             e.preventDefault();
@@ -33,11 +34,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function($, Form
             idCell = id;
         })
 
-        afterEditStopEvent = grid.attachEvent("onAfterEditStop", function(state, editor, ignoreUpdate){
+        afterEditStopEvent = grid.attachEvent("onAfterEditStop", function (state, editor, ignoreUpdate) {
             // columnIndex
-            var columnIndex  = grid.getColumnIndex(idCell.column)-1;
+            var columnIndex = grid.getColumnIndex(idCell.column) - 1;
             var numberOfRow = grid.getIndexById(idCell);
-            debugger;
 
             console.log('cellEdit: listener Active')
             totalValuesModified = true;
@@ -45,9 +45,9 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function($, Form
             var oldvalue = state.old;
             var value = state.value;
 
-            if(oldvalue != value) {
-                if (columnValue == 3 ) {
-                    var value2 = isNaN(value)? value : parseFloat(value)
+            if (oldvalue != value) {
+                if (columnValue == 3) {
+                    var value2 = isNaN(value) ? value : parseFloat(value)
                     otherController.updateTotGridOnEditing(numberOfRow, value2, formulaToApplyTot, columnValue)
                 } else {
                     otherController.simpleUpdateOnEditing(numberOfRow, value, formulaToApplyTot, columnValue)
@@ -68,25 +68,24 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function($, Form
         })
     }
 
-    OtherObserver.prototype.closeEventsBindedToTotGrid = function(){
+    OtherObserver.prototype.closeEventsBindedToTotGrid = function () {
         grid.detachEvent(itemClickEvent);
         grid.detachEvent(afterEditStopEvent);
         $("#gridTotalValues").off();
         $('#saveTotalValues').off()
     }
 
-    OtherObserver.prototype.listenToCloseModal = function(){
+    OtherObserver.prototype.listenToCloseModal = function () {
         $('#specialForm').on('hidden.bs.modal', function () {
             otherController.destroyAll()
         })
     }
 
-    OtherObserver.prototype.listenToCloseButton = function(){
-        $('#closeModal').on('click', function(){
+    OtherObserver.prototype.listenToCloseButton = function () {
+        $('#closeModal').on('click', function () {
             otherController.destroyAll()
         })
     }
-
 
 
     return OtherObserver;

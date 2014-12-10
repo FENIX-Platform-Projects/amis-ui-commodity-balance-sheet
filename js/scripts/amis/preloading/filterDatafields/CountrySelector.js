@@ -1,29 +1,29 @@
 /**
  * Created by fabrizio on 5/20/14.
  */
-define(["jquery", "urlConfigurator","jqwidgets"], function($, servicesUrl) {
+define(["jquery", "urlConfigurator", "jqwidgets"], function ($, servicesUrl) {
 
-    var  combo, regionCode, Services;
+    var combo, regionCode, Services;
 
 
-    function CountrySelector(){
+    function CountrySelector() {
         Services = new servicesUrl;
         Services.init();
     }
 
 
-    CountrySelector.prototype.init = function(){
+    CountrySelector.prototype.init = function () {
 
         var that = this;
         combo = $("#selectionCountryBox")
-        var url =Services.getCountryListUrl();
+        var url = Services.getCountryListUrl();
         var sources = [];
 
         $.ajax({
             async: false,
             type: 'GET',
             url: url,
-            success : function(data){
+            success: function (data) {
 
                 var localdata = that.sortData(data);
 
@@ -41,7 +41,7 @@ define(["jquery", "urlConfigurator","jqwidgets"], function($, servicesUrl) {
 
                 // comboBox
                 combo.jqxComboBox({
-                    source: dataAdapter ,
+                    source: dataAdapter,
                     displayMember: "label",
                     valueMember: "code",
                     selectedIndex: 0,
@@ -57,12 +57,12 @@ define(["jquery", "urlConfigurator","jqwidgets"], function($, servicesUrl) {
     };
 
 
-    CountrySelector.prototype.getcombo = function(){
+    CountrySelector.prototype.getcombo = function () {
         return combo;
     };
 
 
-    CountrySelector.prototype.change = function(event) {
+    CountrySelector.prototype.change = function (event) {
 
         // To pass the value
         var args = event.args;
@@ -72,12 +72,12 @@ define(["jquery", "urlConfigurator","jqwidgets"], function($, servicesUrl) {
     };
 
 
-    CountrySelector.prototype.sortData = function(data){
+    CountrySelector.prototype.sortData = function (data) {
 
-        var localdata = data.rootCodes.sort(function(a, b){
-            if ( a.title.EN < b.title.EN )
+        var localdata = data.rootCodes.sort(function (a, b) {
+            if (a.title.EN < b.title.EN)
                 return -1;
-            if ( a.title.EN > b.title.EN )
+            if (a.title.EN > b.title.EN)
                 return 1;
             return 0;
         });

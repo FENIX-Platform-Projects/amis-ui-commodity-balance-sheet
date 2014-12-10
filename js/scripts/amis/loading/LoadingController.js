@@ -3,14 +3,14 @@
  */
 define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFactory",
         "databaseSaver/proxyFactory/SavingFactory",
-        "subscriberLoader","nprogress", "amplify"],
-    function ($, BalanceSheet, SelectionFactory, SavingFactory,SubscriberLoader, Nprogress) {
+        "subscriberLoader", "nprogress", "amplify"],
+    function ($, BalanceSheet, SelectionFactory, SavingFactory, SubscriberLoader, Nprogress) {
 
         var urlDSD = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructure.json'
         var urlDSDRice = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureRice.json'
         var ulrDSDSoyBean = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureSoybeans.json'
-        var balanceSheet, dataFiltered, handlerSelection,selectionFactory ,firstIstance,
-            product, savingController,savingFactory, NProgress, subscriberLoader, isMonthlyLoading;
+        var balanceSheet, dataFiltered, handlerSelection, selectionFactory , firstIstance,
+            product, savingController, savingFactory, NProgress, subscriberLoader, isMonthlyLoading;
 
         function LoadingController() {
             NProgress = Nprogress
@@ -32,11 +32,11 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
             product = parseInt(preloadingData.post.productCode);
             var isExport = true;
             dataFiltered = preloadingData;
-            isMonthlyLoading =isMonthlySelection
+            isMonthlyLoading = isMonthlySelection
 
             // Inside of selectionFactory module stored the global value on session storage variable
             handlerSelection = selectionFactory.init(isMonthlyLoading);
-            var totalForecast= handlerSelection.init(dataFiltered, region, product, isExport)
+            var totalForecast = handlerSelection.init(dataFiltered, region, product, isExport)
             this.createBalanceSheet(totalForecast, handlerSelection)
 
 
@@ -70,11 +70,11 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
 
             savingController = savingFactory.getSavingController();
 
-            if(isMonthlyLoading) {
+            if (isMonthlyLoading) {
                 var realPreviousYear = Selector.getRealPreviousYear()
                 var filterActual = Selector.getPreloadingData();
                 savingController.init(balanceSheet, filterActual, realPreviousYear, dataFiltered)
-            }else{
+            } else {
                 var filterActual = Selector.getPreloadingData();
                 savingController.init(balanceSheet, filterActual, dataFiltered, handlerSelection)
             }

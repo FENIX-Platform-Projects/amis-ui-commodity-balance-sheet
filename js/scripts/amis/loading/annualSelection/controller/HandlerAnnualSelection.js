@@ -1,14 +1,14 @@
-define(['jquery',  "annualLoader/logic/DataLoaderAnnual"], function($, DataLoader){
+define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoader) {
 
     var dataLoader, filterActual, region, product, preloadingData, loadingController, seasonMap, seasonYearMap;
 
 
-    function HandlerAnnualSelection(){
+    function HandlerAnnualSelection() {
         dataLoader = new DataLoader;
     }
 
 
-    HandlerAnnualSelection.prototype.init = function( dataPreLoaded, regionSelected, productSelected ,initBalanceSheet) {
+    HandlerAnnualSelection.prototype.init = function (dataPreLoaded, regionSelected, productSelected, initBalanceSheet) {
 
         loadingController = initBalanceSheet;
         region = regionSelected;
@@ -17,12 +17,12 @@ define(['jquery',  "annualLoader/logic/DataLoaderAnnual"], function($, DataLoade
         return this.startSelection();
     }
 
-    HandlerAnnualSelection.prototype.startSelection= function(){
+    HandlerAnnualSelection.prototype.startSelection = function () {
         seasonYearMap = {}
-        var resultForecast =[]
+        var resultForecast = []
         var items = $("#selectionYear").jqxComboBox('getItems');
-        for(var i= 0, length= items.length; i<length; i++){
-            var temporaryForecast = this.createLastForecastCurrentSeason(items,region,product,items[i])
+        for (var i = 0, length = items.length; i < length; i++) {
+            var temporaryForecast = this.createLastForecastCurrentSeason(items, region, product, items[i])
             seasonYearMap[items[i].label] = items[i].value
 
             resultForecast = resultForecast.concat(temporaryForecast);
@@ -35,44 +35,44 @@ define(['jquery',  "annualLoader/logic/DataLoaderAnnual"], function($, DataLoade
     }
 
 
-    HandlerAnnualSelection.prototype.createLastForecastCurrentSeason = function(items, region, product, seasonAndYear){
+    HandlerAnnualSelection.prototype.createLastForecastCurrentSeason = function (items, region, product, seasonAndYear) {
 
-        var filterCurrentSeason = this.createFilterForSeasons(region,product,seasonAndYear)
+        var filterCurrentSeason = this.createFilterForSeasons(region, product, seasonAndYear)
 
-        var filterPopulationCurrentSeason = this.createFilterPopulation(region,seasonAndYear)
+        var filterPopulationCurrentSeason = this.createFilterPopulation(region, seasonAndYear)
 
-        return dataLoader.getAndCreateActualYearForecastMostRecent(filterCurrentSeason,filterCurrentSeason,filterPopulationCurrentSeason, seasonAndYear.label)
+        return dataLoader.getAndCreateActualYearForecastMostRecent(filterCurrentSeason, filterCurrentSeason, filterPopulationCurrentSeason, seasonAndYear.label)
 
     }
 
-    HandlerAnnualSelection.prototype.createFilterPopulation = function(region, season){
+    HandlerAnnualSelection.prototype.createFilterPopulation = function (region, season) {
         return  {
-            "region" : region,
+            "region": region,
             "element": 1,
             "year": season.value
         }
     }
 
 
-    HandlerAnnualSelection.prototype.createFilterForSeasons  = function(region,product, selectedSeason){
+    HandlerAnnualSelection.prototype.createFilterForSeasons = function (region, product, selectedSeason) {
         return { "region": region, "product": product, "year": selectedSeason.value}
     }
 
-    HandlerAnnualSelection.prototype.getRealPreviousYear =function(){
+    HandlerAnnualSelection.prototype.getRealPreviousYear = function () {
         return dataLoader.getRealPreviousYear();
     }
 
 
-    HandlerAnnualSelection.prototype.getPreloadingData = function(){
+    HandlerAnnualSelection.prototype.getPreloadingData = function () {
         return filterActual;
     }
 
-    HandlerAnnualSelection.prototype.createSeasonMapDate = function(forecasts){
+    HandlerAnnualSelection.prototype.createSeasonMapDate = function (forecasts) {
         seasonMap = {}
 
-        for (var i = 0, length = forecasts.length; i<length; i++){
-            var date = forecasts[i][2].substr(0,10);
-            forecasts[i][2] = forecasts[i][2].substr(10,17);
+        for (var i = 0, length = forecasts.length; i < length; i++) {
+            var date = forecasts[i][2].substr(0, 10);
+            forecasts[i][2] = forecasts[i][2].substr(10, 17);
             var season = forecasts[i][2];
             seasonMap[season] = date;
         }
@@ -80,11 +80,11 @@ define(['jquery',  "annualLoader/logic/DataLoaderAnnual"], function($, DataLoade
         return forecasts;
     }
 
-    HandlerAnnualSelection.prototype.getSeasonMapDate = function(){
-      return seasonMap;
+    HandlerAnnualSelection.prototype.getSeasonMapDate = function () {
+        return seasonMap;
     }
 
-    HandlerAnnualSelection.prototype.getSeasonYearMap = function(){
+    HandlerAnnualSelection.prototype.getSeasonYearMap = function () {
         return seasonYearMap;
     }
 

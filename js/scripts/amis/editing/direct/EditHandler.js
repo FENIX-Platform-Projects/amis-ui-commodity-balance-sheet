@@ -1,17 +1,18 @@
 /**
  * Created by fabrizio on 10/16/14.
  */
-define(['jquery'], function($){
+define(['jquery'], function ($) {
 
     var isEditable, editingOnCell, generalController
 
-    function EditHandler(){}
+    function EditHandler() {
+    }
 
-    EditHandler.prototype.startEditCell = function(resultedClicked, isEditable, editingOnCell, grid, GeneralController){
-        var clickedCell =   resultedClicked["clickedCell"]
+    EditHandler.prototype.startEditCell = function (resultedClicked, isEditable, editingOnCell, grid, GeneralController) {
+        var clickedCell = resultedClicked["clickedCell"]
         generalController = GeneralController
 
-        switch(isEditable){
+        switch (isEditable) {
             case 0:
                 //not editable
                 grid.editCancel();
@@ -20,13 +21,13 @@ define(['jquery'], function($){
 
             case 1:
                 // editable
-                if(editingOnCell){
+                if (editingOnCell) {
 
-                    clickedCell[3] = (!clickedCell[3])? null: clickedCell[3];
+                    clickedCell[3] = (!clickedCell[3]) ? null : clickedCell[3];
                     grid.getEditor().setValue(clickedCell[3]) // change the value
                     grid.unblockEvent()
 
-                }else{
+                } else {
                     grid.editCancel();
                     generalController.startFullEditing(resultedClicked)
                     grid.unblockEvent()
@@ -42,7 +43,7 @@ define(['jquery'], function($){
         }
     }
 
-    EditHandler.prototype.updateEditingOnCell = function(updated){
+    EditHandler.prototype.updateEditingOnCell = function (updated) {
         editingOnCell = updated
     }
 

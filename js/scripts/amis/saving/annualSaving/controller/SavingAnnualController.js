@@ -47,8 +47,8 @@ define(['jquery', 'databaseSaver/annualSaving/model/SavingAnnualModel', 'databas
 
         }
 
-        SavingAnnualController.prototype.finalSave = function(arrayData){
-            for(var i = 0,length = arrayData.length; i<length; i++){
+        SavingAnnualController.prototype.finalSave = function (arrayData) {
+            for (var i = 0, length = arrayData.length; i < length; i++) {
                 $.ajax({
                     async: false,
                     url: urlSaving,

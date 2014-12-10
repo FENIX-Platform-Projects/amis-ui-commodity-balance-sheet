@@ -2,21 +2,19 @@
  * Created by fabrizio on 9/11/14.
  */
 define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/ProductionEditor",
-"paddyEditor/controller/PaddyController", "otherUsesEditor/controller/OtherController"], function($, DataHandler, ProductionEditor, PaddyController,
-    OtherController){
+    "paddyEditor/controller/PaddyController", "otherUsesEditor/controller/OtherController"], function ($, DataHandler, ProductionEditor, PaddyController, OtherController) {
 
     var specialFormulaController, dataHandler, productionEditor, dsdConfigurator, supportUtility,
         clickedCellInfo, generalController, paddyController, otherController;
 
-    function ControllerEditors(){
+    function ControllerEditors() {
         dataHandler = new DataHandler;
         productionEditor = new ProductionEditor;
         paddyController = new PaddyController;
         otherController = new OtherController
     }
 
-    ControllerEditors.prototype.init = function(allData,modelDataTable,resultedClicked, formulaController, DsdConfigurator, Utility,GeneralController,
-        filterProductCode){
+    ControllerEditors.prototype.init = function (allData, modelDataTable, resultedClicked, formulaController, DsdConfigurator, Utility, GeneralController, filterProductCode) {
 
         generalController = GeneralController;
         dsdConfigurator = DsdConfigurator;
@@ -25,19 +23,14 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
         supportUtility = Utility;
         clickedCellInfo = resultedClicked
 
-        var takenCell =resultedClicked.clickedCell
+        var takenCell = resultedClicked.clickedCell
         specialFormulaController = formulaController;
         // first take all the involvedCodes
         var codes = specialFormulaController.getInvolvedItems(takenCell, filterProductCode);
-        console.log('controller Editosrs.init: after getInvolvedItems of specialFormulaController')
-        console.log(codes)
 
         var dataInvolved = dataHandler.getInvolvedData(codes, everyData, tableData, takenCell);
 
-        console.log('DATA INVOLLVEDE')
-        console.log(dataInvolved)
-
-        var condition =parseInt(takenCell[0])
+        var condition = parseInt(takenCell[0])
 
         switch (condition) {
             case 5 :
@@ -58,20 +51,20 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
     }
 
 
-    ControllerEditors.prototype.saveFormProduction = function( calculatedData, originalData){
-        generalController.saveDataFromAllForms(calculatedData,originalData,clickedCellInfo, 'production')
+    ControllerEditors.prototype.saveFormProduction = function (calculatedData, originalData) {
+        generalController.saveDataFromAllForms(calculatedData, originalData, clickedCellInfo, 'production')
     }
 
-    ControllerEditors.prototype.saveFormRiceProduction = function(calculatedData, originalData){
+    ControllerEditors.prototype.saveFormRiceProduction = function (calculatedData, originalData) {
         console.log('saveFormRice Production: Controller Editors')
-        generalController.saveDataFromAllForms(calculatedData,originalData,clickedCellInfo, 'productionRice')
+        generalController.saveDataFromAllForms(calculatedData, originalData, clickedCellInfo, 'productionRice')
     }
 
-    ControllerEditors.prototype.saveFormOtherUses = function( calculatedData, originalData){
+    ControllerEditors.prototype.saveFormOtherUses = function (calculatedData, originalData) {
         console.log('saveFormRice Production: Controller Editors')
-        generalController.saveDataFromAllForms(calculatedData,originalData,clickedCellInfo, 'otherUses')
+        generalController.saveDataFromAllForms(calculatedData, originalData, clickedCellInfo, 'otherUses')
     }
 
     return ControllerEditors;
 
-    })
+})

@@ -4,29 +4,29 @@
 /**
  * Created by fabrizio on 5/20/14.
  */
-define(["jquery","./PreloadingController"],
-    function($, PreloadingController) {
+define(["jquery", "./PreloadingController"],
+    function ($, PreloadingController) {
 
         // vars that represent the models
-        var  controller;
+        var controller;
 
         // vars returned from the models
-        var combo,comboComm,natDB,cbs, comboYear;
+        var combo, comboComm, natDB, cbs, comboYear;
 
 
-        function PreloadingObserver(){
+        function PreloadingObserver() {
             controller = new PreloadingController;
         };
 
 
-        PreloadingObserver.prototype.init = function(){
+        PreloadingObserver.prototype.init = function () {
             var that = this
 
             this.initializeParameters(that);
 
 
-            $("#loadData").bind('click', function() {
-               controller.passDataToLoading();
+            $("#loadData").bind('click', function () {
+                controller.passDataToLoading();
             });
 
             combo.bind('select', function (event) {
@@ -41,7 +41,7 @@ define(["jquery","./PreloadingController"],
 
             });
 
-            natDB.bind('change', function(event) {
+            natDB.bind('change', function (event) {
                 if (event.args.checked) {
                     console.log("natdb")
                     controller.onSelectNatDB(event);
@@ -49,14 +49,14 @@ define(["jquery","./PreloadingController"],
 
             });
 
-            cbs.bind('change', function(event) {
+            cbs.bind('change', function (event) {
                 if (event.args.checked) {
                     console.log("cbs")
                     controller.onSelectCBS(event);
                 }
             });
 
-            comboYear.bind('change',function(event){
+            comboYear.bind('change', function (event) {
                 console.log("CHANGE Year")
                 controller.onSelectingYear(event)
             })
@@ -64,14 +64,14 @@ define(["jquery","./PreloadingController"],
         };
 
 
-        PreloadingObserver.prototype.initializeParameters = function(that){
+        PreloadingObserver.prototype.initializeParameters = function (that) {
 
             controller.init();
 
-            combo =     controller.getCountrySelector().getcombo();
-            natDB =     controller.getDbSelector().getNatDb();
-            cbs   =     controller.getDbSelector().getCBS();
-            comboComm=  controller.getcommSelector().getcombo();
+            combo = controller.getCountrySelector().getcombo();
+            natDB = controller.getDbSelector().getNatDb();
+            cbs = controller.getDbSelector().getCBS();
+            comboComm = controller.getcommSelector().getcombo();
             comboYear = controller.getYearSelector().getcombo();
 
         };

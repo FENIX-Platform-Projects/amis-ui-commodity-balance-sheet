@@ -4,7 +4,7 @@
 define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function ($, Formatter, ServicesURL) {
 
 
-    var urlActualForecast , urlPopulation ,  urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
+    var urlActualForecast , urlPopulation , urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
         formatter, realPreviousDate, Services;
 
 
@@ -37,14 +37,14 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             actualForecast = result;
         })
 
-        if(isDateFormatted) {
+        if (isDateFormatted) {
             // Put dates in DSD format
             for (var i = 0; i < actualForecast.length; i++) {
                 var data = actualForecast[i][2]
 
                 actualForecast[i][2] = formatter.fromVisualizationToDSDFormat(data, "date")
             }
-        }else{
+        } else {
             // Put dates in DSD format
             for (var i = 0; i < actualForecast.length; i++) {
                 var data = actualForecast[i][2]
@@ -79,8 +79,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     }
 
 
-    DataLoader.prototype.getPreviousYearForecast = function (mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, isDateFormatted,preloadingData
-        ) {
+    DataLoader.prototype.getPreviousYearForecast = function (mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, isDateFormatted, preloadingData) {
         var dates, prevYearForecast;
         $.ajax({
             async: false,
@@ -94,7 +93,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             dates = result;
         })
 
-        var mostRecentDate = dates[dates.length-1][0]
+        var mostRecentDate = dates[dates.length - 1][0]
         // set the most recent date to make the query
         filterPreviousYear["date"] = mostRecentDate;
 
@@ -112,7 +111,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         })
 
         var fakeData
-        if(isDateFormatted) {
+        if (isDateFormatted) {
             // Put dates in DSD format
             realPreviousDate = prevYearForecast[0][2]
             for (var i = 0; i < prevYearForecast.length; i++) {
@@ -121,11 +120,11 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
                 // also for updateDate
             }
-        }else{
+        } else {
             var previousSeason = preloadingData.years.previousYearLabel;
 
             for (var i = 0; i < prevYearForecast.length; i++) {
-                prevYearForecast[i][2] =previousSeason;
+                prevYearForecast[i][2] = previousSeason;
             }
         }
 
@@ -145,12 +144,12 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         // Inside of population insert the date(s)
 
         if (populationPrevYear.length > 0) {
-            if(isDateFormatted) {
+            if (isDateFormatted) {
 
                 populationPrevYear[0].splice(2, 0, fakeData);
                 populationPrevYear[0].push(null);
 
-            }else{
+            } else {
                 populationPrevYear[0].splice(2, 0, previousSeason);
                 populationPrevYear[0].push(null);
             }
@@ -162,12 +161,12 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     }
 
 
-    DataLoader.prototype.checkIfEqualForecastDates = function(firstActForecast, prevForecast){
+    DataLoader.prototype.checkIfEqualForecastDates = function (firstActForecast, prevForecast) {
         return firstActForecast[2] == prevForecast[2]
     }
 
 
-    DataLoader.prototype.setFakeForecastDate = function(prevYearForecast){
+    DataLoader.prototype.setFakeForecastDate = function (prevYearForecast) {
         realPreviousDate = prevYearForecast[0][2]
         var fakeDate = "20000103";
         prevYearForecast[i][2] = fakeDate;
@@ -176,16 +175,16 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     }
 
 
-    DataLoader.prototype.setSeasonInsteadOfDate = function(prevYearForecast, previousSeason){
+    DataLoader.prototype.setSeasonInsteadOfDate = function (prevYearForecast, previousSeason) {
 
-        for(var i =0; i< prevYearForecast.length; i++){
+        for (var i = 0; i < prevYearForecast.length; i++) {
             prevYearForecast[i][2] = previousSeason;
         }
         return prevYearForecast;
     }
 
 
-    DataLoader.prototype.getRealPreviousYear = function(){
+    DataLoader.prototype.getRealPreviousYear = function () {
         return realPreviousDate;
     }
 

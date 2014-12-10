@@ -5,12 +5,12 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
 
     var configurator, mapCodes, numberOfRows, supportModel, indexValue, numberOfColumns;
 
-    function FormulaController(){
+    function FormulaController() {
         configurator = new Configurator;
         supportModel = new SupportModel;
     }
 
-    FormulaController.prototype.init = function(model, dsdConfigurator, filterData){
+    FormulaController.prototype.init = function (model, dsdConfigurator, filterData) {
 
         // initialization of configurator
         supportModel.init(dsdConfigurator)
@@ -22,21 +22,21 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
 
         this.applyFormulas(model)
 
-        if(filterData.productCode !=4) {
+        if (filterData.productCode != 4) {
             this.sortInitialValue(model)
-        }else{
+        } else {
             this.sortInitialValueRice(model);
         }
     }
 
-    FormulaController.prototype.applyFormulas = function(model){
+    FormulaController.prototype.applyFormulas = function (model) {
 
         var allInitFormulas = configurator.getAllInitFormulas();
 
         numberOfRows = Object.keys(mapCodes).length;
-        numberOfColumns = model.length/ Object.keys(mapCodes).length;
-       // for each column
-        for(var z= 0; z<numberOfColumns; z++) {
+        numberOfColumns = model.length / Object.keys(mapCodes).length;
+        // for each column
+        for (var z = 0; z < numberOfColumns; z++) {
             // for each formula
             for (var i = 0; i < allInitFormulas.length; i++) {
                 this.createFormula(model, allInitFormulas[i], z, numberOfColumns, i)
@@ -45,7 +45,7 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
         return model;
     }
 
-    FormulaController.prototype.createFormula = function(modelData, formulaData, indexColumnData, indexRow2, indexFormula) {
+    FormulaController.prototype.createFormula = function (modelData, formulaData, indexColumnData, indexRow2, indexFormula) {
         var model = modelData;
         var formula = formulaData;
         var indexColumn = indexColumnData
@@ -54,18 +54,18 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
         var startIndex, indexRow;
         // set the start index and the range
         var codeValue = formula.variable.value[0]
-            if (formula.otherColumn) {
-                var indexColumnVariable = formula.columnNumber;
-                startIndex = numberOfRows * indexColumnVariable;
-            } else {
-                startIndex = numberOfRows * indexColumn
-            }
+        if (formula.otherColumn) {
+            var indexColumnVariable = formula.columnNumber;
+            startIndex = numberOfRows * indexColumnVariable;
+        } else {
+            startIndex = numberOfRows * indexColumn
+        }
         var notRealizeable = false;
 
-        indexRow  =supportModel.lookForCode(codeValue,model,startIndex, numberOfRows)
+        indexRow = supportModel.lookForCode(codeValue, model, startIndex, numberOfRows)
 
-        var rowModel =  model[indexRow]
-        if(typeof rowModel !== 'undefined' && rowModel !=null) {
+        var rowModel = model[indexRow]
+        if (typeof rowModel !== 'undefined' && rowModel != null) {
 
             //  initialize a label
             label1:
@@ -85,19 +85,19 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                             if (typeof index != 'undefined' && index != null && typeof model[index][indexValue] != 'undefined' && model[index][indexValue] != null) {
                                 addendums.push(model[index][indexValue])
                             } else {
-                                if(addendum.hasCondition && addendum.condition == 'exists' && addendum.otherValue.length >0){
+                                if (addendum.hasCondition && addendum.condition == 'exists' && addendum.otherValue.length > 0) {
                                     code = addendum.otherValue[0];
-                                    if(code ==2){
+                                    if (code == 2) {
                                         debugger;
                                     }
                                     index = supportModel.lookForCode(code, model, startIndex, numberOfRows)
                                     if (typeof index != 'undefined' && index != null && typeof model[index][indexValue] != 'undefined' && model[index][indexValue] != null) {
                                         addendums.push(model[index][indexValue])
-                                    }else{
+                                    } else {
                                         notRealizeable = true;
                                         break label1;
                                     }
-                                }else {
+                                } else {
                                     notRealizeable = true;
                                     break label1;
                                 }
@@ -170,9 +170,9 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
         return null;
     }
 
-    FormulaController.prototype.checkIfBindedCode = function(listOfBindedCodes, code){
-        var result =false;
-        for(var i=0; i<listOfBindedCodes.length && !result; i++) {
+    FormulaController.prototype.checkIfBindedCode = function (listOfBindedCodes, code) {
+        var result = false;
+        for (var i = 0; i < listOfBindedCodes.length && !result; i++) {
             if (listOfBindedCodes[i] == code) {
                 result = true;
             }
@@ -180,31 +180,31 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
         return result;
     }
 
-    FormulaController.prototype.applyUpdateFormulas = function(model, formulas, indexColumn, indexRow) {
+    FormulaController.prototype.applyUpdateFormulas = function (model, formulas, indexColumn, indexRow) {
         var newValues = [];
         for (var i = 0; i < formulas.length; i++) {
             var indexFormula = formulas[i];
             var formula = configurator.getEntireFormulaFromNumber(indexFormula);
             var newValue = this.createFormula(model, formula, indexColumn, indexRow)
-            if(newValue != null && typeof newValue !== 'undefined')
+            if (newValue != null && typeof newValue !== 'undefined')
                 newValues.push(newValue);
         }
         return newValues
     }
 
-    FormulaController.prototype.getBindedKeys = function(){
+    FormulaController.prototype.getBindedKeys = function () {
         return configurator.getBindedKeys();
     }
 
-    FormulaController.prototype.getFormulasBindedFromKey = function(key){
+    FormulaController.prototype.getFormulasBindedFromKey = function (key) {
         return configurator.getFormulasBindedFromKey(key)
     }
 
-    FormulaController.prototype.sortByDateAtStart = function(model){
-        model.sort(function (a,b) {
+    FormulaController.prototype.sortByDateAtStart = function (model) {
+        model.sort(function (a, b) {
             if (a["2"] < b["2"])
                 return -1;
-            if (a["2"]> b["2"])
+            if (a["2"] > b["2"])
                 return 1;
             return 0;
         });
@@ -212,42 +212,42 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
     }
 
     // Sort for pivot's rows
-    FormulaController.prototype.sortInitialValue = function(model){
-        model.sort(function (a,b) {
+    FormulaController.prototype.sortInitialValue = function (model) {
+        model.sort(function (a, b) {
             if (mapCodes[a["0"]] < mapCodes[b["0"]]) {
                 if (a["2"] < b["2"])
                     return -2;
                 return -1;
             }
-            if (mapCodes[a["0"]]> mapCodes[b["0"]]){
-                if (a["2"]> b["2"])
+            if (mapCodes[a["0"]] > mapCodes[b["0"]]) {
+                if (a["2"] > b["2"])
                     return 2;
                 return 1;
-            }else{
+            } else {
                 if (a["2"] < b["2"])
                     return -1;
-                if (a["2"]> b["2"])
+                if (a["2"] > b["2"])
                     return 1;
                 return 0;
             }
         });
     }
 
-    FormulaController.prototype.sortInitialValueRice = function(model){
-        model.sort(function (a,b) {
+    FormulaController.prototype.sortInitialValueRice = function (model) {
+        model.sort(function (a, b) {
             if (mapCodes[a["0"]] < mapCodes[b["0"]]) {
                 if (a["2"] < b["2"])
                     return -2;
                 return -1;
             }
-            if (mapCodes[a["0"]]> mapCodes[b["0"]]){
-                if (a["2"]> b["2"])
+            if (mapCodes[a["0"]] > mapCodes[b["0"]]) {
+                if (a["2"] > b["2"])
                     return 2;
                 return 1;
-            }else{
+            } else {
                 if (a["2"] < b["2"])
                     return -1;
-                if (a["2"]> b["2"])
+                if (a["2"] > b["2"])
                     return 1;
                 return 0;
             }
@@ -258,7 +258,7 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
     // 0, if the cell is not editable;
     // 1 if the cell is directly editable;
     // 2 if the cell is editable by a form
-    FormulaController.prototype.checkIfEditableCell = function(cell) {
+    FormulaController.prototype.checkIfEditableCell = function (cell) {
         var result = 0;
         var directEditableValues = configurator.getDirectEditableValues();
         for (var i = 0; i < directEditableValues.length && result == 0; i++) {
@@ -279,13 +279,13 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
     }
 
     // get codes of the cells involved in special editing
-    FormulaController.prototype.getInvolvedItems = function( cell, filterProductCode){
+    FormulaController.prototype.getInvolvedItems = function (cell, filterProductCode) {
         var $newdiv1 = $("<div id='dialogForm' type='hidden'></div>");
         $("#pivotGrid").append($newdiv1);
         var map = configurator.getOrCreateMapInvolvedCells();
-        if(cell[0] == 15){
+        if (cell[0] == 15) {
             return map[15]
-        }else {
+        } else {
 
             if (filterProductCode != 4) {
                 return map[cell[0]]
