@@ -118,7 +118,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
         if (Object.prototype.toString.call(formulaToUpdate) === '[object Array]') {
             for (var i = 0; i < formulaToUpdate.length; i++) {
-                debugger;
                 var calculatedModel = formulaHandler.createFormula(modelTotalCrops, formulaToUpdate[i])
                 if (i != formulaToUpdate.length - 1) {
                     modelTotalCrops = calculatedModel
@@ -140,6 +139,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     PaddyController.prototype.updateSingleCropsGridOnEditing = function (rowNumber, newValue, formulaToApply, columnValue, typeOfEditing) {
 
         var formulaToUpdate;
+        debugger;
         if (formulaToApply == 'init') {
             formulaToUpdate = formulaHandler.getInitFormulaFromConf(2, 'singleCrops')
         } else {
@@ -160,17 +160,21 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         var calculatedDataDividedCrops = []
         var numberOfCrops = modelPaddy.getCropsNumber();
         var startIndex = 0;
+
         for (var i = 0; i < numberOfCrops; i++) {
             var endIndex = dataForCrops.length / numberOfCrops + startIndex;
+            var itemsNumber = 7;
             var copyDataForCrops = $.extend(true, [], dataForCrops)
-            var modelPiece = copyDataForCrops.splice(startIndex, endIndex)
+            var modelPiece = copyDataForCrops.splice(startIndex, itemsNumber)
+            var calculatedPieceOfModel= null;
 
             if (Object.prototype.toString.call(formulaToUpdate) === '[object Array]') {
-                for (var i = 0; i < formulaToUpdate.length; i++) {
-                    var calculatedPieceOfModel = formulaHandler.createFormula(modelPiece, formulaToUpdate[i])
-                    if (i != formulaToUpdate.length - 1) {
-                        modelPiece = calculatedPieceOfModel
+                for (var j = 0; j < formulaToUpdate.length; j++) {
+                    debugger;
+                    if(calculatedPieceOfModel == null){
+                        calculatedPieceOfModel = modelPiece;
                     }
+                     calculatedPieceOfModel = formulaHandler.createFormula(calculatedPieceOfModel, formulaToUpdate[j])
                 }
             } else {
                 var calculatedPieceOfModel = formulaHandler.createFormula(modelPiece, formulaToUpdate)
@@ -180,7 +184,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         }
 
         // insert batch into model
-        var newCalculatedData = modelPaddy.createSingleCalculatedModel(calculatedDataDividedCrops)
+        var newCalculatedData = modelPaddy.createSingleCalculatedModel(calculatedDataDividedCrops, allData)
 
         var modelCalculated = $.extend(true, [], newCalculatedData);
         modelPaddy.setCalculatedSingleModel(modelCalculated)
@@ -213,7 +217,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     PaddyController.prototype.updateSingleCropsGridOnFormulaChanges = function (formulaToApply, typeOfEditing) {
         console.log('formulaToApply -------SINGLE------------')
         console.log(formulaToApply)
-        debugger;
         var formulaToUpdate = formulaHandler.getUpdateFormula(2, 'singleCrops', formulaToApply, typeOfEditing)
         var dataUpdated = modelPaddy.getSingleCropsModel();
         var modelSingleCrops = $.extend(true, [], dataUpdated);
@@ -237,8 +240,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
         var dataOriginal = modelPaddy.getAndConvertOriginalTotValues();
         var dataCalculated = modelPaddy.getCalculatedTotalModel();
-        debugger;
-
         editorsController.saveFormRiceProduction(dataCalculated, dataOriginal); // this is FALSE!! true is up
     }
 
@@ -280,6 +281,16 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
     PaddyController.prototype.destroyAll = function () {
         editorPaddy.destroyAll();
+    }
+
+    PaddyController.prototype.showAlerts = function(isTotal){
+        console.log('controller.showalerts!!!!!!!!!!')
+            debugger;
+        (isTotal)? editorPaddy.showAlertTotal(): editorPaddy.showAlertSingle();
+    }
+
+    PaddyController.prototype.deleteAlerts = function(isTotal){
+        editorPaddy.cancelAlerts(isTotal);
     }
 
     return PaddyController;

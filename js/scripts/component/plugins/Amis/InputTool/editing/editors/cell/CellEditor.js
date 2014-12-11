@@ -1,7 +1,7 @@
 /**
  * Created by fabrizio on 7/7/14.
  */
-define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/FlagController","select2", "jquery.dirtyFields",
+define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/FlagController", "select2", "jquery.dirtyFields",
     "jqwidgets"], function ($, Formatter, FlagController) {
 
     var formatter, language, columns, valueIndex, accessorIndexes , mapPreviousValues, flagController;
@@ -99,9 +99,13 @@ define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/Flag
 
         }
 
-        $('#spaceForButtons').append("<br><br><div class='row'><div class='col-lg-2 col-lg-offset-8 '>" +
-            "<button class='btn btn-lg btn-danger' id='saveButton'>Save</button></div>" +
-            "<div class='col-lg-2'><button class='btn btn-lg btn-primary' id='resetButton'>Reset</button></div></div></div>")
+        $('#spaceForButtons').append("<br><br>" +
+            "<div class='row'><div class='col-lg-2 col-lg-offset-8 '>" +
+            "<button class='btn btn-lg btn-danger' id='saveButton'>Save</button>" +
+            "</div>" +
+            "<div class='col-lg-2'>" +
+            "<button class='btn btn-lg btn-primary' id='resetButton'>Reset</button>" +
+            "</div></div></div>")
 
 
         var that = this;
@@ -136,7 +140,7 @@ define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/Flag
     CellEditor.prototype.restorePreviousValues = function () {
         debugger;
         for (key in mapPreviousValues) {
-            if(key == 'getUnique'){
+            if (key == 'getUnique') {
                 break;
             }
             var value = mapPreviousValues[key];
@@ -196,12 +200,12 @@ define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/Flag
                         break
 
                     default:
-                        if( container == 'accessorInput1'){
+                        if (container == 'accessorInput1') {
                             container = 's2id_accessorInput1'
                             var rightValue = (typeof prevValue == 'undefined' || prevValue == 'undefined') ?
                                 "" : prevValue;
-                            $('#'+container).select2('val', rightValue)
-                        }else {
+                            $('#' + container).select2('val', rightValue)
+                        } else {
                             var rightValue = (typeof prevValue == 'undefined' || prevValue == 'undefined') ?
                                 "" : prevValue;
                             document.getElementById(container).value = rightValue;
@@ -592,13 +596,13 @@ define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/Flag
                         $('#form').append("<div class ='row'>" +
                             "<div class='col-lg-6'><label for='" + container + "'>" + title
                             + "</label></div>" +
-                            "<div class='col-lg-6'><textarea placeholder ='Type some notes' type='text' class='input-group-lg form-control' name='name'  rows='3' id='" + container + "'>"+value+"</textarea></div>" +
+                            "<div class='col-lg-6'><textarea placeholder ='Type some notes' type='text' class='input-group-lg form-control' name='name'  rows='3' id='" + container + "'>" + value + "</textarea></div>" +
                             "</div><br><div class ='ui-dialog-buttonpane ui-widget-content ui-helper-clearfix' id='spaceForButtons'></div>")
                     }
                     // Case Multiple flag
-                    else if (title =="Flags") {
+                    else if (title == "Flags") {
                         $('#form').append(this.getMultipleFlagToAppend(value, container, title))
-                        $('#'+container).select2({placeholder: "Click to select the flags"})
+                        $('#' + container).select2({placeholder: "Click to select the flags"})
                     }
 
                     else {
@@ -634,8 +638,8 @@ define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/Flag
         var $inputs = document.getElementsByClassName('input-group-lg');
         var $input = [];
 
-        for(var i =0;i< $inputs.length; i++){
-            if(i != 2) {
+        for (var i = 0; i < $inputs.length; i++) {
+            if (i != 2) {
                 $input.push($inputs[i])
             }
         }
@@ -685,8 +689,8 @@ define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/Flag
 
                 } else {
                     result = $("#" + htmlvalue.id).val();
-                    if(typeof result == 'undefined'){
-                         result = null
+                    if (typeof result == 'undefined') {
+                        result = null
                     }
                 }
         }
@@ -694,15 +698,15 @@ define(["jquery", "formatter/DatatypesFormatter","flagTranslator/controller/Flag
     }
 
 
-    CellEditor.prototype.getMultipleFlagToAppend = function(value, container, title){
+    CellEditor.prototype.getMultipleFlagToAppend = function (value, container, title) {
         var stringValue = value;
-        var stringToAppend = '<div>'+
-            '<div class="row"><div class="col-lg-6">'+
-            '<label for="'+container+'">'+title+'</label></div>'+
-            '<div class="col-lg-6">'    +
-            '<select multiple tabindex="-1" id="'+container+'" style="width:100%" class="input-group-lg">';
+        var stringToAppend = '<div>' +
+            '<div class="row"><div class="col-lg-6">' +
+            '<label for="' + container + '">' + title + '</label></div>' +
+            '<div class="col-lg-6">' +
+            '<select multiple tabindex="-1" id="' + container + '" style="width:100%" class="input-group-lg">';
         stringToAppend += flagController.getOptions(stringValue)
-        stringToAppend +='</select></div></div>'+
+        stringToAppend += '</select></div></div>' +
             '<br>';
 
         return stringToAppend
