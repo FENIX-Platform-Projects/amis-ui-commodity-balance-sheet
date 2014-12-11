@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="233390f4-9d56-4ae3-a936-6fea2c279eba" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/component/plugins/Amis/InputTool/editing/editors/cell/CellEditor.js" afterPath="$PROJECT_DIR$/js/scripts/component/plugins/Amis/InputTool/editing/editors/cell/CellEditor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/views/gridDataView/GridDataView.js" afterPath="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/views/gridDataView/GridDataView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/model/PaddyModel.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/model/PaddyModel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/observer/PaddyObserver.js" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/observer/PaddyObserver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_alertSelection.html" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_alertSelection.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_productionForm.html" afterPath="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_productionForm.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="amis-ui-balanceSheet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -133,10 +123,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PaddyController.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PaddyController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42124543" vertical-offset="1851" max-vertical-offset="4590">
+            <state vertical-scroll-proportion="-11.5" vertical-offset="1851" max-vertical-offset="4590">
               <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
               <folding>
                 <element signature="e#2683#3941#0" expanded="false" />
@@ -185,11 +175,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_paddyForm.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_paddyForm.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.5438595" vertical-offset="929" max-vertical-offset="3078">
-              <caret line="66" column="80" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="80" />
+            <state vertical-scroll-proportion="0.31060606" vertical-offset="852" max-vertical-offset="3078">
+              <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -250,7 +240,6 @@
         <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_productionForm.html" />
         <option value="$PROJECT_DIR$/js/scripts/component/plugins/Amis/InputTool/editing/editors/cell/CellEditor.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/creator/ProductionEditor.js" />
-        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/creator/PaddyCreator.js" />
         <option value="$PROJECT_DIR$/js/scripts/component/core/balanceSheet/views/gridDataView/GridDataView.js" />
@@ -259,6 +248,7 @@
         <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/productionEditor/view/_alertSelection.html" />
         <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/observer/PaddyObserver.js" />
         <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js" />
+        <option value="$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html" />
       </list>
     </option>
   </component>
@@ -906,12 +896,12 @@
       <workItem from="1418032946093" duration="16736000" />
       <workItem from="1418114510251" duration="20274000" />
       <workItem from="1418200600482" duration="23741000" />
-      <workItem from="1418288437516" duration="21029000" />
+      <workItem from="1418288437516" duration="21397000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135519000" />
+    <option name="totallyTimeSpent" value="135887000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1348,14 +1338,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5438595" vertical-offset="929" max-vertical-offset="3078">
-          <caret line="66" column="80" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/loading/LoadingController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="486" max-vertical-offset="1872">
@@ -1434,11 +1416,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/controller/PaddyController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42124543" vertical-offset="1851" max-vertical-offset="4590">
+        <state vertical-scroll-proportion="-11.5" vertical-offset="1851" max-vertical-offset="4590">
           <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
           <folding>
             <element signature="e#2683#3941#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts/amis/editing/special/editors/paddyEditor/view/_paddyForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31060606" vertical-offset="852" max-vertical-offset="3078">
+          <caret line="61" column="45" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
