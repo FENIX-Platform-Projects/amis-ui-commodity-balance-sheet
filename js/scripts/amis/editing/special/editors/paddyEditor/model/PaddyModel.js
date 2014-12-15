@@ -36,7 +36,7 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
         var result = []
         supportUtility = utilitySupport;
         var dataModel = $.extend(true, [], itemsInvolved);
-        debugger;
+        ;
         for (var i = 0; i < dataModel.length; i++) {
             if (dataModel[i].length == 3 || dataModel[i].length == 2) {
                 dataModel[i] = this.initializePaddyProduction(dataModel[i])

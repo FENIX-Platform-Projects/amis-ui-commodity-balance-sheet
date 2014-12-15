@@ -45,7 +45,7 @@ define(["jquery", "editor/cell/CellEditor", "formatter/DatatypesFormatter",
         }
         // validation (TODO)
         if (EditorValidator.init(result, configurator)) {
-            debugger;
+
             $("#dialogForm").dialog('close');
         }
         return result;

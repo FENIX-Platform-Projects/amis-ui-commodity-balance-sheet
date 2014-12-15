@@ -290,7 +290,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             event.stopImmediatePropagation();
             var clickedItem = event.args.item;
 
-            debugger;
+
             if (clickedItem == 0 && singleCropsValuesModified) { // from single crops to total values
                 var typeOfForm = (isAreaHarvestedSelectedTot) ? 'totalValues' : 'totalValuesAPlanted';
 
@@ -376,7 +376,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                 value = parseFloat(value)
             }
 
-            debugger;
+
             if (columnValue == 3 && (oldvalue != value)) {
                 var numberOfRow = event.args.rowindex;
                 var value2 = parseFloat(value)

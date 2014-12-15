@@ -139,7 +139,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     PaddyController.prototype.updateSingleCropsGridOnEditing = function (rowNumber, newValue, formulaToApply, columnValue, typeOfEditing) {
 
         var formulaToUpdate;
-        debugger;
+        ;
         if (formulaToApply == 'init') {
             formulaToUpdate = formulaHandler.getInitFormulaFromConf(2, 'singleCrops')
         } else {
@@ -170,7 +170,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
             if (Object.prototype.toString.call(formulaToUpdate) === '[object Array]') {
                 for (var j = 0; j < formulaToUpdate.length; j++) {
-                    debugger;
+                    ;
                     if(calculatedPieceOfModel == null){
                         calculatedPieceOfModel = modelPiece;
                     }
@@ -285,7 +285,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
     PaddyController.prototype.showAlerts = function(isTotal){
         console.log('controller.showalerts!!!!!!!!!!')
-            debugger;
+            ;
         (isTotal)? editorPaddy.showAlertTotal(): editorPaddy.showAlertSingle();
     }
 

@@ -56,7 +56,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jquery.dirtyFields", "jqwidge
         // leftKeyColumns
         for (var i = 0; i < leftKeyColumnsIndexes.length; i++) {
             // show value in right format
-            debugger;
+
             var valueLeft = formatter.fromDSDToVisualizationFormat(cell[leftKeyColumnsIndexes[i]], configurationKeys["leftKeyColumnConfiguration"][i],
                 leftKeyColumns[i].dataTypes, Configurator)
             $('#form').append("<div class ='row'>" +

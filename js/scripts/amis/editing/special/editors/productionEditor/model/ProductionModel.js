@@ -61,7 +61,7 @@ define(["jquery", "urlConfigurator"], function ($, ServicesURL) {
         }
         else {
 
-            debugger;
+            ;
             var valueColumnNumber = 3;
             var flagsColumnNumber = 4;
             var notesColumnNumber = 5;
@@ -194,7 +194,7 @@ define(["jquery", "urlConfigurator"], function ($, ServicesURL) {
     }
 
     ProductionModel.prototype.setOriginalCropsData = function (newValue, rowNumber, columnValue) {
-        debugger;
+        ;
         if (typeof originalSingleCropsModel[rowNumber] !== 'undefined') {
             originalSingleCropsModel[rowNumber][columnValue] = newValue;
         }

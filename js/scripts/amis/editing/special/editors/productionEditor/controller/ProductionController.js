@@ -141,7 +141,7 @@ define(['jquery'], function ($) {
     }
 
     ProductionController.prototype.onSwitchingSimpleSingle = function (formulaToApplySingle, typeOfForm) {
-        debugger;
+        ;
         this.updateSingleCropsGridOnFormulaChanges(formulaToApplySingle, typeOfForm)
 
     }

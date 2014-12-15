@@ -44,7 +44,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         language = Configurator.getComponentLanguage();
         mapPreviousValues = [];
 
-        debugger;
+
         var f = document.getElementById("dialogForm");
         if (f !== null) {
             f.remove()
@@ -139,7 +139,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     // To restore previous values when clicks on reset button
     CellEditor.prototype.restorePreviousValues = function () {
-        debugger;
+
         for (key in mapPreviousValues) {
             if (key == 'getUnique') {
                 break;

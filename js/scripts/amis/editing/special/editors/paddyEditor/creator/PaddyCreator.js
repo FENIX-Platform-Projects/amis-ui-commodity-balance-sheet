@@ -411,7 +411,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     PaddyCreator.prototype.showAlertTotal = function () {
 
-        debugger;
+        ;
 
         if (!document.getElementById('alertTotal').firstChild) {
             $("#alertTotal").append(alertSelection)

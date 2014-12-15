@@ -541,7 +541,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     PaddyObserver.prototype.listenToTotalEditable = function () {
         $("#gridTotalValues").bind('cellbeginedit', function (event) {
-            debugger;
+            ;
             event.preventDefault();
             event.stopImmediatePropagation()
             var toBlock = false;
@@ -646,7 +646,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield
-            debugger;
+            ;
 
             switch (formulaToApplySingle) {
 

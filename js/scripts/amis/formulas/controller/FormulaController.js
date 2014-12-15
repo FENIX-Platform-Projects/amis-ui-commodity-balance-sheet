@@ -88,7 +88,7 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                                 if (addendum.hasCondition && addendum.condition == 'exists' && addendum.otherValue.length > 0) {
                                     code = addendum.otherValue[0];
                                     if (code == 2) {
-                                        debugger;
+
                                     }
                                     index = supportModel.lookForCode(code, model, startIndex, numberOfRows)
                                     if (typeof index != 'undefined' && index != null && typeof model[index][indexValue] != 'undefined' && model[index][indexValue] != null) {

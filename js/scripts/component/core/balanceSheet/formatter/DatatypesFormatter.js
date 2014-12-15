@@ -95,8 +95,6 @@ define(["jquery", "moment", "numeral"], function ($) {
                         result = moment(date).format(configurationKeyColumn.properties.cellProperties.dateFormat)
                     } else {
                         var indexPrevious  =    $("#selectionYear").jqxComboBox('getSelectedIndex')+1
-
-
                         var season = $("#selectionYear").jqxComboBox('getItem', indexPrevious).label;
                         result = season;
                     }
