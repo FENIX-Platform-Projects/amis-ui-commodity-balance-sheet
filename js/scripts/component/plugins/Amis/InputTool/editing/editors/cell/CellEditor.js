@@ -44,6 +44,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         language = Configurator.getComponentLanguage();
         mapPreviousValues = [];
 
+        debugger;
         var f = document.getElementById("dialogForm");
         if (f !== null) {
             f.remove()

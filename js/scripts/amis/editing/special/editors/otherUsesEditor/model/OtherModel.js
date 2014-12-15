@@ -92,5 +92,35 @@ define(['jquery'], function ($) {
         }
     }
 
-    return OtherModel;
-})
+    OtherModel.prototype.deleteOtherUsesIfExists = function () {
+
+        if (typeof originalModel[0] && originalModel[0] != null) {
+
+            if (originalModel[0][3] != null && originalModel[0][3] != '') {
+                originalModel[0][3] = null
+            }
+            if (originalModel[0][4] != null && originalModel[0][4] != '') {
+                originalModel[0][4] = null
+            }
+        }
+    }
+
+
+    OtherModel.prototype.deleteIndustrialUsesIfExists = function(){
+        this.deleteOtherUsesIfExists();
+
+
+        if (typeof originalModel[3] && originalModel[3] != null) {
+
+            if (originalModel[3][3] != null && originalModel[3][3] != '') {
+                originalModel[3][3] = null
+            }
+            if (originalModel[3][4] != null && originalModel[3][4] != '') {
+                originalModel[3][4] = null
+            }
+        }
+
+    }
+
+        return OtherModel;
+    })

@@ -4,7 +4,7 @@
 define(['jquery', 'amplify'], function ($) {
 
 
-     const INDEX_DATES = 2;
+    const INDEX_DATES = 2;
 
     var leftKeyColumns,              // DSD columns that represent the left key columns
         leftKeyIndexes,              // Index of the left key columns on the DSD
@@ -31,14 +31,14 @@ define(['jquery', 'amplify'], function ($) {
         dsdConf = dsd;
         compConfiguration = component;
         var storage = amplify.store();
-        if(storage.isMonthlyModality){
+        if (storage.isMonthlyModality) {
             dsdConf.dsd.columns[INDEX_DATES].dataTypes[0] = "date"
             dsdConf.dsd.columns[INDEX_DATES].domain.period.from = '20000101'
-            dsdConf.dsd.columns[INDEX_DATES].domain.period.to   =  '20150601';
-        }else{
+            dsdConf.dsd.columns[INDEX_DATES].domain.period.to = '20180601';
+        } else {
             dsdConf.dsd.columns[INDEX_DATES].dataTypes[0] = "season"
             dsdConf.dsd.columns[INDEX_DATES].domain.period.from = '2000/01'
-            dsdConf.dsd.columns[INDEX_DATES].domain.period.to   =  '2017/18';
+            dsdConf.dsd.columns[INDEX_DATES].domain.period.to = '2017/18';
         }
 
         this.createKeyMatrixes();
@@ -52,8 +52,8 @@ define(['jquery', 'amplify'], function ($) {
         upKeyColumnConfiguration = [];
         upKeyColumns = []
         upKeyIndexes = [],
-        accessorMap = {},
-        accessorColumns = [];
+            accessorMap = {},
+            accessorColumns = [];
         accessorIndexes = [];
         mapCodesLabel = [];
         mapCodesIndexes = {};
@@ -182,9 +182,9 @@ define(['jquery', 'amplify'], function ($) {
         return result;
     }
 
-    Configurator.prototype.getValueColumnOnDSD = function(){
-       var valueIndex = this.getValueIndex();
-       return dsdConf.dsd.columns[valueIndex];
+    Configurator.prototype.getValueColumnOnDSD = function () {
+        var valueIndex = this.getValueIndex();
+        return dsdConf.dsd.columns[valueIndex];
     }
 
 
@@ -300,19 +300,19 @@ define(['jquery', 'amplify'], function ($) {
     }
 
     // Get the value the representation of row configured on compnent configuration
-    Configurator.prototype.getFullRowsRepresentation = function(){
+    Configurator.prototype.getFullRowsRepresentation = function () {
         return compConfiguration.gridConfiguration.generalOptions.fullRowsRepresentation;
     }
 
     // Get the factor of conversion between different Masurement Units
-    Configurator.prototype.getNumberOfDecimals = function(){
-       return compConfiguration.gridConfiguration.otherColumns.valueColumn.values.numberOfDecimals;
+    Configurator.prototype.getNumberOfDecimals = function () {
+        return compConfiguration.gridConfiguration.otherColumns.valueColumn.values.numberOfDecimals;
     }
 
 
-    Configurator.prototype.setValueLabel = function(number){
-        if(labelValue && labelValue!= null){
-            switch (number){
+    Configurator.prototype.setValueLabel = function (number) {
+        if (labelValue && labelValue != null) {
+            switch (number) {
                 case 1:
                     // everyThing
                     labelValue = "#value|$value ~#flag| $flag  ~#note| $note ~|";
@@ -320,7 +320,7 @@ define(['jquery', 'amplify'], function ($) {
                     break;
                 case 2:
                     // only Flag
-                    labelValue ="#value|$value ~#flag| $flag ~|";
+                    labelValue = "#value|$value ~#flag| $flag ~|";
                     break;
 
                 case 3:
@@ -336,12 +336,12 @@ define(['jquery', 'amplify'], function ($) {
         }
     }
 
-    Configurator.prototype.setThousandSeparator = function(number){
+    Configurator.prototype.setThousandSeparator = function (number) {
 
         // 1: comma
         // 2: period
         // 3: space
-        switch (number){
+        switch (number) {
             case 1:
                 decimalNumberValue = "0,0"
                 break;
@@ -356,9 +356,9 @@ define(['jquery', 'amplify'], function ($) {
 
     }
 
-    Configurator.prototype.getThousandSeparator = function(){
+    Configurator.prototype.getThousandSeparator = function () {
 
-        if(!decimalNumberValue){
+        if (!decimalNumberValue) {
             decimalNumberValue = compConfiguration.gridConfiguration.otherColumns.valueColumn.properties.cellProperties.numericFormat
         }
 
@@ -366,9 +366,9 @@ define(['jquery', 'amplify'], function ($) {
 
     }
 
-    Configurator.prototype.getValueLabel = function(){
+    Configurator.prototype.getValueLabel = function () {
         // Get the value
-        if(!labelValue) {
+        if (!labelValue) {
             labelValue = compConfiguration.gridConfiguration.otherColumns.valueColumn.label
         }
 

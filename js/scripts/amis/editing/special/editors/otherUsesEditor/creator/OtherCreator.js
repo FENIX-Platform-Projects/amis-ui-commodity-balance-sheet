@@ -126,7 +126,7 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
                     { id: "value", header: "Element", template: "{common.treetable()} #value#", width: 250},
                     { id: "3", editor: "text", header: "Value"},
                     { id: "4", editor: "text", header: "Flag"},
-                    { id: "5", editor: "text", header: "Notes", width: 250}
+                    { id: "5", editor: "popup", header: "Notes", width: 250}
                 ],
                 autoheight: true,
                 autowidth: true,

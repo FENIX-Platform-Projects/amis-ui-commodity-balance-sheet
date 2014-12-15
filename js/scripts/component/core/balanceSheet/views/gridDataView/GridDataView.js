@@ -124,11 +124,22 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             titleGrid.innerHTML = "Forecast for season: " + filterData.season + " , " + filterData.country +
                 " , " + filterData.product + " , " + filterData.dataSource
 
+            var buttonChangeModality;
             var storeModality = amplify.store()
-            var buttonChangeModality = (storeModality.isMonthlyModality) ?
-                '<button class="btn btn-primary" id="newForecast">Create a new forecast for season ' + filterData.season + '</button>' +
-                '<button class="btn btn-primary" id="changeModality">Switch to annual mode</button>' :
-                '<button class="btn btn-primary" id="changeModality">Switch to monthly mode</button>';
+            if(storeModality.isMonthlyModality){
+
+                buttonChangeModality = '<button class="btn btn-primary" id="newForecast">Create a new forecast for season ' + filterData.season + '</button>' +
+                    '<button class="btn btn-primary" id="changeModality">Switch to annual mode</button>'
+                titleGrid.innerHTML = "Forecast for season: " + filterData.season + " , " + filterData.country +
+                    " , " + filterData.product + " , " + filterData.dataSource
+            }else{
+
+                buttonChangeModality = '<button class="btn btn-primary" id="changeModality">Switch to monthly mode</button>';
+                titleGrid.innerHTML = "Annual most recent Forecasts for  " + filterData.country +
+                    " , " + filterData.product + " , " + filterData.dataSource
+
+            }
+
 
             $('#options').append('<div class="btn-group">' +
                 buttonChangeModality +

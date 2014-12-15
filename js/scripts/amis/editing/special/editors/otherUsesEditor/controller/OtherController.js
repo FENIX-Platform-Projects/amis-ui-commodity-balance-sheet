@@ -50,7 +50,6 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
 
         OtherController.prototype.updateTotGridOnEditing = function (rowNumber, newValue, formulaToApply, columnValue) {
 
-
             switch (rowNumber) {
                 case 0:
                     console.log('case 0')
@@ -65,6 +64,7 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
                 case 3:
                     // Other Uses
                     console.log('otherUSes case')
+                    modelOther.deleteOtherUsesIfExists();
                     modelOther.setOriginalTotalData(rowNumber, newValue, columnValue)
                     var model = modelOther.getTotalValuesModel()
 
@@ -79,6 +79,8 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
                 default :
                     // Industrial Uses
                     console.log('Industrial Uses case')
+                    modelOther.deleteIndustrialUsesIfExists();
+
                     modelOther.setOriginalTotalData(rowNumber, newValue, columnValue)
                     var model = modelOther.getTotalValuesModel()
 
@@ -149,7 +151,6 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
             }
 
         }
-
 
         OtherController.prototype.saveTotalValues = function (formulaToApply) {
 
