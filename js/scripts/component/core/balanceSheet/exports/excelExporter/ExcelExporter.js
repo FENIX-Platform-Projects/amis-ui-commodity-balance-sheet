@@ -1,7 +1,6 @@
 define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!exporter/form/_formExcel.html", "urlConfigurator"],
     function($, HandlerSelection, FormEXCEL, URLConfigurator) {
 
-
     var handlerSelection, supportUtility, formExcel, urlConfigurator;
     var COMMODITY_CODES = [1, 4, 5, 6]
 

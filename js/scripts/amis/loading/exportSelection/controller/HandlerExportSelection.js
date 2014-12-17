@@ -34,12 +34,12 @@ define(['jquery', "exportLoader/logic/DataExportLoader"], function ($, DataLoade
         var successiveSeasons = [];
         // exist two season after the one selected
 
-        if (selectedIndex - 2 >= 0) {
-            successiveSeasons.push(items[selectedIndex - 1], items[selectedIndex - 2]);
+        if (selectedIndex +2 >= 0) {
+            successiveSeasons.push(items[selectedIndex +1], items[selectedIndex + 2]);
         }
         // exist only one  season after the one selected
-        else if (selectedIndex - 1 >= 0) {
-            successiveSeasons.push(items[selectedIndex - 1])
+        else if (selectedIndex + 1 >= 0) {
+            successiveSeasons.push(items[selectedIndex + 1])
         }
         // exist only the  season  selected
         else {
@@ -49,6 +49,8 @@ define(['jquery', "exportLoader/logic/DataExportLoader"], function ($, DataLoade
         var successiveSeasonsForecast = []
 
         if (successiveSeasons != null) {
+            console.log('successive seasone::::::::')
+            console.log(successiveSeasons)
             for (var i = 0; i < successiveSeasons.length; i++) {
                 var filterSeason = this.createFilterForSeasons(region, product, successiveSeasons[i])
                 var filterPopulation = this.createFilterPopulation(region, successiveSeasons[i])
@@ -59,6 +61,8 @@ define(['jquery', "exportLoader/logic/DataExportLoader"], function ($, DataLoade
         }
 
 
+        console.log(resultForecast)
+        resultForecast.reverse()
         return resultForecast;
 
     }

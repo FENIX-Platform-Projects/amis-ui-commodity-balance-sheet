@@ -41,6 +41,13 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
         var twoMostRecentDates;
         if (dates.length >= 2) {
+            debugger;
+
+            /*
+
+                    BUSINESS for taking the two most recent months
+
+             */
             twoMostRecentDates = [dates[dates.length - 2][0], dates[dates.length - 1][0]]
         } else {
             twoMostRecentDates = [dates[dates.length - 1][0]]
@@ -101,6 +108,11 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             console.log('forecastWithoutPopulation')
             console.log(temporaryForecast)
         }
+        console.log("****************************************************************************************")
+        console.log(twoMostREcentForecasts)
+
+
+        console.log("****************************************************************************************")
 
         return twoMostREcentForecasts;
     }
