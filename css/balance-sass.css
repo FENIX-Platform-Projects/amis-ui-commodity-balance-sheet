@@ -30,6 +30,9 @@ h1 {
   border: 1px solid #E2E2E2;
   text-transform: uppercase; }
 
+#pivotGrid {
+  height: 100%; }
+
 #clickedCell {
   border-color: transparent;
   border-bottom: 1px solid #DCDCDC; }
@@ -176,7 +179,12 @@ h1 {
 .calculatedRowGrid {
   background-color: rgba(191, 201, 238, 0.34); }
 
-.labelRice {
+.areaDisabled {
+  background-color: rgba(158, 149, 143, 0.26);
+  font-style: oblique;
+  color: grey; }
+
+.labelProductionForms {
   color: #0082AD; }
 
 .labelCheckBoxes {

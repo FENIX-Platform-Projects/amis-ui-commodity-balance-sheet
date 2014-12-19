@@ -74,7 +74,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                     datatype: "jsarray",
                     data: dataSource
                 });
-
+            webix.event(window, "resize", function(){ grid.adjust(); })
             generalController.createListeners(grid);
             return grid;
         }
@@ -229,21 +229,21 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             var columns = [];
             arrDiffDates = Object.keys(differentDates)
 
-            columns.push({id: "data0", width: 300, header: 'Elements', css: "firstColumn", sort: "string" })
+            columns.push({id: "data0", header: 'Elements', css: "firstColumn", sort: "string", adjust:true })
 
             for (var i = 0; i < arrDiffDates.length; i++) {
                 if (i == 0) {
                     columns.push({id: "data" + 1, header: [
                         {text: 'Input dates', colspan: arrDiffDates.length},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text', css: "datesColumns", sort: "string"})
+                    ], editor: 'text', fillspace:true,css: "datesColumns", sort: "string"})
                 } else if (i != 0 && i != arrDiffDates.length) {
 
                     columns.push({id: "data" + (i + 1), header: [
                         //{text: ''},
                         {text: null},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text', css: "datesColumns", sort: "int"})
+                    ], fillspace:true,editor: 'text', css: "datesColumns", sort: "int"})
                 }
             }
             return columns;
