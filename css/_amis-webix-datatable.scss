@@ -1,0 +1,90 @@
+/* Amis Webix Datatable */
+
+
+/* TITLE GRID */
+#titlepivotGrid{
+
+
+}
+
+//Main Pivot Table Height
+
+#pivotGrid{
+  height: 700px;
+}
+
+/* Fonts */
+
+.webix_view, .webix_dd_drag_column, .webix_ss_header TD, .webix_ss_vscroll_header{
+  font-size: $font-size-main;
+}
+
+
+/*
+------------------------------------------------------------
+   START  GRID
+*/
+
+
+// Colors
+
+.webix_dd_drag_column, .webix_ss_header TD, .webix_ss_vscroll_header{
+  background-color: $amis-color-light-bg;
+  border-color:#d0d0d0 ;
+}
+
+.firstColumn{
+  background-color: $amis-color-light-bg;
+}
+
+.blueLine{
+  color: #0082AD;
+}
+
+.greenLine{
+  color: #047A00;
+}
+
+.redLine {
+  color : #7A0000;
+}
+
+
+.label {
+  color:$amis-color-text-main !important;
+}
+
+#tablePivot {
+  visibility : hidden
+}
+
+#simulateButton {
+  visibility : hidden
+}
+
+.webix_view {
+  font-family: $font-family-main;
+  font-size: $font-size-main;
+  color: $amis-color-text-main;
+}
+
+
+.webix_dd_drag_column, .webix_ss_header TD, .webix_ss_vscroll_header {
+  color: $amis-color-text-main;
+}
+
+.datesColumns{
+  font-weight: normal;
+}
+
+
+.webix_dt_editor input, .webix_dt_editor select {
+  font-family: $font-family-main;
+  border: 1px solid $amis-color-highlight;
+  font-size:$font-size-main;
+  color: $amis-color-text-main;
+}
+
+
+/* END  GRID  */
+/* -------------------------------------------- */

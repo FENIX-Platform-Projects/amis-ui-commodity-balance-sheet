@@ -1,0 +1,317 @@
+/* Amis Balance Style */
+/* Utils */
+/* Amis Variables */
+/* Colors */
+/* columns of same height styles */
+.container-xs-height {
+  display: table;
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.row-xs-height {
+  display: table-row; }
+
+.col-xs-height {
+  display: table-cell;
+  float: none; }
+
+@media (min-width: 768px) {
+  .container-sm-height {
+    display: table;
+    padding-left: 0px;
+    padding-right: 0px; }
+
+  .row-sm-height {
+    display: table-row; }
+
+  .col-sm-height {
+    display: table-cell;
+    float: none; } }
+@media (min-width: 992px) {
+  .container-md-height {
+    display: table;
+    padding-left: 0px;
+    padding-right: 0px; }
+
+  .row-md-height {
+    display: table-row; }
+
+  .col-md-height {
+    display: table-cell;
+    float: none; } }
+@media (min-width: 1200px) {
+  .container-lg-height {
+    display: table;
+    padding-left: 0px;
+    padding-right: 0px; }
+
+  .row-lg-height {
+    display: table-row; }
+
+  .col-lg-height {
+    display: table-cell;
+    float: none; } }
+/* Alignment */
+/* firefox fix */
+.img-responsive {
+  width: 100%; }
+
+/* vertical alignment styles */
+.col-top {
+  vertical-align: top; }
+
+.col-middle {
+  vertical-align: middle; }
+
+.col-bottom {
+  vertical-align: bottom; }
+
+/* Fonts */
+/* Amis Fonts */
+@font-face {
+  font-family: 'open_sans_condensedbold';
+  src: url("fonts/OpenSans-CondBold-webfont.eot");
+  src: url("fonts/OpenSans-CondBold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/OpenSans-CondBold-webfont.woff") format("woff"), url("fonts/OpenSans-CondBold-webfont.ttf") format("truetype"), url("fonts/OpenSans-CondBold-webfont.svg#open_sans_condensedbold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'open_sanscondensed_light';
+  src: url("fonts/OpenSans-CondLight-webfont.eot");
+  src: url("fonts/OpenSans-CondLight-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/OpenSans-CondLight-webfont.woff") format("woff"), url("fonts/OpenSans-CondLight-webfont.ttf") format("truetype"), url("fonts/OpenSans-CondLight-webfont.svg#open_sanscondensed_light") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+/* Base */
+/* Nicola CSS */
+body {
+  padding-top: 50px;
+  background-color: #f9f7f3; }
+
+/* Font Harmonization */
+body, .jqx-widget, .jqx-widget-content {
+  font-family: "open_sanscondensed_light";
+  font-size: 14px;
+  color: #777777; }
+
+label {
+  font-weight: normal; }
+
+h4 {
+  font-family: "open_sanscondensed_light"; }
+
+/* Jqwidget Overrides */
+/* Buttons */
+.btn {
+  font-family: "open_sanscondensed_light";
+  font-size: 14px; }
+
+.amis-btn-load-data-container {
+  position: relative; }
+
+.amis-btn-load-data {
+  margin-top: 20px;
+  width: 100%;
+  height: 45px; }
+
+/* Small Devices, Tablets - To be reviewed */
+@media only screen and (min-width: 768px) {
+  .amis-btn-load-data {
+    margin-top: 0;
+    position: absolute;
+    bottom: 0;
+    right: 15px; } }
+.amis-option-container {
+  height: 33px;
+  /* It is relative to the "option" button */ }
+
+.amis-btn-group button {
+  padding: 0 5px;
+  background-color: #777777;
+  border-color: white; }
+  .amis-btn-group button:hover {
+    background-color: #999999;
+    border-color: white; }
+
+/* Top Menu */
+.navbar-default {
+  background-color: white; }
+  .navbar-default .navbar-brand {
+    color: #777777; }
+    .navbar-default .navbar-brand img {
+      position: absolute;
+      top: 0; }
+    .navbar-default .navbar-brand span {
+      margin-left: 40px; }
+
+.amis-main-container {
+  background-color: white; }
+
+/* ------------------- */
+/* Box */
+.amis-box {
+  position: relative;
+  visibility: hidden; }
+
+/* ------------------- */
+#clickedCell {
+  border-color: transparent;
+  border-bottom: 1px solid #DCDCDC; }
+
+/* TIMEPICKER  */
+.ui-timepicker-div dl {
+  text-align: left; }
+
+.ui-timepicker-div dl dt {
+  float: left;
+  clear: left;
+  padding: 0 0 0 5px; }
+
+.ui-timepicker-div dl dd {
+  margin: 0 10px 10px 40%; }
+
+.ui-tpicker-grid-label {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0; }
+
+.ui-timepicker-rtl {
+  direction: rtl; }
+
+.ui-timepicker-rtl dl {
+  text-align: right;
+  padding: 0 5px 0 0; }
+
+.ui-timepicker-rtl dl dt {
+  float: right;
+  clear: right; }
+
+.ui-timepicker-rtl dl dd {
+  margin: 0 40% 10px 10px; }
+
+/*
+
+  START SPECIAL EDITING
+*/
+.modal {
+  text-align: center; }
+
+.modal:before {
+  display: inline-block;
+  vertical-align: middle;
+  content: " ";
+  height: 100%; }
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle; }
+
+.calculatedRowGrid {
+  background-color: rgba(191, 201, 238, 0.34); }
+
+.areaDisabled {
+  background-color: rgba(158, 149, 143, 0.26);
+  font-style: oblique;
+  color: grey; }
+
+.labelProductionForms {
+  color: #999999; }
+
+.labelCheckBoxes {
+  color: #999999; }
+
+.modal .modal-dialog {
+  /* new custom width */
+  /* must be half of the width, minus scrollbar on the left (30px) */ }
+
+/* END SPECIAL EDITING   */
+/* -------------------------------------------- */
+/*
+  Dialog form
+*/
+/* -------------------------------------------- */
+/* START OPTIONS  */
+.amis-grid-options {
+  right: 2px; }
+
+#options {
+  visibility: hidden;
+  widows: inherit; }
+  #options .dropdown-menu {
+    margin-top: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+    padding: 10px;
+    top: 33px;
+    /* It is relative to the "option" button */
+    right: 2px;
+    /* It is relative to the "option" button */ }
+
+/* END OPTIONS */
+/* -------------------------------------------- */
+#exportToAppend {
+  visibility: hidden; }
+
+.flagClass {
+  overflow-y: scroll; }
+
+/* Grid */
+/* Amis Webix Datatable */
+/* TITLE GRID */
+#pivotGrid {
+  height: 700px; }
+
+/* Fonts */
+.webix_view, .webix_dd_drag_column, .webix_ss_header TD, .webix_ss_vscroll_header {
+  font-size: 14px; }
+
+/*
+------------------------------------------------------------
+   START  GRID
+*/
+.webix_dd_drag_column, .webix_ss_header TD, .webix_ss_vscroll_header {
+  background-color: #fafafa;
+  border-color: #d0d0d0; }
+
+.firstColumn {
+  background-color: #fafafa; }
+
+.blueLine {
+  color: #0082AD; }
+
+.greenLine {
+  color: #047A00; }
+
+.redLine {
+  color: #7A0000; }
+
+.label {
+  color: #777777 !important; }
+
+#tablePivot {
+  visibility: hidden; }
+
+#simulateButton {
+  visibility: hidden; }
+
+.webix_view {
+  font-family: "open_sanscondensed_light";
+  font-size: 14px;
+  color: #777777; }
+
+.webix_dd_drag_column, .webix_ss_header TD, .webix_ss_vscroll_header {
+  color: #777777; }
+
+.datesColumns {
+  font-weight: normal; }
+
+.webix_dt_editor input, .webix_dt_editor select {
+  font-family: "open_sanscondensed_light";
+  border: 1px solid red;
+  font-size: 14px;
+  color: #777777; }
+
+/* END  GRID  */
+/* -------------------------------------------- */

@@ -59,7 +59,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 webix.ui({
                     container: "pivotGrid",
                     view: "datatable",
-                    rowHeight:100,
+                    rowHeight:30,
                     clipboard: "selection",
                     id: "grid",
                     editable: true,
@@ -142,11 +142,11 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             }
 
 
-            $('#options').append('<div class="btn-group">' +
+            $('#options').append('<div class="btn-group amis-btn-group">' +
                 buttonChangeModality +
                 '</div>' +
-                '<div class="btn-group-vertical" id="optionsPivotGrid">' +
-                '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">' +
+                '<div class="btn-group-vertical pull-right" id="optionsPivotGrid">' +
+                '<button type="button" class="btn btn-default dropdown-toggle amis-grid-options" data-toggle="dropdown">' +
                 '<span class="caret"></span><span>Options</span></button>' +
                 '<ul class="dropdown-menu" role="menu"><li>' +
                 '<h5  class ="optionTitles">Editing options</h5>' +
@@ -280,7 +280,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 webix.ui({
                     container: "pivotGrid",
                     view: "datatable",
-                    rowHeight:100,
+                    rowHeight:30,
                     navigation: true,
                     id: "grid",
                     editable: true,
@@ -333,7 +333,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             grid = webix.ui({
                 container: "pivotGrid",
                 view: "datatable",
-                rowHeight:100,
+                rowHeight:30,
                 navigation: true,
                 id: "grid",
                 editable: true,

@@ -1,0 +1,265 @@
+/* Nicola CSS */
+
+//* {
+//  font-family: 'Roboto', sans-serif;
+//}
+//
+//h1 {
+//  font-weight: 300;
+//}
+
+body{
+  padding-top: 50px;
+  background-color: $amis-color-body;
+}
+
+/* Font Harmonization */
+
+body, .jqx-widget, .jqx-widget-content {
+  font-family: $font-family-main;
+  font-size: $font-size-main;
+  color: $amis-color-text-main;
+}
+
+label {
+  font-weight: normal;
+}
+
+h4 {
+  font-family: $font-family-bold;
+}
+
+/* Jqwidget Overrides */
+.jqx-widget, .jqx-widget-content{
+
+}
+
+/* Buttons */
+.btn{
+  font-family: $font-family-main;
+  font-size: $font-size-main;
+}
+
+.amis-btn-load-data-container{
+  position: relative;
+}
+
+.amis-btn-load-data{
+  margin-top: 20px;
+  width: 100%;
+  height: 45px;
+}
+
+
+/* Small Devices, Tablets - To be reviewed */
+@media only screen and (min-width : 768px) {
+
+  .amis-btn-load-data{
+    margin-top: 0;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+  }
+
+}
+
+.amis-option-container{
+  height: 33px; /* It is relative to the "option" button */
+}
+
+.amis-btn-group{
+  button{
+    padding: 0 5px;
+    background-color: $amis-color-text-main;
+    border-color: white;
+
+    &:hover{
+      background-color: $amis-color-text-alternate;
+      border-color: white;
+    }
+
+  }
+}
+
+
+
+/* Top Menu */
+
+.navbar-default{
+  background-color: white;
+
+  .navbar-brand{
+    color: $amis-color-text-main;
+
+
+    img{
+      position: absolute;
+      top: 0;
+    }
+
+    span{
+      margin-left: 40px;
+    }
+
+  }
+
+}
+
+
+
+
+.amis-main-container{
+  background-color: white;
+}
+
+
+
+/* ------------------- */
+/* Box */
+
+
+.amis-box{
+  position: relative;
+  visibility: hidden;
+}
+
+/* ------------------- */
+
+//
+//.label-default{
+//  background-color: transparent;
+//  font-weight: normal;
+//}
+//
+//#pivotGrid_table_caption{
+//  border: 1px solid #E2E2E2;
+//  text-transform: uppercase;
+//
+//}
+
+
+#clickedCell{
+  border-color: transparent;
+  border-bottom: 1px solid #DCDCDC;
+}
+
+.select2-results{
+
+}
+
+/* TIMEPICKER  */
+
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 40%; }
+.ui-timepicker-div td { }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+.ui-timepicker-rtl dl dt{ float: right; clear: right; }
+.ui-timepicker-rtl dl dd { margin: 0 40% 10px 10px; }
+
+
+
+/*
+
+  START SPECIAL EDITING
+*/
+
+.modal {
+  text-align: center;
+}
+
+.modal:before {
+  display: inline-block;
+  vertical-align: middle;
+  content: " ";
+  height: 100%;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.calculatedRowGrid{
+  background-color: rgba(191, 201, 238, 0.34);
+}
+
+.areaDisabled{
+  background-color: rgba(158, 149, 143, 0.26);
+  font-style: oblique;
+  color: grey;
+}
+
+.labelProductionForms{
+  color: $amis-color-text-alternate;
+}
+
+.labelCheckBoxes{
+  color: $amis-color-text-alternate;
+}
+
+.modal .modal-dialog{
+  /* new custom width */
+//  width: 800px;
+  /* must be half of the width, minus scrollbar on the left (30px) */
+}
+
+
+/* END SPECIAL EDITING   */
+/* -------------------------------------------- */
+
+/*
+  Dialog form
+*/
+#dialogForm{
+
+}
+
+/* -------------------------------------------- */
+/* START OPTIONS  */
+
+.amis-grid-options{
+  right: 2px;
+}
+
+#options {
+  visibility : hidden;
+  widows: inherit;
+
+  .dropdown-menu{
+    margin-top: 0;
+    @include fx-border-radius(0);
+    padding:10px;
+    top:33px; /* It is relative to the "option" button */
+    right: 2px; /* It is relative to the "option" button */
+  }
+
+}
+
+.optionTitles{
+
+}
+
+.optionText{
+
+
+}
+
+/* END OPTIONS */
+/* -------------------------------------------- */
+
+#exportToAppend{
+  visibility : hidden;
+}
+
+.flagClass{
+  overflow-y: scroll;
+}
+
+#textboxeditorgridTotalValues4 > .select2-container > .select2-choices{
+
+}

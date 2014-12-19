@@ -21,13 +21,11 @@
         <!-- nprogress -->
         <link rel="stylesheet" href="css/nprogress.css">
 
-        <!-- Balance Sheet -->
-        <link rel="stylesheet" href="css/balance-sass.css">
-        <link rel="stylesheet" href="css/balance-sass.scss">
-
-
         <!-- Webix -->
         <link rel="stylesheet" href="css/webix/default/webix.css">
+
+        <!-- Balance Sheet Style -->
+        <link rel="stylesheet" href="css/amis-balance-style.css">
 
         <!-- Sidebar
       <link rel="stylesheet" href="css/sidebar.css">
@@ -35,44 +33,61 @@
         <!-- Chosen -->
         <link rel="stylesheet" href="css/select2.css">
 
-        <!-- Google fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
-
     </head>
 
     <body>
-        <div class="container">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">AMIS COMMODITY BALANCE SHEETS</a>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-                <!-- /.container-fluid -->
-            </nav>
 
-            <h1>AMIS Commodity Balance Sheets</h1>
-            <h2><small>Select the fields</small></h2>
-            <div id="get"></div>
-            <div id="myDiv"></div>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="css/images/amis-logo.png" height="50px" width="34px"><span>COMMODITY BALANCE SHEETS</span></a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+
+        <div class="container amis-main-container">
 
             <div class="row">
-                <div class="col-lg-6" id="cbs-search-form-country">
+                <div class="col-xs-12">
+                    <h4>Select the fields</h4>
+                    <div id="get"></div>
+                    <div id="myDiv"></div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6" id="cbs-search-form-country">
+
+                </div>
+                <div class="col-xs-12 col-sm-6" id="cbs-search-form-database">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container container-sm-height amis-main-container">
+            <div class="row row-sm-height">
+                <div class="col-xs-12 col-sm-4 col-sm-height"  id="cbs-search-form-commodity">
                     <label for="cbs-search-form-country" class="control-label">Select a country</label>
                     <div id="selectionCountryBox"></div>
+                    <label for="cbs-search-form-commodity" class="control-label">Select a commodity</label>
+                    <div id="selectionCommodity"></div>
                 </div>
-                <div class="col-lg-5 col-lg-offset-1" id="cbs-search-form-database">
+                <div class="col-xs-12 col-sm-4 col-sm-height" id="cbs-search-form-year">
                     <label for="cbs-search-form-database" class="control-label">Select a database</label>
                     <div id="jqxradiobuttonCBS">
                         <div id="labelCBS"></div>
@@ -80,69 +95,62 @@
                     <div id="jqxradiobuttonNationalDB">
                         <div id="labelNatDB"></div>
                     </div>
-                </div>
-            </div>
-
-
-
-
-            <div class="row">
-                <div class="col-lg-6"  id="cbs-search-form-commodity">
-                    <label for="cbs-search-form-commodity" class="control-label">Select a commodity</label>
-                    <div id="selectionCommodity"></div>
-                </div>
-                <div class="col-lg-5 col-lg-offset-1" id="cbs-search-form-year">
                     <label for="cbs-search-form-year" class="control-label">Select a season</label>
                     <div id="selectionYear"></div>
                 </div>
+                <div class="col-xs-12 col-sm-4 col-sm-height amis-btn-load-data-container">
+                    <button id="loadData" type="button" class="btn btn-primary btn-lg btn-danger pull-right amis-btn-load-data">Load Data</button>
+                </div>
             </div>
-            <hr>
+        </div>
+
+        <div class="container amis-main-container">
             <div class = "row">
-                <div class = "alertFilter" id="alertChangeGrid"></div>
-                <div class = "alertFilter" id="alertNewValues"></div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <button id="loadData" type="button" class="btn btn-danger btn-lg btn-block">Load Data</button>
+                <div class="col-xs-12">
+                    <div class = "alertFilter" id="alertChangeGrid"></div>
+                    <div class = "alertFilter" id="alertNewValues"></div>
                 </div>
             </div>
+
+
 
 
             <hr>
-            <br>
+
             <div class="row" id="selector">
-                <div class="row">
-                </div>
             </div>
 
             <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 amis-box" id="box" >
-                    <div  id="options"></div>
-                    <div id="titlepivotGrid"></div>
-                    <div id="pivotGrid"></div><br>
+                <!-- Grid -->
+                <div class="col-xs-12 amis-box" id="box">
+                    <h4 id="titlepivotGrid"></h4>
+                    <div id="options" class="amis-option-container"></div>
+                    <div id="pivotGrid"></div>
+                    <br>
 
-                    <div class = "row">
-                        <div class = "col-md-6">
-                    <div id="savingData">
-                        <button id="saveFinalData" class="btn btn-danger btn-md">Save Data</button>
-                    </div>
-                        </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div id="exportData">
+                                <!--  <a download="dataTable.xls" href ="#" id="exportLink">
+                                  <button type="button" class="btn btn-danger" id="export">Export excel Format</button>
+                                    </a> -->
+                                <button type="button" class="btn btn-danger" id="export">Export excel Format</button>
 
-                        <div class = "col-md-2 col-md-offset-3">
-                    <div id="exportData">
-                      <!--  <a download="dataTable.xls" href ="#" id="exportLink">
-                        <button type="button" class="btn btn-danger" id="export">Export excel Format</button>
-                          </a> -->
-                        <button type="button" class="btn btn-danger" id="export">Export excel Format</button>
-
-                    </div>
+                            </div>
                             <div id="exportExcelTrue"></div>
-                    <div id="exportToAppend" download="dataTableFormat.xls"></div>
-                    </div>
+                            <div id="exportToAppend" download="dataTableFormat.xls"></div>
+
                         </div>
 
+                        <div class="col-xs-6">
+                            <div id="savingData">
+                                <button id="saveFinalData" class="btn btn-danger btn-md pull-right">Save Data</button>
+                            </div>
+                        </div>
                     </div>
+                    <br>
+                </div>
+                <!-- End Grid -->
             </div>
         </div>
 
@@ -160,10 +168,7 @@
            </div>
            -->
         <br><br>
-        <div class="row">
-            <div class="">
-            </div>
-        </div>
+
         <script data-main="js/main" src="js/scripts/libs/require.js"></script>
 
     </body>
