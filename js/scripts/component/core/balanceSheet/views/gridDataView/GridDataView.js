@@ -59,6 +59,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 webix.ui({
                     container: "pivotGrid",
                     view: "datatable",
+                    rowHeight:100,
                     clipboard: "selection",
                     id: "grid",
                     editable: true,
@@ -279,6 +280,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 webix.ui({
                     container: "pivotGrid",
                     view: "datatable",
+                    rowHeight:100,
                     navigation: true,
                     id: "grid",
                     editable: true,
@@ -331,6 +333,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             grid = webix.ui({
                 container: "pivotGrid",
                 view: "datatable",
+                rowHeight:100,
                 navigation: true,
                 id: "grid",
                 editable: true,

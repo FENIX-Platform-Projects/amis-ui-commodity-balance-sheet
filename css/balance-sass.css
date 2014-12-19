@@ -31,7 +31,7 @@ h1 {
   text-transform: uppercase; }
 
 #pivotGrid {
-  height: 100%; }
+  height: 500; }
 
 #clickedCell {
   border-color: transparent;
