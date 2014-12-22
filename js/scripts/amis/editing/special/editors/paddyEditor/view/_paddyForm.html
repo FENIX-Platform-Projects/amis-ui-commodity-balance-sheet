@@ -6,160 +6,185 @@
                         aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="myModalLabel">Production Rice Form</h4>
             </div>
+
             <div class="modal-body" id="toappendData">
-                <div id="productionTabs">
-                    <ul>
-                        <li>Total Values</li>
-                        <li>Singe Crop Values</li>
+
+                <div role="tabpanel">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#totalValues" aria-controls="totalValues" role="tab" data-toggle="tab">Total Values</a></li>
+                        <li role="presentation"><a href="#singleCrops" aria-controls="profile" role="tab" data-toggle="tab">Single Crops</a></li>
+
                     </ul>
 
-                    <div id="totalValues"><br>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
 
-                        <div class="col-lg-4 col-lg-offset-1">
-                            <small class="labelProductionForms">Select the <strong>ITEM</strong> to enter</small>
-                            <br><br>
 
-                            <div class="totalValuesBoxes" id="firstRadioBtnTotVal">
-                                <span id="labelFirstRadioBtnTot">Rice Paddy</span>
-                            </div>
-                        </div>
-                        <br><br>
-
-                        <div class="col-lg-6">
-                            <div class="totalValuesBoxes" id="secondRadioBtnTotVal">
-                                <span id="labelSecondRadioBtnTot">Rice Milled</span>
-                            </div>
-                        </div>
-
-                        <br><br><br>
-
-                        <div>
+                        <div role="tabpanel" class="tab-pane fade in active" id="totalValues">
                             <div class="col-lg-4 col-lg-offset-1">
-                                <small class="labelProductionForms">Select the <strong>ELEMENT</strong> to enter</small>
+                                <small class="labelProductionForms">Select the <strong>ITEM</strong> to enter</small>
                                 <br><br>
 
-                                <div class="totalValuesBoxes" id="thirdCheckBoxTotVal">Production</div>
-                                <small class="labelCheckBoxes">(Thousand tonnes)</small>
-                            </div>
-
-                            <div class="col-lg-4"><br><br>
-
-                                <div class="totalValuesBoxes" id="fourthCheckBoxTotVal">Area Harvested</div>
-                                <small class="labelCheckBoxes">(Thousand Ha)</small>
-                            </div>
-                            <div class="col-lg-3"><br><br>
-
-                                <div class="totalValuesBoxes" id="fifthCheckBoxTotVal">Yield</div>
-                                <small class="labelCheckBoxes">(Tonnes/Ha)</small>
-                            </div>
-                            <br><br><br><br>
-
-                            <div class="row"><br><br>
-
-                                <div class="col-lg-3 col-lg-offset-4">
-                                    <button type="button" class="btn btn-primary" id="applyRulesFormulaTot">
-                                        Recalculate Data
-                                    </button>
+                                <div class="totalValuesBoxes" id="firstRadioBtnTotVal">
+                                    <span id="labelFirstRadioBtnTot">Rice Paddy</span>
                                 </div>
                             </div>
-                            <div class="row"><br>
-
-                                <div class="col-lg-10 col-lg-offset-1" id="alertTotal"></div>
-                            </div>
-                            <hr>
-                        </div>
-                        <br>
-
-                        <div class="row">
-                            <div class="col-lg-10 col-lg-offset-1">
-                                <div id="gridTotalValues"></div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal">Close
-                            </button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveTotalValues">Save
-                                changes
-                            </button>
-                        </div>
-                    </div>
-
-                    <!---             Single Crops           ---->
-
-                    <div id="singleCrops"><br>
-
-                        <div class="col-lg-4 col-lg-offset-1">
-                            <small class="labelProductionForms">Select the <strong>ITEM</strong> to enter</small>
                             <br><br>
 
-                            <div class="singleCropsBoxes" id="firstRadioBtnSingleCrops">
-                                <span id="labelFirstRadioBtnSingle">Rice Paddy</span>
-                            </div>
-                        </div>
-
-                        <br><br>
-
-                        <div class="col-lg-6">
-                            <div class="singleCropsBoxes" id="secondRadioBtnSingleCrops">
-                                <span id="labelSecondRadioBtnSingle">Rice Milled</span>
-                            </div>
-                        </div>
-
-                        <br><br><br>
-
-                        <div>
-                            <div class="col-lg-4 col-lg-offset-1">
-                                <small class="labelProductionForms">Select the <strong>ELEMENT</strong> to enter</small>
-                                <br><br>
-
-                                <div class="singleCropsBoxes" id="thirdCheckBoxSingleCrops">Production</div>
-                                <small class="labelCheckBoxes">(Thousand tonnes)</small>
-                            </div>
-
-                            <div class="col-lg-4"><br><br>
-
-                                <div class="singleCropsBoxes" id="fourthCheckBoxSingleCrops">Area Harvested</div>
-                                <small class="labelCheckBoxes">(Thousand Ha)</small>
-                            </div>
-
-                            <div class="col-lg-3"><br><br>
-                                <div class="singleCropsBoxes" id="fifthCheckBoxSingleCrops">Yield</div>
-                                <small class="labelCheckBoxes">(Tonnes/Ha)</small>
-                            </div>
-
-                            <br><br><br><br>
-
-                            <div class="row">
-                                <br><br>
-                                <div class="col-lg-3 col-lg-offset-4">
-                                    <button type="button" class="btn btn-primary" id="applyRulesFormulaSingle">
-                                        Recalculate Data
-                                    </button>
+                            <div class="col-lg-6">
+                                <div class="totalValuesBoxes" id="secondRadioBtnTotVal">
+                                    <span id="labelSecondRadioBtnTot">Rice Milled</span>
                                 </div>
                             </div>
 
+                            <br><br><br>
+
+                            <div>
+                                <div class="col-lg-4 col-lg-offset-1">
+                                    <small class="labelProductionForms">Select the <strong>ELEMENT</strong> to enter
+                                    </small>
+                                    <br><br>
+
+                                    <div class="totalValuesBoxes" id="thirdCheckBoxTotVal">Production</div>
+                                    <small class="labelCheckBoxes">(Thousand tonnes)</small>
+                                </div>
+
+                                <div class="col-lg-4"><br><br>
+
+                                    <div class="totalValuesBoxes" id="fourthCheckBoxTotVal">Area Harvested</div>
+                                    <small class="labelCheckBoxes">(Thousand Ha)</small>
+                                </div>
+                                <div class="col-lg-3"><br><br>
+
+                                    <div class="totalValuesBoxes" id="fifthCheckBoxTotVal">Yield</div>
+                                    <small class="labelCheckBoxes">(Tonnes/Ha)</small>
+                                </div>
+                                <br><br><br><br>
+
+                                <div class="row"><br><br>
+
+                                    <div class="col-lg-3 col-lg-offset-4">
+                                        <button type="button" class="btn btn-primary" id="applyRulesFormulaTot">
+                                            Recalculate Data
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row"><br>
+
+                                    <div class="col-lg-10 col-lg-offset-1" id="alertTotal"></div>
+                                </div>
+                                <hr>
+                            </div>
+                            <br>
+
                             <div class="row">
-                                <br>
-
-                                <div class="col-lg-10 col-lg-offset-1" id="alertSingle"></div>
+                                <div class="col-lg-10 col-lg-offset-1">
+                                    <div id="gridTotalValues"></div>
+                                </div>
                             </div>
-                            <hr>
-                        </div>
-                        <br>
-
-                        <div class="row">
-                            <div class="col-lg-10 col-lg-offset-1">
-                                <div id="gridSingleCrops"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal">Close
+                                </button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveTotalValues">
+                                    Save
+                                    changes
+                                </button>
                             </div>
+
                         </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <!-- Single CRosp -->
+
+                        <div role="tabpanel" class="tab-pane fade" id="singleCrops">
+
+
+
+                            <div class="col-lg-4 col-lg-offset-1">
+                                <small class="labelProductionForms">Select the <strong>ITEM</strong> to enter</small>
+                                <br><br>
+
+                                <div class="singleCropsBoxes" id="firstRadioBtnSingleCrops">
+                                    <span id="labelFirstRadioBtnSingle">Rice Paddy</span>
+                                </div>
+                            </div>
+
+                            <br><br>
+
+                            <div class="col-lg-6">
+                                <div class="singleCropsBoxes" id="secondRadioBtnSingleCrops">
+                                    <span id="labelSecondRadioBtnSingle">Rice Milled</span>
+                                </div>
+                            </div>
+
+                            <br><br><br>
+
+                            <div>
+                                <div class="col-lg-4 col-lg-offset-1">
+                                    <small class="labelProductionForms">Select the <strong>ELEMENT</strong> to enter
+                                    </small>
+                                    <br><br>
+
+                                    <div class="singleCropsBoxes" id="thirdCheckBoxSingleCrops">Production</div>
+                                    <small class="labelCheckBoxes">(Thousand tonnes)</small>
+                                </div>
+
+                                <div class="col-lg-4"><br><br>
+
+                                    <div class="singleCropsBoxes" id="fourthCheckBoxSingleCrops">Area Harvested</div>
+                                    <small class="labelCheckBoxes">(Thousand Ha)</small>
+                                </div>
+
+                                <div class="col-lg-3"><br><br>
+
+                                    <div class="singleCropsBoxes" id="fifthCheckBoxSingleCrops">Yield</div>
+                                    <small class="labelCheckBoxes">(Tonnes/Ha)</small>
+                                </div>
+
+                                <br><br><br><br>
+
+                                <div class="row">
+                                    <br><br>
+
+                                    <div class="col-lg-3 col-lg-offset-4">
+                                        <button type="button" class="btn btn-primary" id="applyRulesFormulaSingle">
+                                            Recalculate Data
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <br>
+
+                                    <div class="col-lg-10 col-lg-offset-1" id="alertSingle"></div>
+                                </div>
+                                <hr>
+                            </div>
+                            <br>
+
+                            <div class="row">
+                                <div class="col-lg-10 col-lg-offset-1">
+                                    <div id="gridSingleCrops"></div>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+
+
+
+
+
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+

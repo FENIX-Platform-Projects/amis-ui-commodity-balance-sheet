@@ -284,27 +284,33 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     }
 
     ProductionObserver.prototype.listenToTabs = function () {
-        $('#productionTabs').on('tabclick', function (event) {
-
-            event.preventDefault()
-            event.stopImmediatePropagation();
-            var clickedItem = event.args.item;
 
 
-            if (clickedItem == 0 && singleCropsValuesModified) { // from single crops to total values
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            var newly =  e.target // newly activated tab
+            var oldly   =e.relatedTarget // previous active tab
+
+            if(newly.hash == '#totalValues' && singleCropsValuesModified){
+
                 var typeOfForm = (isAreaHarvestedSelectedTot) ? 'totalValues' : 'totalValuesAPlanted';
-
                 controllerProduction.onSwitchingCropsValues(formulaToApplyTot, typeOfForm)
-            } else if (clickedItem == 0 && !singleCropsValuesModified) {
+
+            }else if(newly.hash == '#totalValues' && !singleCropsValuesModified){
+
                 var typeOfForm = (isAreaHarvestedSelectedTot) ? 'totalValues' : 'totalValuesAPlanted';
-
                 controllerProduction.onSwitchingSimpleTotal(formulaToApplyTot, typeOfForm)
-            } else if (clickedItem == 1) {
-                var typeOfForm = (isAreaHarvestedSelectedSingle) ? 'singleCrops' : 'singleCropsAPlanted';
 
+            }else if(newly.hash == '#singleCrops'){
+
+                var typeOfForm = (isAreaHarvestedSelectedSingle) ? 'singleCrops' : 'singleCropsAPlanted';
                 controllerProduction.onSwitchingSimpleSingle(formulaToApplySingle, typeOfForm)
             }
-        });
+
+        })
+        
     }
 
     ProductionObserver.prototype.listenToChangeRadioButtonValue = function () {

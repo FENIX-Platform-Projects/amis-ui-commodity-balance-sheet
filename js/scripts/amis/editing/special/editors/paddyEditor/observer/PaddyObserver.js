@@ -261,7 +261,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         $("#thirdCheckBoxTotVal").on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
-            console.log('third checkbox changed!!!')
             controllerPaddy.showAlerts(true);
             (event.args.checked) ? that.onCheckBoxTotal(3) : that.onUncheckBoxTotal(3);
         })
@@ -281,8 +280,9 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     PaddyObserver.prototype.onCheckBoxTotal = function (number) {
         switch (number) {
-            case 1:
 
+
+            case 1:
 
                 if ($('#thirdCheckBoxTotVal').attr("aria-checked") == 'true'
                     && $('#fourthCheckBoxTotVal').attr("aria-checked") == 'true') {
@@ -790,19 +790,24 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
     }
 
     PaddyObserver.prototype.listenToTabs = function () {
-        $('#productionTabs').on('tabclick', function (event) {
-            event.preventDefault()
-            event.stopImmediatePropagation();
-            console.log('listenToTabs')
-            var clickedItem = event.args.item;
-            if (clickedItem == 0 && singleCropsValuesModified) { // from single crops to total values
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            var newly =  e.target // newly activated tab
+            var oldly =e.relatedTarget // previous active tab
+
+            if(newly.hash == '#totalValues' && singleCropsValuesModified){
                 controllerPaddy.onSwitchingCropsValues(formulaToApplySingle)
-            } else if (clickedItem == 0 && !singleCropsValuesModified) {
+            }else if(newly.hash == '#totalValues' && !singleCropsValuesModified){
                 controllerPaddy.onSwitchingSimpleTotal(formulaToApplyTot)
-            } else if (clickedItem == 1) {
+            }else if(newly.hash == '#singleCrops'){
                 controllerPaddy.onSwitchingSimpleSingle(formulaToApplySingle)
             }
-        });
+
+        })
+
     }
 
     PaddyObserver.prototype.listenToCloseModal = function () {

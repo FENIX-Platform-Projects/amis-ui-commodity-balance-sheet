@@ -1,6 +1,3 @@
-/**
- * Created by fabrizio on 9/13/14.
- */
 define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/FlagController", "text!paddyEditor/view/_paddyForm.html",
     "text!productionEditor/view/_alertSelection.html","jqwidgets", "select2"], function ($, Formatter, FlagController, HTMLPaddy, AlertSelection) {
 
@@ -51,34 +48,6 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         var totalModel = $.extend(true, [], totalValuesModel);
         var singleModel = $.extend(true, [], singleCropsModel);
 
-        var source = {
-            datatype: "array",
-            datafields: [
-                { name: 6, type: 'string' },
-                { name: 3, type: 'float' },
-                { name: 4, type: 'string'},
-                {name: 5, type: 'string'}
-            ],
-            id: 'ppp',
-            localdata: totalModel
-        };
-
-        var source2 = {
-            datatype: "array",
-            datafields: [
-                { name: 6, type: 'string' },
-                { name: 7, type: 'string' },
-                { name: 3, type: 'float' },
-                { name: 4, type: 'string'},
-                { name: 5, type: 'string'}
-            ],
-            id: 'ppp',
-            localdata: singleModel
-        };
-
-        var dataAdapter = new $.jqx.dataAdapter(source);
-        var dataAdapter2 = new $.jqx.dataAdapter(source2);
-
         var f = document.getElementById("specialForm");
 
         if (f !== null) {
@@ -87,59 +56,28 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         $("#pivotGrid").append(modal);
 
-        $('#firstRadioBtnTotVal').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
-        $('#secondRadioBtnTotVal').jqxRadioButton({ width: 120, height: 25,groupName: "totValuePaddy", checked: true});
-        $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
-        $('#fourthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
-        $('#fifthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true });
-
-        $('#firstRadioBtnSingleCrops').jqxRadioButton({ width: 120, groupName: "singleCropPaddy",height: 25});
-        $('#secondRadioBtnSingleCrops').jqxRadioButton({ width: 120, groupName: "singleCropPaddy",height: 25, checked: true});
-        $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
-        $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
-        $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
-
-        $('#gridTotalValues').jqxGrid({
-            source: dataAdapter,
-            width: "100%",
-            editable: true,
-            selectionmode: 'singlecell',
-            columnsresize: true,
-            pageable: true,
-            autoheight: true,
-            columns: [
-                { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid  },
-                { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid },
-                { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid,
-                    createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250 },
-                { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid }
-            ]
-        });
-
-        $('#gridSingleCrops').jqxGrid({
-            source: dataAdapter2,
-            width: "100%",
-            editable: true,
-            selectionmode: 'singlecell',
-            columnsresize: true,
-            pageable: true,
-            autoheight: true,
-            columns: [
-                { text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid },
-                { text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid },
-                { text: 'Value', datafield: 3, cellclassname: callbackStyleSingleGrid  },
-                { text: 'Flag', datafield: 4, cellclassname: callbackStyleSingleGrid  }
-            ]
-        });
+        this.initAllCheckBoxes()
 
         $("#specialForm").modal({ backdrop: 'static',
             keyboard: false});
 
-        $('#specialForm').on('shown.bs.modal', function (e) {
-            $('#productionTabs').jqxTabs();
+        $('#singleCrops').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
         })
 
-        observer.applyListeners()
+        $('#totalValues').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+
+
+       this.createAndDrawGrid( this.setDataForGrid(totalModel,true),   "gridTotalValues") ;
+
+       this.createAndDrawGrid( this.setDataForGrid(singleModel,false), "gridSingleCrops");
+
+       observer.applyListeners()
+
     }
 
     PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply) {
@@ -147,77 +85,16 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         formulaToRenderTotVal = formulaToApply
 
-        console.log('update Tot Grid!!')
+        this.createAndDrawGrid( this.setDataForGrid(calculatedModel,true),   "gridTotalValues") ;
 
-        var source = {
-            datatype: "array",
-            datafields: [
-                { name: 6, type: 'string' },
-                { name: 3, type: 'float' },
-                { name: 4, type: 'string'},
-                {name: 5, type: 'string'}
-            ],
-            id: 'ppp',
-            localdata: calculatedModel
-        };
-
-        var dataAdapter = new $.jqx.dataAdapter(source);
-
-        $('#gridTotalValues').jqxGrid({
-            source: dataAdapter,
-            width: "100%",
-            editable: true,
-            selectionmode: 'singlecell',
-            columnsresize: true,
-            pageable: true,
-            autoheight: true,
-            columns: [
-                { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid  },
-                { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid },
-                { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid,
-                    createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250 },
-                { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid }
-            ]
-
-        });
     }
 
     PaddyCreator.prototype.updateSingleGrid = function (calculatedModel, formulaToApply) {
 
         formulaToRenderSingleCrops = formulaToApply;
 
-        console.log('updateSingelGRid')
+        this.createAndDrawGrid( this.setDataForGrid(calculatedModel,false), "gridSingleCrops");
 
-        var source = {
-            datatype: "array",
-            datafields: [
-                { name: 6, type: 'string'},
-                { name: 7, type: 'string'},
-                { name: 3, type: 'float' },
-                { name: 4, type: 'string'},
-                { name: 5, type: 'string'}
-            ],
-            id: 'ppp',
-            localdata: calculatedModel
-        };
-
-        var dataAdapter = new $.jqx.dataAdapter(source);
-
-        $('#gridSingleCrops').jqxGrid({
-            source: dataAdapter,
-            width: "100%",
-            editable: true,
-            selectionmode: 'singlecell',
-            columnsresize: true,
-            pageable: true,
-            autoheight: true,
-            columns: [
-                { text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid },
-                { text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid },
-                { text: 'Value', datafield: 3, cellclassname: callbackStyleSingleGrid  },
-                { text: 'Flag', datafield: 4, cellclassname: callbackStyleSingleGrid  }
-            ]
-        });
 
     }
 
@@ -237,7 +114,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         $('#fourthCheckBoxSingleCrops').jqxCheckBox('destroy');
         $('#fifthCheckBoxSingleCrops').jqxCheckBox('destroy');
 
-        $('#productionTabs').jqxTabs('destroy');
+
     }
 
     PaddyCreator.prototype.createStyleClassGridTotal = function (row, column, value, data) {
@@ -410,9 +287,6 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
     }
 
     PaddyCreator.prototype.showAlertTotal = function () {
-
-        ;
-
         if (!document.getElementById('alertTotal').firstChild) {
             $("#alertTotal").append(alertSelection)
         }
@@ -429,7 +303,92 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         while (myNode.firstChild) {
             myNode.removeChild(myNode.firstChild);
         }
+    }
 
+
+    PaddyCreator.prototype.createAndDrawGrid = function(dataAdapter, idContainer  ){
+
+        var columns =this.createColumnsForGrid(idContainer);
+
+        $('#'+idContainer).jqxGrid({
+            source: dataAdapter,
+            width: "100%",
+            editable: true,
+            selectionmode: 'singlecell',
+            columnsresize: true,
+            pageable: true,
+            autoheight: true,
+            columns: columns
+        });
+
+    }
+
+
+    PaddyCreator.prototype.createColumnsForGrid = function(idContainer){
+
+        var columns = (idContainer == "gridTotalValues")?
+        [
+            { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid  },
+            { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid },
+            { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid,
+                createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250 },
+            { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid }
+        ]:
+            [
+                { text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid },
+                { text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid },
+                { text: 'Value', datafield: 3, cellclassname: callbackStyleSingleGrid  },
+                { text: 'Flag', datafield: 4, cellclassname: callbackStyleSingleGrid  }
+            ]
+
+        return columns;
+    }
+
+
+    PaddyCreator.prototype.setDataForGrid = function(data, isTotalModel){
+
+
+        var dataField = (isTotalModel)?
+            [
+                { name: 6, type: 'string' },
+                { name: 3, type: 'float' },
+                { name: 4, type: 'string'},
+                {name: 5, type: 'string'}
+            ]:
+            [
+                { name: 6, type: 'string'},
+                { name: 7, type: 'string'},
+                { name: 3, type: 'float' },
+                { name: 4, type: 'string'},
+                { name: 5, type: 'string'}
+            ]
+
+
+        var source = {
+            datatype: "array",
+            datafields: dataField,
+            id: 'grid'+isTotalModel,
+            localdata: data
+        };
+
+
+        return new $.jqx.dataAdapter(source);
+    }
+
+
+    PaddyCreator.prototype.initAllCheckBoxes = function(){
+
+        $('#firstRadioBtnTotVal').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
+        $('#secondRadioBtnTotVal').jqxRadioButton({ width: 120, height: 25,groupName: "totValuePaddy", checked: true});
+        $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
+        $('#fourthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
+        $('#fifthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true });
+
+        $('#firstRadioBtnSingleCrops').jqxRadioButton({ width: 120, groupName: "singleCropPaddy",height: 25});
+        $('#secondRadioBtnSingleCrops').jqxRadioButton({ width: 120, groupName: "singleCropPaddy",height: 25, checked: true});
+        $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
+        $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
+        $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
     }
 
     return PaddyCreator;

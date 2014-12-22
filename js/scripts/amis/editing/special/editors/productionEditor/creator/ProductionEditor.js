@@ -83,106 +83,24 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             formulaToRenderTotVal = 'init'
             formulaToRenderSingleCrops = 'init'
 
-            console.log('InovolvedItems')
-            console.log(involvedItems)
-
-            var source = {
-                datatype: "array",
-                datafields: [
-                    { name: 6, type: 'string' },
-                    { name: 7, type: 'string' },
-                    { name: 3, type: 'float' },
-                    { name: 4, type: 'string'},
-                    {name: 5, type: 'string'}
-                ],
-                id: 'ppp',
-                localdata: totalCropsCalc
-            };
-
-            var source2 = {
-                datatype: "array",
-                datafields: [
-                    { name: 6, type: 'string' },
-                    { name: 7, type: 'string' },
-                    { name: 3, type: 'float' },
-                    { name: 4, type: 'string'},
-                    { name: 5, type: 'string'}
-                ],
-                id: 'ppp',
-                localdata: copyOriginalModelSingle
-            };
-
-            var dataAdapter = new $.jqx.dataAdapter(source);
-            var dataAdapter2 = new $.jqx.dataAdapter(source2);
-
             var f = document.getElementById("specialForm");
 
             if (f !== null) {
                 f.remove()
             }
 
-
             $("#pivotGrid").append(modal);
-            $('#firstCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
-            $('#secondCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
-            $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true });
-
-
-            $('#firstCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
-            $('#secondCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
-            $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
-
-            $('#radioBtnAreaHarv').jqxRadioButton({ width: 120, height: 25, groupName: "totValueBtn", checked: true });
-            $('#radioBtnAreaPlanted').jqxRadioButton({ width: 120, groupName: "totValueBtn", height: 25 });
-
-            $('#radioBtnAreaHarvSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn", checked: true });
-            $('#radioBtnAreaPltdSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn"});
-
-            var that = this;
-
-            $('#gridTotalValues').jqxGrid({
-                source: dataAdapter,
-                width: "100%",
-                editable: true,
-                rowsheight: 40,
-                selectionmode: 'singlecell',
-                pageable: true,
-                autoheight: true,
-                columns: [
-                    { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid, width: '25%' },
-                    { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid, width: '15%'},
-                    { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid, width: '25%',
-                        createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250
-                    },
-                    { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid, width: '35%'}
-                ]
-            });
-
-            $('#gridSingleCrops').jqxGrid({
-                autorowheight: true,
-                source: dataAdapter2,
-                width: "100%",
-                editable: true,
-                selectionmode: 'singlecell',
-                pageable: true,
-                autoheight: true,
-                columns: [
-                    { text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid, width: '40%' },
-                    { text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid, width: '20%' },
-                    { text: 'Value', datafield: 3, cellclassname: callbackStyleSingleGrid, width: '30%' },
-                    { text: 'Flag', datafield: 4, cellclassname: callbackStyleSingleGrid, width: '10%' }
-                ]
-            });
-
 
             $("#specialForm").modal({
                 backdrop: 'static',
                 keyboard: false});
 
+            this.initAllCheckBoxes();
+
+            this.createAndDrawGrid( this.setDataForGrid(totalCropsCalc,true),   "gridTotalValues") ;
+            this.createAndDrawGrid( this.setDataForGrid(copyOriginalModelSingle,false), "gridSingleCrops");
+
             observer.applyListeners(this, productionController)
-            $('#specialForm').on('shown.bs.modal', function (e) {
-                $('#productionTabs').jqxTabs();
-            })
 
         }
 
@@ -193,39 +111,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
             observer.unbindEventsFromTotalValues()
 
-            var source = {
-                datatype: "array",
-                datafields: [
-                    { name: 6, type: 'string' },
-                    { name: 7, type: 'string'},
-                    { name: 3, type: 'float' },
-                    { name: 4, type: 'string'},
-                    {name: 5, type: 'string'}
-                ],
-                id: 'ppp',
-                localdata: calculatedModel
-            };
-
-            var dataAdapter = new $.jqx.dataAdapter(source);
-
-            $('#gridTotalValues').jqxGrid({
-                source: dataAdapter,
-                width: "100%",
-                editable: true,
-                autorowheight: true,
-                selectionmode: 'singlecell',
-                columnsresize: true,
-                pageable: true,
-                autoheight: true,
-                columns: [
-                    { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid, width: '25%' },
-                    { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid, width: '15%'},
-                    { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid, width: '25%',
-                        createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250
-                    },
-                    { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid, width: '35%'}
-                ]
-            });
+            this.createAndDrawGrid( this.setDataForGrid(calculatedModel,true),   "gridTotalValues") ;
 
             observer.reBindEventsFromTotalValues()
         }
@@ -235,37 +121,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
             formulaToRenderSingleCrops = formulaToApply
 
-            var source = {
-                datatype: "array",
-                datafields: [
-                    { name: 6, type: 'string'},
-                    { name: 7, type: 'string'},
-                    { name: 3, type: 'float' },
-                    { name: 4, type: 'string'},
-                    { name: 5, type: 'string'}
-                ],
-                id: 'ppp',
-                localdata: calculatedModel
-            };
-
-            var dataAdapter = new $.jqx.dataAdapter(source);
-
-            $('#gridSingleCrops').jqxGrid({
-                autorowheight: true,
-                source: dataAdapter,
-                width: "100%",
-                editable: true,
-                selectionmode: 'singlecell',
-                columnsresize: true,
-                pageable: true,
-                autoheight: true,
-                columns: [
-                    { text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid, width: '40%' },
-                    { text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid, width: '20%' },
-                    { text: 'Value', datafield: 3, cellclassname: callbackStyleSingleGrid, width: '30%' },
-                    { text: 'Flag', datafield: 4, cellclassname: callbackStyleSingleGrid, width: '10%' }
-                ]
-            });
+            this.createAndDrawGrid( this.setDataForGrid(calculatedModel,false), "gridSingleCrops");
 
         }
 
@@ -291,7 +147,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             $('#secondCheckBoxSingleCrops').jqxCheckBox('destroy');
             $('#thirdCheckBoxSingleCrops').jqxCheckBox('destroy');
 
-            $('#productionTabs').jqxTabs('destroy');
         }
 
         ProductionEditor.prototype.changeLabelToArea = function (isAreaHarvested, isTotalValue) {
@@ -458,6 +313,95 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             }
 
         }
+
+        ProductionEditor.prototype.initAllCheckBoxes = function(){
+
+            $('#firstCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
+            $('#secondCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
+            $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true });
+
+
+            $('#firstCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
+            $('#secondCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
+            $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
+
+            $('#radioBtnAreaHarv').jqxRadioButton({ width: 120, height: 25, groupName: "totValueBtn", checked: true });
+            $('#radioBtnAreaPlanted').jqxRadioButton({ width: 120, groupName: "totValueBtn", height: 25 });
+
+            $('#radioBtnAreaHarvSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn", checked: true });
+            $('#radioBtnAreaPltdSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn"});
+        }
+
+        ProductionEditor.prototype.createAndDrawGrid = function(dataAdapter, idContainer  ){
+
+            var columns =this.createColumnsForGrid(idContainer);
+
+            $('#'+idContainer).jqxGrid({
+                source: dataAdapter,
+                width: "100%",
+                editable: true,
+                rowsheight: 40,
+                selectionmode: 'singlecell',
+                pageable: false,
+                autoheight: true,
+                columns: columns
+            });
+
+        }
+
+
+        ProductionEditor.prototype.createColumnsForGrid = function(idContainer){
+
+            var columns = (idContainer == "gridTotalValues")?
+                [
+                    { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid, width: '25%' },
+                    { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid, width: '15%'},
+                    { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid, width: '25%',
+                        createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250
+                    },
+                    { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid, width: '35%'}
+                ]:
+                [
+                    { text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid, width: '40%' },
+                    { text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid, width: '20%' },
+                    { text: 'Value', datafield: 3, cellclassname: callbackStyleSingleGrid, width: '30%' },
+                    { text: 'Flag', datafield: 4, cellclassname: callbackStyleSingleGrid, width: '10%' }
+                ]
+
+            return columns;
+        }
+
+
+        ProductionEditor.prototype.setDataForGrid = function(data, isTotalModel){
+
+
+            var dataField = (isTotalModel)?
+                [
+                    { name: 6, type: 'string' },
+                    { name: 3, type: 'float' },
+                    { name: 4, type: 'string'},
+                    {name: 5, type: 'string'}
+                ]:
+                [
+                    { name: 6, type: 'string'},
+                    { name: 7, type: 'string'},
+                    { name: 3, type: 'float' },
+                    { name: 4, type: 'string'},
+                    { name: 5, type: 'string'}
+                ]
+
+
+            var source = {
+                datatype: "array",
+                datafields: dataField,
+                id: 'grid'+isTotalModel,
+                localdata: data
+            };
+
+
+            return new $.jqx.dataAdapter(source);
+        }
+
 
 
         return ProductionEditor;

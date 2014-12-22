@@ -27,6 +27,62 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             return grid;
         }
 
+        GridDataView.prototype.createAndDrawGrid = function(columns, dataSource){
+            var self = this;
+            var gridUi =
+                webix.ui({
+                    container: "pivotGrid",
+                    view: "datatable",
+                    rowHeight:30,
+                    columnWidth:300,
+                    clipboard: "selection",
+                    id: "grid",
+                    editable: true,
+                    navigation: true,
+                    leftSplit: 1,
+                    scheme: {
+                        $change: function (item) {
+                            self.createColourConfiguration(item);
+                        }
+                    },
+                    visibleBatch:1,
+                    columns: columns,
+                    datatype: "jsarray",
+                    data: dataSource
+                });
+
+            webix.event(window, "resize", function(){ gridUi.adjust(); })
+
+            return gridUi
+        }
+
+
+        GridDataView.prototype.createColumns = function (dataSource, differentDates) {
+
+            var columns = [];
+            arrDiffDates = Object.keys(differentDates)
+
+            columns.push({id: "data0", header: 'Elements', css: "firstColumn", sort: "string"})
+
+            for (var i = 0; i < arrDiffDates.length; i++) {
+                if (i == 0) {
+                    columns.push({id: "data" + 1, header: [
+                        {text: 'Input dates', colspan: arrDiffDates.length},
+                        {text: arrDiffDates[i]}
+                    ], editor: 'text', fillspace:true, css: "datesColumns", sort: "string"})
+                } else if (i != 0 && i != arrDiffDates.length) {
+
+                    columns.push({id: "data" + (i + 1), header: [
+                        //{text: ''},
+                        {text: null},
+                        {text: arrDiffDates[i]}
+                    ], editor: 'text', fillspace:true, css: "datesColumns", sort: "int"})
+                }
+            }
+            return columns;
+        }
+
+
         GridDataView.prototype.createFullGrid = function () {
 
             fullModel = Configurator.getAllColumnModels();
@@ -54,36 +110,14 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             if (grid)
                 grid.destructor()
 
-            var self = this;
-            grid =
-                webix.ui({
-                    container: "pivotGrid",
-                    view: "datatable",
-                    rowHeight:30,
-                    columnWidth:300,
-                    clipboard: "selection",
-                    id: "grid",
-                    editable: true,
-                    navigation: true,
-                    leftSplit: 1,
-                    scheme: {
-                        $change: function (item) {
-                            self.createColourConfiguration(item);
-                        }
-                    },
-                    visibleBatch:1,
-                    columns: columns,
-                    datatype: "jsarray",
-                    data: dataSource
-                });
-            webix.event(window, "resize", function(){ grid.adjust(); })
+            grid = this.createAndDrawGrid(columns,dataSource);
             generalController.createListeners(grid);
             return grid;
         }
 
         GridDataView.prototype.updateViewOnChangeVisualization = function () {
             modelView = viewModel.init(table, Configurator, supportUtility)
-            var grid = this.renderGrid(modelView)
+            grid = this.renderGrid(modelView)
         }
 
         GridDataView.prototype.createOtherOptions = function () {
@@ -139,7 +173,6 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 buttonChangeModality = '<button class="btn btn-primary" id="changeModality">Switch to monthly mode</button>';
                 titleGrid.innerHTML = "Annual most recent Forecasts for  " + filterData.country +
                     " , " + filterData.product + " , " + filterData.dataSource
-
             }
 
 
@@ -225,31 +258,6 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             }
         }
 
-        GridDataView.prototype.createColumns = function (dataSource, differentDates) {
-            var filterData = supportUtility.getFilterData()
-
-            var columns = [];
-            arrDiffDates = Object.keys(differentDates)
-
-            columns.push({id: "data0", header: 'Elements', css: "firstColumn", sort: "string"})
-
-            for (var i = 0; i < arrDiffDates.length; i++) {
-                if (i == 0) {
-                    columns.push({id: "data" + 1, header: [
-                        {text: 'Input dates', colspan: arrDiffDates.length},
-                        {text: arrDiffDates[i]}
-                    ], editor: 'text', fillspace:true, css: "datesColumns", sort: "string"})
-                } else if (i != 0 && i != arrDiffDates.length) {
-
-                    columns.push({id: "data" + (i + 1), header: [
-                        //{text: ''},
-                        {text: null},
-                        {text: arrDiffDates[i]}
-                    ], editor: 'text', fillspace:true, css: "datesColumns", sort: "int"})
-                }
-            }
-            return columns;
-        }
 
         GridDataView.prototype.createDataSource = function (columnsNumber, differentDates, titlesMap, model) {
 
@@ -277,28 +285,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             grid.destructor()
 
             var self = this;
-            grid =
-                webix.ui({
-                    container: "pivotGrid",
-                    view: "datatable",
-                    rowHeight:30,
-                    columnWidth:300,
-                    navigation: true,
-                    id: "grid",
-                    editable: true,
-                    sortable: true,
-                    export: true,
-                    clipboard: "selection",
-                    leftSplit: 1,
-                    scheme: {
-                        $change: function (item) {
-                            self.createColourConfiguration(item);
-                        }
-                    },
-                    columns: columns,
-                    datatype: "jsarray",
-                    data: dataSource
-                });
+            grid = this.createAndDrawGrid(columns,dataSource);
             grid.scrollTo(xCoordinate, yCoordinate)
             generalController.createListeners(grid)
 
@@ -332,24 +319,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 $('.modal-backdrop').remove();
             }
 
-            grid = webix.ui({
-                container: "pivotGrid",
-                view: "datatable",
-                rowHeight:30,
-                columnWidth:300,
-                navigation: true,
-                id: "grid",
-                editable: true,
-                leftSplit: 1,
-                scheme: {
-                    $change: function (item) {
-                        self.createColourConfiguration(item);
-                    }
-                },
-                columns: columns,
-                datatype: "jsarray",
-                data: dataSource
-            });
+            grid = this.createAndDrawGrid(columns,dataSource);
 
             grid.scrollTo(xCoordinate, yCoordinate)
             generalController.createListeners(grid);
