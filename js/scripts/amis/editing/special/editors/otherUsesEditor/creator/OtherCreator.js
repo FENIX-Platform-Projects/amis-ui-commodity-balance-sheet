@@ -45,22 +45,33 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
             $("#specialForm").modal({ backdrop: 'static',
                 keyboard: false});
 
-            grid = new webix.ui({
-                id: "otherUsesTree",
-                container: "gridTotalValues",
-                view: "treetable",
-                columns: [
-                    { id: "value", header: "Element", template: "{common.treetable()} #value#", width: 250},
-                    { id: "3", editor: "text", header: "Value"},
-                    { id: "4", editor: "text", header: "Flag"},
-                    { id: "5", editor: "text", header: "Notes", width: 250}
-                ],
-                autoheight: true,
-                autowidth: true,
-                editable: true,
+            $('#specialForm').on('shown.bs.modal', function (e) {
 
-                data: totModelForTree
+                grid = new webix.ui({
+                    id: "otherUsesTree",
+                    container: "gridTotalValues",
+                    view: "treetable",
+                    columns: [
+                        { id: "value", header: "Element", template: "{common.treetable()} #value#", fillspace:true },
+                        { id: "3", editor: "text", header: "Value"},
+                        { id: "4", editor: "text", header: "Flag"},
+                        { id: "5", editor: "text", header: "Notes"}
+                    ],
+////                css:{"width":'100%'},
+//                rowHeight:30,
+//               height:200,
+//                width:100,
+                autoheight: true,
+//                autowidth: true,
+                    editable: true,
+
+                    data: totModelForTree
+                });
             });
+
+//            grid.define("width", 100);
+//            grid.define("height", 200);
+//            dtable.resize();
 
             observer.applyListeners(grid)
         }
@@ -123,13 +134,17 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
                 container: "gridTotalValues",
                 view: "treetable",
                 columns: [
-                    { id: "value", header: "Element", template: "{common.treetable()} #value#", width: 250},
+                    { id: "value", header: "Element", template: "{common.treetable()} #value#"},
                     { id: "3", editor: "text", header: "Value"},
                     { id: "4", editor: "text", header: "Flag"},
-                    { id: "5", editor: "popup", header: "Notes", width: 250}
+                    { id: "5", editor: "text", header: "Notes"}
                 ],
-                autoheight: true,
-                autowidth: true,
+////                css:{"width":'100%'},
+//                rowHeight:30,
+//               height:200,
+//                width:100,
+//                autoheight: true,
+//                autowidth: true,
                 editable: true,
 
                 data: totModelForTree

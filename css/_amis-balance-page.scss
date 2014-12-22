@@ -15,7 +15,7 @@ body{
 
 /* Font Harmonization */
 
-body, .jqx-widget, .jqx-widget-content {
+body, .jqx-widget, .jqx-widget-content, .ui-widget, .input-group-lg{
   font-family: $font-family-main;
   font-size: $font-size-main;
   color: $amis-color-text-main;
@@ -224,6 +224,7 @@ h4 {
 
 .amis-grid-options{
   right: 2px;
+  color: $amis-color-text-main;
 }
 
 #options {

@@ -87,7 +87,7 @@ body {
   background-color: #f9f7f3; }
 
 /* Font Harmonization */
-body, .jqx-widget, .jqx-widget-content {
+body, .jqx-widget, .jqx-widget-content, .ui-widget, .input-group-lg {
   font-family: "open_sanscondensed_light";
   font-size: 14px;
   color: #777777; }
@@ -232,7 +232,8 @@ h4 {
 /* -------------------------------------------- */
 /* START OPTIONS  */
 .amis-grid-options {
-  right: 2px; }
+  right: 2px;
+  color: #777777; }
 
 #options {
   visibility: hidden;
@@ -261,7 +262,7 @@ h4 {
 /* Amis Webix Datatable */
 /* TITLE GRID */
 #pivotGrid {
-  height: 700px; }
+  height: 800px; }
 
 /* Fonts */
 .webix_view, .webix_dd_drag_column, .webix_ss_header TD, .webix_ss_vscroll_header {
@@ -315,3 +316,5 @@ h4 {
 
 /* END  GRID  */
 /* -------------------------------------------- */
+/* Treetable */
+/* Amis - Treetable */

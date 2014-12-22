@@ -60,6 +60,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                     container: "pivotGrid",
                     view: "datatable",
                     rowHeight:30,
+                    columnWidth:300,
                     clipboard: "selection",
                     id: "grid",
                     editable: true,
@@ -230,21 +231,21 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             var columns = [];
             arrDiffDates = Object.keys(differentDates)
 
-            columns.push({id: "data0", header: 'Elements', css: "firstColumn", sort: "string", adjust:true })
+            columns.push({id: "data0", header: 'Elements', css: "firstColumn", sort: "string"})
 
             for (var i = 0; i < arrDiffDates.length; i++) {
                 if (i == 0) {
                     columns.push({id: "data" + 1, header: [
                         {text: 'Input dates', colspan: arrDiffDates.length},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text', fillspace:true,css: "datesColumns", sort: "string"})
+                    ], editor: 'text', fillspace:true, css: "datesColumns", sort: "string"})
                 } else if (i != 0 && i != arrDiffDates.length) {
 
                     columns.push({id: "data" + (i + 1), header: [
                         //{text: ''},
                         {text: null},
                         {text: arrDiffDates[i]}
-                    ], fillspace:true,editor: 'text', css: "datesColumns", sort: "int"})
+                    ], editor: 'text', fillspace:true, css: "datesColumns", sort: "int"})
                 }
             }
             return columns;
@@ -281,6 +282,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                     container: "pivotGrid",
                     view: "datatable",
                     rowHeight:30,
+                    columnWidth:300,
                     navigation: true,
                     id: "grid",
                     editable: true,
@@ -334,6 +336,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 container: "pivotGrid",
                 view: "datatable",
                 rowHeight:30,
+                columnWidth:300,
                 navigation: true,
                 id: "grid",
                 editable: true,
