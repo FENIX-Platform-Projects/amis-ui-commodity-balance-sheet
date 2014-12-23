@@ -258,6 +258,12 @@ h4 {
 .flagClass {
   overflow-y: scroll; }
 
+.select2-results {
+  font-size: 11px; }
+
+.select2-search-choice {
+  font-size: 11px; }
+
 /* Grid */
 /* Amis Webix Datatable */
 /* TITLE GRID */

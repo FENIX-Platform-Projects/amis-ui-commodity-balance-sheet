@@ -143,9 +143,7 @@ h4 {
   border-bottom: 1px solid #DCDCDC;
 }
 
-.select2-results{
 
-}
 
 /* TIMEPICKER  */
 
@@ -261,6 +259,14 @@ h4 {
   overflow-y: scroll;
 }
 
+.select2-results{
+  font-size: $font-size-small;
+}
+
 #textboxeditorgridTotalValues4 > .select2-container > .select2-choices{
 
+}
+
+.select2-search-choice{
+  font-size: $font-size-small;
 }

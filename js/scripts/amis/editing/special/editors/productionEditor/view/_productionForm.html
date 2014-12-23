@@ -1,201 +1,210 @@
 <div class="modal fade" id="specialForm" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" id="closeModalTotal"><span
-                        aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Production Form</h4>
-            </div>
-            <div class="modal-body" id="toappendData">
-                <div role="tabpanel">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" id="closeModalTotal"><span
+            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title" id="myModalLabel">Production Form</h4>
+</div>
+<div class="modal-body" id="toappendData">
+    <div role="tabpanel">
 
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#totalValues" aria-controls="totalValues"
-                                                                  role="tab" data-toggle="tab">Total Values</a></li>
-                        <li role="presentation"><a href="#singleCrops" aria-controls="profile" role="tab"
-                                                   data-toggle="tab">Single Crops</a></li>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#totalValues" aria-controls="totalValues"
+                                                      role="tab" data-toggle="tab">Total Values</a></li>
+            <li role="presentation"><a href="#singleCrops" aria-controls="profile" role="tab"
+                                       data-toggle="tab">Single Crops</a></li>
 
-                    </ul>
+        </ul>
 
 
-                    <!-- Tab panes -->
-                    <div class="tab-content">
+        <!-- Tab panes -->
+        <div class="tab-content">
 
-                        <div role="tabpanel" class="tab-pane fade in active" id="totalValues"><br>
+            <div role="tabpanel" class="tab-pane fade in active" id="totalValues"><br>
 
-                            <div class="row">
-                                <div class="col-lg-6 col-lg-offset-1">
-                                    <small class="labelProductionForms">Select the <strong>AREA</strong> you want to put
-                                    </small>
-                                </div>
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-1">
+                            <small class="labelProductionForms">Select the <strong>AREA</strong> you want to put
+                            </small>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-1">
+                            <div class="areaSelected" id="radioBtnAreaHarv">Area Harvested</div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="areaSelected" id="radioBtnAreaPlanted">Area Planted</div>
+                        </div>
+                    </div>
+                    <br><br>
+
+
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-1">
+                            <small class="labelProductionForms">Select the <strong>ELEMENTS</strong> you want to
+                                insert
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="row"><br>
+                        <br>
+
+                        <div class="col-lg-3 col-lg-offset-1">
+                            <div class="totalValuesBoxes" id="firstCheckBoxTotVal">
+                                <span id="firstCheckBoxTotValLabel">Production</span>
                             </div>
-                            <br>
+                            <small class="labelCheckBoxes">(Thousand tonnes)</small>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-lg-6 col-lg-offset-1">
-                                    <div class="areaSelected" id="radioBtnAreaHarv">Area Harvested</div>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="areaSelected" id="radioBtnAreaPlanted">Area Planted</div>
-                                </div>
+                        <div class="col-lg-3">
+                            <div class="totalValuesBoxes" id="secondCheckBoxTotVal">
+                                <span id="secondCheckBoxTotValLabel">Area Harvested</span></div>
+                            <small class="labelCheckBoxes">(Thousand Ha)</small>
+
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="totalValuesBoxes" id="thirdCheckBoxTotVal">
+                                <span id="thirdCheckBoxTotValLabel">Yield</span>
                             </div>
-                            <br><br>
+                            <small class="labelCheckBoxes">(Tonnes/Ha)</small>
+                        </div>
+                        <br><br><br><br>
 
-
-                            <div class="row">
-                                <div class="col-lg-6 col-lg-offset-1">
-                                    <small class="labelProductionForms">Select the <strong>ELEMENTS</strong> you want to
-                                        insert
-                                    </small>
-                                </div>
-                            </div>
-
-                            <div class="row"><br>
-                                <br>
-
-                                <div class="col-lg-3 col-lg-offset-1">
-                                    <div class="totalValuesBoxes" id="firstCheckBoxTotVal">
-                                        <span id="firstCheckBoxTotValLabel">Production</span>
-                                    </div>
-                                    <small class="labelCheckBoxes">(Thousand tonnes)</small>
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <div class="totalValuesBoxes" id="secondCheckBoxTotVal">
-                                        <span id="secondCheckBoxTotValLabel">Area Harvested</span></div>
-                                    <small class="labelCheckBoxes">(Thousand Ha)</small>
-
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="totalValuesBoxes" id="thirdCheckBoxTotVal">
-                                        <span id="thirdCheckBoxTotValLabel">Yield</span>
-                                    </div>
-                                    <small class="labelCheckBoxes">(Tonnes/Ha)</small>
-                                </div>
-                                <br><br><br><br>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-offset-4">
-                                        <button type="button" class="btn btn-primary" id="applyRulesFormulaTot">
-                                            Recalculate
-                                            Data
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row"><br>
-
-                                    <div class="col-lg-10 col-lg-offset-1" id="alertTotal"></div>
-                                </div>
-                                <hr>
-                            </div>
-                            <br>
-
-                            <div class="row">
-                                <div class="col-lg-10 col-lg-offset-1">
-                                    <div id="gridTotalValues"></div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal">Close
-                                </button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveTotalValues">
-                                    Save
-                                    changes
+                        <div class="row">
+                            <div class="col-lg-3 col-lg-offset-4">
+                                <button type="button" class="btn btn-primary" id="applyRulesFormulaTot">
+                                    Recalculate
+                                    Data
                                 </button>
                             </div>
                         </div>
+                        <div class="row"><br>
+
+                            <div class="col-lg-10 col-lg-offset-1" id="alertTotal"></div>
+                        </div>
+                        <hr>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="gridTotalValues"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeModal">Close
+                        </button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="saveTotalValues">
+                            Save
+                            changes
+                        </button>
+                    </div>
+
+                </div><!-- Contanier end -->
+
+            </div>
 
 
-                        <!--  ******************** Single Crops *********************** -->
+            <!--  ******************** Single Crops *********************** -->
 
-                        <div role="tabpanel" class="tab-pane fade" id="singleCrops"><br>
+            <div role="tabpanel" class="tab-pane fade" id="singleCrops"><br>
 
-                            <div class="row">
-                                <div class="col-lg-6 col-lg-offset-1">
-                                    <small class="labelProductionForms">Select the <strong>AREA</strong> you want to put
-                                    </small>
-                                </div>
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-1">
+                            <small class="labelProductionForms">Select the <strong>AREA</strong> you want to put
+                            </small>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-1">
+                            <div class="areaSelectedSingle" id="radioBtnAreaHarvSingleCrops">Area Harvested
                             </div>
-                            <br>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="areaSelectedSingle" id="radioBtnAreaPltdSingleCrops">Area Planted</div>
+                        </div>
+                    </div>
+                    <br><br>
 
-                            <div class="row">
-                                <div class="col-lg-6 col-lg-offset-1">
-                                    <div class="areaSelectedSingle" id="radioBtnAreaHarvSingleCrops">Area Harvested
-                                    </div>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="areaSelectedSingle" id="radioBtnAreaPltdSingleCrops">Area Planted</div>
-                                </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-1">
+                            <small class="labelProductionForms">Select the <strong>ELEMENTS</strong> you want to
+                                insert
+                            </small>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row"><br>
+
+                        <div class="col-lg-3 col-lg-offset-1">
+                            <div class="singleCropsBoxes" id="firstCheckBoxSingleCrops">
+                                <span id="firstCheckBoxSingCropsLabel">Production</span>
                             </div>
-                            <br><br>
+                            <small class="labelCheckBoxes">(Thousand tonnes)</small>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-lg-6 col-lg-offset-1">
-                                    <small class="labelProductionForms">Select the <strong>ELEMENTS</strong> you want to
-                                        insert
-                                    </small>
-                                </div>
+                        <div class="col-lg-3">
+                            <div class="singleCropsBoxes" id="secondCheckBoxSingleCrops">
+                                <span id="secondCheckBoxSingCropsLabel">Area Harvested</span>
                             </div>
-                            <br>
-
-                            <div class="row"><br>
-
-                                <div class="col-lg-3 col-lg-offset-1">
-                                    <div class="singleCropsBoxes" id="firstCheckBoxSingleCrops">
-                                        <span id="firstCheckBoxSingCropsLabel">Production</span>
-                                    </div>
-                                    <small class="labelCheckBoxes">(Thousand tonnes)</small>
-                                </div>
-
-                                <div class="col-lg-3">
-                                    <div class="singleCropsBoxes" id="secondCheckBoxSingleCrops">
-                                        <span id="secondCheckBoxSingCropsLabel">Area Harvested</span>
-                                    </div>
-                                    <small class="labelCheckBoxes">(Thousand Ha)</small>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="singleCropsBoxes" id="thirdCheckBoxSingleCrops">
-                                        <span id="thirdCheckBoxSingCropsLabel">Yield</span>
-                                    </div>
-                                    <small class="labelCheckBoxes">(Tonnes/Ha)</small>
-                                </div>
-                                <br><br><br><br>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-offset-4">
-                                        <button type="button" class="btn btn-primary" id="applyRulesFormulaSingle">
-                                            Recalculate Data
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row"><br>
-
-                                    <div class="col-lg-10 col-lg-offset-1" id="alertSingle"></div>
-                                </div>
-                                <hr>
+                            <small class="labelCheckBoxes">(Thousand Ha)</small>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="singleCropsBoxes" id="thirdCheckBoxSingleCrops">
+                                <span id="thirdCheckBoxSingCropsLabel">Yield</span>
                             </div>
-                            <br>
+                            <small class="labelCheckBoxes">(Tonnes/Ha)</small>
+                        </div>
+                        <br><br><br><br>
 
-                            <div class="row">
-                                <div class="col-lg-10 col-lg-offset-1">
-                                    <div id="gridSingleCrops"></div>
-                                </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-lg-offset-4">
+                                <button type="button" class="btn btn-primary" id="applyRulesFormulaSingle">
+                                    Recalculate Data
+                                </button>
                             </div>
+                        </div>
+                        <div class="row"><br>
 
-                            <div class="modal-footer">
-                                <div class="row">
-                                    <div class="col-lg-10 col-lg-offset-1">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">
-                                            Close
-                                        </button>
-                                    </div>
-                                </div>
+                            <div class="col-lg-10 col-lg-offset-1" id="alertSingle"></div>
+                        </div>
+                        <hr>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="gridSingleCrops"></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    Close
+                                </button>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> <!-- Contanier end -->
             </div>
+
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
