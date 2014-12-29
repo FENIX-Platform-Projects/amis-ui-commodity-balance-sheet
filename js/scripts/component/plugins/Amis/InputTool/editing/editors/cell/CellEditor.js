@@ -72,7 +72,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             var valueLeft = formatter.fromDSDToVisualizationFormat(cell[leftKeyColumnsIndexes[i]], configurationKeys["leftKeyColumnConfiguration"][i],
                 leftKeyColumns[i].dataTypes, Configurator)
             $('#form').append("<div class ='row'>" +
-                "<div class='col-xs-6'><label for='leftKeyColumn" + i + "'>" + columns[leftKeyColumnsIndexes[i]].domain.title[language]
+                "<div class='col-xs-6'><label class='titlesForm' for='leftKeyColumn" + i + "'>" + columns[leftKeyColumnsIndexes[i]].domain.title[language]
                 + "</label></div>" +
                 "<div class='col-xs-6'><p  class='read-group-xs' name='name' id='leftKeyColumn" + i + "'>" + valueLeft + "</p></div>" +
                 "</div><br>")
@@ -82,7 +82,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             var valueUp = formatter.fromDSDToVisualizationFormat(cell[upKeyColumnsIndexes[i]], configurationKeys["upKeyColumnConfiguration"][i],
                 upKeyColumns[i].dataTypes, Configurator)
             $('#form').append("<div class ='row'>" +
-                "<div class='col-xs-6'><label for='upKeyColumn" + i + "'>" + columns[upKeyColumnsIndexes[i]].domain.title[language]
+                "<div class='col-xs-6'><label class='titlesForm' for='upKeyColumn" + i + "'>" + columns[upKeyColumnsIndexes[i]].domain.title[language]
                 + "</label></div>" +
                 "<div class='col-xs-6'><p  class='read-group-xs' name='name' id='upKeyColumn" + i + "'>" + valueUp + "</p></div>" +
                 "</div><br>")
@@ -251,7 +251,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                 }
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-xs-6'><label for='" + container + "'>" + title + "</label></div>" +
+                    "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title + "</label></div>" +
                     "<div class='col-xs-6'><div class = 'input-group-xs' id='" + container + "' /></div></div></div><br>");
 
                 $("#" + container + "").jqxDateTimeInput({
@@ -318,7 +318,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-xs-6'><label for='" + container + "'>" + title + "</label></div>" +
+                    "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title + "</label></div>" +
                     "<div class='col-xs-6'><div class = 'input-group-xs' id='" + container + "' /></div></div></div><br>");
                 $("#" + container + "").jqxDateTimeInput({
                     value: defaultDate,
@@ -377,7 +377,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                 }
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-xs-6'><label for='" + container + "'>" + title + "</label></div>" +
+                    "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title + "</label></div>" +
                     "<div class='col-xs-6'><div class = 'input-group-xs' id='" + container + "' /></div></div></div><br>");
                 $("#" + container + "").jqxDateTimeInput({
                     value: defaultDate,
@@ -449,7 +449,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-xs-6'><label for='" + container + "'>" + title + "</label></div>" +
+                    "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title + "</label></div>" +
                     "<div class='col-xs-6'><div class = 'input-group-xs' id='" + container + "' /></div></div></div><br>");
                 $("#" + container + "").jqxDateTimeInput({
                     value: defaultDate,
@@ -501,7 +501,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                 var dataAdapter = new $.jqx.dataAdapter(source);
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-xs-6'><label for='" + container + "'>" + title + "</label></div>" +
+                    "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title + "</label></div>" +
                     "<div class='col-xs-6'><div class = 'input-group-xs' id='" + container + "' /></div></div><br>");
 
                 // comboBox
@@ -540,14 +540,14 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
                 if (ConfColumn.values.editable) {
                     $('#form').append("<div class ='row'>" +
-                        "<div class='col-xs-6'><label for='" + container + "'>" + title
+                        "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                         + "</label></div>" +
                         "<div class='col-xs-6'><input type='number' class='input-group-xs' name='name' id='" + container + "' value='" + value +
                         "' min='" + numberFrom + "' max='" + numberTo + "'  step='any' style='width:100%'></div>" +
                         "</div><br>")
                 } else {
                     $('#form').append("<div class ='row'>" +
-                        "<div class='col-xs-6'><label for='" + container + "'>" + title
+                        "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                         + "</label></div>" +
                         "<div class='col-xs-6'><input type='number' class='input-group-xs' name='name' id='" + container + "' value='" + value +
                         "' min='" + numberFrom + "' max='" + numberTo + "'  step='any' readonly></div>" +
@@ -561,7 +561,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             case "boolean":
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-xs-6'><label for='" + container + "'>" + title
+                    "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                     + "</label></div>" +
                     "<div class='col-xs-3'><div class='input-group-xs' name='name' id='" + container + "1'>True" +
                     "</div></div>" +
@@ -591,7 +591,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                 if (ConfColumn.values.editable) {
                     if (title == "Note") {
                         $('#form').append("<div class ='row'>" +
-                            "<div class='col-xs-6'><label for='" + container + "'>" + title
+                            "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                             + "</label></div>" +
                             "<div class='col-xs-6'><textarea placeholder ='Type some notes' type='text' class='input-group-xs form-control' name='name'  rows='3' id='" + container + "'>" + value + "</textarea></div>" +
                             "</div> ")
@@ -604,7 +604,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
                     else {
                         $('#form').append("<div class ='row'>" +
-                            "<div class='col-xs-6'><label for='" + container + "'>" + title
+                            "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                             + "</label></div>" +
                             "<div class='col-xs-6'><input type='text' class='input-group-xs form-control' name='name' id='" + container + "' value='" + value + "'/></div>" +
                             "</div><br>")
@@ -612,7 +612,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                 }
                 else {
                     $('#form').append("<div class ='row'>" +
-                        "<div class='col-xs-6'><label for='" + container + "'>" + title
+                        "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                         + "</label></div>" +
                         "<div class='col-xs-6'><input type='text' class='input-group-xs form-control' name='name'  id='" + container + "' value='" + value + "' readonly/></div>" +
                         "</div><br>")
@@ -699,7 +699,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         var stringValue = value;
         var stringToAppend = '<div>' +
             '<div class="row"><div class="col-xs-6">' +
-            '<label for="' + container + '">' + title + '</label></div>' +
+            '<label class="titlesForm" for="' + container + '">' + title + '</label></div>' +
             '<div class="col-xs-6">' +
             '<select multiple tabindex="-1" id="' + container + '" style="width:100%" class="input-group-xs">';
         stringToAppend += flagController.getOptions(stringValue)

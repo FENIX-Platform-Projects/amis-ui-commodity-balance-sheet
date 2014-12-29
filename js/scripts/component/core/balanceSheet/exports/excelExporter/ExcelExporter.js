@@ -1,86 +1,89 @@
 define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!exporter/form/_formExcel.html", "urlConfigurator"],
-    function($, HandlerSelection, FormEXCEL, URLConfigurator) {
+    function ($, HandlerSelection, FormEXCEL, URLConfigurator) {
 
-    var handlerSelection, supportUtility, formExcel, urlConfigurator;
-    var COMMODITY_CODES = [1, 4, 5, 6]
+        var handlerSelection, supportUtility, formExcel, urlConfigurator;
+        var COMMODITY_CODES = [1, 4, 5, 6]
 
-    function ExcelExporter() {
-        urlConfigurator = new URLConfigurator;
-        handlerSelection = new HandlerSelection;
-        formExcel = FormEXCEL;
-        $("#exportExcelTrue").append(formExcel);
-
-    }
-
-    ExcelExporter.prototype.init = function (SupportUtility) {
-        supportUtility = SupportUtility;
-        var url = urlConfigurator.getExportingUrl()
-        document.getElementById('formAction').setAttribute('action',url)
-
-        var totalValues = [];
-        var preloadingData = supportUtility.getPreloadingData();
-
-        for (var i = 0; i < COMMODITY_CODES.length; i++) {
-            var commodity = COMMODITY_CODES[i];
-            var forecastCommodity = this.createForecastForCommodity(commodity, preloadingData);
-            totalValues = totalValues.concat(forecastCommodity);
+        function ExcelExporter() {
+            urlConfigurator = new URLConfigurator;
+            handlerSelection = new HandlerSelection;
+            formExcel = FormEXCEL;
+            $("#exportExcelTrue").append(formExcel);
 
         }
 
-        var filterData = supportUtility.getFilterData();
+        ExcelExporter.prototype.init = function (SupportUtility) {
+            supportUtility = SupportUtility;
+            var url = urlConfigurator.getExportingUrl()
+            document.getElementById('formAction').setAttribute('action', url)
 
-        var season  =filterData.season
-        var region  =filterData.country;
-        var product = filterData.product;
-        var dataSource  =filterData.dataSource
+            var totalValues = [];
+            var preloadingData = supportUtility.getPreloadingData();
 
-        this.createFormAndExport(totalValues,season, region, product, dataSource)
+            for (var i = 0; i < COMMODITY_CODES.length; i++) {
+                var commodity = COMMODITY_CODES[i];
+                var forecastCommodity = this.createForecastForCommodity(commodity, preloadingData);
+                totalValues = totalValues.concat(forecastCommodity);
 
-    }
+            }
 
+            var filterData = supportUtility.getFilterData();
 
-    ExcelExporter.prototype.createForecastForCommodity = function (commodity, dataFiltered){
+            var season = filterData.season
+            var region = filterData.country;
+            var product = filterData.product;
+            var dataSource = filterData.dataSource
 
-      var forecast;
-      var copyDataFiltered = $.extend(true,{}, dataFiltered)
-      copyDataFiltered.post.productCode = commodity;
-      var isExport = false;
-      var productCode =copyDataFiltered.post.productCode;
-      var regionCode= copyDataFiltered.post.regionCode;
-      forecast = handlerSelection.init(copyDataFiltered, regionCode, productCode, isExport);
+            this.createFormAndExport(totalValues, season, region, product, dataSource)
 
-        for(var i = 0, length = forecast.length; i<length;i++){
-            forecast[i].unshift(commodity);
         }
 
-      return forecast;
-    }
 
+        ExcelExporter.prototype.createForecastForCommodity = function (commodity, dataFiltered) {
 
-    ExcelExporter.prototype.createFormAndExport = function(totalValues,season, region, product, dataSource){
+            var forecast;
+            var copyDataFiltered = $.extend(true, {}, dataFiltered)
+            copyDataFiltered.post.productCode = commodity;
+            if(commodity==1){
+                debugger;
+            }
+            var isExport = false;
+            var productCode = copyDataFiltered.post.productCode;
+            var regionCode = copyDataFiltered.post.regionCode;
+            forecast = handlerSelection.init(copyDataFiltered, regionCode, productCode, isExport);
 
-        var stringToappend = '<input id="regionIDForm" type="text" name="region" value="'+region+'"/>'+
-            '<input id="datasourceIDForm" type="text" name="datasource" value="'+dataSource+'"/>'+
-            '<input id="seasonIDForm" type="text" name="season" value="'+season+'"/>'+
-            '<input id="productIDForm" type="text" name="product" value="'+product+'"/>'
+            for (var i = 0, length = forecast.length; i < length; i++) {
+                forecast[i].unshift(commodity);
+            }
 
-
-        for(var i = 0, length = totalValues.length;i<length; i++){
-            stringToappend += '<input type="text" name="data" value="' + totalValues[i] + '"/>';
+            return forecast;
         }
-        $("#formAction").append(stringToappend);
-
-        document.getElementById('submitButton').click(function(e){
-            e.preventDefault();
-            e.stopImmediatePropagation();
-        });
-
-        var f= document.getElementById('formExcel')
-        f.remove();
 
 
-    }
+        ExcelExporter.prototype.createFormAndExport = function (totalValues, season, region, product, dataSource) {
+
+            var stringToappend = '<input id="regionIDForm" type="text" name="region" value="' + region + '"/>' +
+                '<input id="datasourceIDForm" type="text" name="datasource" value="' + dataSource + '"/>' +
+                '<input id="seasonIDForm" type="text" name="season" value="' + season + '"/>' +
+                '<input id="productIDForm" type="text" name="product" value="' + product + '"/>'
 
 
-    return ExcelExporter;
-})
+            for (var i = 0, length = totalValues.length; i < length; i++) {
+                stringToappend += '<input type="text" name="data" value="' + totalValues[i] + '"/>';
+            }
+            $("#formAction").append(stringToappend);
+
+            document.getElementById('submitButton').click(function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+            });
+
+            var f = document.getElementById('formExcel')
+            f.remove();
+
+
+        }
+
+
+        return ExcelExporter;
+    })

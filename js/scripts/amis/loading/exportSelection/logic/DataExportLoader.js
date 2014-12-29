@@ -40,17 +40,27 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         })
 
         var twoMostRecentDates;
-        if (dates.length >= 2) {
-            debugger;
+        debugger;
+        var mostRecentMonthDates = this.lookForTwoActualMonths(dates);
+
+        if (mostRecentMonthDates.length == 0) {
+            if (dates.length >= 2) {
+
+
+
 
             /*
 
-                    BUSINESS for taking the two most recent months
+             BUSINESS for taking the two most recent months
 
              */
             twoMostRecentDates = [dates[dates.length - 2][0], dates[dates.length - 1][0]]
         } else {
             twoMostRecentDates = [dates[dates.length - 1][0]]
+        }
+    }
+        else{
+            twoMostRecentDates = mostRecentMonthDates;
         }
         console.log('Two most recent dates')
         console.log(twoMostRecentDates)
@@ -138,13 +148,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             dates = result;
         })
 
-
-        console.log('dates for actual season: ')
-        console.log(dates)
         var mostRecentDate = dates[dates.length - 1][0]
-
-        console.log('dates fchosen ')
-        console.log(mostRecentDate)
 
         filterPreviousYear["date"] = mostRecentDate;
 
@@ -189,8 +193,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         mostRecentForecast[0].push(population[0])
 
         var result = mostRecentForecast[0]
-        console.log('most recent forecast after population')
-        console.log(mostRecentForecast)
 
         result = this.appendSeasonToDate(result, seasonLabel);
         return result;
@@ -204,6 +206,24 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         }
 
         return forecast;
+    }
+
+
+    DataExportLoader.prototype.lookForTwoActualMonths = function(dates){
+
+        var result = []
+        var actualMonth = new Date().getMonth()+1;
+        var previousMonth = (actualMonth-1 == 0)? 1 : actualMonth-1
+        for(var i =0; i< dates.length; i++){
+            debugger;
+            if(dates[i][0].substr(5, 2) == actualMonth || dates[i][0].substr(5, 2) == previousMonth){
+
+                result.push(dates[i][0]);
+            }
+        }
+
+        return result
+
     }
 
 
