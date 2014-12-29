@@ -310,7 +310,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             }
 
         })
-        
+
     }
 
     ProductionObserver.prototype.listenToChangeRadioButtonValue = function () {

@@ -817,7 +817,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
     }
 
     PaddyObserver.prototype.listenToCloseButton = function () {
-        $('closeModal').on('click', function () {
+        $('#closeModal').on('click', function () {
             controllerPaddy.destroyAll()
         })
     }

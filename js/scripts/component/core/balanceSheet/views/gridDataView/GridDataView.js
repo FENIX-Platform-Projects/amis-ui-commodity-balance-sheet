@@ -69,14 +69,14 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                     columns.push({id: "data" + 1, header: [
                         {text: 'Input dates', colspan: arrDiffDates.length},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text', fillspace:true, css: "datesColumns", sort: "string"})
+                    ], editor: 'text', fillspace:true, minWidth: 100,css: "datesColumns", sort: "string"})
                 } else if (i != 0 && i != arrDiffDates.length) {
 
                     columns.push({id: "data" + (i + 1), header: [
                         //{text: ''},
                         {text: null},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text', fillspace:true, css: "datesColumns", sort: "int"})
+                    ], editor: 'text', fillspace:true,minWidth: 100, css: "datesColumns", sort: "int"})
                 }
             }
             return columns;

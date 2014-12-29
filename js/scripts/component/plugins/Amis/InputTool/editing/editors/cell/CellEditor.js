@@ -1,10 +1,10 @@
 /**
  * Created by fabrizio on 7/7/14.
  */
-define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/FlagController", "select2", "jquery.dirtyFields",
-    "jqwidgets"], function ($, Formatter, FlagController) {
+define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/FlagController", "text!modalView/modalForm.html", "select2", "jquery.dirtyFields",
+    "jqwidgets"], function ($, Formatter, FlagController, ModalView) {
 
-    var formatter, language, columns, valueIndex, accessorIndexes , mapPreviousValues, flagController;
+    var formatter, language, columns, valueIndex, accessorIndexes , mapPreviousValues, flagController, modalView;
 
     // ---------------------- SUPPORT FUNCTIONS -------------------------------------------
 
@@ -28,6 +28,15 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     CellEditor.prototype.init = function (Configurator, cell, dsd) {
 
+        this.destroyIfExist();
+
+
+
+
+        modalView = ModalView;
+        $("#pivotGrid").append(modalView)
+
+
         flagController = new FlagController;
         formatter = new Formatter;
         var configuration = Configurator.getComponentConfigurator();
@@ -45,26 +54,27 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         mapPreviousValues = [];
 
 
-        var f = document.getElementById("dialogForm");
-        if (f !== null) {
-            f.remove()
-        }
 
-        var $newdiv1 = $("<div id='dialogForm' type='hidden'></div>");
+
+
+
+        //    this.destroyIfExist();
+
+
+        //   var $newdiv1 = $("<div id='dialogForm' ></div>");
         // Only the FIRST ROW column indexes start from 2, it needs to be checked!
-        $("#pivotGrid").append($newdiv1)
 
-        var form = ("<form id ='form' role='form' class='col-lg-12' type='hidden'><fieldset>");
-        $('#dialogForm').append(form);
+        //  var form = ("<form id ='form' role='form' class='col-xs-12' ><fieldset>");
+        //   $('#dialogForm').append(form);
         // leftKeyColumns
         for (var i = 0; i < leftKeyColumnsIndexes.length; i++) {
             // show value in right format
             var valueLeft = formatter.fromDSDToVisualizationFormat(cell[leftKeyColumnsIndexes[i]], configurationKeys["leftKeyColumnConfiguration"][i],
                 leftKeyColumns[i].dataTypes, Configurator)
             $('#form').append("<div class ='row'>" +
-                "<div class='col-lg-6'><label for='leftKeyColumn" + i + "'>" + columns[leftKeyColumnsIndexes[i]].domain.title[language]
+                "<div class='col-xs-6'><label for='leftKeyColumn" + i + "'>" + columns[leftKeyColumnsIndexes[i]].domain.title[language]
                 + "</label></div>" +
-                "<div class='col-lg-6'><p  class='read-group-lg' name='name' id='leftKeyColumn" + i + "'>" + valueLeft + "</p></div>" +
+                "<div class='col-xs-6'><p  class='read-group-xs' name='name' id='leftKeyColumn" + i + "'>" + valueLeft + "</p></div>" +
                 "</div><br>")
         }
         // upKeyColumns
@@ -72,9 +82,9 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             var valueUp = formatter.fromDSDToVisualizationFormat(cell[upKeyColumnsIndexes[i]], configurationKeys["upKeyColumnConfiguration"][i],
                 upKeyColumns[i].dataTypes, Configurator)
             $('#form').append("<div class ='row'>" +
-                "<div class='col-lg-6'><label for='upKeyColumn" + i + "'>" + columns[upKeyColumnsIndexes[i]].domain.title[language]
+                "<div class='col-xs-6'><label for='upKeyColumn" + i + "'>" + columns[upKeyColumnsIndexes[i]].domain.title[language]
                 + "</label></div>" +
-                "<div class='col-lg-6'><p  class='read-group-lg' name='name' id='upKeyColumn" + i + "'>" + valueUp + "</p></div>" +
+                "<div class='col-xs-6'><p  class='read-group-xs' name='name' id='upKeyColumn" + i + "'>" + valueUp + "</p></div>" +
                 "</div><br>")
         }
 
@@ -100,32 +110,18 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         }
 
-        $('#spaceForButtons').append("<br><br>" +
-            "<div class='row'><div class='col-lg-2 col-lg-offset-8 '>" +
-            "<button class='btn btn-lg btn-danger' id='saveButton'>Save</button>" +
-            "</div>" +
-            "<div class='col-lg-2'>" +
-            "<button class='btn btn-lg btn-primary' id='resetButton'>Reset</button>" +
-            "</div></div></div>")
-
 
         var that = this;
 
-        // Creation of the dialog
-        $("#dialogForm").dialog({
-            title: 'Editor',
-            state: "open",
-            modal: true,
-            height: '550',
-            width: "600",
-            background: '#AAAAA',
-            close: function () {
-                var f = document.getElementById("dialogForm");
-                if (f !== null) {
-                    f.remove()
-                }
-            }
+
+        $("#dialogForm").modal({ backdrop: 'static',
+            keyboard: false});
+
+
+        $("#dialogForm").draggable({
+            handle: ".modal-header"
         });
+
 
 
         var that = this;
@@ -255,8 +251,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                 }
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-lg-6'><label for='" + container + "'>" + title + "</label></div>" +
-                    "<div class='col-lg-6'><div class = 'input-group-lg' id='" + container + "' /></div></div></div><br>");
+                    "<div class='col-xs-6'><label for='" + container + "'>" + title + "</label></div>" +
+                    "<div class='col-xs-6'><div class = 'input-group-xs' id='" + container + "' /></div></div></div><br>");
 
                 $("#" + container + "").jqxDateTimeInput({
                     value: defaultDate,
@@ -322,8 +318,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-lg-6'><label for='" + container + "'>" + title + "</label></div>" +
-                    "<div class='col-lg-6'><div class = 'input-group-lg' id='" + container + "' /></div></div></div><br>");
+                    "<div class='col-xs-6'><label for='" + container + "'>" + title + "</label></div>" +
+                    "<div class='col-xs-6'><div class = 'input-group-xs' id='" + container + "' /></div></div></div><br>");
                 $("#" + container + "").jqxDateTimeInput({
                     value: defaultDate,
                     min: new Date(yearFrom, monthFrom - 1),
@@ -381,8 +377,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                 }
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-lg-6'><label for='" + container + "'>" + title + "</label></div>" +
-                    "<div class='col-lg-6'><div class = 'input-group-lg' id='" + container + "' /></div></div></div><br>");
+                    "<div class='col-xs-6'><label for='" + container + "'>" + title + "</label></div>" +
+                    "<div class='col-xs-6'><div class = 'input-group-xs' id='" + container + "' /></div></div></div><br>");
                 $("#" + container + "").jqxDateTimeInput({
                     value: defaultDate,
                     min: new Date(yearFrom),
@@ -453,8 +449,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-lg-6'><label for='" + container + "'>" + title + "</label></div>" +
-                    "<div class='col-lg-6'><div class = 'input-group-lg' id='" + container + "' /></div></div></div><br>");
+                    "<div class='col-xs-6'><label for='" + container + "'>" + title + "</label></div>" +
+                    "<div class='col-xs-6'><div class = 'input-group-xs' id='" + container + "' /></div></div></div><br>");
                 $("#" + container + "").jqxDateTimeInput({
                     value: defaultDate,
                     min: new Date(yearFrom, monthFrom - 1, dayFrom),
@@ -505,8 +501,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                 var dataAdapter = new $.jqx.dataAdapter(source);
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-lg-6'><label for='" + container + "'>" + title + "</label></div>" +
-                    "<div class='col-lg-6'><div class = 'input-group-lg' id='" + container + "' /></div></div><br>");
+                    "<div class='col-xs-6'><label for='" + container + "'>" + title + "</label></div>" +
+                    "<div class='col-xs-6'><div class = 'input-group-xs' id='" + container + "' /></div></div><br>");
 
                 // comboBox
                 // Multiselect or not
@@ -544,16 +540,16 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
                 if (ConfColumn.values.editable) {
                     $('#form').append("<div class ='row'>" +
-                        "<div class='col-lg-6'><label for='" + container + "'>" + title
+                        "<div class='col-xs-6'><label for='" + container + "'>" + title
                         + "</label></div>" +
-                        "<div class='col-lg-6'><input type='number' class='input-group-lg' name='name' id='" + container + "' value='" + value +
+                        "<div class='col-xs-6'><input type='number' class='input-group-xs' name='name' id='" + container + "' value='" + value +
                         "' min='" + numberFrom + "' max='" + numberTo + "'  step='any' style='width:100%'></div>" +
                         "</div><br>")
                 } else {
                     $('#form').append("<div class ='row'>" +
-                        "<div class='col-lg-6'><label for='" + container + "'>" + title
+                        "<div class='col-xs-6'><label for='" + container + "'>" + title
                         + "</label></div>" +
-                        "<div class='col-lg-6'><input type='number' class='input-group-lg' name='name' id='" + container + "' value='" + value +
+                        "<div class='col-xs-6'><input type='number' class='input-group-xs' name='name' id='" + container + "' value='" + value +
                         "' min='" + numberFrom + "' max='" + numberTo + "'  step='any' readonly></div>" +
                         "</div><br>")
                 }
@@ -565,11 +561,11 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             case "boolean":
 
                 $('#form').append("<div class ='row'>" +
-                    "<div class='col-lg-6'><label for='" + container + "'>" + title
+                    "<div class='col-xs-6'><label for='" + container + "'>" + title
                     + "</label></div>" +
-                    "<div class='col-lg-3'><div class='input-group-lg' name='name' id='" + container + "1'>True" +
+                    "<div class='col-xs-3'><div class='input-group-xs' name='name' id='" + container + "1'>True" +
                     "</div></div>" +
-                    "<div class='col-lg-3'><div class='input-group' name='name' id='" + container + "0'>False" +
+                    "<div class='col-xs-3'><div class='input-group' name='name' id='" + container + "0'>False" +
                     "</div></div></div><br>");
                 var trueId = container + "1"
                 var falseId = container + "0"
@@ -595,10 +591,10 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                 if (ConfColumn.values.editable) {
                     if (title == "Note") {
                         $('#form').append("<div class ='row'>" +
-                            "<div class='col-lg-6'><label for='" + container + "'>" + title
+                            "<div class='col-xs-6'><label for='" + container + "'>" + title
                             + "</label></div>" +
-                            "<div class='col-lg-6'><textarea placeholder ='Type some notes' type='text' class='input-group-lg form-control' name='name'  rows='3' id='" + container + "'>" + value + "</textarea></div>" +
-                            "</div><br><div class ='ui-dialog-buttonpane ui-widget-content ui-helper-clearfix' id='spaceForButtons'></div>")
+                            "<div class='col-xs-6'><textarea placeholder ='Type some notes' type='text' class='input-group-xs form-control' name='name'  rows='3' id='" + container + "'>" + value + "</textarea></div>" +
+                            "</div> ")
                     }
                     // Case Multiple flag
                     else if (title == "Flags") {
@@ -608,17 +604,17 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
                     else {
                         $('#form').append("<div class ='row'>" +
-                            "<div class='col-lg-6'><label for='" + container + "'>" + title
+                            "<div class='col-xs-6'><label for='" + container + "'>" + title
                             + "</label></div>" +
-                            "<div class='col-lg-6'><input type='text' class='input-group-lg form-control' name='name' id='" + container + "' value='" + value + "'/></div>" +
+                            "<div class='col-xs-6'><input type='text' class='input-group-xs form-control' name='name' id='" + container + "' value='" + value + "'/></div>" +
                             "</div><br>")
                     }
                 }
                 else {
                     $('#form').append("<div class ='row'>" +
-                        "<div class='col-lg-6'><label for='" + container + "'>" + title
+                        "<div class='col-xs-6'><label for='" + container + "'>" + title
                         + "</label></div>" +
-                        "<div class='col-lg-6'><input type='text' class='input-group-lg form-control' name='name'  id='" + container + "' value='" + value + "' readonly/></div>" +
+                        "<div class='col-xs-6'><input type='text' class='input-group-xs form-control' name='name'  id='" + container + "' value='" + value + "' readonly/></div>" +
                         "</div><br>")
 
                 }
@@ -636,7 +632,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
      */
     CellEditor.prototype.getValuesFromCellEditor = function () {
         var array = [];
-        var $inputs = document.getElementsByClassName('input-group-lg');
+        var $inputs = document.getElementsByClassName('input-group-xs');
         var $input = [];
 
         for (var i = 0; i < $inputs.length; i++) {
@@ -702,10 +698,10 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
     CellEditor.prototype.getMultipleFlagToAppend = function (value, container, title) {
         var stringValue = value;
         var stringToAppend = '<div>' +
-            '<div class="row"><div class="col-lg-6">' +
+            '<div class="row"><div class="col-xs-6">' +
             '<label for="' + container + '">' + title + '</label></div>' +
-            '<div class="col-lg-6">' +
-            '<select multiple tabindex="-1" id="' + container + '" style="width:100%" class="input-group-lg">';
+            '<div class="col-xs-6">' +
+            '<select multiple tabindex="-1" id="' + container + '" style="width:100%" class="input-group-xs">';
         stringToAppend += flagController.getOptions(stringValue)
         stringToAppend += '</select></div></div>' +
             '<br>';
@@ -714,5 +710,24 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
     }
 
 
+    CellEditor.prototype.destroyIfExist = function () {
+
+
+        var f =  $('#closeModalFormTotal');
+        if(f) {
+            $('#closeModalFormTotal').click();
+        }
+
+         var f = document.getElementById("dialogForm");
+
+         if (f && f !== null) {
+             f.remove()
+         }
+
+
+    }
+
+
     return CellEditor;
+
 })

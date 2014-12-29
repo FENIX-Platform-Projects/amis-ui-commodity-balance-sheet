@@ -19,6 +19,7 @@ requirejs.config({
         generalController :  "../component/core/balanceSheet/controller",
         modelController   :  "../component/core/balanceSheet/models/controllerDataModels",
         editor            :  "../component/plugins/Amis/InputTool/editing/editors",
+        modalView         :  "../component/plugins/Amis/InputTool/editing/editors/modalView",
         editorController  :  "../component/core/balanceSheet/editors/controller",
         exporter          :  "../component/core/balanceSheet/exports",
         validator         :  "../component/core/balanceSheet/validator",
