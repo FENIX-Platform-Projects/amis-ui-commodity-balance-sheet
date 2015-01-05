@@ -5,7 +5,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
 
     var urlActualForecast , urlPopulation , urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
-        formatter, realPreviousDate, Services;
+        formatter, realPreviousDate, Services, urlYear;
 
 
     function DataExportLoader() {
@@ -13,6 +13,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         Services = new ServicesURL;
         Services.init()
 
+        urlYear  = Services.getYearUrl();
         urlActualForecast = Services.getAllDataUrl()
         urlPopulation = Services.getPopulationUrl();
         urlMostRecentDate = Services.getMostRecentDateUrl();
@@ -40,14 +41,11 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         })
 
         var twoMostRecentDates;
-        debugger;
         var mostRecentMonthDates = this.lookForTwoActualMonths(dates);
 
         if (mostRecentMonthDates.length == 0) {
+            debugger;
             if (dates.length >= 2) {
-
-
-
 
             /*
 
@@ -115,14 +113,8 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             } else {
                 twoMostREcentForecasts.push(temporaryForecast[0])
             }
-            console.log('forecastWithoutPopulation')
-            console.log(temporaryForecast)
+
         }
-        console.log("****************************************************************************************")
-        console.log(twoMostREcentForecasts)
-
-
-        console.log("****************************************************************************************")
 
         return twoMostREcentForecasts;
     }
@@ -213,16 +205,50 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
         var result = []
         var actualMonth = new Date().getMonth()+1;
-        var previousMonth = (actualMonth-1 == 0)? 1 : actualMonth-1
+        var previousMonth = (actualMonth-1 == 0)? 12 : actualMonth-1
         for(var i =0; i< dates.length; i++){
-            debugger;
             if(dates[i][0].substr(5, 2) == actualMonth || dates[i][0].substr(5, 2) == previousMonth){
-
                 result.push(dates[i][0]);
             }
         }
 
         return result
+
+    }
+
+
+    DataExportLoader.prototype.lookForSeasonsCommodityBelonging = function(regionCode, productCode){
+
+
+        var result;
+
+
+        var payload = {
+            "regionCode": regionCode,
+            "productCode": productCode
+        }
+
+        debugger;
+
+        $.ajax({
+            async: false,
+            url: urlYear,
+            type: 'post',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(payload),
+            success: function (data) {
+
+                 result = data;
+            }
+        });
+
+
+        console.log('DATAAAAAAAAAAAA')
+        console.log(result)
+
+        return result;
+
 
     }
 

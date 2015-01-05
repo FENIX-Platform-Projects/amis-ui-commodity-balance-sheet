@@ -1,4 +1,4 @@
-define(['jquery', "exportLoader/logic/DataExportLoader"], function ($, DataLoader) {
+define(['jquery', "exportLoader/logic/DataExportLoader", "underscore-min"], function ($, DataLoader, _) {
 
     var dataLoader, filterActual;
 
@@ -18,25 +18,65 @@ define(['jquery', "exportLoader/logic/DataExportLoader"], function ($, DataLoade
 
     }
 
-    HandlerExportSelection.prototype.init = function (preloadingData, region, product, isExport) {
-
+    HandlerExportSelection.prototype.init = function (preloadingData,  isExport, items, selectedIndex, isDifferentCommodity) {
 
         var resultForecast = []
 
 
+
+        // --------------- to be changed --------
         // to change because every commodity could have different years and seasons
-        var items = $("#selectionYear").jqxComboBox('getItems');
 
-        var selectedIndex = $("#selectionYear").jqxComboBox('getSelectedIndex');
 
-        resultForecast = this.createLastForecastCurrentSeason(items, region, product, items[selectedIndex]);
+        var seasonsToChoose, seasonSelected, yearSelected;
+
+
+
+        // --------------- to be changed --------
+
+
+        var region = preloadingData.post.regionCode
+        var product = preloadingData.post.productCode
+
+
+
+        if(isDifferentCommodity) {
+
+
+
+            var years = dataLoader.lookForSeasonsCommodityBelonging(region, product, items, selectedIndex)
+            seasonsToChoose = years
+            var season = items[selectedIndex].label
+            if(seasonsToChoose[selectedIndex].yearLabel == season){
+
+            }
+        }else{
+            seasonsToChoose = items;
+            seasonSelected =  items[selectedIndex].label;
+            yearSelected = items[selectedIndex].value;
+
+        }
+        console.log('YEARSSSs')
+        console.log(years)
+
+
+
+
+        // Selected season:
+        var filterSeason = this.createFilterForSeasons(region, product, items[selectedIndex])
+        var filterPopulation = this.createFilterPopulation(region, items[selectedIndex])
+        resultForecast = dataLoader.getAndCreateTwoMostRecentForecast(filterSeason, filterSeason, filterPopulation, preloadingData, items[selectedIndex].label)
+
+        resultForecast = resultForecast[0]
+     //   resultForecast = this.createLastForecastCurrentSeason(items, region, product, items[selectedIndex]);
 
         // USe operator of minus(-) for the order of the seasons
         var seasonChecked = [items[selectedIndex].label]
         var seasonLength = items.length -1
         var precedentSeasons = [];
-        // exist two season after the one selected
 
+
+        // exist two season after the one selected
         if (selectedIndex +2 <= seasonLength) {
             precedentSeasons.push(items[selectedIndex +1], items[selectedIndex + 2]);
         }
@@ -52,8 +92,7 @@ define(['jquery', "exportLoader/logic/DataExportLoader"], function ($, DataLoade
         var precedentSeasonsForecast = []
 
         if (precedentSeasons != null) {
-            console.log('successive seasone::::::::')
-            console.log(precedentSeasons)
+
             for (var i = 0; i < precedentSeasons.length; i++) {
                 var filterSeason = this.createFilterForSeasons(region, product, precedentSeasons[i])
                 var filterPopulation = this.createFilterPopulation(region, precedentSeasons[i])
@@ -63,8 +102,6 @@ define(['jquery', "exportLoader/logic/DataExportLoader"], function ($, DataLoade
             }
         }
 
-
-        console.log(resultForecast)
         resultForecast.reverse()
         return resultForecast;
 

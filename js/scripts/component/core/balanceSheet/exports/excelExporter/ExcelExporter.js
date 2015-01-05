@@ -1,7 +1,7 @@
 define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!exporter/form/_formExcel.html", "urlConfigurator"],
     function ($, HandlerSelection, FormEXCEL, URLConfigurator) {
 
-        var handlerSelection, supportUtility, formExcel, urlConfigurator;
+        var handlerSelection, supportUtility, formExcel, urlConfigurator, commodityCodeSelected;
         var COMMODITY_CODES = [1, 4, 5, 6]
 
         function ExcelExporter() {
@@ -20,9 +20,14 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!export
             var totalValues = [];
             var preloadingData = supportUtility.getPreloadingData();
 
+            var items = $("#selectionYear").jqxComboBox('getItems');
+            var selectedIndex = $("#selectionYear").jqxComboBox('getSelectedIndex');
+
+            commodityCodeSelected = $("#selectionCommodity").jqxComboBox('getSelectedItem').value;
+
             for (var i = 0; i < COMMODITY_CODES.length; i++) {
                 var commodity = COMMODITY_CODES[i];
-                var forecastCommodity = this.createForecastForCommodity(commodity, preloadingData);
+                var forecastCommodity = this.createForecastForCommodity(commodity, preloadingData, items, selectedIndex);
                 totalValues = totalValues.concat(forecastCommodity);
 
             }
@@ -39,18 +44,23 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!export
         }
 
 
-        ExcelExporter.prototype.createForecastForCommodity = function (commodity, dataFiltered) {
+        ExcelExporter.prototype.createForecastForCommodity = function (commodity, dataFiltered ,items, selectedIndex) {
 
             var forecast;
+            var isDifferentCommodity = false;
             var copyDataFiltered = $.extend(true, {}, dataFiltered)
-            copyDataFiltered.post.productCode = commodity;
+            if( commodityCodeSelected !=  commodity) {
+                copyDataFiltered.post.productCode = commodity;
+                isDifferentCommodity = true;
+            }
             if(commodity==1){
                 debugger;
             }
             var isExport = false;
-            var productCode = copyDataFiltered.post.productCode;
-            var regionCode = copyDataFiltered.post.regionCode;
-            forecast = handlerSelection.init(copyDataFiltered, regionCode, productCode, isExport);
+
+
+
+            forecast = handlerSelection.init(copyDataFiltered,  isExport, items, selectedIndex,isDifferentCommodity);
 
             for (var i = 0, length = forecast.length; i < length; i++) {
                 forecast[i].unshift(commodity);
