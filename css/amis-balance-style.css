@@ -90,7 +90,7 @@ body {
 body, .jqx-widget, .jqx-widget-content, .ui-widget, .input-group-lg {
   font-family: "open_sanscondensed_light";
   font-size: 14px;
-  color: #777777; }
+  color: #777; }
 
 label {
   font-weight: normal; }
@@ -125,17 +125,17 @@ h4 {
 
 .amis-btn-group button {
   padding: 0 5px;
-  background-color: #777777;
+  background-color: #777;
   border-color: white; }
   .amis-btn-group button:hover {
-    background-color: #999999;
+    background-color: #999;
     border-color: white; }
 
 /* Top Menu */
 .navbar-default {
   background-color: white; }
   .navbar-default .navbar-brand {
-    color: #777777; }
+    color: #777; }
     .navbar-default .navbar-brand img {
       position: absolute;
       top: 0; }
@@ -215,10 +215,10 @@ h4 {
   color: grey; }
 
 .labelProductionForms {
-  color: #999999; }
+  color: #999; }
 
 .labelCheckBoxes {
-  color: #999999; }
+  color: #999; }
 
 .modal .modal-dialog {
   /* new custom width */
@@ -233,7 +233,7 @@ h4 {
 /* START OPTIONS  */
 .amis-grid-options {
   right: 2px;
-  color: #777777; }
+  color: #777; }
 
 #options {
   visibility: hidden;
@@ -295,7 +295,7 @@ h4 {
   color: #7A0000; }
 
 .label {
-  color: #777777 !important; }
+  color: #777 !important; }
 
 #tablePivot {
   visibility: hidden; }
@@ -306,10 +306,10 @@ h4 {
 .webix_view {
   font-family: "open_sanscondensed_light";
   font-size: 14px;
-  color: #777777; }
+  color: #777; }
 
 .webix_dd_drag_column, .webix_ss_header TD, .webix_ss_vscroll_header {
-  color: #777777; }
+  color: #777; }
 
 .datesColumns {
   font-weight: normal; }
@@ -318,9 +318,17 @@ h4 {
   font-family: "open_sanscondensed_light";
   border: 1px solid red;
   font-size: 14px;
-  color: #777777; }
+  color: #777; }
 
 /* END  GRID  */
 /* -------------------------------------------- */
 /* Treetable */
 /* Amis - Treetable */
+/* Modal Editing*/
+#footerModalEditor {
+  border-top: none; }
+
+#buttonsModalEditor {
+  border-top: 1px solid #e5e5e5; }
+
+/*# sourceMappingURL=amis-balance-style.css.map */
