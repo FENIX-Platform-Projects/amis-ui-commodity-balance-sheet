@@ -44,7 +44,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         var mostRecentMonthDates = this.lookForTwoActualMonths(dates);
 
         if (mostRecentMonthDates.length == 0) {
-            debugger;
+            ;
             if (dates.length >= 2) {
 
             /*
@@ -228,7 +228,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             "productCode": productCode
         }
 
-        debugger;
+
 
         $.ajax({
             async: false,

@@ -38,7 +38,8 @@ requirejs.config({
         generalObserver   :  "../component/core/balanceSheet/observer",
         urlConfigurator   :  "../services/configurator/ServicesConfigurator",
         databaseSaver     :  "../amis/saving",
-        editHandler       :  "../amis/editing/direct/EditHandler"
+        editHandler       :  "../amis/editing/direct/EditHandler",
+        FenixValidator         :  "FenixReports-Validator"
     },
     "shim": {
         "bootstrap": {
@@ -64,6 +65,9 @@ requirejs.config({
         },
         "underscore": {
             exports: '_'
+        },
+        "FenixExports":{
+            deps:["FenixValidator", "jquery"]
         }
 
     }

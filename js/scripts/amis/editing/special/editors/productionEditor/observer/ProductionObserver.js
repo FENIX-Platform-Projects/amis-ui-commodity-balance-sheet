@@ -538,7 +538,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     }
 
     ProductionObserver.prototype.listenToCloseButton = function () {
-        $('closeModal').on('click', function () {
+        $('#closeModalTotal').on('click', function () {
             controllerProduction.destroyAll()
         })
     }

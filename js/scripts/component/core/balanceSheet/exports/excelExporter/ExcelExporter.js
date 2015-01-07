@@ -1,21 +1,19 @@
-define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!exporter/form/_formExcel.html", "urlConfigurator"],
-    function ($, HandlerSelection, FormEXCEL, URLConfigurator) {
+define(['jquery', "exportLoader/controller/HandlerExportSelection",  "urlConfigurator", "FenixReports"],
+    function ($, HandlerSelection, URLConfigurator, FenixExport) {
 
-        var handlerSelection, supportUtility, formExcel, urlConfigurator, commodityCodeSelected;
+        var handlerSelection, supportUtility, formExcel, urlConfigurator, commodityCodeSelected, fenixExporter, url;
         var COMMODITY_CODES = [1, 4, 5, 6]
 
         function ExcelExporter() {
             urlConfigurator = new URLConfigurator;
             handlerSelection = new HandlerSelection;
-            formExcel = FormEXCEL;
-            $("#exportExcelTrue").append(formExcel);
+            fenixExporter = new FenixExport;
 
         }
 
         ExcelExporter.prototype.init = function (SupportUtility) {
             supportUtility = SupportUtility;
-            var url = urlConfigurator.getExportingUrl()
-            document.getElementById('formAction').setAttribute('action', url)
+            url = urlConfigurator.getExportingUrl()
 
             var totalValues = [];
             var preloadingData = supportUtility.getPreloadingData();
@@ -54,7 +52,6 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!export
                 isDifferentCommodity = true;
             }
             if(commodity==1){
-                debugger;
             }
             var isExport = false;
 
@@ -72,24 +69,35 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection", "text!export
 
         ExcelExporter.prototype.createFormAndExport = function (totalValues, season, region, product, dataSource) {
 
-            var stringToappend = '<input id="regionIDForm" type="text" name="region" value="' + region + '"/>' +
-                '<input id="datasourceIDForm" type="text" name="datasource" value="' + dataSource + '"/>' +
-                '<input id="seasonIDForm" type="text" name="season" value="' + season + '"/>' +
-                '<input id="productIDForm" type="text" name="product" value="' + product + '"/>'
 
+            var payload = {};
 
-            for (var i = 0, length = totalValues.length; i < length; i++) {
-                stringToappend += '<input type="text" name="data" value="' + totalValues[i] + '"/>';
+            payload = {
+                "resource": {
+                    "data": totalValues,
+                    "metadata": {}
+                },
+                "input": {
+                    "plugin": "inputAmisCBS"
+                },
+                "output": {
+                    "plugin":"outputAmisCBS",
+                    "config": {
+                        "fileName": "amisExport.xls",
+                        "filterData": {
+                            "season": season,
+                            "region": region,
+                            "product": product,
+                            "datasource": dataSource
+                        }
+                    }
+
+                }
             }
-            $("#formAction").append(stringToappend);
 
-            document.getElementById('submitButton').click(function (e) {
-                e.preventDefault();
-                e.stopImmediatePropagation();
-            });
+            fenixExporter.exportData(payload,url);
 
-            var f = document.getElementById('formExcel')
-            f.remove();
+
 
 
         }
