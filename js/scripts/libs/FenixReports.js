@@ -45,7 +45,14 @@ define(['jquery', 'FenixValidator'], function ($, Validator) {
     }
 
     FenixReports.prototype.loadAnimatedGif = function(){
-        $( "body" ).append('<div id="fenixExportLoading"></div>');
+        $( "body" ).append('<div id="fenixExportLoading" ' +
+            'style=" position: fixed;'+
+        'top: 50%;'+
+        'left: 50%;'+
+        'transform: translate(-50%, -50%);'+
+        'width: 30px;'+
+        'height: 30px;'+
+        'background: url("images/report/ajax-loader%20.gif") !important;"></div>');
         debugger;
     }
 

@@ -38,11 +38,7 @@ define(['jquery', "exportLoader/logic/DataExportLoader", "underscore-min"], func
         var region = preloadingData.post.regionCode
         var product = preloadingData.post.productCode
 
-
-
         if(isDifferentCommodity) {
-
-
 
             var years = dataLoader.lookForSeasonsCommodityBelonging(region, product, items, selectedIndex)
             seasonsToChoose = years
@@ -60,15 +56,6 @@ define(['jquery', "exportLoader/logic/DataExportLoader", "underscore-min"], func
         console.log(years)
 
 
-
-
-        // Selected season:
-        var filterSeason = this.createFilterForSeasons(region, product, items[selectedIndex])
-        var filterPopulation = this.createFilterPopulation(region, items[selectedIndex])
-        resultForecast = dataLoader.getAndCreateTwoMostRecentForecast(filterSeason, filterSeason, filterPopulation, preloadingData, items[selectedIndex].label)
-
-        resultForecast = resultForecast[0]
-     //   resultForecast = this.createLastForecastCurrentSeason(items, region, product, items[selectedIndex]);
 
         // USe operator of minus(-) for the order of the seasons
         var seasonChecked = [items[selectedIndex].label]
@@ -96,13 +83,35 @@ define(['jquery', "exportLoader/logic/DataExportLoader", "underscore-min"], func
             for (var i = 0; i < precedentSeasons.length; i++) {
                 var filterSeason = this.createFilterForSeasons(region, product, precedentSeasons[i])
                 var filterPopulation = this.createFilterPopulation(region, precedentSeasons[i])
-                var seasonForecasts = dataLoader.getAndCreateTwoMostRecentForecast(filterSeason, filterSeason, filterPopulation, preloadingData, precedentSeasons[i].label)
 
-                resultForecast = resultForecast.concat(seasonForecasts[0]);
+                // if two seasons exist and the selected is the first
+                if(precedentSeasons.length >1 && i==0){
+                    var seasonForecasts = dataLoader.getAndCreateTwoMostRecentForecast(filterSeason, filterSeason, filterPopulation, preloadingData, precedentSeasons[i].label)[0]
+                    console.log('after GET and create 2 most')
+                    console.log(seasonForecasts)
+                }else{
+
+                    var seasonForecasts = dataLoader.getAndCreateActualYearForecastMostRecent(filterSeason, filterSeason, filterPopulation, preloadingData, precedentSeasons[i].label)
+                    console.log('after GET and create FIRST most')
+                    console.log(seasonForecasts)
+
+                }
+                resultForecast = resultForecast.concat(seasonForecasts);
             }
         }
 
-        resultForecast.reverse()
+        resultForecast.reverse();
+        console.log('resultForecast after precedent seasons: ')
+
+        console.log(resultForecast);
+
+
+        // Selected season:
+        var filterSeason = this.createFilterForSeasons(region, product, items[selectedIndex])
+        var filterPopulation = this.createFilterPopulation(region, items[selectedIndex])
+
+        resultForecast = resultForecast.concat(dataLoader.getAndCreateTwoMostRecentForecast(filterSeason, filterSeason, filterPopulation, preloadingData, items[selectedIndex].label)[0])
+
         return resultForecast;
 
     }

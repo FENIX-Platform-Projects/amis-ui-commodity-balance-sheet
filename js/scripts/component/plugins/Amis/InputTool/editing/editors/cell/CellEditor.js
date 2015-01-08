@@ -30,11 +30,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         this.destroyIfExist();
 
-
-
-
         modalView = ModalView;
-        $("#pivotGrid").append(modalView)
+        $("body").append(modalView)
 
 
         flagController = new FlagController;
@@ -711,6 +708,18 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
 
     CellEditor.prototype.destroyIfExist = function () {
+
+        $('#specialForm').modal('hide');
+
+        var g = document.getElementById("specialForm");
+
+        if (g && g !== null) {
+            g.remove()
+        }
+
+        debugger;
+
+        $('#dialogForm').modal('hide');
 
 
         var f =  $('#closeModalFormTotal');

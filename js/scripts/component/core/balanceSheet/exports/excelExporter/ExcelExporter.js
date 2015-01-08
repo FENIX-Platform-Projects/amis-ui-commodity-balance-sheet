@@ -51,13 +51,14 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection",  "urlConfigu
                 copyDataFiltered.post.productCode = commodity;
                 isDifferentCommodity = true;
             }
-            if(commodity==1){
-            }
+
             var isExport = false;
 
-
-
             forecast = handlerSelection.init(copyDataFiltered,  isExport, items, selectedIndex,isDifferentCommodity);
+
+            console.log('commodity: '+commodity + '  , and forecast :')
+            console.log(forecast)
+
 
             for (var i = 0, length = forecast.length; i < length; i++) {
                 forecast[i].unshift(commodity);

@@ -37,17 +37,21 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             actualForecast = result;
         })
 
+        var setDatesUnique = {}
         if (isDateFormatted) {
             // Put dates in DSD format
             for (var i = 0; i < actualForecast.length; i++) {
                 var data = actualForecast[i][2]
 
                 actualForecast[i][2] = formatter.fromVisualizationToDSDFormat(data, "date")
+                this.putIfNotExists(actualForecast[i][2],setDatesUnique,i);
             }
         } else {
+
             // Put dates in DSD format
             for (var i = 0; i < actualForecast.length; i++) {
                 var data = actualForecast[i][2]
+                this.putIfNotExists(data,setDatesUnique,i);
             }
         }
 
@@ -67,6 +71,11 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
 
         // Inside of population insert the date(s)
+
+        // Look for every date and put inside of each the population product
+
+        debugger;
+        /*
         firstForecastDateToInsert = actualForecast[0][2]
         if (populationActual.length > 0) {
             populationActual[0].splice(2, 0, firstForecastDateToInsert);
@@ -74,6 +83,8 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
             actualForecast.push(populationActual[0])
         }
+        */
+        this.putDateInEveryForecast(setDatesUnique,actualForecast,populationActual)
 
         return actualForecast;
     }
@@ -186,6 +197,27 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
     DataLoader.prototype.getRealPreviousYear = function () {
         return realPreviousDate;
+    }
+
+
+    DataLoader.prototype.putIfNotExists = function(elementToPut, setObject,indexElementToPut){
+
+        if(!setObject.hasOwnProperty(elementToPut)){
+            setObject[elementToPut] = indexElementToPut
+        }
+    }
+
+
+    DataLoader.prototype.putDateInEveryForecast = function(setDatesObject, forecast, population){
+        for(var date in setDatesObject){
+            var populationCopy = $.extend(true,[],population)
+            if (populationCopy.length > 0) {
+                populationCopy[0].splice(2, 0,date);
+                populationCopy[0].push(null);
+
+                forecast.splice([setDatesObject[date]],0,populationCopy[0])
+            }
+        }
     }
 
 

@@ -63,6 +63,8 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
         }
 
         ProductionEditor.prototype.init = function (clickedItem, itemsInvolved, codesInvolved, configurator, Utility, ControllerEditors) {
+          this.destroyIfExistOtherModal();
+
             controllerEditors = ControllerEditors;
 
             var involvedItems = $.extend(true, [], itemsInvolved);
@@ -83,11 +85,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             formulaToRenderTotVal = 'init'
             formulaToRenderSingleCrops = 'init'
 
-            var f = document.getElementById("specialForm");
 
-            if (f !== null) {
-                f.remove()
-            }
 
             $("#pivotGrid").append(modal);
 
@@ -146,6 +144,21 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             $('#firstCheckBoxSingleCrops').jqxCheckBox('destroy');
             $('#secondCheckBoxSingleCrops').jqxCheckBox('destroy');
             $('#thirdCheckBoxSingleCrops').jqxCheckBox('destroy');
+
+            $('#radioBtnAreaHarv').jqxRadioButton('destroy');
+            $('#radioBtnAreaPlanted').jqxRadioButton('destroy');
+
+            $('#radioBtnAreaHarvSingleCrops').jqxRadioButton('destroy');
+            $('#radioBtnAreaPltdSingleCrops').jqxRadioButton('destroy');
+
+
+
+            var f = document.getElementById("specialForm");
+            f.modal('hide')
+
+            if (f && f !== null) {
+                f.remove()
+            }
 
         }
 
@@ -330,6 +343,8 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
             $('#radioBtnAreaHarvSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn", checked: true });
             $('#radioBtnAreaPltdSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn"});
+
+
         }
 
         ProductionEditor.prototype.createAndDrawGrid = function(dataAdapter, idContainer  ){
@@ -400,6 +415,32 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
 
             return new $.jqx.dataAdapter(source);
+        }
+
+        ProductionEditor.prototype.destroyIfExistOtherModal = function(){
+            $('#specialForm').modal('hide');
+
+            var g = document.getElementById("specialForm");
+
+            if (g && g !== null) {
+                g.remove()
+            }
+
+            debugger;
+
+            $('#dialogForm').modal('hide');
+
+
+            var f =  $('#closeModalFormTotal');
+            if(f) {
+                $('#closeModalFormTotal').click();
+            }
+
+            var f = document.getElementById("dialogForm");
+
+            if (f && f !== null) {
+                f.remove()
+            }
         }
 
 

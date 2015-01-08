@@ -13,7 +13,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         Services = new ServicesURL;
         Services.init()
 
-        urlYear  = Services.getYearUrl();
+        urlYear = Services.getYearUrl();
         urlActualForecast = Services.getAllDataUrl()
         urlPopulation = Services.getPopulationUrl();
         urlMostRecentDate = Services.getMostRecentDateUrl();
@@ -43,26 +43,22 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         var twoMostRecentDates;
         var mostRecentMonthDates = this.lookForTwoActualMonths(dates);
 
+
         if (mostRecentMonthDates.length == 0) {
-            ;
-            if (dates.length >= 2) {
 
-            /*
 
-             BUSINESS for taking the two most recent months
-
-             */
-            twoMostRecentDates = [dates[dates.length - 2][0], dates[dates.length - 1][0]]
-        } else {
+            // tak only the most recent in the seson
             twoMostRecentDates = [dates[dates.length - 1][0]]
+
         }
-    }
-        else{
+        else {
             twoMostRecentDates = mostRecentMonthDates;
         }
         console.log('Two most recent dates')
         console.log(twoMostRecentDates)
 
+
+        debugger;
         for (var i = 0; i < twoMostRecentDates.length; i++) {
             var temporaryForecast = []
             filterPreviousYear["date"] = twoMostRecentDates[i];
@@ -103,7 +99,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
                 population[0].push(null);
 
                 temporaryForecast[0].push(population[0])
-
             }
 
 
@@ -120,7 +115,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     }
 
 
-    DataExportLoader.prototype.getAndCreateActualYearForecastMostRecent = function (mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, seasonLabel) {
+    DataExportLoader.prototype.getAndCreateActualYearForecastMostRecent = function (mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, preloadingData, seasonLabel) {
 
         console.log('getAndCreate Acutal year cforecasts')
 
@@ -141,6 +136,8 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         })
 
         var mostRecentDate = dates[dates.length - 1][0]
+
+        console.log('mostRecenteDate: ' + mostRecentDate)
 
         filterPreviousYear["date"] = mostRecentDate;
 
@@ -186,6 +183,11 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
         var result = mostRecentForecast[0]
 
+        console.log('result before appending season to date!')
+        console.log(result)
+
+        debugger;
+
         result = this.appendSeasonToDate(result, seasonLabel);
         return result;
     }
@@ -201,14 +203,20 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     }
 
 
-    DataExportLoader.prototype.lookForTwoActualMonths = function(dates){
+    DataExportLoader.prototype.lookForTwoActualMonths = function (dates) {
 
         var result = []
-        var actualMonth = new Date().getMonth()+1;
-        var previousMonth = (actualMonth-1 == 0)? 12 : actualMonth-1
-        for(var i =0; i< dates.length; i++){
-            if(dates[i][0].substr(5, 2) == actualMonth || dates[i][0].substr(5, 2) == previousMonth){
+        var actualMonth = new Date().getMonth() + 1;
+        var previousMonth = (actualMonth - 1 == 0) ? 12 : actualMonth - 1
+        var counterTwoMostRecent = 0;
+        for (var i = dates.length-1; i >0 && counterTwoMostRecent<2; i--) {
+
+            console.log('condition with: ' + dates[i][0] + ' , the result is: ' + (dates[i][0].substr(5, 2) == actualMonth || dates[i][0].substr(5, 2) == previousMonth))
+            if (dates[i][0].substr(5, 2) == actualMonth || dates[i][0].substr(5, 2) == previousMonth) {
+
+                counterTwoMostRecent++;
                 result.push(dates[i][0]);
+                result.reverse()
             }
         }
 
@@ -217,7 +225,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     }
 
 
-    DataExportLoader.prototype.lookForSeasonsCommodityBelonging = function(regionCode, productCode){
+    DataExportLoader.prototype.lookForSeasonsCommodityBelonging = function (regionCode, productCode) {
 
 
         var result;
@@ -229,7 +237,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         }
 
 
-
         $.ajax({
             async: false,
             url: urlYear,
@@ -239,7 +246,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             data: JSON.stringify(payload),
             success: function (data) {
 
-                 result = data;
+                result = data;
             }
         });
 
