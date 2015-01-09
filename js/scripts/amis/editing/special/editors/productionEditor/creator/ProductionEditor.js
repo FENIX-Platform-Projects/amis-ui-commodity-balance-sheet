@@ -63,7 +63,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
         }
 
         ProductionEditor.prototype.init = function (clickedItem, itemsInvolved, codesInvolved, configurator, Utility, ControllerEditors) {
-          this.destroyIfExistOtherModal();
+            this.destroyIfExistOtherModal();
 
             controllerEditors = ControllerEditors;
 

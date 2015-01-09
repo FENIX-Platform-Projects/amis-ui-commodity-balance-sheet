@@ -312,7 +312,7 @@
                     "hasCondition": false,
                     "condition": "",
                     "dataType": "constant",
-                    "value": 1000000,
+                    "value": 1000,
                     "otherValue": [],
                     "otherColumn": false,
                     "columnNumber": ""

@@ -34,6 +34,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     PaddyCreator.prototype.init = function (totalValuesModel, singleCropsModel, Observer) {
 
+        this.destroyIfExistOtherModal();
+
         formulaToRenderTotVal = 'init';
         formulaToRenderSingleCrops = 'init';
 
@@ -48,11 +50,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         var totalModel = $.extend(true, [], totalValuesModel);
         var singleModel = $.extend(true, [], singleCropsModel);
 
-        var f = document.getElementById("specialForm");
 
-        if (f !== null) {
-            f.remove()
-        }
 
         $("#pivotGrid").append(modal);
 
@@ -389,6 +387,33 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
+    }
+
+
+    PaddyCreator.prototype.destroyIfExistOtherModal = function(){
+        $('#specialForm').modal('hide');
+
+        var g = document.getElementById("specialForm");
+
+        if (g && g !== null) {
+            g.remove()
+        }
+
+        debugger;
+
+        $('#dialogForm').modal('hide');
+
+
+        var f =  $('#closeModalFormTotal');
+        if(f) {
+            $('#closeModalFormTotal').click();
+        }
+
+        var f = document.getElementById("dialogForm");
+
+        if (f && f !== null) {
+            f.remove()
+        }
     }
 
     return PaddyCreator;

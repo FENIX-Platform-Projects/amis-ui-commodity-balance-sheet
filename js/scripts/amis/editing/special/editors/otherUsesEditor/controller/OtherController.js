@@ -159,12 +159,18 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
 
             console.log('dataToSave:')
             console.log(dataOriginal)
-            this.destroyAll()
+            this.destroyModal()
             editorsController.saveFormOtherUses(dataOriginal, dataOriginal); // this is FALSE!! true is up
         }
 
         OtherController.prototype.destroyAll = function () {
             editorOther.destroyAll()
+        }
+
+        OtherController.prototype.destroyModal = function(){
+            editorOther.destroyAll()
+
+            editorOther.destroyIfExistOtherModalOtherUses();
         }
 
 

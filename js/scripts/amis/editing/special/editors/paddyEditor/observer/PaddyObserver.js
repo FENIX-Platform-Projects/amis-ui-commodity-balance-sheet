@@ -34,8 +34,8 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         this.listenToRecalculateButtonTotalValues()
         this.listenToSaveTotalValuesButton();
         this.listenToTabs()
-        this.listenToCloseModal()
-        this.listenToCloseButton()
+       // this.listenToCloseModal()
+       // this.listenToCloseButton()
     }
 
     PaddyObserver.prototype.listenToCheckboxesSingleCrops = function () {

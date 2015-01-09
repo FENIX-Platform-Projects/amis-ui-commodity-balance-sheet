@@ -22,8 +22,8 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
         this.listenToEditCellTotGrid();
         this.listenToSaveTotalValuesButton()
-        this.listenToCloseButton();
-        this.listenToCloseModal();
+   //     this.listenToCloseButton();
+   //     this.listenToCloseModal();
     }
 
     OtherObserver.prototype.listenToEditCellTotGrid = function () {
@@ -76,14 +76,18 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
     }
 
     OtherObserver.prototype.listenToCloseModal = function () {
-        $('#specialForm').on('hidden.bs.modal', function () {
+        $('#specialForm').on('hidden.bs.modal', function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
             otherController.destroyAll()
         })
     }
 
     OtherObserver.prototype.listenToCloseButton = function () {
-        $('#closeModal').on('click', function () {
-            otherController.destroyAll()
+        $('#closeModal').on('click', function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            otherController.destroyModal()
         })
     }
 

@@ -37,7 +37,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         this.listenToSaveTotalValuesButton();
         this.listenToTotalEditable();
         this.listenToSingleCropsEditable()
-        this.listenToCloseModal();
+     //   this.listenToCloseModal();
       //this.listenToCloseButton();
         this.listenToChangeRadioButtonValue();
     }

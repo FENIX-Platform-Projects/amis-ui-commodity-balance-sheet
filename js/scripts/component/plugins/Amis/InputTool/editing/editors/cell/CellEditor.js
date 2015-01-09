@@ -28,6 +28,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     CellEditor.prototype.init = function (Configurator, cell, dsd) {
 
+        var that = this;
+
         this.destroyIfExist();
 
         modalView = ModalView;
@@ -51,19 +53,6 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         mapPreviousValues = [];
 
 
-
-
-
-
-        //    this.destroyIfExist();
-
-
-        //   var $newdiv1 = $("<div id='dialogForm' ></div>");
-        // Only the FIRST ROW column indexes start from 2, it needs to be checked!
-
-        //  var form = ("<form id ='form' role='form' class='col-xs-12' ><fieldset>");
-        //   $('#dialogForm').append(form);
-        // leftKeyColumns
         for (var i = 0; i < leftKeyColumnsIndexes.length; i++) {
             // show value in right format
             var valueLeft = formatter.fromDSDToVisualizationFormat(cell[leftKeyColumnsIndexes[i]], configurationKeys["leftKeyColumnConfiguration"][i],
@@ -108,9 +97,6 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         }
 
 
-        var that = this;
-
-
         $("#dialogForm").modal({ backdrop: 'static',
             keyboard: false});
 
@@ -121,7 +107,6 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
 
 
-        var that = this;
         $('#resetButton').on('click', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation()
@@ -587,11 +572,16 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             default:
                 if (ConfColumn.values.editable) {
                     if (title == "Note") {
+
                         $('#form').append("<div class ='row'>" +
                             "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                             + "</label></div>" +
-                            "<div class='col-xs-6'><textarea placeholder ='Type some notes' type='text' class='input-group-xs form-control' name='name'  rows='3' id='" + container + "'>" + value + "</textarea></div>" +
+                            "<div class='col-xs-6'><textarea placeholder ='Type some notes' type='text' class='input-group-xs form-control' name='name'  rows='3' id='" + container + "'></textarea></div>" +
                             "</div> ")
+
+                        if(value && value!=null && value != '' && value != 'null'){
+                            document.getElementById(container).innerHTML = value;
+                        }
                     }
                     // Case Multiple flag
                     else if (title == "Flags") {
@@ -608,7 +598,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                     }
                 }
                 else {
-                    $('#form').append("<div class ='row'>" +
+                    $('#form').append("<div class ='row'  style='display: none'>" +
                         "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                         + "</label></div>" +
                         "<div class='col-xs-6'><input type='text' class='input-group-xs form-control' name='name'  id='" + container + "' value='" + value + "' readonly/></div>" +
@@ -625,8 +615,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     /*
      The following methods are necessary to extract the values from the editor, depending on the
-     datatype associated to
-     */
+     datatype on which the element is related to */
     CellEditor.prototype.getValuesFromCellEditor = function () {
         var array = [];
         var $inputs = document.getElementsByClassName('input-group-xs');
@@ -718,6 +707,11 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         }
 
         debugger;
+
+        var k =  $('#closeModal');
+        if(k) {
+            $('#closeModal').click();
+        }
 
         $('#dialogForm').modal('hide');
 

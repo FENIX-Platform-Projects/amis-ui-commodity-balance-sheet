@@ -44,7 +44,7 @@
             }
         },
         {
-            "exportDataServletUrl": "http://localhost:8080/amisCBS/export"
+            "exportDataServletUrl": "http://168.202.28.178:8080/amisCBS/export"
         }
 
     ]

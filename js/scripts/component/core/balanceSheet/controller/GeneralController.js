@@ -21,13 +21,15 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             formulaController = new FormulaController;
             specialControlEditor = new SpecialEditorController;
             generalObserver = new GeneralObserver;
-            editingOnCell = true
+            editingOnCell = false
 
         }
 
 
         GeneralController.prototype.init = function (gridModel, tableModel, configurator, modelController, utility, NProgress) {
 
+
+            debugger;
             ModelController = modelController;
             dsd = configurator.getDSD();
             Configurator = configurator;

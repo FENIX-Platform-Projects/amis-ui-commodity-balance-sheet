@@ -338,6 +338,9 @@ h4 {
 #buttonsModalEditor {
   border-top: 1px solid #e5e5e5; }
 
+.select2-container-multi .select2-choices .select2-search-field input {
+  font-family: inherit !important; }
+
 /* Fenix Reports */
 #fenixExportLoaderImage {
   position: fixed;

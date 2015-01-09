@@ -33,7 +33,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 webix.ui({
                     container: "pivotGrid",
                     view: "datatable",
-                    rowHeight:30,
+                    rowHeight:29,
                     columnWidth:300,
                     clipboard: "selection",
                     id: "grid",
@@ -62,21 +62,21 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             var columns = [];
             arrDiffDates = Object.keys(differentDates)
 
-            columns.push({id: "data0", header: 'Elements', css: "firstColumn", sort: "string"})
+            columns.push({id: "data0", header: 'Elements', css: "firstColumn"})
 
             for (var i = 0; i < arrDiffDates.length; i++) {
                 if (i == 0) {
                     columns.push({id: "data" + 1, header: [
                         {text: 'Input dates', colspan: arrDiffDates.length},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text', fillspace:true, minWidth: 100,css: "datesColumns", sort: "string"})
+                    ], editor: 'text', fillspace:true, minWidth: 100,css: "datesColumns"})
                 } else if (i != 0 && i != arrDiffDates.length) {
 
                     columns.push({id: "data" + (i + 1), header: [
                         //{text: ''},
                         {text: null},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text', fillspace:true,minWidth: 100, css: "datesColumns", sort: "int"})
+                    ], editor: 'text', fillspace:true,minWidth: 100, css: "datesColumns"})
                 }
             }
             return columns;
@@ -211,7 +211,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 '</ul></div>');
 
 
-            $('#editingChoice').jqxCheckBox({width: 30, height: 25 });
+            $('#editingChoice').jqxCheckBox({width: 30, height: 25 , checked: true});
             $('#commaButton').jqxRadioButton({groupName: "thousandSeparator", width: 30, height: 25});
             $('#periodButton').jqxRadioButton({groupName: "thousandSeparator", width: 30, height: 25});
             $('#spaceButton').jqxRadioButton({groupName: "thousandSeparator", width: 30, height: 25});

@@ -51,17 +51,14 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
 
         OtherCreator.prototype.init = function (totalValuesModel, Observer) {
 
+
+            this.destroyIfExistOtherModalOtherUses()
             observer = Observer;
             var totalModel = $.extend(true, [], totalValuesModel);
             var modelWithoutNull = this.eliminateNull(totalModel)
 
             var totModelForTree = this.prepareDataForTreeGrid(modelWithoutNull, false)
 
-            var f = document.getElementById("specialForm");
-
-            if (f !== null) {
-                f.remove()
-            }
 
             var self = this;
 
@@ -140,6 +137,8 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
             debugger;
             if (grid)
                 grid.destructor();
+
+           // this.destroyIfExistOtherModalOtherUses();
         }
 
 
@@ -153,6 +152,36 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
             }
             return result
 
+        }
+
+
+        OtherCreator.prototype.destroyIfExistOtherModalOtherUses = function(){
+            $('#specialForm').modal('hide');
+
+            var g = document.getElementById("specialForm");
+
+            if (g && g !== null) {
+                g.remove()
+            }
+
+            $('#dialogForm').modal('hide');
+
+
+            var f =  $('#closeModalFormTotal');
+            if(f) {
+                $('#closeModalFormTotal').click();
+            }
+
+            var k =  $('#closeModal');
+            if(k) {
+                $('#closeModal').click();
+            }
+
+            var f = document.getElementById("dialogForm");
+
+            if (f && f !== null) {
+                f.remove()
+            }
         }
 
 
