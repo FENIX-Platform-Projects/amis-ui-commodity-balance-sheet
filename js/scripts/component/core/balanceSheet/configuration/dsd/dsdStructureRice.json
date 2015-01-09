@@ -280,6 +280,25 @@
                             "code": {
                                 "codeList": "",
                                 "version": "",
+                                "code": "17",
+                                "title": {
+                                    "EN": "Government Stocks (Thousand tonnes)",
+                                    "FR": ""
+                                }
+                            }
+                        },
+                        {
+                            "codeList": {
+                                "codeList": "",
+                                "version": "1",
+                                "title": {
+                                    "EN": "",
+                                    "FR": ""
+                                }
+                            },
+                            "code": {
+                                "codeList": "",
+                                "version": "",
                                 "code": "8",
                                 "title": {
                                     "EN": "Imports - ITY (Thousand tonnes)",
@@ -302,25 +321,6 @@
                                 "code": "12",
                                 "title": {
                                     "EN": "Exports - ITY (Thousand tonnes)",
-                                    "FR": ""
-                                }
-                            }
-                        },
-                        {
-                            "codeList": {
-                                "codeList": "",
-                                "version": "1",
-                                "title": {
-                                    "EN": "",
-                                    "FR": ""
-                                }
-                            },
-                            "code": {
-                                "codeList": "",
-                                "version": "",
-                                "code": "17",
-                                "title": {
-                                    "EN": "Government Stocks (Thousand tonnes)",
                                     "FR": ""
                                 }
                             }
