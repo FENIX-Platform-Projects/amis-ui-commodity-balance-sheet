@@ -196,7 +196,8 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         GeneralController.prototype.saveDataFromAllForms = function (newCalculatedData, newOriginalData, cellClickedInfo, typeOfForm) {
             console.log('GC: saveDataFrom All Forms')
-            var indexes = ModelController.saveDataFromSpecialForm(newOriginalData, cellClickedInfo.indTable, cellClickedInfo.rowGridIndex, cellClickedInfo.columnGridIndex, typeOfForm)
+            // HERE!!!!
+            var indexes = ModelController.saveDataFromSpecialForm(newCalculatedData, cellClickedInfo.indTable, cellClickedInfo.rowGridIndex, cellClickedInfo.columnGridIndex, typeOfForm)
             var tableModel = ModelController.getTableDataModel();
 
             var modelWithFormulas = $.extend(true, [], tableModel);

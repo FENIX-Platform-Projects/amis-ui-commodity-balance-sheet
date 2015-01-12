@@ -147,5 +147,30 @@ define(["jquery", "moment", "numeral"], function ($) {
     }
 
 
+    DatatypesFormatter.prototype.convertParticularValues = function (value, configurationKeyColumn, datatype, configurator) {
+
+        var result;
+        if(typeof value != 'undefined' && value !== 'undefined' && value != null){
+            var formatConf = configurator.getThousandSeparator();
+            if(formatConf == '0 0'){
+                result = numeral(value).format('0,0.00')
+                result = result.replace(',',' ')
+
+            }else if(formatConf == '0.0'){
+                debugger;
+                result = numeral(value).format('0,0.00')
+                result =result.replace('.',' ')
+                result =result.replace(',','.')
+                result =result.replace(' ',',')
+
+
+            }else {
+                result = numeral(value).format('0,0.00')
+            }
+        }
+       return result;
+    }
+
+
     return DatatypesFormatter;
 })

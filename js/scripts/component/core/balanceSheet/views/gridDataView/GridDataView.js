@@ -6,11 +6,14 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
 
         var table, Configurator, accessorMap, fullModel, configurationKeys, indexValues, modelView,
             valueColumn, language, viewModel, adapterGrid, supportUtility,
-            dataSource, columns , arrDiffDates, grid, generalController, NProgress
+            dataSource, columns , arrDiffDates, grid, generalController, NProgress, particularFormatterCodes
 
         function GridDataView() {
             NProgress = Nprogress
             NProgress.done()
+
+
+
         }
 
 

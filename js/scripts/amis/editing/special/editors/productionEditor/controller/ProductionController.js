@@ -125,6 +125,7 @@ define(['jquery'], function ($) {
     ProductionController.prototype.saveTotalValues = function () {
 
         var dataOriginal = modelProduction.getOriginalTotalCropsModelOriginalConverted();
+        debugger;
         var areaPlanted = modelProduction.getAreaPlanted();
 
         if (areaPlanted) {

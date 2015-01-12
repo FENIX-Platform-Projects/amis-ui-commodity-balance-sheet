@@ -3,9 +3,10 @@
  */
 define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/support/SupportModel"], function ($, Configurator, SupportModel) {
 
-    var configurator, mapCodes, numberOfRows, supportModel, indexValue, numberOfColumns;
+    var configurator, mapCodes, numberOfRows, supportModel, indexValue, numberOfColumns, indexFlags;
 
     function FormulaController() {
+        indexFlags  =4;
         configurator = new Configurator;
         supportModel = new SupportModel;
     }
@@ -62,10 +63,16 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
         }
         var notRealizeable = false;
 
+
+
         indexRow = supportModel.lookForCode(codeValue, model, startIndex, numberOfRows)
 
         var rowModel = model[indexRow]
+
+
         if (typeof rowModel !== 'undefined' && rowModel != null) {
+            // TO delete, only for testing purposes
+
 
             //  initialize a label
             label1:
@@ -82,12 +89,14 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                             }
 
                             var index = supportModel.lookForCode(code, model, startIndex, numberOfRows)
+
                             if (typeof index != 'undefined' && index != null && typeof model[index][indexValue] != 'undefined' && model[index][indexValue] != null) {
-                                addendums.push(model[index][indexValue])
+                                if(codeValue!= 4 ||(model[index][indexFlags] && model[index][indexFlags]!= null && model[index][indexFlags].split(',')[0] != 'C')) {
+                                    addendums.push(model[index][indexValue])
+                                }
                             } else {
                                 if (addendum.hasCondition && addendum.condition == 'exists' && addendum.otherValue.length > 0) {
                                     code = addendum.otherValue[0];
-                                    if (code == 2) {}
                                     index = supportModel.lookForCode(code, model, startIndex, numberOfRows)
                                     if (typeof index != 'undefined' && index != null && typeof model[index][indexValue] != 'undefined' && model[index][indexValue] != null ) {
                                         addendums.push(model[index][indexValue])
