@@ -91,9 +91,13 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                             var index = supportModel.lookForCode(code, model, startIndex, numberOfRows)
 
                             if (typeof index != 'undefined' && index != null && typeof model[index][indexValue] != 'undefined' && model[index][indexValue] != null) {
-                                if(codeValue!= 4 ||(model[index][indexFlags] && model[index][indexFlags]!= null && model[index][indexFlags].split(',')[0] != 'C')) {
+
+                                // if is not yield or is yield and the flag is null or different from C
+                                if (codeValue != 4 || codeValue==4 && (model[index][indexFlags] == null || model[index][indexFlags] != null &&
+                                    model[index][indexFlags].split(',')[0] !='C')) {
                                     addendums.push(model[index][indexValue])
                                 }
+
                             } else {
                                 if (addendum.hasCondition && addendum.condition == 'exists' && addendum.otherValue.length > 0) {
                                     code = addendum.otherValue[0];

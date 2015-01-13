@@ -36,25 +36,16 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         this.destroyIfExistOtherModal();
 
+        $("#pivotGrid").append(modal);
+
         formulaToRenderTotVal = 'init';
         formulaToRenderSingleCrops = 'init';
-
-        var map = {
-            2: "Area Harvested",
-            5: "Production",
-            4: "Yield",
-            37: "Area Planted"
-        }
 
         observer = Observer;
         var totalModel = $.extend(true, [], totalValuesModel);
         var singleModel = $.extend(true, [], singleCropsModel);
 
 
-
-        $("#pivotGrid").append(modal);
-
-        this.initAllCheckBoxes()
 
         $("#specialForm").modal({ backdrop: 'static',
             keyboard: false});
@@ -63,6 +54,9 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             e.preventDefault()
             $(this).tab('show')
         })
+
+        this.initAllCheckBoxes()
+
 
         $('#totalValues').click(function (e) {
             e.preventDefault()
@@ -74,16 +68,22 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
        this.createAndDrawGrid( this.setDataForGrid(singleModel,false), "gridSingleCrops");
 
+       this.changeLabelToElements(true,true);
+       this.changeLabelToElements(true,false);
+
        observer.applyListeners()
 
     }
 
     PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply) {
-        var that = this;
 
         formulaToRenderTotVal = formulaToApply
 
+        observer.unbindEventsFromTotalValues()
+
         this.createAndDrawGrid( this.setDataForGrid(calculatedModel,true),   "gridTotalValues") ;
+
+        observer.reBindEventsFromTotalValues()
 
     }
 
@@ -100,14 +100,14 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         $('#gridTotalValues').jqxGrid('destroy')
         $('#gridSingleCrops').jqxGrid('destroy');
 
-        $('#firstRadioBtnTotVal').jqxRadioButton('destroy');
-        $('#secondRadioBtnTotVal').jqxRadioButton('destroy');
+        $('#radioBtnMilledTot').jqxRadioButton('destroy');
+        $('#radioBtnPaddyTot').jqxRadioButton('destroy');
         $('#thirdCheckBoxTotVal').jqxCheckBox('destroy');
         $('#fourthCheckBoxTotVal').jqxCheckBox('destroy');
         $('#fifthCheckBoxTotVal').jqxCheckBox('destroy');
 
-        $('#firstRadioBtnSingleCrops').jqxRadioButton('destroy');
-        $('#secondRadioBtnSingleCrops').jqxRadioButton('destroy');
+        $('#radioBtnMilledSingle').jqxRadioButton('destroy');
+        $('#radioBtnPaddySingle').jqxRadioButton('destroy');
         $('#thirdCheckBoxSingleCrops').jqxCheckBox('destroy');
         $('#fourthCheckBoxSingleCrops').jqxCheckBox('destroy');
         $('#fifthCheckBoxSingleCrops').jqxCheckBox('destroy');
@@ -376,14 +376,14 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     PaddyCreator.prototype.initAllCheckBoxes = function(){
 
-        $('#firstRadioBtnTotVal').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
-        $('#secondRadioBtnTotVal').jqxRadioButton({ width: 120, height: 25,groupName: "totValuePaddy", checked: true});
+        $('#radioBtnMilledTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy", checked: true});
+        $('#radioBtnPaddyTot').jqxRadioButton({ width: 120, height: 25,groupName: "totValuePaddy"});
         $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fourthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true });
 
-        $('#firstRadioBtnSingleCrops').jqxRadioButton({ width: 120, groupName: "singleCropPaddy",height: 25});
-        $('#secondRadioBtnSingleCrops').jqxRadioButton({ width: 120, groupName: "singleCropPaddy",height: 25, checked: true});
+        $('#radioBtnMilledSingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy",height: 25, checked: true});
+        $('#radioBtnPaddySingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy",height: 25});
         $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
@@ -413,6 +413,30 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         if (f && f !== null) {
             f.remove()
+        }
+    }
+
+    PaddyCreator.prototype.changeLabelToElements = function(isMilledSelected, isTotal){
+        var labelYield, labelProduction
+
+        debugger;
+
+        if(isMilledSelected){
+
+            labelYield = 'Yield Milled'
+            labelProduction = 'Production'
+
+        }else{
+            labelYield = 'Yield Paddy'
+            labelProduction = 'Production Paddy'
+        }
+
+        if(isTotal){
+            document.getElementById('thirdCheckBoxTotValLabel').innerHTML = labelProduction
+            document.getElementById('fifthCheckBoxTotValLabel').innerHTML = labelYield
+        }else{
+            document.getElementById('thirdCheckBoxSingleCropsLabel').innerHTML = labelProduction
+            document.getElementById('fifthCheckBoxSingleCropsLabel').innerHTML = labelYield
         }
     }
 

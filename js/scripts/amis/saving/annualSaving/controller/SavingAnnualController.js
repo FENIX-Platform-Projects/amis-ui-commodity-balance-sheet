@@ -17,7 +17,6 @@ define(['jquery', 'databaseSaver/annualSaving/model/SavingAnnualModel', 'databas
 
         SavingAnnualController.prototype.init = function (BalanceSheet, filterActual, dataFiltered, Handler) {
 
-
             handlerAnnual = Handler
 
             supportUtility.init(dataFiltered)

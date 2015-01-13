@@ -29,7 +29,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     }
 
     PaddyController.prototype.init = function (clickedItem, itemsInvolved, codesInvolved, configurator, Utility, ControllerEditors) {
-        observer.init(this)
         editorsController = ControllerEditors;
         var involvedItems = $.extend(true, [], itemsInvolved);
         supportUtility = Utility;
@@ -49,13 +48,16 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
             }
         } else {
             var totalCropsCalc = formulaHandler.createFormula(copyOriginalModelTot, formulaTotCrops)
+
         }
 
         modelPaddy.createSingleCropsModel(involvedItems, supportUtility)
         var singleCropsModel = modelPaddy.getSingleCropsModel()
         editorPaddy.init(totalCropsCalc, singleCropsModel, observer)
-    }
+        observer.init(this)
 
+    }
+/*
     PaddyController.prototype.selectSpecialEditing = function (formulaToApplyTot, numberOfRow) {
 
         var result;
@@ -104,8 +106,10 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
 
     }
-
+*/
     PaddyController.prototype.updateTotGridOnEditing = function (rowNumber, newValue, formulaToApply, columnValue, typeOfEditing) {
+
+        console.log('updateTOT grid on EDITIING: controller')
         var formulaToUpdate
         if (formulaToApply == 'init') {
             formulaToUpdate = formulaHandler.getInitFormulaFromConf(2, 'totalValues')
@@ -139,7 +143,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     PaddyController.prototype.updateSingleCropsGridOnEditing = function (rowNumber, newValue, formulaToApply, columnValue, typeOfEditing) {
 
         var formulaToUpdate;
-        ;
         if (formulaToApply == 'init') {
             formulaToUpdate = formulaHandler.getInitFormulaFromConf(2, 'singleCrops')
         } else {
@@ -291,6 +294,40 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
     PaddyController.prototype.deleteAlerts = function(isTotal){
         editorPaddy.cancelAlerts(isTotal);
+    }
+
+    PaddyController.prototype.onChangeFormulaWithRadio = function(oldFormula){
+
+        var result;
+            switch (true){
+                case (oldFormula == 'productionPaddy'):
+                    result = 'productionMilled';
+                    break;
+                case (oldFormula == 'areaHarvestedPaddy'):
+                    result = 'areaHarvestedMilled';
+                    break;
+                case (oldFormula == 'yieldPaddy'):
+                    result = 'milled';
+                    break;
+                case (oldFormula == 'productionMilled'):
+                    result = 'productionPaddy';
+                    break;
+                case (oldFormula == 'areaHarvestedMilled'):
+                    result = 'areaHarvestedPaddy';
+                    break;
+                case (oldFormula == 'milled' ||oldFormula == 'init' ):
+                    result = 'yieldPaddy';
+                    break;
+            }
+        return result;
+
+    }
+
+    PaddyController.prototype.onChangeKindOfRice = function(formulaToApply, isMilledSelected, isTotalSection){
+
+       (isTotalSection)?  this.updateTotGridOnFormulaChanges(formulaToApply,"normal"):  this.updateSingleCropsGridOnFormulaChanges(formulaToApply,"normal");
+        editorPaddy.changeLabelToElements(isMilledSelected,isTotalSection)
+
     }
 
     return PaddyController;

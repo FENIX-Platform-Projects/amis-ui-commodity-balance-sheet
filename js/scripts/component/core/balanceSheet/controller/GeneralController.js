@@ -224,6 +224,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
             // production or production Rice
             else if (typeOfForm == 'production' || typeOfForm == 'productionRice') {
+                debugger;
                 var formulas = formulaController.getFormulasBindedFromKey(5)
 
                 var rowsChanged = []

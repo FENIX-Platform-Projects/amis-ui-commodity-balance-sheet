@@ -19,6 +19,8 @@ define(['jquery'], function ($) {
 
     ProductionController.prototype.updateTotGridOnEditing = function (rowNumber, newValue, formulaToApply, columnValue, isAreaHarvested) {
 
+        console.log('updateTotGrid on editing!!!')
+
         var typeofTotalValue = (isAreaHarvested) ? 'totalValues' : 'totalValuesAPlanted';
         isAreaHarvestedSelectedTot = isAreaHarvested;
 

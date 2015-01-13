@@ -343,6 +343,9 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         $("#gridTotalValues").on('cellendedit', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
+
+            console.log('cellEdit: listener Active')
+
             totalValuesModified = true;
             var columnValue = event.args.datafield;
             var oldvalue = event.args.oldvalue;
@@ -370,6 +373,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         $("#gridSingleCrops").on('cellendedit', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
+
             singleCropsValuesModified = true;
             var columnValue = event.args.datafield;
             var oldvalue = event.args.oldvalue;

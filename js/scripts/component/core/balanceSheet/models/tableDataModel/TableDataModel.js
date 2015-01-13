@@ -403,7 +403,7 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
                 break;
 
             case 'productionRice':
-                indexes = (dataFromForm.length > 3) ? {"4": true, "2": true, "5": true, "37": true, "998": true, "3": true, "996":true} : {"4": true, "5": true, "2": true};
+                indexes = (dataFromForm.length > 3) ? {"4": true, "2": true, "5": true,  "998": true, "3": true, "996":true} : {"4": true, "5": true, "2": true};
                 break;
         }
 
