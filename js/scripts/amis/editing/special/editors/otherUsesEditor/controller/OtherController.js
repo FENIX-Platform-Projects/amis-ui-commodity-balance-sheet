@@ -171,6 +171,13 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
             editorOther.destroyAll()
 
             editorOther.destroyIfExistOtherModalOtherUses();
+            debugger;
+
+            var root = document.getElementsByTagName( 'html' )[0]; // '0' to assign the first (and only `HTML` tag)
+
+            root.setAttribute( "class", "settingOverflow" );
+
+
         }
 
 

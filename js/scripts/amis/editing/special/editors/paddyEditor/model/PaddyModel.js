@@ -174,9 +174,9 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
 
 
     PaddyModel.prototype.createSingleCalculatedModel = function (calculatedDataFromCrops, originalData) {
-        calculatedSingleModel = $.extend(true,[], originalData);
+        calculatedSingleModel = $.extend(true, [], originalData);
         for (var i = 0; i < calculatedDataFromCrops.length; i++) {
-            for(var k=0; k<calculatedDataFromCrops[i].length;k++) {
+            for (var k = 0; k < calculatedDataFromCrops[i].length; k++) {
                 for (var j = 0; j < originalData.length; j++) {
                     if (calculatedDataFromCrops[i][k][7] == originalData[j][7] &&
                         calculatedDataFromCrops[i][k][0] == originalData[j][0]) {

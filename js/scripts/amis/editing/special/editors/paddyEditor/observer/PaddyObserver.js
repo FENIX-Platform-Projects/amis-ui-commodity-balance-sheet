@@ -1,6 +1,3 @@
-/**
- * Created by fabrizio on 9/13/14.
- */
 define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, Formatter) {
 
     var controllerPaddy, formulaToApplyTot, formulaToApplySingle, totalValuesModified, singleCropsValuesModified, isMilledTotSelected,
@@ -8,7 +5,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     // ------------ Support method ------------------//
     var checkAll = function (obj) {
-        return typeof obj !== 'undefined' && obj != null ;
+        return typeof obj !== 'undefined' && obj != null;
     }
     // ---------------------------------------------//
 
@@ -26,6 +23,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
     }
 
     PaddyObserver.prototype.applyListeners = function () {
+        debugger;
 
         this.listenToCheckboxesTotal();
         this.listenToCheckboxesSingleCrops();
@@ -40,8 +38,8 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         this.listenToTotalEditable()
         this.listenToSingleCropsEditable();
 
-       // this.listenToCloseModal()
-       // this.listenToCloseButton()
+        // this.listenToCloseModal()
+        // this.listenToCloseButton()
         this.listenToChangeRadioButtonValue();
 
     }
@@ -49,21 +47,9 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
     PaddyObserver.prototype.listenToCheckboxesSingleCrops = function () {
 
         var that = this;
-        /*
-        $("#radioBtnMilledSingle").on('change', function (event) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            controllerPaddy.showAlerts(false);
-            (event.args.checked) ? that.onCheckBoxSingleCrops(1) : that.onUncheckBoxSingleCrops(1);
-        })
-        $("#radioBtnPaddySingle").on('change', function (event) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            controllerPaddy.showAlerts(false);
-            (event.args.checked) ? that.onCheckBoxSingleCrops(2) : that.onUncheckBoxSingleCrops(2);
 
-        })*/
         $("#thirdCheckBoxSingleCrops").on('change', function (event) {
+            debugger;
             event.preventDefault();
             event.stopImmediatePropagation();
             controllerPaddy.showAlerts(false);
@@ -117,51 +103,15 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
     PaddyObserver.prototype.onCheckBoxSingleCrops = function (number) {
         switch (number) {
 
-        /*
-            case 1:
-
-
-                if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'
-                    && $('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true') {
-                    formulaToApplySingle = 'milled'
-                }
-                else if ($('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true'
-                    && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true') {
-                    formulaToApplySingle = 'productionMilled'
-                }
-                else if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'
-                    && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true') {
-                    formulaToApplySingle = 'areaHarvestedMilled'
-                }
-                break;
-
-            case 2:
-                // milled
-
-                if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'
-                    && $('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true') {
-                    formulaToApplySingle = 'yieldPaddy'
-                }
-                else if ($('#fourthCheckBoxSingleCrops').attr("aria-checked") == 'true'
-                    && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true') {
-                    formulaToApplySingle = 'productionPaddy'
-                }
-                else if ($('#thirdCheckBoxSingleCrops').attr("aria-checked") == 'true'
-                    && $('#fifthCheckBoxSingleCrops').attr("aria-checked") == 'true') {
-                    formulaToApplySingle = 'areaHarvestedPaddy'
-                }
-
-                break;
-*/
             case 3:
                 if ($("#fourthCheckBoxSingleCrops").attr("aria-checked") == 'true') {
                     $("#fifthCheckBoxSingleCrops").jqxCheckBox('disable');
-                    formulaToApplySingle = (isMilledSingleSelected)? 'milled':'yieldPaddy'
+                    formulaToApplySingle = (isMilledSingleSelected) ? 'milled' : 'yieldPaddy'
 
                 }
                 else if ($("#fifthCheckBoxSingleCrops").attr("aria-checked") == 'true') {
                     $("#fourthCheckBoxSingleCrops").jqxCheckBox('disable');
-                    formulaToApplySingle = (isMilledSingleSelected)? 'areaHarvestedMilled':'areaHarvestedPaddy'
+                    formulaToApplySingle = (isMilledSingleSelected) ? 'areaHarvestedMilled' : 'areaHarvestedPaddy'
 
                 }
                 break;
@@ -170,12 +120,12 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 if ($("#thirdCheckBoxSingleCrops").attr("aria-checked") == 'true') {
                     $("#fifthCheckBoxSingleCrops").jqxCheckBox('uncheck');
                     $("#fifthCheckBoxSingleCrops").jqxCheckBox('disable');
-                    formulaToApplySingle = (isMilledSingleSelected)? 'milled':'yieldPaddy'
+                    formulaToApplySingle = (isMilledSingleSelected) ? 'milled' : 'yieldPaddy'
 
 
                 } else if ($("#fifthCheckBoxSingleCrops").attr("aria-checked") == 'true') {
                     $("#thirdCheckBoxSingleCrops").jqxCheckBox('disable');
-                    formulaToApplySingle = (isMilledSingleSelected)? 'productionMilled':'productionPaddy'
+                    formulaToApplySingle = (isMilledSingleSelected) ? 'productionMilled' : 'productionPaddy'
 
                 }
                 break;
@@ -184,12 +134,12 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 if ($("#thirdCheckBoxSingleCrops").attr("aria-checked") == 'true') {
                     $("#fourthCheckBoxSingleCrops").jqxCheckBox('uncheck');
                     $("#fourthCheckBoxSingleCrops").jqxCheckBox('disable');
-                    formulaToApplySingle = (isMilledSingleSelected)? 'areaHarvestedMilled':'areaHarvestedPaddy'
+                    formulaToApplySingle = (isMilledSingleSelected) ? 'areaHarvestedMilled' : 'areaHarvestedPaddy'
                 }
 
                 else if ($("#fourthCheckBoxSingleCrops").attr("aria-checked") == 'true') {
                     $("#thirdCheckBoxSingleCrops").jqxCheckBox('disable');
-                    formulaToApplySingle = (isMilledSingleSelected)? 'productionMilled':'productionPaddy'
+                    formulaToApplySingle = (isMilledSingleSelected) ? 'productionMilled' : 'productionPaddy'
                 }
                 break;
         }
@@ -264,89 +214,42 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     PaddyObserver.prototype.listenToCheckboxesTotal = function () {
         var that = this;
-      
-      
-      /*  $("#radioBtnMilledTot").on('change', function (event) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            controllerPaddy.showAlerts(true);
-            (event.args.checked) ? that.onCheckBoxTotal(1) : that.onUncheckBoxTotal(1);
-        })
-        $("#radioBtnPaddyTot").on('change', function (event) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            controllerPaddy.showAlerts(true);
-            (event.args.checked) ? that.onCheckBoxTotal(2) : that.onUncheckBoxTotal(2);
-        })*/
+
+
         $("#thirdCheckBoxTotVal").on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
             controllerPaddy.showAlerts(true);
-            (event.args.checked) ? that.onCheckBoxTotal(3) : that.onUncheckBoxTotal(3);
+            (event.args.checked)? that.onCheckBoxTotal(3) : that.onUncheckBoxTotal(3);
         })
         $("#fourthCheckBoxTotVal").on('change', function (event) {
+            debugger;
+
             event.preventDefault();
             event.stopImmediatePropagation();
             controllerPaddy.showAlerts(true);
-            (event.args.checked) ? that.onCheckBoxTotal(4) : that.onUncheckBoxTotal(4);
+            (event.args.checked)? that.onCheckBoxTotal(4) : that.onUncheckBoxTotal(4);
         })
         $("#fifthCheckBoxTotVal").on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
             controllerPaddy.showAlerts(true);
-            (event.args.checked) ? that.onCheckBoxTotal(5) : that.onUncheckBoxTotal(5);
+            (event.args.checked)? that.onCheckBoxTotal(5) : that.onUncheckBoxTotal(5);
         })
     }
 
     PaddyObserver.prototype.onCheckBoxTotal = function (number) {
         switch (number) {
 
-/*
-            case 1:
-
-                if ($('#thirdCheckBoxTotVal').attr("aria-checked") == 'true'
-                    && $('#fourthCheckBoxTotVal').attr("aria-checked") == 'true') {
-                    formulaToApplyTot = 'milled'
-                }
-                else if ($('#fourthCheckBoxTotVal').attr("aria-checked") == 'true'
-                    && $('#fifthCheckBoxTotVal').attr("aria-checked") == 'true') {
-                    formulaToApplyTot = 'productionMilled'
-                }
-                else if ($('#thirdCheckBoxTotVal').attr("aria-checked") == 'true'
-                    && $('#fifthCheckBoxTotVal').attr("aria-checked") == 'true') {
-                    formulaToApplyTot = 'areaHarvestedMilled'
-                }
-                break;
-
-            case 2:
-                // milled
-
-                if ($('#thirdCheckBoxTotVal').attr("aria-checked") == 'true'
-                    && $('#fourthCheckBoxTotVal').attr("aria-checked") == 'true') {
-                    formulaToApplyTot = 'yieldPaddy'
-                }
-                else if ($('#fourthCheckBoxTotVal').attr("aria-checked") == 'true'
-                    && $('#fifthCheckBoxTotVal').attr("aria-checked") == 'true') {
-                    formulaToApplyTot = 'productionPaddy'
-                }
-                else if ($('#thirdCheckBoxTotVal').attr("aria-checked") == 'true'
-                    && $('#fifthCheckBoxTotVal').attr("aria-checked") == 'true') {
-                    formulaToApplyTot = 'areaHarvestedPaddy'
-                }
-
-                break;
-
-            */
-
             case 3:
                 if ($("#fourthCheckBoxTotVal").attr("aria-checked") == 'true') {
                     $("#fifthCheckBoxTotVal").jqxCheckBox('disable');
-                    formulaToApplyTot = (isMilledTotSelected)? 'milled' : 'yieldPaddy'
+                    formulaToApplyTot = (isMilledTotSelected) ? 'milled' : 'yieldPaddy'
 
                 }
                 else if ($("#fifthCheckBoxTotVal").attr("aria-checked") == 'true') {
                     $("#fourthCheckBoxTotVal").jqxCheckBox('disable');
-                    formulaToApplyTot = (isMilledTotSelected)? 'areaHarvestedMilled' : 'areaHarvestedPaddy'
+                    formulaToApplyTot = (isMilledTotSelected) ? 'areaHarvestedMilled' : 'areaHarvestedPaddy'
                 }
                 break;
 
@@ -354,11 +257,11 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 if ($("#thirdCheckBoxTotVal").attr("aria-checked") == 'true') {
                     $("#fifthCheckBoxTotVal").jqxCheckBox('uncheck');
                     $("#fifthCheckBoxTotVal").jqxCheckBox('disable');
-                    formulaToApplyTot = (isMilledTotSelected)? 'milled' : 'yieldPaddy'
+                    formulaToApplyTot = (isMilledTotSelected) ? 'milled' : 'yieldPaddy'
 
                 } else if ($("#fifthCheckBoxTotVal").attr("aria-checked") == 'true') {
                     $("#thirdCheckBoxTotVal").jqxCheckBox('disable');
-                    formulaToApplyTot = (isMilledTotSelected)? 'productionMilled' : 'productionPaddy'
+                    formulaToApplyTot = (isMilledTotSelected) ? 'productionMilled' : 'productionPaddy'
                 }
                 break;
 
@@ -367,13 +270,13 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                     $("#fourthCheckBoxTotVal").jqxCheckBox('uncheck');
                     $("#fourthCheckBoxTotVal").jqxCheckBox('disable');
 
-                    formulaToApplyTot = (isMilledTotSelected)? 'areaHarvestedMilled' : 'areaHarvestedPaddy'
+                    formulaToApplyTot = (isMilledTotSelected) ? 'areaHarvestedMilled' : 'areaHarvestedPaddy'
 
                 }
                 else if ($("#fourthCheckBoxTotVal").attr("aria-checked") == 'true') {
                     $("#thirdCheckBoxTotVal").jqxCheckBox('disable');
 
-                    formulaToApplyTot = (isMilledTotSelected)? 'productionMilled' : 'productionPaddy'
+                    formulaToApplyTot = (isMilledTotSelected) ? 'productionMilled' : 'productionPaddy'
                 }
                 break;
         }
@@ -381,6 +284,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     PaddyObserver.prototype.onUncheckBoxTotal = function (number) {
         switch (number) {
+
             case 1:
 
                 if ($('#thirdCheckBoxTotVal').attr("aria-checked") == 'true' && $('#fourthCheckBoxTotVal').attr("aria-checked") == 'true') {
@@ -500,12 +404,14 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 }
                 controllerPaddy.deleteAlerts(false)
                 controllerPaddy.updateSingleCropsGridOnFormulaChanges(formulaToApplySingle, "normal");
-            } else {
-                var alert = '<div class="alert alert-danger alert-dismissible" role="alert">' +
-                    '<button type="button" class="close" data-dismiss="alert">' +
-                    '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
-                    '<strong>Attention!</strong> You have to select <strong>2 elements</strong></div>';
-                $('#alertSingle').append(alert)
+            } else{
+                if(!document.getElementById('selectAtLeastTwoElSing')) {
+                    var alert = '<div class="alert alert-danger alert-dismissible" role="alert" id="selectAtLeastTwoElSing">' +
+                        '<button type="button" class="close" data-dismiss="alert">' +
+                        '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
+                        '<strong>Attention!</strong> You have to select <strong>2 elements</strong></div>';
+                    $('#alertSingle').append(alert)
+                }
             }
         })
     }
@@ -532,11 +438,13 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 controllerPaddy.deleteAlerts(true)
                 controllerPaddy.updateTotGridOnFormulaChanges(formulaToApplyTot, "normal");
             } else {
-                var alert = '<div class="alert alert-danger alert-dismissible" role="alert">' +
-                    '<button type="button" class="close" data-dismiss="alert">' +
-                    '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
-                    '<strong>Attention!</strong> You have to select <strong>2 elements</strong></div>';
-                $('#alertTotal').append(alert)
+                if (!document.getElementById('selectAtLeastTwoElTot')) {
+                    var alert = '<div class="alert alert-danger alert-dismissible" role="alert" id="selectAtLeastTwoElTot">' +
+                        '<button type="button" class="close" data-dismiss="alert">' +
+                        '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
+                        '<strong>Attention!</strong> You have to select <strong>2 elements</strong></div>';
+                    $('#alertTotal').append(alert)
+                }
             }
         })
     }
@@ -557,10 +465,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'milled':
                 case 'init':
                     var conditionCalculated =
-                        ((row == 1 + 7*0 || row == 3 +  7*0|| row == 5 + 7*0) ||
-                            (row == 1 + 7*1 || row == 3  + 7*1|| row == 5 + 7*1) ||
-                            (row == 1 + 7*2 || row == 3  + 7*2|| row == 5 + 7*2) ||
-                            (row == 1 + 7*3 || row == 3  + 7*3|| row == 5 + 7*3))
+                        ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
+                            (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
+                            (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
+                            (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -570,10 +478,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'areaHarvestedMilled':
 
                     var conditionCalculated =
-                        ((row == 0 + 7*0 || row == 1  + 7*0|| row == 5 + 7*0) ||
-                            (row == 0 + 7*1 || row == 1  + 7*1|| row == 5 + 7*1) ||
-                            (row == 0 + 7*2 || row == 1  + 7*2|| row == 5 + 7*2) ||
-                            (row == 0 + 7*3 || row == 1  + 7*3|| row == 5 + 7*3))
+                        ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
+                            (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
+                            (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
+                            (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -583,10 +491,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'productionMilled':
 
                     var conditionCalculated =
-                        ((row == 4 + 7*0 || row == 1  + 7*0|| row == 5 + 7*0) ||
-                            (row == 4 + 7*1 || row == 1  + 7*1|| row == 5 + 7*1) ||
-                            (row == 4 + 7*2 || row == 1  + 7*2|| row == 5 + 7*2) ||
-                            (row == 4 + 7*3 || row == 1  + 7*3|| row == 5 + 7*3))
+                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
+                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
+                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
+                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
 
 
                     if (conditionCalculated) {
@@ -597,10 +505,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'yieldPaddy':
 
                     var conditionCalculated =
-                        ((row == 4 + 7*0 || row == 3 +  7*0|| row == 5 + 7*0) ||
-                            (row == 4 + 7*1 || row == 3  + 7*1|| row == 5 + 7*1) ||
-                            (row == 4 + 7*2 || row == 3  + 7*2|| row == 5 + 7*2) ||
-                            (row == 4 + 7*3 || row == 3  + 7*3|| row == 5 + 7*3))
+                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
+                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
+                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
+                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
 
 
                     if (conditionCalculated) {
@@ -610,10 +518,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
                 case 'areaHarvestedPaddy':
                     var conditionCalculated =
-                        ((row == 4 + 7*0 || row == 3 + 7*0 || row == 0 + 7*0) ||
-                            (row == 4 + 7*1 || row == 3  + 7*1|| row == 0 + 7*1) ||
-                            (row == 4 + 7*2 || row == 3  + 7*2|| row == 0 + 7*2) ||
-                            (row == 4 + 7*3 || row == 3  + 7*3|| row == 0 + 7*3))
+                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
+                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
+                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
+                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -623,10 +531,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'productionPaddy':
 
                     var conditionCalculated =
-                        ((row == 4 + 7*0 || row == 1  + 7*0|| row == 5 + 7*0) ||
-                            (row == 4 + 7*1 || row == 1  + 7*1|| row == 5 + 7*1) ||
-                            (row == 4 + 7*2 || row == 1  + 7*2|| row == 5 + 7*2) ||
-                            (row == 4 + 7*3 || row == 1  + 7*3|| row == 5 + 7*3))
+                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
+                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
+                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
+                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -638,7 +546,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             }
             // condition follows
             if (toBlock) {
-               $("#gridTotalValues").jqxGrid('endcelledit',row,column,true);
+                $("#gridTotalValues").jqxGrid('endcelledit', row, column, true);
             }
         });
     }
@@ -653,7 +561,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield
-            ;
+                ;
 
             switch (formulaToApplySingle) {
 
@@ -661,10 +569,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'init':
 
                     var conditionCalculated =
-                        ((row == 1 + 7*0 || row == 3  + 7*0|| row == 6 + 7*0) ||
-                            (row == 1 + 7*1 || row == 3  + 7*1|| row == 6 + 7*1) ||
-                            (row == 1 + 7*2 || row == 3  + 7*2|| row == 6 + 7*2) ||
-                            (row == 1 + 7*3 || row == 3  + 7*3|| row == 6 + 7*3))
+                        ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
+                            (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
+                            (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
+                            (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -674,10 +582,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'areaHarvestedMilled':
 
                     var conditionCalculated =
-                        ((row == 0 + 7*0 || row == 1 + 7*0 || row == 6 + 7*0) ||
-                            (row == 0 + 7*1 || row == 1  + 7*1|| row == 6 + 7*1) ||
-                            (row == 0 + 7*2 || row == 1  + 7*2|| row == 6 + 7*2) ||
-                            (row == 0 + 7*3 || row == 1  + 7*3|| row == 6 + 7*3))
+                        ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
+                            (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
+                            (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
+                            (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -687,10 +595,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'productionMilled':
 
                     var conditionCalculated =
-                        ((row == 4 + 7*0 || row == 1  + 7*0|| row == 6 + 7*0) ||
-                            (row == 4 + 7*1 || row == 1  + 7*1|| row == 6 + 7*1) ||
-                            (row == 4 + 7*2 || row == 1  + 7*2|| row == 6 + 7*2) ||
-                            (row == 4 + 7*3 || row == 1  + 7*3|| row == 6 + 7*3))
+                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
+                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
+                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
+                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
 
 
                     if (conditionCalculated) {
@@ -701,10 +609,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'yieldPaddy':
 
                     var conditionCalculated =
-                        ((row == 4 + 7*0 || row == 3  + 7*0|| row == 6 + 7*0) ||
-                            (row == 4 + 7*1 || row == 3  + 7*1|| row == 6 + 7*1) ||
-                            (row == 4 + 7*2 || row == 3  + 7*2|| row == 6 + 7*2) ||
-                            (row == 4 + 7*3 || row == 3  + 7*3|| row == 6 + 7*3))
+                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
+                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
+                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
+                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -714,10 +622,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'areaHarvestedPaddy':
 
                     var conditionCalculated =
-                        ((row == 4 + 7*0 || row == 3  + 7*0|| row == 0 + 7*0) ||
-                            (row == 4 + 7*1 || row == 3  + 7*1|| row == 0 + 7*1) ||
-                            (row == 4 + 7*2 || row == 3  + 7*2|| row == 0 + 7*2) ||
-                            (row == 4 + 7*3 || row == 3  + 7*3|| row == 0 + 7*3))
+                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
+                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
+                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
+                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
 
 
                     if (conditionCalculated) {
@@ -728,10 +636,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 case 'productionPaddy':
 
                     var conditionCalculated =
-                        ((row == 4 + 7*0 || row == 1 +  7*0|| row == 6 + 7*0) ||
-                            (row == 4 + 7*1 || row == 1  + 7*1|| row == 6 + 7*1) ||
-                            (row == 4 + 7*2 || row == 1  + 7*2|| row == 6 + 7*2) ||
-                            (row == 4 + 7*3 || row == 1  + 7*3|| row == 6 + 7*3))
+                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
+                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
+                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
+                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -787,17 +695,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         })
     }
 
-    /*
-    PaddyObserver.prototype.closeEventsBindedToTotGrid = function () {
-        $("#gridTotalValues").off();
-        $("#radioBtnMilledTot").off();
-        $("#radioBtnPaddyTot").off();
-        $("#thirdCheckBoxTotVal").off();
-        $("#fourthCheckBoxTotVal").off();
-        $("#fifthCheckBoxTotVal").off();
-
-        $('#saveTotalValues').off()
-    }*/
 
     PaddyObserver.prototype.listenToTabs = function () {
 
@@ -805,14 +702,14 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             e.preventDefault();
             e.stopImmediatePropagation();
 
-            var newly =  e.target // newly activated tab
-            var oldly =e.relatedTarget // previous active tab
+            var newly = e.target // newly activated tab
+            var oldly = e.relatedTarget // previous active tab
 
-            if(newly.hash == '#totalValues' && singleCropsValuesModified){
+            if (newly.hash == '#totalValues' && singleCropsValuesModified) {
                 controllerPaddy.onSwitchingCropsValues(formulaToApplySingle)
-            }else if(newly.hash == '#totalValues' && !singleCropsValuesModified){
+            } else if (newly.hash == '#totalValues' && !singleCropsValuesModified) {
                 controllerPaddy.onSwitchingSimpleTotal(formulaToApplyTot)
-            }else if(newly.hash == '#singleCrops'){
+            } else if (newly.hash == '#singleCrops') {
                 controllerPaddy.onSwitchingSimpleSingle(formulaToApplySingle)
             }
         })

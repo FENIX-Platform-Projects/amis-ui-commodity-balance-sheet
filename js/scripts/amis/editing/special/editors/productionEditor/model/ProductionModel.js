@@ -61,7 +61,6 @@ define(["jquery", "urlConfigurator"], function ($, ServicesURL) {
         }
         else {
 
-            ;
             var valueColumnNumber = 3;
             var flagsColumnNumber = 4;
             var notesColumnNumber = 5;

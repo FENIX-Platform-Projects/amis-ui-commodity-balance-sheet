@@ -11,9 +11,6 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         function GridDataView() {
             NProgress = Nprogress
             NProgress.done()
-
-
-
         }
 
 
@@ -30,14 +27,14 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             return grid;
         }
 
-        GridDataView.prototype.createAndDrawGrid = function(columns, dataSource){
+        GridDataView.prototype.createAndDrawGrid = function (columns, dataSource) {
             var self = this;
             var gridUi =
                 webix.ui({
                     container: "pivotGrid",
                     view: "datatable",
-                    rowHeight:29,
-                    columnWidth:300,
+                    rowHeight: 29,
+                    columnWidth: 300,
                     clipboard: "selection",
                     id: "grid",
                     editable: true,
@@ -48,13 +45,15 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                             self.createColourConfiguration(item);
                         }
                     },
-                    visibleBatch:1,
+                    visibleBatch: 1,
                     columns: columns,
                     datatype: "jsarray",
                     data: dataSource
                 });
 
-            webix.event(window, "resize", function(){ gridUi.adjust(); })
+            webix.event(window, "resize", function () {
+                gridUi.adjust();
+            })
 
             return gridUi
         }
@@ -72,14 +71,14 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                     columns.push({id: "data" + 1, header: [
                         {text: 'Input dates', colspan: arrDiffDates.length},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text', fillspace:true, minWidth: 100,css: "datesColumns"})
+                    ], editor: 'text', fillspace: true, minWidth: 100, css: "datesColumns"})
                 } else if (i != 0 && i != arrDiffDates.length) {
 
                     columns.push({id: "data" + (i + 1), header: [
                         //{text: ''},
                         {text: null},
                         {text: arrDiffDates[i]}
-                    ], editor: 'text', fillspace:true,minWidth: 100, css: "datesColumns"})
+                    ], editor: 'text', fillspace: true, minWidth: 100, css: "datesColumns"})
                 }
             }
             return columns;
@@ -113,7 +112,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             if (grid)
                 grid.destructor()
 
-            grid = this.createAndDrawGrid(columns,dataSource);
+            grid = this.createAndDrawGrid(columns, dataSource);
             generalController.createListeners(grid);
             return grid;
         }
@@ -148,6 +147,11 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 f.remove();
             }
 
+            var f = document.getElementById('resetGrid');
+            if (typeof f != 'undefined' && f != null) {
+                f.remove();
+            }
+
             var f = document.getElementById('changeModality');
             if (typeof f != 'undefined' && f != null) {
                 f.remove();
@@ -165,15 +169,15 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
 
             var buttonChangeModality;
             var storeModality = amplify.store()
-            if(storeModality.isMonthlyModality){
+            if (storeModality.isMonthlyModality) {
 
                 buttonChangeModality = '<button class="btn btn-primary" id="newForecast">Create a new forecast for season ' + filterData.season + '</button>' +
-                    '<button class="btn btn-primary" id="changeModality">Switch to annual mode</button>'
+                    '<button class="btn btn-primary" id="changeModality">Switch to annual mode</button><button class="btn btn-primary" id="resetGrid">Reset</button>'
                 titleGrid.innerHTML = "Forecast for season: " + filterData.season + " , " + filterData.country +
                     " , " + filterData.product + " , " + filterData.dataSource
-            }else{
+            } else {
 
-                buttonChangeModality = '<button class="btn btn-primary" id="changeModality">Switch to monthly mode</button>';
+                buttonChangeModality = '<button class="btn btn-primary" id="changeModality">Switch to monthly mode</button><button class="btn btn-primary" id="resetGrid">Reset</button>';
                 titleGrid.innerHTML = "Annual most recent Forecasts for  " + filterData.country +
                     " , " + filterData.product + " , " + filterData.dataSource
             }
@@ -214,7 +218,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 '</ul></div>');
 
 
-            $('#editingChoice').jqxCheckBox({width: 30, height: 25 , checked: true});
+            $('#editingChoice').jqxCheckBox({width: 30, height: 25, checked: true});
             $('#commaButton').jqxRadioButton({groupName: "thousandSeparator", width: 30, height: 25});
             $('#periodButton').jqxRadioButton({groupName: "thousandSeparator", width: 30, height: 25});
             $('#spaceButton').jqxRadioButton({groupName: "thousandSeparator", width: 30, height: 25});
@@ -283,20 +287,16 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             var cellTransformed = viewModel.updateItem(newCell)
             modelView[indexCell] = cellTransformed;
 
-            var result = this.updateDataSourceSingleCell(cellTransformed)
+            this.updateDataSourceSingleCell(cellTransformed)
 
             grid.destructor()
 
-            var self = this;
-            grid = this.createAndDrawGrid(columns,dataSource);
+            grid = this.createAndDrawGrid(columns, dataSource);
             grid.scrollTo(xCoordinate, yCoordinate)
             generalController.createListeners(grid)
 
         }
 
-        GridDataView.prototype.getGrid = function () {
-            return grid
-        }
 
         GridDataView.prototype.updateBatchGridView = function (tableModel, cells, xCoordinate, yCoordinate, events) {
 
@@ -310,9 +310,6 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 this.updateDataSourceSingleCell(newCalculatedCells[i])
             }
 
-
-            var self = this
-
             if (grid) {
                 grid.destructor()
             }
@@ -322,14 +319,10 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 $('.modal-backdrop').remove();
             }
 
-            grid = this.createAndDrawGrid(columns,dataSource);
+            grid = this.createAndDrawGrid(columns, dataSource);
 
             grid.scrollTo(xCoordinate, yCoordinate)
             generalController.createListeners(grid);
-        }
-
-        GridDataView.prototype.getDataSource = function () {
-            return dataSource
         }
 
         GridDataView.prototype.updateDataSourceSingleCell = function (newCell) {

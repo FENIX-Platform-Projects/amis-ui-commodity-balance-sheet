@@ -105,8 +105,8 @@ define(['jquery'], function ($) {
                     dataNew[i][2] = moment(date).format('YYYY-MM-DD')
                 }
 
-                if (dataNew[i][3] == '') {
-                    dataNew[i][3] = null;
+                for(var k=0; k<dataNew[i].length; k++) {
+                    if (dataNew[i][k] == '') dataNew[i][k] = null
                 }
 
                 result.push(dataNew[i])

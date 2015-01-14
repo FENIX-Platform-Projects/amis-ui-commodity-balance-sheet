@@ -57,56 +57,56 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         observer.init(this)
 
     }
-/*
-    PaddyController.prototype.selectSpecialEditing = function (formulaToApplyTot, numberOfRow) {
+    /*
+     PaddyController.prototype.selectSpecialEditing = function (formulaToApplyTot, numberOfRow) {
 
-        var result;
-        if (formulaToApplyTot == 'milled') {
-            switch (numberOfRow) {
-                case 3 :
-                    result = 'yieldChange'
-                    break;
-                default :
-                    result = 'normal'
-                    break;
-            }
-        }
-        else if (formulaToApplyTot == 'areaHarvested') {
-            switch (numberOfRow) {
-                case 4:
-                    result = 'productionChange'
-                    break;
+     var result;
+     if (formulaToApplyTot == 'milled') {
+     switch (numberOfRow) {
+     case 3 :
+     result = 'yieldChange'
+     break;
+     default :
+     result = 'normal'
+     break;
+     }
+     }
+     else if (formulaToApplyTot == 'areaHarvested') {
+     switch (numberOfRow) {
+     case 4:
+     result = 'productionChange'
+     break;
 
-                default :
-                    result = 'normal'
-                    break;
-            }
+     default :
+     result = 'normal'
+     break;
+     }
 
-        } else if (formulaToApplyTot == 'yield') {
-            switch (numberOfRow) {
-                case 2:
-                    result = 'extractionRateChange'
-                    break;
-                default :
-                    result = 'normal'
-                    break;
-            }
-        }
-        else if (formulaToApplyTot == 'productionMilled') {
-            switch (numberOfRow) {
-                case 2:
-                    result = 'extractionRateChange'
-                    break;
-                default :
-                    result = 'normal'
-                    break;
-            }
-        }
-        return result;
+     } else if (formulaToApplyTot == 'yield') {
+     switch (numberOfRow) {
+     case 2:
+     result = 'extractionRateChange'
+     break;
+     default :
+     result = 'normal'
+     break;
+     }
+     }
+     else if (formulaToApplyTot == 'productionMilled') {
+     switch (numberOfRow) {
+     case 2:
+     result = 'extractionRateChange'
+     break;
+     default :
+     result = 'normal'
+     break;
+     }
+     }
+     return result;
 
 
-    }
-*/
+     }
+     */
     PaddyController.prototype.updateTotGridOnEditing = function (rowNumber, newValue, formulaToApply, columnValue, typeOfEditing) {
 
         console.log('updateTOT grid on EDITIING: controller')
@@ -169,15 +169,15 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
             var itemsNumber = 7;
             var copyDataForCrops = $.extend(true, [], dataForCrops)
             var modelPiece = copyDataForCrops.splice(startIndex, itemsNumber)
-            var calculatedPieceOfModel= null;
+            var calculatedPieceOfModel = null;
 
             if (Object.prototype.toString.call(formulaToUpdate) === '[object Array]') {
                 for (var j = 0; j < formulaToUpdate.length; j++) {
                     ;
-                    if(calculatedPieceOfModel == null){
+                    if (calculatedPieceOfModel == null) {
                         calculatedPieceOfModel = modelPiece;
                     }
-                     calculatedPieceOfModel = formulaHandler.createFormula(calculatedPieceOfModel, formulaToUpdate[j])
+                    calculatedPieceOfModel = formulaHandler.createFormula(calculatedPieceOfModel, formulaToUpdate[j])
                 }
             } else {
                 var calculatedPieceOfModel = formulaHandler.createFormula(modelPiece, formulaToUpdate)
@@ -286,47 +286,48 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         editorPaddy.destroyAll();
     }
 
-    PaddyController.prototype.showAlerts = function(isTotal){
+    PaddyController.prototype.showAlerts = function (isTotal) {
         console.log('controller.showalerts!!!!!!!!!!')
-            ;
-        (isTotal)? editorPaddy.showAlertTotal(): editorPaddy.showAlertSingle();
+            debugger;
+
+        (isTotal) ? editorPaddy.showAlert('alertTotal') : editorPaddy.showAlert('alertSingle');
     }
 
-    PaddyController.prototype.deleteAlerts = function(isTotal){
+    PaddyController.prototype.deleteAlerts = function (isTotal) {
         editorPaddy.cancelAlerts(isTotal);
     }
 
-    PaddyController.prototype.onChangeFormulaWithRadio = function(oldFormula){
+    PaddyController.prototype.onChangeFormulaWithRadio = function (oldFormula) {
 
         var result;
-            switch (true){
-                case (oldFormula == 'productionPaddy'):
-                    result = 'productionMilled';
-                    break;
-                case (oldFormula == 'areaHarvestedPaddy'):
-                    result = 'areaHarvestedMilled';
-                    break;
-                case (oldFormula == 'yieldPaddy'):
-                    result = 'milled';
-                    break;
-                case (oldFormula == 'productionMilled'):
-                    result = 'productionPaddy';
-                    break;
-                case (oldFormula == 'areaHarvestedMilled'):
-                    result = 'areaHarvestedPaddy';
-                    break;
-                case (oldFormula == 'milled' ||oldFormula == 'init' ):
-                    result = 'yieldPaddy';
-                    break;
-            }
+        switch (true) {
+            case (oldFormula == 'productionPaddy'):
+                result = 'productionMilled';
+                break;
+            case (oldFormula == 'areaHarvestedPaddy'):
+                result = 'areaHarvestedMilled';
+                break;
+            case (oldFormula == 'yieldPaddy'):
+                result = 'milled';
+                break;
+            case (oldFormula == 'productionMilled'):
+                result = 'productionPaddy';
+                break;
+            case (oldFormula == 'areaHarvestedMilled'):
+                result = 'areaHarvestedPaddy';
+                break;
+            case (oldFormula == 'milled' || oldFormula == 'init' ):
+                result = 'yieldPaddy';
+                break;
+        }
         return result;
 
     }
 
-    PaddyController.prototype.onChangeKindOfRice = function(formulaToApply, isMilledSelected, isTotalSection){
+    PaddyController.prototype.onChangeKindOfRice = function (formulaToApply, isMilledSelected, isTotalSection) {
 
-       (isTotalSection)?  this.updateTotGridOnFormulaChanges(formulaToApply,"normal"):  this.updateSingleCropsGridOnFormulaChanges(formulaToApply,"normal");
-        editorPaddy.changeLabelToElements(isMilledSelected,isTotalSection)
+        (isTotalSection) ? this.updateTotGridOnFormulaChanges(formulaToApply, "normal") : this.updateSingleCropsGridOnFormulaChanges(formulaToApply, "normal");
+        editorPaddy.changeLabelToElements(isMilledSelected, isTotalSection)
 
     }
 

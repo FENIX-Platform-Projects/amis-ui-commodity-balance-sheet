@@ -185,6 +185,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     }
 
     ProductionObserver.prototype.onUncheckBoxTotal = function (others) {
+
         for (var i = 0; i < others.length; i++) {
             switch (others[i]) {
                 case 1:
@@ -247,11 +248,13 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                 controllerProduction.cancelAllAlerts(true)
                 controllerProduction.updateTotGridOnFormulaChanges(formulaToApplyTot, typeOfForm);
             } else {
-                var alert = '<div class="alert alert-danger alert-dismissible" role="alert">' +
-                    '<button type="button" class="close" data-dismiss="alert">' +
-                    '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
-                    '<strong>Attention!</strong> You have to select <strong>2 elements</strong></div>';
-                $('#alertTotal').append(alert)
+                if(!document.getElementById('selectAtLeastTwoElTot')) {
+                    var alert = '<div class="alert alert-danger alert-dismissible" role="alert" id="selectAtLeastTwoElTot">' +
+                        '<button type="button" class="close" data-dismiss="alert">' +
+                        '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
+                        '<strong>Attention!</strong> You have to select <strong>2 elements</strong></div>';
+                    $('#alertTotal').append(alert)
+                }
             }
         })
     }
@@ -274,11 +277,13 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                 controllerProduction.cancelAllAlerts(false)
                 controllerProduction.updateSingleCropsGridOnFormulaChanges(formulaToApplySingle, typeOfForm);
             } else {
-                var alert = '<div class="alert alert-danger alert-dismissible" role="alert">' +
-                    '<button type="button" class="close" data-dismiss="alert">' +
-                    '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
-                    '<strong>Attention!</strong> You have to select <strong>2 elements</strong></div>';
-                $('#alertSingle').append(alert)
+                if(!document.getElementById('selectAtLeastTwoElSing')) {
+                    var alert = '<div class="alert alert-danger alert-dismissible" role="alert" id="selectAtLeastTwoElSing">' +
+                        '<button type="button" class="close" data-dismiss="alert">' +
+                        '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
+                        '<strong>Attention!</strong> You have to select <strong>2 elements</strong></div>';
+                    $('#alertSingle').append(alert)
+                }
             }
         })
     }

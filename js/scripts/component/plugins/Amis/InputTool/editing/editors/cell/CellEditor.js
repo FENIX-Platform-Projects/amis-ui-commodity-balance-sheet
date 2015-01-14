@@ -635,6 +635,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                 array.push(this.chooseAndGetElementByDatatype(columns[accessorIndexes[i - 1]].dataTypes, $input[i]))
             }
         }
+
         return array;
     }
 
@@ -706,9 +707,9 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             g.remove()
         }
 
-        debugger;
-
         var k =  $('#closeModal');
+
+
         if(k) {
             $('#closeModal').click();
         }
@@ -726,6 +727,10 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
          if (f && f !== null) {
              f.remove()
          }
+
+        var root = document.getElementsByTagName( 'html' )[0]; // '0' to assign the first (and only `HTML` tag)
+
+        root.setAttribute( "class", "settingOverflow" );
 
 
     }

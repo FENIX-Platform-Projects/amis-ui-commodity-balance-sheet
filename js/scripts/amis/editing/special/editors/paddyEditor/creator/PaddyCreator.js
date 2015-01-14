@@ -1,7 +1,7 @@
 define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/FlagController", "text!paddyEditor/view/_paddyForm.html",
-    "text!productionEditor/view/_alertSelection.html","jqwidgets", "select2"], function ($, Formatter, FlagController, HTMLPaddy, AlertSelection) {
+    "text!productionEditor/view/_alertSelection.html", "jqwidgets", "select2"], function ($, Formatter, FlagController, HTMLPaddy, AlertSelection) {
 
-    var observer, formulaToRenderTotVal, formulaToRenderSingleCrops, flagController, modal,callbackStyleTotGrid, callbackStyleSingleGrid,
+    var observer, formulaToRenderTotVal, formulaToRenderSingleCrops, flagController, modal, callbackStyleTotGrid, callbackStyleSingleGrid,
         that, callbackMultiFlagCreation, callbackMultiFlagInit, callbackMultiFlagGetValues, that, alertSelection;
 
     function PaddyCreator() {
@@ -46,7 +46,6 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         var singleModel = $.extend(true, [], singleCropsModel);
 
 
-
         $("#specialForm").modal({ backdrop: 'static',
             keyboard: false});
 
@@ -64,14 +63,14 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         })
 
 
-       this.createAndDrawGrid( this.setDataForGrid(totalModel,true),   "gridTotalValues") ;
+        this.createAndDrawGrid(this.setDataForGrid(totalModel, true), "gridTotalValues");
 
-       this.createAndDrawGrid( this.setDataForGrid(singleModel,false), "gridSingleCrops");
+        this.createAndDrawGrid(this.setDataForGrid(singleModel, false), "gridSingleCrops");
 
-       this.changeLabelToElements(true,true);
-       this.changeLabelToElements(true,false);
+        this.changeLabelToElements(true, true);
+        this.changeLabelToElements(true, false);
 
-       observer.applyListeners()
+        observer.applyListeners()
 
     }
 
@@ -81,7 +80,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         observer.unbindEventsFromTotalValues()
 
-        this.createAndDrawGrid( this.setDataForGrid(calculatedModel,true),   "gridTotalValues") ;
+        this.createAndDrawGrid(this.setDataForGrid(calculatedModel, true), "gridTotalValues");
 
         observer.reBindEventsFromTotalValues()
 
@@ -91,7 +90,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         formulaToRenderSingleCrops = formulaToApply;
 
-        this.createAndDrawGrid( this.setDataForGrid(calculatedModel,false), "gridSingleCrops");
+        this.createAndDrawGrid(this.setDataForGrid(calculatedModel, false), "gridSingleCrops");
 
 
     }
@@ -122,20 +121,20 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             case 'milled':
 
                 var conditionCalculated =
-                   ((row == 1 + 7*0 || row == 3 +  7*0|| row == 5 + 7*0) ||
-                    (row == 1 + 7*1 || row == 3  + 7*1|| row == 5 + 7*1) ||
-                    (row == 1 + 7*2 || row == 3  + 7*2|| row == 5 + 7*2) ||
-                    (row == 1 + 7*3 || row == 3  + 7*3|| row == 5 + 7*3))
+                    ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
+                        (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
+                        (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
+                        (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
                 break;
             case 'yieldPaddy':
 
                 var conditionCalculated =
-                   ((row == 4 + 7*0 || row == 3 +  7*0|| row == 5 + 7*0) ||
-                    (row == 4 + 7*1 || row == 3  + 7*1|| row == 5 + 7*1) ||
-                    (row == 4 + 7*2 || row == 3  + 7*2|| row == 5 + 7*2) ||
-                    (row == 4 + 7*3 || row == 3  + 7*3|| row == 5 + 7*3))
+                    ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
+                        (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
+                        (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
+                        (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
 
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
@@ -143,20 +142,20 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             case 'areaHarvestedPaddy':
 
                 var conditionCalculated =
-                   ((row == 4 + 7*0 || row == 3 + 7*0 || row == 0 + 7*0) ||
-                    (row == 4 + 7*1 || row == 3  + 7*1|| row == 0 + 7*1) ||
-                    (row == 4 + 7*2 || row == 3  + 7*2|| row == 0 + 7*2) ||
-                    (row == 4 + 7*3 || row == 3  + 7*3|| row == 0 + 7*3))
+                    ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
+                        (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
+                        (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
+                        (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
                 break;
 
             case 'productionPaddy':
                 var conditionCalculated =
-                   ((row == 4 + 7*0 || row == 1  + 7*0|| row == 5 + 7*0) ||
-                    (row == 4 + 7*1 || row == 1  + 7*1|| row == 5 + 7*1) ||
-                    (row == 4 + 7*2 || row == 1  + 7*2|| row == 5 + 7*2) ||
-                    (row == 4 + 7*3 || row == 1  + 7*3|| row == 5 + 7*3))
+                    ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
+                        (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
+                        (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
+                        (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
 
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
@@ -165,20 +164,20 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             case 'productionMilled':
 
                 var conditionCalculated =
-                       ((row == 4 + 7*0 || row == 1  + 7*0|| row == 5 + 7*0) ||
-                        (row == 4 + 7*1 || row == 1  + 7*1|| row == 5 + 7*1) ||
-                        (row == 4 + 7*2 || row == 1  + 7*2|| row == 5 + 7*2) ||
-                        (row == 4 + 7*3 || row == 1  + 7*3|| row == 5 + 7*3))
+                    ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
+                        (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
+                        (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
+                        (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
                 break;
 
             case 'areaHarvestedMilled':
                 var conditionCalculated =
-                       ((row == 0 + 7*0 || row == 1  + 7*0|| row == 5 + 7*0) ||
-                        (row == 0 + 7*1 || row == 1  + 7*1|| row == 5 + 7*1) ||
-                        (row == 0 + 7*2 || row == 1  + 7*2|| row == 5 + 7*2) ||
-                        (row == 0 + 7*3 || row == 1  + 7*3|| row == 5 + 7*3))
+                    ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
+                        (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
+                        (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
+                        (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
                 break;
@@ -194,10 +193,10 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             case 'milled':
 
                 var conditionCalculated =
-                   ((row == 1 + 7*0 || row == 3  + 7*0|| row == 6 + 7*0) ||
-                    (row == 1 + 7*1 || row == 3  + 7*1|| row == 6 + 7*1) ||
-                    (row == 1 + 7*2 || row == 3  + 7*2|| row == 6 + 7*2) ||
-                    (row == 1 + 7*3 || row == 3  + 7*3|| row == 6 + 7*3))
+                    ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
+                        (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
+                        (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
+                        (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
 
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
@@ -205,20 +204,20 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             case 'yieldPaddy':
 
                 var conditionCalculated =
-                   ((row == 4 + 7*0 || row == 3  + 7*0|| row == 6 + 7*0) ||
-                    (row == 4 + 7*1 || row == 3  + 7*1|| row == 6 + 7*1) ||
-                    (row == 4 + 7*2 || row == 3  + 7*2|| row == 6 + 7*2) ||
-                    (row == 4 + 7*3 || row == 3  + 7*3|| row == 6 + 7*3))
+                    ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
+                        (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
+                        (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
+                        (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
                 break;
             case 'areaHarvestedPaddy':
 
                 var conditionCalculated =
-                   ((row == 4 + 7*0 || row == 3  + 7*0|| row == 0 + 7*0) ||
-                    (row == 4 + 7*1 || row == 3  + 7*1|| row == 0 + 7*1) ||
-                    (row == 4 + 7*2 || row == 3  + 7*2|| row == 0 + 7*2) ||
-                    (row == 4 + 7*3 || row == 3  + 7*3|| row == 0 + 7*3))
+                    ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
+                        (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
+                        (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
+                        (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
 
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
@@ -227,10 +226,10 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             case 'productionPaddy':
 
                 var conditionCalculated =
-                   ((row == 4 + 7*0 || row == 1 +  7*0|| row == 6 + 7*0) ||
-                    (row == 4 + 7*1 || row == 1  + 7*1|| row == 6 + 7*1) ||
-                    (row == 4 + 7*2 || row == 1  + 7*2|| row == 6 + 7*2) ||
-                    (row == 4 + 7*3 || row == 1  + 7*3|| row == 6 + 7*3))
+                    ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
+                        (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
+                        (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
+                        (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
 
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
@@ -239,20 +238,20 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             case 'productionMilled':
 
                 var conditionCalculated =
-                   ((row == 4 + 7*0 || row == 1  + 7*0|| row == 6 + 7*0) ||
-                    (row == 4 + 7*1 || row == 1  + 7*1|| row == 6 + 7*1) ||
-                    (row == 4 + 7*2 || row == 1  + 7*2|| row == 6 + 7*2) ||
-                    (row == 4 + 7*3 || row == 1  + 7*3|| row == 6 + 7*3))
+                    ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
+                        (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
+                        (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
+                        (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
                 break;
 
             case 'areaHarvestedMilled':
                 var conditionCalculated =
-                   ((row == 0 + 7*0 || row == 1 + 7*0 || row == 6 + 7*0) ||
-                    (row == 0 + 7*1 || row == 1  + 7*1|| row == 6 + 7*1) ||
-                    (row == 0 + 7*2 || row == 1  + 7*2|| row == 6 + 7*2) ||
-                    (row == 0 + 7*3 || row == 1  + 7*3|| row == 6 + 7*3))
+                    ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
+                        (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
+                        (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
+                        (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
 
                 result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
                 break;
@@ -284,9 +283,11 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         return  flagController.getStringFromCodes(codes);
     }
 
-    PaddyCreator.prototype.showAlertTotal = function () {
-        if (!document.getElementById('alertTotal').firstChild) {
-            $("#alertTotal").append(alertSelection)
+    PaddyCreator.prototype.showAlert = function (container) {
+        console.log('alert trovato:')
+        console.log(document.getElementById(''+container).firstChild)
+        if (!document.getElementById(''+container).firstChild) {
+            $("#"+container).append(alertSelection);
         }
     }
 
@@ -304,11 +305,11 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
     }
 
 
-    PaddyCreator.prototype.createAndDrawGrid = function(dataAdapter, idContainer  ){
+    PaddyCreator.prototype.createAndDrawGrid = function (dataAdapter, idContainer) {
 
-        var columns =this.createColumnsForGrid(idContainer);
+        var columns = this.createColumnsForGrid(idContainer);
 
-        $('#'+idContainer).jqxGrid({
+        $('#' + idContainer).jqxGrid({
             source: dataAdapter,
             width: "100%",
             editable: true,
@@ -322,16 +323,16 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
     }
 
 
-    PaddyCreator.prototype.createColumnsForGrid = function(idContainer){
+    PaddyCreator.prototype.createColumnsForGrid = function (idContainer) {
 
-        var columns = (idContainer == "gridTotalValues")?
-        [
-            { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid  },
-            { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid },
-            { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid,
-                createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250 },
-            { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid }
-        ]:
+        var columns = (idContainer == "gridTotalValues") ?
+            [
+                { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid  },
+                { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid },
+                { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid,
+                    createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250 },
+                { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid }
+            ] :
             [
                 { text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid },
                 { text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid },
@@ -343,16 +344,16 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
     }
 
 
-    PaddyCreator.prototype.setDataForGrid = function(data, isTotalModel){
+    PaddyCreator.prototype.setDataForGrid = function (data, isTotalModel) {
 
 
-        var dataField = (isTotalModel)?
+        var dataField = (isTotalModel) ?
             [
                 { name: 6, type: 'string' },
                 { name: 3, type: 'float' },
                 { name: 4, type: 'string'},
                 {name: 5, type: 'string'}
-            ]:
+            ] :
             [
                 { name: 6, type: 'string'},
                 { name: 7, type: 'string'},
@@ -365,7 +366,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         var source = {
             datatype: "array",
             datafields: dataField,
-            id: 'grid'+isTotalModel,
+            id: 'grid' + isTotalModel,
             localdata: data
         };
 
@@ -374,23 +375,23 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
     }
 
 
-    PaddyCreator.prototype.initAllCheckBoxes = function(){
+    PaddyCreator.prototype.initAllCheckBoxes = function () {
 
         $('#radioBtnMilledTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy", checked: true});
-        $('#radioBtnPaddyTot').jqxRadioButton({ width: 120, height: 25,groupName: "totValuePaddy"});
+        $('#radioBtnPaddyTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
         $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fourthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true });
 
-        $('#radioBtnMilledSingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy",height: 25, checked: true});
-        $('#radioBtnPaddySingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy",height: 25});
+        $('#radioBtnMilledSingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25, checked: true});
+        $('#radioBtnPaddySingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25});
         $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
     }
 
 
-    PaddyCreator.prototype.destroyIfExistOtherModal = function(){
+    PaddyCreator.prototype.destroyIfExistOtherModal = function () {
         $('#specialForm').modal('hide');
 
         var g = document.getElementById("specialForm");
@@ -404,8 +405,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         $('#dialogForm').modal('hide');
 
 
-        var f =  $('#closeModalFormTotal');
-        if(f) {
+        var f = $('#closeModalFormTotal');
+        if (f) {
             $('#closeModalFormTotal').click();
         }
 
@@ -416,25 +417,23 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         }
     }
 
-    PaddyCreator.prototype.changeLabelToElements = function(isMilledSelected, isTotal){
+    PaddyCreator.prototype.changeLabelToElements = function (isMilledSelected, isTotal) {
         var labelYield, labelProduction
 
-        debugger;
-
-        if(isMilledSelected){
+        if (isMilledSelected) {
 
             labelYield = 'Yield Milled'
             labelProduction = 'Production'
 
-        }else{
+        } else {
             labelYield = 'Yield Paddy'
             labelProduction = 'Production Paddy'
         }
 
-        if(isTotal){
+        if (isTotal) {
             document.getElementById('thirdCheckBoxTotValLabel').innerHTML = labelProduction
             document.getElementById('fifthCheckBoxTotValLabel').innerHTML = labelYield
-        }else{
+        } else {
             document.getElementById('thirdCheckBoxSingleCropsLabel').innerHTML = labelProduction
             document.getElementById('fifthCheckBoxSingleCropsLabel').innerHTML = labelYield
         }

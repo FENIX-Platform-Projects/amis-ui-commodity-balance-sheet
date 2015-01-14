@@ -12,6 +12,18 @@ define(['jquery', 'jqwidgets', 'amplify'], function($){
         generalController = GeneralController;
         this.listenToVisualizationOptions(initThousand);
         this.listenToElementsOptions(initElement);
+        this.listenToResetButton();
+    }
+
+
+    GeneralObserver.prototype.listenToResetButton = function(){
+        $('#resetGrid').on('click', function(e){
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            debugger;
+            $('#loadData').click();
+
+        })
     }
 
 
