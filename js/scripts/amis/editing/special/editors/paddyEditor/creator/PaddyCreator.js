@@ -2,7 +2,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
     "text!productionEditor/view/_alertSelection.html", "jqwidgets", "select2"], function ($, Formatter, FlagController, HTMLPaddy, AlertSelection) {
 
     var observer, formulaToRenderTotVal, formulaToRenderSingleCrops, flagController, modal, callbackStyleTotGrid, callbackStyleSingleGrid,
-        that, callbackMultiFlagCreation, callbackMultiFlagInit, callbackMultiFlagGetValues, that, alertSelection;
+        that, callbackMultiFlagCreation, callbackMultiFlagInit, callbackMultiFlagGetValues, that, alertSelection, paddyEditableHandler;
 
     function PaddyCreator() {
 
@@ -32,7 +32,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         }
     }
 
-    PaddyCreator.prototype.init = function (totalValuesModel, singleCropsModel, Observer) {
+    PaddyCreator.prototype.init = function (totalValuesModel, singleCropsModel, Observer, PaddyEditableHandler) {
+        paddyEditableHandler = PaddyEditableHandler;
 
         this.destroyIfExistOtherModal();
 
@@ -116,146 +117,13 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     PaddyCreator.prototype.createStyleClassGridTotal = function (row, column, value, data) {
         var result;
-        switch (formulaToRenderTotVal) {
-            case 'init':
-            case 'milled':
-
-                var conditionCalculated =
-                    ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
-                        (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
-                        (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
-                        (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-            case 'yieldPaddy':
-
-                var conditionCalculated =
-                    ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
-                        (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
-                        (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
-                        (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
-
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-            case 'areaHarvestedPaddy':
-
-                var conditionCalculated =
-                    ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
-                        (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
-                        (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
-                        (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-
-            case 'productionPaddy':
-                var conditionCalculated =
-                    ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
-                        (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
-                        (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
-                        (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
-
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-
-            case 'productionMilled':
-
-                var conditionCalculated =
-                    ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
-                        (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
-                        (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
-                        (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-
-            case 'areaHarvestedMilled':
-                var conditionCalculated =
-                    ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
-                        (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
-                        (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
-                        (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-        }
+        result = ( paddyEditableHandler.checkIfBlocked(formulaToRenderTotVal, row,true)) ? 'calculatedRowGrid' : 'notCalculatedRows';
         return result;
     }
 
     PaddyCreator.prototype.createStyleClassGridSingle = function (row, column, value, data) {
-
         var result;
-        switch (formulaToRenderSingleCrops) {
-            case 'init':
-            case 'milled':
-
-                var conditionCalculated =
-                    ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
-                        (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
-                        (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
-                        (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
-
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-            case 'yieldPaddy':
-
-                var conditionCalculated =
-                    ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
-                        (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
-                        (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
-                        (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-            case 'areaHarvestedPaddy':
-
-                var conditionCalculated =
-                    ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
-                        (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
-                        (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
-                        (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
-
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-
-            case 'productionPaddy':
-
-                var conditionCalculated =
-                    ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
-                        (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
-                        (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
-                        (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
-
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-
-            case 'productionMilled':
-
-                var conditionCalculated =
-                    ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
-                        (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
-                        (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
-                        (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-
-            case 'areaHarvestedMilled':
-                var conditionCalculated =
-                    ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
-                        (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
-                        (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
-                        (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
-
-                result = (conditionCalculated) ? 'calculatedRowGrid' : 'notCalculatedRows';
-                break;
-        }
+        result = ( paddyEditableHandler.checkIfBlocked(formulaToRenderSingleCrops, row,false)) ? 'calculatedRowGrid' : 'notCalculatedRows';
         return result;
 
     }

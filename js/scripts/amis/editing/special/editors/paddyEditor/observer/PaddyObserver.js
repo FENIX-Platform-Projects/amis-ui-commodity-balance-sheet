@@ -1,7 +1,7 @@
 define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, Formatter) {
 
     var controllerPaddy, formulaToApplyTot, formulaToApplySingle, totalValuesModified, singleCropsValuesModified, isMilledTotSelected,
-        isMilledSingleSelected;
+        isMilledSingleSelected,paddyEditableHandler;
 
     // ------------ Support method ------------------//
     var checkAll = function (obj) {
@@ -14,7 +14,8 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         isMilledSingleSelected = true;
     }
 
-    PaddyObserver.prototype.init = function (Controller) {
+    PaddyObserver.prototype.init = function (Controller, PaddyEditableHandler) {
+        paddyEditableHandler = PaddyEditableHandler;
         controllerPaddy = Controller;
         formulaToApplyTot = 'init';
         formulaToApplySingle = 'init';
@@ -459,88 +460,92 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield
-
-            switch (formulaToApplyTot) {
-
-                case 'milled':
-                case 'init':
-                    var conditionCalculated =
-                        ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
-                            (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
-                            (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
-                            (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
-
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
-
-                case 'areaHarvestedMilled':
-
-                    var conditionCalculated =
-                        ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
-                            (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
-                            (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
-                            (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
-
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
-
-                case 'productionMilled':
-
-                    var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
+            var toBlock =  paddyEditableHandler.checkIfBlocked(formulaToApplyTot, row,true);
 
 
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
-
-                case 'yieldPaddy':
-
-                    var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
 
 
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
+            /* switch (formulaToApplyTot) {
 
-                case 'areaHarvestedPaddy':
-                    var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
+                 case 'milled':
+                 case 'init':
+                     var conditionCalculated =
+                         ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
+                             (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
+                             (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
+                             (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
 
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
+                     if (conditionCalculated) {
+                         toBlock = true;
+                     }
+                     break;
 
-                case 'productionPaddy':
+                 case 'areaHarvestedMilled':
 
-                    var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
+                     var conditionCalculated =
+                         ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
+                             (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
+                             (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
+                             (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
 
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
-            }
+                     if (conditionCalculated) {
+                         toBlock = true;
+                     }
+                     break;
+
+                 case 'productionMilled':
+
+                     var conditionCalculated =
+                         ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
+                             (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
+                             (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
+                             (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
+
+
+                     if (conditionCalculated) {
+                         toBlock = true;
+                     }
+                     break;
+
+                 case 'yieldPaddy':
+
+                     var conditionCalculated =
+                         ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
+                             (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
+                             (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
+                             (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
+
+
+                     if (conditionCalculated) {
+                         toBlock = true;
+                     }
+                     break;
+
+                 case 'areaHarvestedPaddy':
+                     var conditionCalculated =
+                         ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
+                             (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
+                             (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
+                             (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
+
+                     if (conditionCalculated) {
+                         toBlock = true;
+                     }
+                     break;
+
+                 case 'productionPaddy':
+
+                     var conditionCalculated =
+                         ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
+                             (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
+                             (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
+                             (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
+
+                     if (conditionCalculated) {
+                         toBlock = true;
+                     }
+                     break;
+             }*/
             if (column == 6) {
                 toBlock = true;
             }
@@ -558,94 +563,96 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         $("#gridSingleCrops").bind('cellbeginedit', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation()
-            var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield
-                ;
-
-            switch (formulaToApplySingle) {
-
-                case 'milled':
-                case 'init':
-
-                    var conditionCalculated =
-                        ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
-                            (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
-                            (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
-                            (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
-
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
-
-                case 'areaHarvestedMilled':
-
-                    var conditionCalculated =
-                        ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
-                            (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
-                            (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
-                            (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
-
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
-
-                case 'productionMilled':
-
-                    var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
+            var toBlock =  paddyEditableHandler.checkIfBlocked(formulaToApplySingle, row,false);
 
 
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
 
-                case 'yieldPaddy':
+            /*
+                        switch (formulaToApplySingle) {
 
-                    var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
+                            case 'milled':
+                            case 'init':
 
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
+                                var conditionCalculated =
+                                    ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
+                                        (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
+                                        (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
+                                        (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
 
-                case 'areaHarvestedPaddy':
+                                if (conditionCalculated) {
+                                    toBlock = true;
+                                }
+                                break;
 
-                    var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
+                            case 'areaHarvestedMilled':
+
+                                var conditionCalculated =
+                                    ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
+                                        (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
+                                        (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
+                                        (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
+
+                                if (conditionCalculated) {
+                                    toBlock = true;
+                                }
+                                break;
+
+                            case 'productionMilled':
+
+                                var conditionCalculated =
+                                    ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
+                                        (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
+                                        (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
+                                        (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
 
 
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
+                                if (conditionCalculated) {
+                                    toBlock = true;
+                                }
+                                break;
 
-                case 'productionPaddy':
+                            case 'yieldPaddy':
 
-                    var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
+                                var conditionCalculated =
+                                    ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
+                                        (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
+                                        (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
+                                        (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
 
-                    if (conditionCalculated) {
-                        toBlock = true;
-                    }
-                    break;
-            }
+                                if (conditionCalculated) {
+                                    toBlock = true;
+                                }
+                                break;
+
+                            case 'areaHarvestedPaddy':
+
+                                var conditionCalculated =
+                                    ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
+                                        (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
+                                        (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
+                                        (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
+
+
+                                if (conditionCalculated) {
+                                    toBlock = true;
+                                }
+                                break;
+
+                            case 'productionPaddy':
+
+                                var conditionCalculated =
+                                    ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
+                                        (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
+                                        (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
+                                        (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
+
+                                if (conditionCalculated) {
+                                    toBlock = true;
+                                }
+                                break;
+                        }*/
             if (column == 6 || column == 7) {
                 toBlock = true;
             }

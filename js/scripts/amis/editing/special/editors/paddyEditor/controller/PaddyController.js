@@ -1,10 +1,8 @@
-/**
- * Created by fabrizio on 9/30/14.
- */
 define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObserver', 'paddyEditor/creator/PaddyCreator',
-    "specialFormulaConf/formulaHandler/FormulaHandler"], function ($, PaddyModel, PaddyObserver, PaddyEditor, FormulaHandler) {
+    'paddyEditor/paddyFormula/PaddyFormulaHandler',
+    "specialFormulaConf/formulaHandler/FormulaHandler"], function ($, PaddyModel, PaddyObserver, PaddyEditor, PaddyEditableHandler,FormulaHandler) {
 
-    var editorsController, observer, modelPaddy, editorPaddy, supportUtility, originalTotCropsModel, formulaHandler;
+    var editorsController, observer, modelPaddy, editorPaddy, supportUtility, originalTotCropsModel, formulaHandler, paddyEditableHandler;
 
     // ---------------------- SUPPORT FUNCTIONS -------------------------------------------
 
@@ -26,6 +24,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         modelPaddy = new PaddyModel;
         editorPaddy = new PaddyEditor;
         formulaHandler = new FormulaHandler;
+        paddyEditableHandler = new PaddyEditableHandler;
     }
 
     PaddyController.prototype.init = function (clickedItem, itemsInvolved, codesInvolved, configurator, Utility, ControllerEditors) {
@@ -53,60 +52,12 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
         modelPaddy.createSingleCropsModel(involvedItems, supportUtility)
         var singleCropsModel = modelPaddy.getSingleCropsModel()
-        editorPaddy.init(totalCropsCalc, singleCropsModel, observer)
-        observer.init(this)
+        editorPaddy.init(totalCropsCalc, singleCropsModel, observer, paddyEditableHandler)
+        observer.init(this, paddyEditableHandler)
 
     }
-    /*
-     PaddyController.prototype.selectSpecialEditing = function (formulaToApplyTot, numberOfRow) {
-
-     var result;
-     if (formulaToApplyTot == 'milled') {
-     switch (numberOfRow) {
-     case 3 :
-     result = 'yieldChange'
-     break;
-     default :
-     result = 'normal'
-     break;
-     }
-     }
-     else if (formulaToApplyTot == 'areaHarvested') {
-     switch (numberOfRow) {
-     case 4:
-     result = 'productionChange'
-     break;
-
-     default :
-     result = 'normal'
-     break;
-     }
-
-     } else if (formulaToApplyTot == 'yield') {
-     switch (numberOfRow) {
-     case 2:
-     result = 'extractionRateChange'
-     break;
-     default :
-     result = 'normal'
-     break;
-     }
-     }
-     else if (formulaToApplyTot == 'productionMilled') {
-     switch (numberOfRow) {
-     case 2:
-     result = 'extractionRateChange'
-     break;
-     default :
-     result = 'normal'
-     break;
-     }
-     }
-     return result;
 
 
-     }
-     */
     PaddyController.prototype.updateTotGridOnEditing = function (rowNumber, newValue, formulaToApply, columnValue, typeOfEditing) {
 
         console.log('updateTOT grid on EDITIING: controller')
@@ -173,7 +124,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
             if (Object.prototype.toString.call(formulaToUpdate) === '[object Array]') {
                 for (var j = 0; j < formulaToUpdate.length; j++) {
-                    ;
                     if (calculatedPieceOfModel == null) {
                         calculatedPieceOfModel = modelPiece;
                     }
@@ -239,7 +189,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
     }
 
-    PaddyController.prototype.saveTotalValues = function (formulaToApply) {
+    PaddyController.prototype.saveTotalValues = function () {
 
         var dataOriginal = modelPaddy.getAndConvertOriginalTotValues();
         var dataCalculated = modelPaddy.getCalculatedTotalModel();
@@ -253,7 +203,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         var dataUnified = modelPaddy.unifySingleCropsData(dataSingleCrops);
 
         var totalValueModel = $.extend(true, [], modelPaddy.getTotalValuesModel());
-        var rowIndexes = [];
         for (var i = 0; i < dataUnified.length; i++) {
             for (var j = 0; j < totalValueModel.length; j++) {
                 if (totalValueModel[j][0] == dataUnified[i][0]) {
@@ -289,8 +238,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     PaddyController.prototype.showAlerts = function (isTotal) {
         console.log('controller.showalerts!!!!!!!!!!')
             debugger;
-
-        (isTotal) ? editorPaddy.showAlert('alertTotal') : editorPaddy.showAlert('alertSingle');
+       (isTotal)? editorPaddy.showAlert('alertTotal') : editorPaddy.showAlert('alertSingle');
     }
 
     PaddyController.prototype.deleteAlerts = function (isTotal) {

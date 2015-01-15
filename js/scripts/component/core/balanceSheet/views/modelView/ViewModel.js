@@ -7,7 +7,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     var _IMG_URL = window.location.href+ "/css/images/notes/paperclip-icon.png"
 
     function ViewModel() {
-        particularFormatterCodes = {"Yield (Tonnes/Ha)":true, "Per capita food use (Kg/Yr)":true}
+        particularFormatterCodes = {"Yield (Tonnes/Ha)":true, "Per capita food use (Kg/Yr)":true, "Yield Milled (Tonnes/Ha)":true}
     }
 
     ViewModel.prototype.init = function (tableData, Configurator, SupportUtility) {
@@ -119,8 +119,8 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         }
       //  result[indexValues]  =formatter.fromDSDToVisualizationFormat(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator)
 
-         result[indexValues]  = (result[0] && particularFormatterCodes[result[0]])? formatter.convertParticularValues(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator):
-             formatter.fromDSDToVisualizationFormat(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator);
+        result[indexValues]  = (result[0] && particularFormatterCodes[result[0]])? formatter.convertParticularValues(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator):
+        formatter.fromDSDToVisualizationFormat(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator);
 
 
         var label = configurator.getValueLabel()

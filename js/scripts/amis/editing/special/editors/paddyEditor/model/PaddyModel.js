@@ -1,6 +1,4 @@
-/**
- * Created by fabrizio on 9/30/14.
- */
+
 define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
 
     var supportUtility, originalTotalCropsModel, numberOfCrops, originalSingleCropsModel, calculatedSingleModel, calculatedTotalModel;
