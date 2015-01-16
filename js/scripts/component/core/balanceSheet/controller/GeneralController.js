@@ -261,6 +261,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 grid = ViewGrid.init(tableModelWithFormula, Configurator, supportUtility, this)
                 generalObserver.listenToVisualizationOptions(thousandSeparator)
                 generalObserver.listenToElementsOptions(elementShown)
+                generalObserver.listenToResetButton()
                 this.onChangeModalityEditing()
                 console.log('onchangeModalityEditin(GC)')
             }
@@ -304,6 +305,8 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
                 generalObserver.listenToVisualizationOptions(thousandSeparator)
                 generalObserver.listenToElementsOptions(elementShown)
+                generalObserver.listenToResetButton()
+
 
                 this.onChangeModalityEditing(typeOfVisualization)
 

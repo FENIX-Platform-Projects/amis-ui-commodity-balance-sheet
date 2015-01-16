@@ -95,7 +95,7 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                                 // if is not yield or is yield and the flag is null or different from C
                                 if (codeValue != 4 || codeValue==4 && (model[index][indexFlags] == null || model[index][indexFlags] != null &&
                                     model[index][indexFlags].split(',')[0] !='C')) {
-                                    addendums.push(model[index][indexValue])
+                                    addendums.push(parseFloat(model[index][indexValue]))
                                 }
 
                             } else {
