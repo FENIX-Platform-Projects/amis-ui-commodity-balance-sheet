@@ -1,6 +1,52 @@
-define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_otherUsesForm.html", "webix"],
-    function ($, Formatter, HTMLOtherUSes) {
+define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_otherUsesForm.html",
+        "flagTranslator/controller/FlagController",
+        "select2","webix"],
+    function ($, Formatter, HTMLOtherUSes, MultiFlagController) {
 
+        var multiFlagController
+
+
+        webix.editors.multiflagEditor = {
+            focus:function(){
+                console.log('focus')
+                $('#multiFlag').select2({placeholder: "Click to select the flags"});
+
+            },
+            getValue:function(){
+                console.log('getValue')
+
+
+                var codes = $('#multiFlag').select2("val");
+                return  multiFlagController.getStringFromCodes(codes);
+            },
+            setValue:function(value){
+                console.log('setValue')
+
+                this.getInputNode().value = value;
+            },
+            getInputNode:function(){
+                console.log('getInputNode')
+                //return '<div column="2" class="webix_column " style="width: 100px; left: 257px; top: 0px;"><div class="webix_cell"></div></div>';
+                return this.config.node.firstChild;
+            },
+            render:function(){
+                console.log('render')
+
+
+                var stringToAppend = '<select multiple tabindex="-1" id="multiFlag" style="width:100%" class="input-group-lg">';
+                stringToAppend += multiFlagController.getOptions(this.getInputNode().innerHTML)
+                stringToAppend += '</select>';
+                var result =webix.html.create("div", {
+                    "class":"multiflagTreeTable"
+                }, stringToAppend);
+
+                console.log('result')
+                console.log(result);
+
+                return result;
+
+            }
+        }
 
         Element.prototype.remove = function () {
             this.parentElement.removeChild(this);
@@ -21,6 +67,7 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
 
         function OtherCreator() {
             modal = HTMLOtherUSes
+            multiFlagController = new MultiFlagController;
 
         }
 
@@ -34,7 +81,7 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
                 columns: [
                     { id: "value", header: "Element", template: "{common.treetable()} #value#", fillspace: true },
                     { id: "3", editor: "text", header: "Value"},
-                    { id: "4", editor: "text", header: "Flag"},
+                    { id: "4", editor: "multiflagEditor", header: "Flag"},
                     { id: "5", editor: "text", header: "Notes"}
                 ],
 
