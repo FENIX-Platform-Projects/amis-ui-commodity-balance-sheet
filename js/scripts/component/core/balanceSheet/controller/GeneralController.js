@@ -28,8 +28,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         GeneralController.prototype.init = function (gridModel, tableModel, configurator, modelController, utility, NProgress) {
 
-
-            debugger;
             ModelController = modelController;
             dsd = configurator.getDSD();
             Configurator = configurator;
@@ -224,7 +222,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
             // production or production Rice
             else if (typeOfForm == 'production' || typeOfForm == 'productionRice') {
-                debugger;
                 var formulas = formulaController.getFormulasBindedFromKey(5)
 
                 var rowsChanged = []

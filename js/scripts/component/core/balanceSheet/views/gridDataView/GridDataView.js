@@ -75,7 +75,6 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 } else if (i != 0 && i != arrDiffDates.length) {
 
                     columns.push({id: "data" + (i + 1), header: [
-                        //{text: ''},
                         {text: null},
                         {text: arrDiffDates[i]}
                     ], editor: 'text', fillspace: true, minWidth: 100, css: "datesColumns"})

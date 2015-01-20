@@ -3,50 +3,8 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
         "select2","webix"],
     function ($, Formatter, HTMLOtherUSes, MultiFlagController) {
 
-        var multiFlagController
+        var multiFlagController, rowNumber, gridUi, rowId, idMultiFlag
 
-
-        webix.editors.multiflagEditor = {
-            focus:function(){
-                console.log('focus')
-                $('#multiFlag').select2({placeholder: "Click to select the flags"});
-
-            },
-            getValue:function(){
-                console.log('getValue')
-
-
-                var codes = $('#multiFlag').select2("val");
-                return  multiFlagController.getStringFromCodes(codes);
-            },
-            setValue:function(value){
-                console.log('setValue')
-
-                this.getInputNode().value = value;
-            },
-            getInputNode:function(){
-                console.log('getInputNode')
-                //return '<div column="2" class="webix_column " style="width: 100px; left: 257px; top: 0px;"><div class="webix_cell"></div></div>';
-                return this.config.node.firstChild;
-            },
-            render:function(){
-                console.log('render')
-
-
-                var stringToAppend = '<select multiple tabindex="-1" id="multiFlag" style="width:100%" class="input-group-lg">';
-                stringToAppend += multiFlagController.getOptions(this.getInputNode().innerHTML)
-                stringToAppend += '</select>';
-                var result =webix.html.create("div", {
-                    "class":"multiflagTreeTable"
-                }, stringToAppend);
-
-                console.log('result')
-                console.log(result);
-
-                return result;
-
-            }
-        }
 
         Element.prototype.remove = function () {
             this.parentElement.removeChild(this);
@@ -68,13 +26,14 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
         function OtherCreator() {
             modal = HTMLOtherUSes
             multiFlagController = new MultiFlagController;
+            webix.editors.multiflagEditor = this.createMultiFlagEditor();
 
         }
 
 
         OtherCreator.prototype.createAndDrawGrid = function (dataset) {
 
-            var gridUi = new webix.ui({
+             gridUi = new webix.ui({
                 id: "otherUsesTree",
                 container: "gridTotalValues",
                 view: "treetable",
@@ -96,8 +55,14 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
         }
 
 
-        OtherCreator.prototype.init = function (totalValuesModel, Observer) {
+        OtherCreator.prototype.changeRow = function(rowID) {
+            console.log('changeROW' + rowID)
+            rowNumber = rowID;
+        }
 
+
+
+        OtherCreator.prototype.init = function (totalValuesModel, Observer) {
 
             this.destroyIfExistOtherModalOtherUses()
             observer = Observer;
@@ -105,7 +70,6 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
             var modelWithoutNull = this.eliminateNull(totalModel)
 
             var totModelForTree = this.prepareDataForTreeGrid(modelWithoutNull, false)
-
 
             var self = this;
 
@@ -115,10 +79,8 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
                 keyboard: false});
 
             $('#specialForm').on('shown.bs.modal', function (e) {
-
                 grid = self.createAndDrawGrid(totModelForTree)
                 observer.applyListeners(grid)
-
             });
 
         }
@@ -228,6 +190,49 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
 
             if (f && f !== null) {
                 f.remove()
+            }
+        }
+
+
+        OtherCreator.prototype.createMultiFlagEditor = function(){
+
+            return {
+                focus:function(){
+                    console.log('focus')
+                    $('#multiflagOtherUses').append(multiFlagController.getOptions(this.node.value))
+                    $('#multiflagOtherUses').select2({placeholder: "Click to select the flags"});
+                },
+                getValue:function(){
+                    console.log('getValue')
+
+                    var codes = $('select').select2("val");
+                    $('select').select2("destroy");
+
+                    var f = document.getElementById('containerMultiflagOtherUses')
+                    if(f)
+                        f.remove();
+
+                    return  multiFlagController.getStringFromCodes(codes);
+                },
+                setValue:function(value){
+                    console.log('setValue')
+
+                    this.node.value = value;
+                },
+                getInputNode:function(){
+                    console.log('getInputNode')
+                    return this.config.node.firstChild;
+                },
+                render:function(){
+                    console.log('render')
+                    var stringToAppend = '<select multiple tabindex="-1" id="multiflagOtherUses" style="width:100%" class="input-group-lg">';
+                    stringToAppend += '</select>';
+                    var result =webix.html.create("div", {
+                        "class":"multiflagTreeTable",
+                        "id": "containerMultiflagOtherUses"
+                    }, stringToAppend);
+                    return result;
+                }
             }
         }
 

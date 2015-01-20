@@ -5,7 +5,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     var otherController, formulaToApplyTot, totalValuesModified, singleCropsValuesModified, grid
 
-    var itemClickEvent, afterEditStopEvent
+    var itemClickEvent, afterEditStopEvent ,rowNumber
     var idCell;
 
     function OtherObserver() {
@@ -16,6 +16,9 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         formulaToApplyTot = 'init';
         totalValuesModified = false;
     }
+
+
+
 
     OtherObserver.prototype.applyListeners = function (Grid) {
         grid = Grid
@@ -31,7 +34,9 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         itemClickEvent = grid.attachEvent("onItemClick", function (id, e, node) {
             e.preventDefault();
             e.stopImmediatePropagation()
+            var row = grid.getIndexById(idCell)
             idCell = id;
+            otherController.sendToObs(row);
         })
 
         afterEditStopEvent = grid.attachEvent("onAfterEditStop", function (state, editor, ignoreUpdate) {

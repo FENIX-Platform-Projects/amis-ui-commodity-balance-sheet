@@ -152,6 +152,11 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
 
         }
 
+        OtherController.prototype.sendToObs =function(rowId){
+            console.log('othController: sendToObs '+rowId)
+            editorOther.changeRow(rowId);
+        }
+
         OtherController.prototype.saveTotalValues = function (formulaToApply) {
 
             console.log('OtherController: saveTotalValues')

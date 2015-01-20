@@ -74,7 +74,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
         // Look for every date and put inside of each the population product
 
-        debugger;
         /*
         firstForecastDateToInsert = actualForecast[0][2]
         if (populationActual.length > 0) {
