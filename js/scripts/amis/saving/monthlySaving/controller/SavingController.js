@@ -46,6 +46,14 @@ define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSave
         this.finalSave(payloadActual, true)
         this.finalSave(payloadPrevious, false)
 
+        var data = balanceSheet.getDataToSave();
+        data.updatedData.length = 0
+        data.newData.length = 0;
+
+
+
+
+
         // clean updated Data
     }
 
