@@ -7,7 +7,8 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     var _IMG_URL = window.location.href+ "/css/images/notes/paperclip-icon.png"
 
     function ViewModel() {
-        particularFormatterCodes = {"Yield (Tonnes/Ha)":true, "Per capita food use (Kg/Yr)":true, "Yield Milled (Tonnes/Ha)":true}
+        particularFormatterCodes = {"Yield (Tonnes/Ha)":true, "Per capita food use (Kg/Yr)":true, "Yield Milled (Tonnes/Ha)":true,
+        "Yield Paddy (Tonnes/Ha)":true}
     }
 
     ViewModel.prototype.init = function (tableData, Configurator, SupportUtility) {

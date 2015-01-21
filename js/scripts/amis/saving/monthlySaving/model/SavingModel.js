@@ -84,6 +84,10 @@ define(['jquery'], function ($) {
 
 
     SavingModel.prototype.cleanAndSetDate = function (dataNew) {
+
+        console.log('clean And Set data: saving Model')
+        console.log(dataNew)
+        debugger;
         var result = []
         for (var i = 0; i < dataNew.length; i++) {
             // clean data
@@ -118,15 +122,40 @@ define(['jquery'], function ($) {
     SavingModel.prototype.mergeUpdatedData = function (myData, updatedData) {
         var result = $.extend(true, [], myData);
 
+        var toAdd = [];
         for (var i = 0, length = updatedData.length; i < length; i++) {
             var found = false;
             for (var j = 0, lengthUpdated = result.length; j < lengthUpdated; j++) {
                 if (result[j][0] == updatedData[i][0] && result[j][2] == updatedData[i][2]) {
                     result[j] = updatedData[i]
+                }else if(j == lengthUpdated-1 &&(result[j][0] != updatedData[i][0] || result[j][2] != updatedData[i][2])){
+
+                    toAdd.push(updatedData[i])
                 }
             }
         }
+
+        if(toAdd.length>0) this.addInRightPositionForDate(toAdd,result)
+
+        console.log(result);
+
         return result;
+    }
+
+
+    SavingModel.prototype.addInRightPositionForDate = function(toAdd, previousValues){
+
+
+      for(var i =0; i<toAdd.length; i++){
+          var notFound = true;
+          for(var j=0; j<previousValues.length && notFound; j++){
+              if(previousValues[j][2] == toAdd[i][2]){
+                  previousValues.splice(j,0,toAdd[i])
+                  notFound = false;
+              }
+          }
+      }
+
     }
 
 
