@@ -115,7 +115,7 @@ define(['jquery'], function ($) {
                     if (dataNew[i][k] == '') dataNew[i][k] = null
                 }
 
-                if(dataNew[i][3]!= null && dataNew[i][2]!=null) {
+                if(dataNew[i][3]!= null && dataNew[i][2]!=null && typeof dataNew[i][2]!= 'undefined') {
                     result.push(dataNew[i])
                 }
             }
@@ -126,24 +126,28 @@ define(['jquery'], function ($) {
 
     SavingAnnualModel.prototype.createDataForPayload = function (allData, Handler) {
 
+
+
         var result = {}
 
         seasonDateMap = Handler.getSeasonMapDate()
 
         for (var i = 0, length = allData.length; i < length; i++) {
 
-            var tempSeason = allData[i][2]
-            var tempData = allData[i];
+            if(typeof allData[i][2] != 'undefined'){
 
-            var season = tempData[2]
+                var seasonToChange = allData[i][2];
 
-            tempData[2] = seasonDateMap[season]
+                var rowCopy = $.extend(true,[], allData[i]);
 
-            if (typeof result[tempSeason] === 'undefined') {
-                result[tempSeason] = []
+                rowCopy[2] = seasonDateMap[seasonToChange];
+
+                if (typeof result[seasonToChange] === 'undefined') {
+                    result[seasonToChange] = []
+                }
+                result[seasonToChange].push(rowCopy);
+
             }
-            result[tempSeason].push(tempData);
-
         }
 
         return result
