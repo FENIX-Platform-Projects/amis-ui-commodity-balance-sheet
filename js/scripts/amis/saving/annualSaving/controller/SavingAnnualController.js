@@ -41,7 +41,6 @@ define(['jquery', 'databaseSaver/annualSaving/model/SavingAnnualModel', 'databas
             modelSaving.init(supportUtility)
             var dataWithPayload = modelSaving.prepareData(allData, tableData, newdata, actualFilter, handlerAnnual);
 
-
             this.finalSave(dataWithPayload)
 
         }

@@ -31,6 +31,7 @@ define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoade
 
         resultForecast = this.createSeasonMapDate(resultForecast);
 
+
         return resultForecast;
     }
 
@@ -67,8 +68,10 @@ define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoade
         return filterActual;
     }
 
-    HandlerAnnualSelection.prototype.createSeasonMapDate = function (forecasts) {
+    HandlerAnnualSelection.prototype.createSeasonMapDate = function (oldF) {
         seasonMap = {}
+
+        var forecasts = $.extend(true,[],oldF)
 
         for (var i = 0, length = forecasts.length; i < length; i++) {
             var date = forecasts[i][2].substr(0, 10);
@@ -76,6 +79,8 @@ define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoade
             var season = forecasts[i][2];
             seasonMap[season] = date;
         }
+
+        debugger;
 
         return forecasts;
     }

@@ -103,7 +103,10 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                                     code = addendum.otherValue[0];
                                     index = supportModel.lookForCode(code, model, startIndex, numberOfRows)
                                     if (typeof index != 'undefined' && index != null && typeof model[index][indexValue] != 'undefined' && model[index][indexValue] != null ) {
-                                        addendums.push(model[index][indexValue])
+                                        if (codeValue != 4 || codeValue==4 && (model[index][indexFlags] == null || model[index][indexFlags] != null &&
+                                            model[index][indexFlags].split(',')[0] !='C')) {
+                                            addendums.push(parseFloat(model[index][indexValue]))
+                                        }
                                     } else {
                                         notRealizeable = true;
                                         break label1;

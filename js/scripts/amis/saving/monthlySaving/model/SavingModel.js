@@ -113,7 +113,9 @@ define(['jquery'], function ($) {
                     if (dataNew[i][k] == '') dataNew[i][k] = null
                 }
 
-                result.push(dataNew[i])
+
+                    result.push(dataNew[i])
+                
             }
         }
         return result;
@@ -163,6 +165,47 @@ define(['jquery'], function ($) {
         var filterData = supportUtility.getFilterData()
         var prevSeason = supportUtility.getPreviousSeasonLabel()
 
+        var checkIfUnique = function(arrayA, matrixB){
+
+            var result = true;
+            for(var i=0; i< matrixB.length && result;  i++){
+
+                if(matrixB[i][0] == arrayA[0] &&matrixB[i][2] == arrayA[2]){
+                    result= false;
+                }
+            }
+
+            return result;
+        }
+
+
+        var newDataWithoutDuplicates = []
+        for(var i=0; i<realActualDataToSave.length; i++){
+
+            if(newDataWithoutDuplicates.length == 0){
+                newDataWithoutDuplicates.push(realActualDataToSave[i])
+            }else{
+                if(checkIfUnique(realActualDataToSave[i], newDataWithoutDuplicates)){
+                    newDataWithoutDuplicates.push(realActualDataToSave[i]);
+                }
+            }
+
+        }
+
+
+        var previousDataWithoutDuplicates = []
+        for(var i=0; i<realPreviousDataToSave.length; i++){
+
+            if(previousDataWithoutDuplicates.length == 0){
+                previousDataWithoutDuplicates.push(realPreviousDataToSave[i])
+            }else{
+                if(checkIfUnique(realPreviousDataToSave[i], previousDataWithoutDuplicates)){
+                    previousDataWithoutDuplicates.push(realPreviousDataToSave[i]);
+                }
+            }
+
+        }
+
         var result = {};
 
         if (isActualYear) {
@@ -173,7 +216,7 @@ define(['jquery'], function ($) {
                 "season": filterData.season,
                 "datasource": filterData.dataSource
             }
-            result["data"] = realActualDataToSave
+            result["data"] = newDataWithoutDuplicates
         }
 
         else {
@@ -185,7 +228,7 @@ define(['jquery'], function ($) {
                 "date": realPreviousDate,
                 "datasource": filterData.dataSource
             }
-            result["data"] = realPreviousDataToSave
+            result["data"] = previousDataWithoutDuplicates
         }
         return result;
     }

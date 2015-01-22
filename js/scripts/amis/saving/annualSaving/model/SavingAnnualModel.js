@@ -44,6 +44,7 @@ define(['jquery'], function ($) {
 
 
     SavingAnnualModel.prototype.prepareData = function (allData, tableData, newdata, actualFilter, handlerAnnual) {
+
         filterActual = actualFilter;
 
         var dataOriginal = allData;
@@ -58,22 +59,46 @@ define(['jquery'], function ($) {
 
         return dataWithPayload;
 
-
     }
 
 
     SavingAnnualModel.prototype.mergeUpdatedData = function (myData, updatedData) {
         var result = $.extend(true, [], myData);
 
+        var toAdd = [];
         for (var i = 0, length = updatedData.length; i < length; i++) {
             var found = false;
             for (var j = 0, lengthUpdated = result.length; j < lengthUpdated; j++) {
                 if (result[j][0] == updatedData[i][0] && result[j][2] == updatedData[i][2]) {
                     result[j] = updatedData[i]
+                }else if(j == lengthUpdated-1 &&(result[j][0] != updatedData[i][0] || result[j][2] != updatedData[i][2])){
+
+                    toAdd.push(updatedData[i])
                 }
             }
         }
+
+        if(toAdd.length>0) this.addInRightPositionForDate(toAdd,result)
+
+        console.log(result);
+
         return result;
+    }
+
+
+    SavingAnnualModel.prototype.addInRightPositionForDate = function(toAdd, previousValues){
+
+
+        for(var i =0; i<toAdd.length; i++){
+            var notFound = true;
+            for(var j=0; j<previousValues.length && notFound; j++){
+                if(previousValues[j][2] == toAdd[i][2]){
+                    previousValues.splice(j,0,toAdd[i])
+                    notFound = false;
+                }
+            }
+        }
+
     }
 
 
@@ -86,11 +111,13 @@ define(['jquery'], function ($) {
                 dataNew[i][0] = parseInt(dataNew[i][0])
                 // put real date previous year
 
-                if (dataNew[i][3] == '') {
-                    dataNew[i][3] = null;
+                for(var k=0; k<dataNew[i].length; k++) {
+                    if (dataNew[i][k] == '') dataNew[i][k] = null
                 }
 
-                result.push(dataNew[i])
+                if(dataNew[i][3]!= null && dataNew[i][2]!=null) {
+                    result.push(dataNew[i])
+                }
             }
         }
         return result;
@@ -132,6 +159,34 @@ define(['jquery'], function ($) {
 
 
         for (var season in dataWithSeason) {
+            var checkIfUnique = function(arrayA, matrixB){
+
+                var result = true;
+                for(var i=0; i< matrixB.length && result;  i++){
+
+                    if(matrixB[i][0] == arrayA[0] &&matrixB[i][2] == arrayA[2]){
+                        result= false;
+                    }
+                }
+
+                return result;
+            }
+
+
+
+            var dataChosen = dataWithSeason[season];
+            var newDataWithoutDuplicates = []
+            for(var i=0; i<dataChosen.length; i++){
+
+                if(newDataWithoutDuplicates.length == 0){
+                    newDataWithoutDuplicates.push(dataChosen[i])
+                }else{
+                    if(checkIfUnique(dataChosen[i], newDataWithoutDuplicates)){
+                        newDataWithoutDuplicates.push(dataChosen[i]);
+                    }
+                }
+            }
+
             var singlePayload = {};
             singlePayload['filter'] = {
                 "region": filterData.countryCode,
@@ -141,7 +196,7 @@ define(['jquery'], function ($) {
                 "date": seasonDateMap[season],
                 "datasource": filterData.dataSource
             }
-            singlePayload["data"] = dataWithSeason[season]
+            singlePayload["data"] = newDataWithoutDuplicates
             payLoads.push(singlePayload)
         }
 
