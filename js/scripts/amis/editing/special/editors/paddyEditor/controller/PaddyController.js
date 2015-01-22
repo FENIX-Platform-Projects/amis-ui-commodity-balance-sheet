@@ -37,23 +37,34 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         var originalTotCropsModel = modelPaddy.getTotalValuesModel();
         var copyOriginalModelTot = $.extend(true, [], originalTotCropsModel);
 
-        var formulaTotCrops = formulaHandler.getInitFormulaFromConf(2, 'totalValues')
-        if (Object.prototype.toString.call(formulaTotCrops) === '[object Array]') {
-            for (var i = 0; i < formulaTotCrops.length; i++) {
-                var totalCropsCalc = formulaHandler.createFormula(copyOriginalModelTot, formulaTotCrops[i])
-                if (i != formulaTotCrops.length - 1) {
-                    copyOriginalModelTot = totalCropsCalc
-                }
-            }
-        } else {
-            var totalCropsCalc = formulaHandler.createFormula(copyOriginalModelTot, formulaTotCrops)
+        var formulaInit = paddyEditableHandler.getFormulaFromData(copyOriginalModelTot)
+        console.log('***********************************************************')
+        console.log('prova FORMULA')
+        console.log(formulaInit)
+        console.log('***********************************************************')
 
+
+        if(formulaInit == 'init') {
+            var formulaTotCrops = formulaHandler.getInitFormulaFromConf(2, 'totalValues')
+            if (Object.prototype.toString.call(formulaTotCrops) === '[object Array]') {
+                for (var i = 0; i < formulaTotCrops.length; i++) {
+                    var totalCropsCalc = formulaHandler.createFormula(copyOriginalModelTot, formulaTotCrops[i])
+                    if (i != formulaTotCrops.length - 1) {
+                        copyOriginalModelTot = totalCropsCalc
+                    }
+                }
+            } else {
+                var totalCropsCalc = formulaHandler.createFormula(copyOriginalModelTot, formulaTotCrops)
+
+            }
+        }else{
+            var totalCropsCalc = this.changeFormulaOnTotalGrid(formulaInit,'normal');
         }
 
         modelPaddy.createSingleCropsModel(involvedItems, supportUtility)
         var singleCropsModel = modelPaddy.getSingleCropsModel()
-        editorPaddy.init(totalCropsCalc, singleCropsModel, observer, paddyEditableHandler)
-        observer.init(this, paddyEditableHandler)
+        editorPaddy.init(totalCropsCalc, singleCropsModel, observer, paddyEditableHandler, formulaInit)
+        observer.init(this, paddyEditableHandler, formulaInit)
 
     }
 
@@ -145,26 +156,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     }
 
     PaddyController.prototype.updateTotGridOnFormulaChanges = function (formulaToApply, typeOfEditing) {
-        var formulaToUpdate = formulaHandler.getUpdateFormula(2, 'totalValues', formulaToApply, typeOfEditing)
-
-        var dataUpdated = modelPaddy.getTotalValuesModel()
-        var modelTotalCrops = $.extend(true, [], dataUpdated)
-
-        if (Object.prototype.toString.call(formulaToUpdate) === '[object Array]') {
-            for (var i = 0; i < formulaToUpdate.length; i++) {
-                var calculatedModel = formulaHandler.createFormula(modelTotalCrops, formulaToUpdate[i])
-                if (i != formulaToUpdate.length - 1) {
-                    modelTotalCrops = calculatedModel
-                }
-            }
-        } else {
-            var calculatedModel = formulaHandler.createFormula(modelTotalCrops, formulaToUpdate)
-        }
-
-        var modelCalculated = $.extend(true, [], calculatedModel);
-        modelPaddy.setCalculatedTotalModel(modelCalculated)
-        editorPaddy.updateTotGrid(calculatedModel, formulaToApply);
-
+        editorPaddy.updateTotGrid(this.changeFormulaOnTotalGrid(formulaToApply,typeOfEditing), formulaToApply);
     }
 
     PaddyController.prototype.updateSingleCropsGridOnFormulaChanges = function (formulaToApply, typeOfEditing) {
@@ -187,6 +179,29 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         modelPaddy.setCalculatedSingleModel(modelCalculated)
         editorPaddy.updateSingleGrid(calculatedModel, formulaToApply);
 
+    }
+
+
+    PaddyController.prototype.changeFormulaOnTotalGrid = function(formulaToApply, typeOfEditing){
+        var formulaToUpdate = formulaHandler.getUpdateFormula(2, 'totalValues', formulaToApply, typeOfEditing)
+
+        var dataUpdated = modelPaddy.getTotalValuesModel()
+        var modelTotalCrops = $.extend(true, [], dataUpdated)
+
+        if (Object.prototype.toString.call(formulaToUpdate) === '[object Array]') {
+            for (var i = 0; i < formulaToUpdate.length; i++) {
+                var calculatedModel = formulaHandler.createFormula(modelTotalCrops, formulaToUpdate[i])
+                if (i != formulaToUpdate.length - 1) {
+                    modelTotalCrops = calculatedModel
+                }
+            }
+        } else {
+            var calculatedModel = formulaHandler.createFormula(modelTotalCrops, formulaToUpdate)
+        }
+
+        var modelCalculated = $.extend(true, [], calculatedModel);
+        modelPaddy.setCalculatedTotalModel(modelCalculated, formulaToApply)
+        return modelCalculated;
     }
 
     PaddyController.prototype.saveTotalValues = function () {

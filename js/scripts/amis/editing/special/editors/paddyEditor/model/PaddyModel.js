@@ -156,8 +156,11 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
         return result;
     }
 
-    PaddyModel.prototype.setCalculatedTotalModel = function (calculatedModel) {
+    PaddyModel.prototype.setCalculatedTotalModel = function (calculatedModel, formulaToApply) {
         calculatedTotalModel = calculatedModel
+
+        // erase other old flags if presents
+
     }
 
     PaddyModel.prototype.getCalculatedTotalModel = function () {

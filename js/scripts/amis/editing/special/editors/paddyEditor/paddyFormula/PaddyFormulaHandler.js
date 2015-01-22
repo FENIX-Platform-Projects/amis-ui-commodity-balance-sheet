@@ -184,5 +184,105 @@ define(['jquery'],function($){
     }
 
 
+    PaddyFormulaHandler.prototype.getFormulaFromData = function(data){
+
+        var result;
+
+        var indexFlags = 4;
+        var indexCode = 0;
+
+        var positionDataPaddy = {}
+
+        for(var i=0; i<data.length; i++)
+            positionDataPaddy[data[i][indexCode]] = i;
+
+
+        var foundCalcFlagOnRow = function(row){
+            return (typeof row[indexFlags] !== 'undefined' &&row[indexFlags] !=null && row[indexFlags].split(',')[0] == 'C')
+        }
+
+
+        var productionPaddy = data[positionDataPaddy[998]];
+        var productionMilled = data[positionDataPaddy[5]];
+
+
+        if(foundCalcFlagOnRow(productionPaddy)){
+
+            var yPaddy = data[positionDataPaddy[996]]
+
+
+            if(foundCalcFlagOnRow(yPaddy)){
+
+                switch (true){
+
+                    case foundCalcFlagOnRow(data[positionDataPaddy[2]]):
+                        result = 'areaHarvestedMilled'
+                        break;
+
+
+                    case foundCalcFlagOnRow(productionMilled):
+                        result = 'productionMilled'
+                        break;
+
+                    default :
+                        result = 'init';
+                        break;
+
+                }
+            }
+            else if(foundCalcFlagOnRow(productionMilled) && foundCalcFlagOnRow(data[positionDataPaddy[4]])){
+                result = 'productionPaddy'
+            }
+            else{
+                result = 'init';
+            }
+        }
+
+
+        else if(foundCalcFlagOnRow(productionMilled)){
+
+
+            var yMilled = data[positionDataPaddy[4]]
+
+            if(foundCalcFlagOnRow(yMilled)){
+
+                switch (true){
+
+                    case foundCalcFlagOnRow(data[positionDataPaddy[2]]):
+                        result = 'areaHarvestedPaddy'
+                        break;
+
+
+                    case foundCalcFlagOnRow(data[positionDataPaddy[996]]):
+                        result = 'yieldPaddy'
+                        break;
+
+                    case foundCalcFlagOnRow(productionPaddy):
+                        result = 'productionPaddy';
+                        break;
+
+                    default :
+                        result='init';
+                        break;
+
+                }
+            }
+            else if(foundCalcFlagOnRow(productionPaddy) && foundCalcFlagOnRow(data[positionDataPaddy[996]])){
+                result = 'productionMilled'
+            }
+            else{
+                result = 'init';
+            }
+        }
+
+        else{
+            result = 'init'
+        }
+
+        return result;
+
+    }
+
+
     return PaddyFormulaHandler;
 })

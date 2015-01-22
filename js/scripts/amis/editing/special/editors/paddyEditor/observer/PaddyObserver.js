@@ -14,17 +14,19 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         isMilledSingleSelected = true;
     }
 
-    PaddyObserver.prototype.init = function (Controller, PaddyEditableHandler) {
+    PaddyObserver.prototype.init = function (Controller, PaddyEditableHandler, formulaTotInit) {
         paddyEditableHandler = PaddyEditableHandler;
         controllerPaddy = Controller;
-        formulaToApplyTot = 'init';
+        formulaToApplyTot = formulaTotInit;
         formulaToApplySingle = 'init';
         totalValuesModified = false;
         singleCropsValuesModified = false;
+        if(formulaTotInit != 'init' && (formulaTotInit.substr(formulaTotInit.length -6)) != 'Milled'){
+            isMilledTotSelected = false;
+        }
     }
 
     PaddyObserver.prototype.applyListeners = function () {
-        debugger;
 
         this.listenToCheckboxesTotal();
         this.listenToCheckboxesSingleCrops();
