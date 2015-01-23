@@ -14,7 +14,7 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
         37: "Area Planted",
         998: "Production Paddy",
         996: "Yield Paddy",
-        3: "Extraction Rate"
+        3: "Extraction Rate (%)"
 
 
     }

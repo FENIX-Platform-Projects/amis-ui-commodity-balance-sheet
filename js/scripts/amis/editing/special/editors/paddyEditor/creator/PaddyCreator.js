@@ -75,13 +75,22 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     }
 
-    PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply) {
+
+
+
+    PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply, changeLabel) {
 
         formulaToRenderTotVal = formulaToApply
 
         observer.unbindEventsFromTotalValues()
 
-        this.createAndDrawGrid(this.setDataForGrid(calculatedModel, true), "gridTotalValues");
+        if(changeLabel){
+            var isMilledSelected = this.changeRadioBtnAndCheckBoxTotValue(formulaToRenderTotVal)
+            this.createAndDrawGrid(this.setDataForGrid(calculatedModel, true), "gridTotalValues");
+            this.changeLabelToElements(isMilledSelected, true);
+        }else {
+            this.createAndDrawGrid(this.setDataForGrid(calculatedModel, true), "gridTotalValues");
+        }
 
         observer.reBindEventsFromTotalValues()
 
@@ -92,9 +101,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         formulaToRenderSingleCrops = formulaToApply;
 
         this.createAndDrawGrid(this.setDataForGrid(calculatedModel, false), "gridSingleCrops");
-
-
     }
+
 
     PaddyCreator.prototype.destroyAll = function () {
         $('#gridTotalValues').jqxGrid('destroy')
@@ -260,13 +268,6 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     PaddyCreator.prototype.initAllCheckBoxesWithFormula = function (formula) {
 
-        var isMilledSelected;
-
-        var checkBoxToEnable = {}
-        var radioBtnToEnable = {}
-        var checkBoxToDisable = {}
-
-
         $('#radioBtnMilledTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
         $('#radioBtnPaddyTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
         $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
@@ -278,6 +279,20 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
+
+        this.changeRadioBtnAndCheckBoxTotValue(formula)
+
+    }
+
+    PaddyCreator.prototype.changeRadioBtnAndCheckBoxTotValue = function(formula){
+
+        debugger;
+
+        var isMilledSelected;
+
+        var checkBoxToEnable = {}
+        var radioBtnToEnable = {}
+        var checkBoxToDisable = {}
 
 
         switch (formula){

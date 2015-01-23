@@ -90,11 +90,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             var totalCropsCalc = productionController.createModelCalculatedTotalGrid( formulaToRenderTotVal,typeOfTotGridInit);
 
 
-            /*
-            var formulaTotCrops = formulaHandler.getInitFormulaFromConf(1, 'totalValues')
-            var totalCropsCalc = formulaHandler.createFormula(copyOriginalModelTot, formulaTotCrops)
-            */
-
             var singleCropsModel = modelProduction.getSingleCropsModel(involvedItems, supportUtility);
             var copyOriginalModelSingle = $.extend(true, [], singleCropsModel);
 

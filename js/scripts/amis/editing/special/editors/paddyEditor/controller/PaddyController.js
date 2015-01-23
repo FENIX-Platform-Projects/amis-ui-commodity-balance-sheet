@@ -2,7 +2,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     'paddyEditor/paddyFormula/PaddyFormulaHandler',
     "specialFormulaConf/formulaHandler/FormulaHandler"], function ($, PaddyModel, PaddyObserver, PaddyEditor, PaddyEditableHandler,FormulaHandler) {
 
-    var editorsController, observer, modelPaddy, editorPaddy, supportUtility, originalTotCropsModel, formulaHandler, paddyEditableHandler;
+    var editorsController, observer, modelPaddy, editorPaddy, supportUtility, formulaHandler, paddyEditableHandler;
 
     // ---------------------- SUPPORT FUNCTIONS -------------------------------------------
 
@@ -26,6 +26,8 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         formulaHandler = new FormulaHandler;
         paddyEditableHandler = new PaddyEditableHandler;
     }
+
+
 
     PaddyController.prototype.init = function (clickedItem, itemsInvolved, codesInvolved, configurator, Utility, ControllerEditors) {
         editorsController = ControllerEditors;
@@ -116,8 +118,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         // get all the model
         var allData = modelPaddy.getSingleCropsModel();
 
-        var modelSingleCrops = $.extend(true, [], allData)
-
         // filter data through crops number
         var dataForCrops = modelPaddy.filterModelSingleFromCrops(allData);
 
@@ -155,8 +155,8 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         editorPaddy.updateSingleGrid(modelCalculated, formulaToApply);
     }
 
-    PaddyController.prototype.updateTotGridOnFormulaChanges = function (formulaToApply, typeOfEditing) {
-        editorPaddy.updateTotGrid(this.changeFormulaOnTotalGrid(formulaToApply,typeOfEditing), formulaToApply);
+    PaddyController.prototype.updateTotGridOnFormulaChanges = function (formulaToApply, typeOfEditing, haveLabelsToBeChanged) {
+        editorPaddy.updateTotGrid(this.changeFormulaOnTotalGrid(formulaToApply,typeOfEditing), formulaToApply, haveLabelsToBeChanged);
     }
 
     PaddyController.prototype.updateSingleCropsGridOnFormulaChanges = function (formulaToApply, typeOfEditing) {
@@ -211,7 +211,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         editorsController.saveFormRiceProduction(dataCalculated, dataOriginal); // this is FALSE!! true is up
     }
 
-    PaddyController.prototype.onSwitchingCropsValues = function (formulaTotToApply) {
+    PaddyController.prototype.onSwitchingCropsValues = function (formulaTotToApply, isElementChanged, isMilledTotSelected) {
         var originalSingleCropsModel = modelPaddy.getSingleCropsModel()
         var dataSingleCrops = $.extend(true, [], originalSingleCropsModel)
 
@@ -233,7 +233,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
         observer.setTotalValuesOnModified()
 
-        this.updateTotGridOnFormulaChanges(formulaTotToApply, "normal")
+        this.updateTotGridOnFormulaChanges(formulaTotToApply, "normal", isMilledTotSelected)
     }
 
     PaddyController.prototype.onSwitchingSimpleTotal = function (formulaToApplyTot) {

@@ -439,7 +439,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                     formulaToApplyTot = 'milled'
                 }
                 controllerPaddy.deleteAlerts(true)
-                controllerPaddy.updateTotGridOnFormulaChanges(formulaToApplyTot, "normal");
+                controllerPaddy.updateTotGridOnFormulaChanges(formulaToApplyTot, "normal", false);
             } else {
                 if (!document.getElementById('selectAtLeastTwoElTot')) {
                     var alert = '<div class="alert alert-danger alert-dismissible" role="alert" id="selectAtLeastTwoElTot">' +
@@ -715,7 +715,15 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             var oldly = e.relatedTarget // previous active tab
 
             if (newly.hash == '#totalValues' && singleCropsValuesModified) {
-                controllerPaddy.onSwitchingCropsValues(formulaToApplySingle)
+                var isChanged;
+                if(isMilledTotSelected!= isMilledSingleSelected){
+                    isMilledTotSelected = isMilledSingleSelected
+                    isChanged = true;
+                }else{
+                    isChanged = false
+                }
+                debugger;
+                controllerPaddy.onSwitchingCropsValues(formulaToApplySingle,isChanged, isMilledTotSelected)
             } else if (newly.hash == '#totalValues' && !singleCropsValuesModified) {
                 controllerPaddy.onSwitchingSimpleTotal(formulaToApplyTot)
             } else if (newly.hash == '#singleCrops') {
@@ -759,6 +767,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         this.listenToSaveTotalValuesButton(); // saving
         this.listenToTotalEditable()
     }
+
 
     return PaddyObserver;
 })
