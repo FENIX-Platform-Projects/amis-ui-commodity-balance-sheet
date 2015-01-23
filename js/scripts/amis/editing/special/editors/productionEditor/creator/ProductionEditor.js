@@ -4,8 +4,8 @@
 define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/ProductionObserver",
         "productionEditor/model/ProductionModel", "specialFormulaConf/formulaHandler/FormulaHandler",
         "productionEditor/controller/ProductionController", "text!productionEditor/view/_productionForm.html", "flagTranslator/controller/FlagController",
-        "text!productionEditor/view/_alertSelection.html", "select2"],
-    function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller, HTLMProduction, FlagController, AlertSelection) {
+        "text!productionEditor/view/_alertSelection.html", "productionEditor/formulaHandler/ProductionFormulaHandler","select2"],
+    function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller, HTLMProduction, FlagController, AlertSelection, ProductionHandler) {
 
 
         // ---------------------- SUPPORT FUNCTIONS -------------------------------------------
@@ -26,7 +26,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
         var observer, modelProduction, supportUtility, formulaHandler, originalTotCropsModel, productionController, controllerEditors,
             flagController, modal, formulaToRenderTotVal, formulaToRenderSingleCrops, areaHarvSelected, callbackStyleTotGrid, callbackStyleSingleGrid,
-            that, callbackMultiFlagCreation, callbackMultiFlagInit, callbackMultiFlagGetValues, alertSelection
+            that, callbackMultiFlagCreation, callbackMultiFlagInit, callbackMultiFlagGetValues, alertSelection, productionHandler
 
 
         function ProductionEditor() {
@@ -37,6 +37,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             formulaHandler = new FormulaHandler;
             productionController = new Controller;
             flagController = new FlagController;
+            productionHandler = new ProductionHandler;
             modal = HTLMProduction
             areaHarvSelected = true;
 
@@ -72,19 +73,32 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
             // take data and calculate initial formulas
             originalTotCropsModel = modelProduction.getTotalCropsModel(involvedItems, supportUtility);
+
+            var formulaTotInit = productionHandler.getFormulaFromData(originalTotCropsModel);
+
+            console.log('**********************************************************')
+            console.log('TThe formula tot init is:')
+            console.log('is AreaHarvested slected: '+formulaTotInit['isAreaHarvSelected'])
+            console.log('formula tot init : '+formulaTotInit['formulaInit'])
+            console.log('**********************************************************')
+
+            formulaToRenderTotVal = formulaTotInit['formulaInit'];
             productionController.init(this, formulaHandler, modelProduction)
 
-            var copyOriginalModelTot = $.extend(true, [], originalTotCropsModel);
+            var typeOfTotGridInit = (formulaTotInit['isAreaHarvSelected'])? 'totalValues': 'totalValuesAPlanted';
 
+            var totalCropsCalc = productionController.createModelCalculatedTotalGrid( formulaToRenderTotVal,typeOfTotGridInit);
+
+
+            /*
             var formulaTotCrops = formulaHandler.getInitFormulaFromConf(1, 'totalValues')
             var totalCropsCalc = formulaHandler.createFormula(copyOriginalModelTot, formulaTotCrops)
+            */
 
             var singleCropsModel = modelProduction.getSingleCropsModel(involvedItems, supportUtility);
             var copyOriginalModelSingle = $.extend(true, [], singleCropsModel);
 
-            formulaToRenderTotVal = 'init'
             formulaToRenderSingleCrops = 'init'
-
 
 
             $("#pivotGrid").append(modal);
@@ -93,12 +107,13 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
                 backdrop: 'static',
                 keyboard: false});
 
-            this.initAllCheckBoxes();
+            this.initAllCheckBoxes(formulaToRenderTotVal,formulaTotInit['isAreaHarvSelected']);
+            this.changeLabelToArea(formulaTotInit['isAreaHarvSelected'],true);
 
             this.createAndDrawGrid( this.setDataForGrid(totalCropsCalc,true),   "gridTotalValues") ;
             this.createAndDrawGrid( this.setDataForGrid(copyOriginalModelSingle,false), "gridSingleCrops");
 
-            observer.applyListeners(this, productionController)
+            observer.applyListeners(this, productionController, formulaToRenderTotVal, formulaTotInit['isAreaHarvSelected'])
 
         }
 
@@ -327,7 +342,76 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
         }
 
-        ProductionEditor.prototype.initAllCheckBoxes = function(){
+        ProductionEditor.prototype.initAllCheckBoxes = function(formulaToApply, isAreaHarvSelected){
+
+
+            $('#radioBtnAreaHarv').jqxRadioButton({ width: 120, height: 25, groupName: "totValueBtn"});
+            $('#radioBtnAreaPlanted').jqxRadioButton({ width: 120, groupName: "totValueBtn", height: 25 });
+
+            $('#firstCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25});
+            $('#secondCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25});
+            $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
+
+
+
+
+            $('#radioBtnAreaHarvSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn", checked: true });
+            $('#radioBtnAreaPltdSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn"});
+
+            $('#firstCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
+            $('#secondCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
+            $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
+
+            var checkBoxToEnable = {}
+            var checkBoxToDisable = {}
+
+
+            switch (formulaToApply){
+
+                case 'init':
+
+                    checkBoxToEnable['firstCheckBoxTotVal'] = true
+                    checkBoxToEnable['secondCheckBoxTotVal'] = true
+                    checkBoxToDisable['thirdCheckBoxTotVal'] = true
+                    break;
+
+                case 'areaHarvested':
+
+                    checkBoxToEnable['firstCheckBoxTotVal'] = true
+                    checkBoxToEnable['thirdCheckBoxTotVal'] = true
+                    checkBoxToDisable['secondCheckBoxTotVal'] = true
+
+                    break;
+
+                case 'production':
+
+                    checkBoxToEnable['secondCheckBoxTotVal'] = true
+                    checkBoxToEnable['thirdCheckBoxTotVal'] = true
+                    checkBoxToDisable['firstCheckBoxTotVal'] = true
+
+                    break;
+
+                case 'yiled':
+
+                    checkBoxToEnable['firstCheckBoxTotVal'] = true
+                    checkBoxToEnable['secondCheckBoxTotVal'] = true
+                    checkBoxToDisable['thirdCheckBoxTotVal'] = true
+                    break;
+            }
+
+            (isAreaHarvSelected)?  $('#radioBtnAreaHarv').jqxRadioButton('check'):   $('#radioBtnAreaPlanted').jqxRadioButton('check');
+
+            debugger;
+
+            for(var key in checkBoxToEnable ){
+                $('#'+key).jqxCheckBox('check');
+            }
+
+            for(var key in checkBoxToDisable ){
+                $('#'+key).jqxCheckBox('disable');
+            }
+
+            /*
 
             $('#firstCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
             $('#secondCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
@@ -343,6 +427,8 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
             $('#radioBtnAreaHarvSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn", checked: true });
             $('#radioBtnAreaPltdSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn"});
+
+            */
 
 
         }

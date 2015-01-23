@@ -81,6 +81,15 @@ define(['jquery'], function ($) {
     }
 
     ProductionController.prototype.updateTotGridOnFormulaChanges = function (formulaToApply, typeOfTotGrid) {
+
+        isAreaHarvestedSelectedTot= (typeOfTotGrid == 'totalValues');
+        var modelCalculated = $.extend(true, [], this.createModelCalculatedTotalGrid(formulaToApply,typeOfTotGrid));
+        modelProduction.setCalculatedTotalModel(modelCalculated)
+        editorProduction.updateTotGrid(modelCalculated, formulaToApply, isAreaHarvestedSelectedTot);
+
+    }
+
+    ProductionController.prototype.createModelCalculatedTotalGrid = function(formulaToApply, typeOfTotGrid){
         if (!typeOfTotGrid) {
             typeOfTotGrid = 'totalValues';
         }
@@ -99,8 +108,8 @@ define(['jquery'], function ($) {
 
         var modelCalculated = $.extend(true, [], calculatedModel);
         modelProduction.setCalculatedTotalModel(modelCalculated)
-        editorProduction.updateTotGrid(calculatedModel, formulaToApply, isAreaHarvestedSelectedTot);
 
+        return modelCalculated;
     }
 
     ProductionController.prototype.updateSingleCropsGridOnFormulaChanges = function (formulaToApply, typeOfSingleGrid) {
