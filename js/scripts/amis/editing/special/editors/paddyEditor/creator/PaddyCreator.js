@@ -32,14 +32,14 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         }
     }
 
-    PaddyCreator.prototype.init = function (totalValuesModel, singleCropsModel, Observer, PaddyEditableHandler) {
+    PaddyCreator.prototype.init = function (totalValuesModel, singleCropsModel, Observer, PaddyEditableHandler, formulaTotInit) {
         paddyEditableHandler = PaddyEditableHandler;
 
         this.destroyIfExistOtherModal();
 
         $("#pivotGrid").append(modal);
 
-        formulaToRenderTotVal = 'init';
+        formulaToRenderTotVal = formulaTotInit;
         formulaToRenderSingleCrops = 'init';
 
         observer = Observer;
@@ -55,7 +55,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
             $(this).tab('show')
         })
 
-        this.initAllCheckBoxes()
+        var isMilledSelected = this.initAllCheckBoxesWithFormula(formulaToRenderTotVal)
 
 
         $('#totalValues').click(function (e) {
@@ -68,20 +68,29 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         this.createAndDrawGrid(this.setDataForGrid(singleModel, false), "gridSingleCrops");
 
-        this.changeLabelToElements(true, true);
+        this.changeLabelToElements(isMilledSelected, true);
         this.changeLabelToElements(true, false);
 
         observer.applyListeners()
 
     }
 
-    PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply) {
+
+
+
+    PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply, changeLabel) {
 
         formulaToRenderTotVal = formulaToApply
 
         observer.unbindEventsFromTotalValues()
 
-        this.createAndDrawGrid(this.setDataForGrid(calculatedModel, true), "gridTotalValues");
+        if(changeLabel){
+            var isMilledSelected = this.changeRadioBtnAndCheckBoxTotValue(formulaToRenderTotVal)
+            this.createAndDrawGrid(this.setDataForGrid(calculatedModel, true), "gridTotalValues");
+            this.changeLabelToElements(isMilledSelected, true);
+        }else {
+            this.createAndDrawGrid(this.setDataForGrid(calculatedModel, true), "gridTotalValues");
+        }
 
         observer.reBindEventsFromTotalValues()
 
@@ -92,9 +101,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         formulaToRenderSingleCrops = formulaToApply;
 
         this.createAndDrawGrid(this.setDataForGrid(calculatedModel, false), "gridSingleCrops");
-
-
     }
+
 
     PaddyCreator.prototype.destroyAll = function () {
         $('#gridTotalValues').jqxGrid('destroy')
@@ -256,6 +264,120 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
+    }
+
+    PaddyCreator.prototype.initAllCheckBoxesWithFormula = function (formula) {
+
+        $('#radioBtnMilledTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
+        $('#radioBtnPaddyTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
+        $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
+        $('#fourthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
+        $('#fifthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
+
+        $('#radioBtnMilledSingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25, checked: true});
+        $('#radioBtnPaddySingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25});
+        $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
+        $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
+        $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
+
+        this.changeRadioBtnAndCheckBoxTotValue(formula)
+
+    }
+
+    PaddyCreator.prototype.changeRadioBtnAndCheckBoxTotValue = function(formula){
+
+        debugger;
+
+        var isMilledSelected;
+
+        var checkBoxToEnable = {}
+        var radioBtnToEnable = {}
+        var checkBoxToDisable = {}
+
+
+        switch (formula){
+            case 'init':
+
+                radioBtnToEnable['radioBtnMilledTot'] = true
+                checkBoxToEnable['thirdCheckBoxTotVal'] = true
+                checkBoxToEnable['fourthCheckBoxTotVal'] = true
+                checkBoxToDisable['fifthCheckBoxTotVal'] = true
+                isMilledSelected =true;
+
+                break;
+
+            case 'areaHarvestedMilled':
+
+                radioBtnToEnable['radioBtnMilledTot'] = true
+                checkBoxToEnable['thirdCheckBoxTotVal'] = true
+                checkBoxToEnable['fifthCheckBoxTotVal'] = true
+                checkBoxToDisable['fourthCheckBoxTotVal'] = true
+                isMilledSelected =true;
+
+
+                break;
+
+            case 'productionMilled':
+
+                radioBtnToEnable['radioBtnMilledTot'] = true
+                checkBoxToEnable['fourthCheckBoxTotVal'] = true
+                checkBoxToEnable['fifthCheckBoxTotVal'] = true
+                checkBoxToDisable['thirdCheckBoxTotVal'] = true
+                isMilledSelected =true;
+
+
+                break;
+
+            case 'yieldPaddy':
+
+                radioBtnToEnable['radioBtnPaddyTot'] = true
+                checkBoxToEnable['thirdCheckBoxTotVal'] = true
+                checkBoxToEnable['fourthCheckBoxTotVal'] = true
+                checkBoxToDisable['fifthCheckBoxTotVal'] = true
+                isMilledSelected =false;
+
+
+                break;
+
+            case 'areaHarvestedPaddy':
+
+                radioBtnToEnable['radioBtnPaddyTot'] = true
+                checkBoxToEnable['thirdCheckBoxTotVal'] = true
+                checkBoxToEnable['fifthCheckBoxTotVal'] = true
+                checkBoxToDisable['fourthCheckBoxTotVal'] = true
+                isMilledSelected =false;
+
+
+
+                break;
+
+            case 'productionPaddy':
+
+                radioBtnToEnable['radioBtnPaddyTot'] = true
+                checkBoxToEnable['fourthCheckBoxTotVal'] = true
+                checkBoxToEnable['fifthCheckBoxTotVal'] = true
+                checkBoxToDisable['thirdCheckBoxTotVal'] = true
+                isMilledSelected =false;
+
+
+                break;
+
+        }
+
+        for(var key in checkBoxToEnable ){
+            $('#'+key).jqxCheckBox('check');
+        }
+
+        for(var key in radioBtnToEnable ){
+            $('#'+key).jqxRadioButton('check');
+        }
+
+        for(var key in checkBoxToDisable ){
+            $('#'+key).jqxCheckBox('disable');
+        }
+
+
+        return isMilledSelected;
     }
 
 

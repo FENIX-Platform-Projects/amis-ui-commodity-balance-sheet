@@ -14,7 +14,7 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
         37: "Area Planted",
         998: "Production Paddy",
         996: "Yield Paddy",
-        3: "Extraction Rate"
+        3: "Extraction Rate (%)"
 
 
     }
@@ -156,8 +156,11 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
         return result;
     }
 
-    PaddyModel.prototype.setCalculatedTotalModel = function (calculatedModel) {
+    PaddyModel.prototype.setCalculatedTotalModel = function (calculatedModel, formulaToApply) {
         calculatedTotalModel = calculatedModel
+
+        // erase other old flags if presents
+
     }
 
     PaddyModel.prototype.getCalculatedTotalModel = function () {

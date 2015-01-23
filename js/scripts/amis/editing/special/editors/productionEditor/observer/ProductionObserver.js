@@ -18,15 +18,16 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     }
     // ---------------------------------------------//
 
-    ProductionObserver.prototype.applyListeners = function (EditorProduction, EditorController) {
+    ProductionObserver.prototype.applyListeners = function (EditorProduction, EditorController, formulaToApplyTotInit, isAreaHarvSelectedTotInit) {
         controllerProduction = EditorController;
-        formulaToApplyTot = 'init';
+        formulaToApplyTot = formulaToApplyTotInit;
         formulaToApplySingle = 'init';
-        isAreaHarvestedSelectedTot = true;
+        isAreaHarvestedSelectedTot = isAreaHarvSelectedTotInit;
         isAreaHarvestedSelectedSingle = true;
         editorProduction = EditorProduction;
         totalValuesModified = false;
         singleCropsValuesModified = false;
+        this.listenToChangeRadioButtonValue();
         this.listenToCheckboxesTotal();
         this.listenToCheckboxesSingleCrops()
         this.listenToRecalculateButtonTotalValues();
@@ -39,7 +40,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         this.listenToSingleCropsEditable()
      //   this.listenToCloseModal();
       //this.listenToCloseButton();
-        this.listenToChangeRadioButtonValue();
+
     }
 
     ProductionObserver.prototype.listenToCheckboxesTotal = function () {
@@ -234,6 +235,8 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             // third is disabled on default
             evt.preventDefault();
             evt.stopImmediatePropagation();
+
+            debugger;
             console.log('recalucalteButtonTotalValues')
             var counter = 0;
             counter += $("#firstCheckBoxTotVal").val() ? 1 : 0;
@@ -324,6 +327,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             event.stopImmediatePropagation();
 
             if (event.args.checked == isAreaHarvestedSelectedTot) {
+                debugger;
                 isAreaHarvestedSelectedTot = !event.args.checked;
                 controllerProduction.onChangeAreaSelected(formulaToApplyTot, isAreaHarvestedSelectedTot, true)
 
@@ -335,6 +339,7 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             event.stopImmediatePropagation();
 
             if (event.args.checked == isAreaHarvestedSelectedSingle) {
+                debugger;
                 isAreaHarvestedSelectedSingle = !event.args.checked;
                 controllerProduction.onChangeAreaSelected(formulaToApplySingle, isAreaHarvestedSelectedSingle, false)
 
