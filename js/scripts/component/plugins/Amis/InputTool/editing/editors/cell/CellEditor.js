@@ -666,14 +666,23 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                     result = true;
                 }
                 break;
+            case "number":
+
+                result = $("#" + htmlvalue.id).val();
+                if (typeof result == 'undefined' || result == '' || isNaN(result)) {
+                    result = null
+                }
+                break;
+
             default :
                 if (htmlvalue.id == 'accessorInput1') {
                     var codes = $("#" + htmlvalue.id).select2("val");
                     result = flagController.getStringFromCodes(codes);
 
                 } else {
+                    debugger;
                     result = $("#" + htmlvalue.id).val();
-                    if (typeof result == 'undefined') {
+                    if (typeof result == 'undefined' || result == '' ) {
                         result = null
                     }
                 }

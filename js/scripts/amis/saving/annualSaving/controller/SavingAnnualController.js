@@ -43,6 +43,24 @@ define(['jquery', 'databaseSaver/annualSaving/model/SavingAnnualModel', 'databas
 
             this.finalSave(dataWithPayload)
 
+            var data = balanceSheet.getDataToSave();
+
+            data.updatedData.length = 0
+            data.newData.length = 0;
+
+            if (document.getElementById('alertNewValues').childNodes.length == 0 && document.getElementById('alertChangeGrid').childNodes.length == 0) {
+                var f = document.getElementById('alertNewValues');
+                if(f){
+                    f.remove()
+                    var alert1 = '<div class="alert alert-info alert-dismissible" role="alert">' +
+                        '<button type="button" class="close" data-dismiss="alert">' +
+                        '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
+                        '<strong>Attention!</strong> To apply the changes of your selection, <strong>click on load data</strong></div>';
+                    $('#alertChangeGrid').append(alert1);
+                }
+            }
+
+
         }
 
         SavingAnnualController.prototype.finalSave = function (arrayData) {
