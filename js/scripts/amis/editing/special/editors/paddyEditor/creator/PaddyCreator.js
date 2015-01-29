@@ -68,6 +68,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         this.createAndDrawGrid(this.setDataForGrid(singleModel, false), "gridSingleCrops");
 
+        debugger;
+
         this.changeLabelToElements(isMilledSelected, true);
         this.changeLabelToElements(true, false);
 
@@ -280,7 +282,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
 
-        this.changeRadioBtnAndCheckBoxTotValue(formula)
+        return this.changeRadioBtnAndCheckBoxTotValue(formula)
 
     }
 
@@ -408,6 +410,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
     }
 
     PaddyCreator.prototype.changeLabelToElements = function (isMilledSelected, isTotal) {
+
+        debugger;
         var labelYield, labelProduction
 
         if (isMilledSelected) {

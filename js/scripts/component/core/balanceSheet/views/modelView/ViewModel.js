@@ -1,7 +1,7 @@
-define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
+define(["jquery", "formatter/DatatypesFormatter", 'othUsesPlugin'], function ($, Formatter, OTHPlugin) {
 
     var configurator, fullModel, configurationKeys, valueColumn, indexValues, idOlapGrid, accessorMap, dsd, accessorModel,
-        formatter, supportUtility, particularFormatterCodes;
+        formatter, supportUtility, particularFormatterCodes, generalController, otherPlugin;
 
 
     var _IMG_URL = window.location.href+ "/css/images/notes/paperclip-icon.png"
@@ -9,9 +9,11 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     function ViewModel() {
         particularFormatterCodes = {"Yield (Tonnes/Ha)":true, "Per capita food use (Kg/Yr)":true, "Yield Milled (Tonnes/Ha)":true,
         "Yield Paddy (Tonnes/Ha)":true}
+        otherPlugin= new OTHPlugin;
     }
 
-    ViewModel.prototype.init = function (tableData, Configurator, SupportUtility) {
+    ViewModel.prototype.init = function (tableData, Configurator, SupportUtility, GeneralController) {
+        generalController = GeneralController;
         supportUtility = SupportUtility;
         formatter = new Formatter;
         configurator = Configurator;
@@ -167,9 +169,10 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
 
                         var returnedValue;
 
-                        if(match.substring(1) == "note"){
-                            returnedValue = "&nbsp<img src='"+_IMG_URL+"' width='16' height='16'>";
-                        }else{
+                        if(match.substring(1) == "note") {
+                            returnedValue = "&nbsp<img src='" + _IMG_URL + "' width='16' height='16'>";
+                        }
+                        else{
                             returnedValue = " &nbsp  "+item[accessorMap[match.substring(1)]];
                         }
 
