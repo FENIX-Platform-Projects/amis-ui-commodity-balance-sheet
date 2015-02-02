@@ -68,6 +68,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         this.createAndDrawGrid(this.setDataForGrid(singleModel, false), "gridSingleCrops");
 
+        debugger;
+
         this.changeLabelToElements(isMilledSelected, true);
         this.changeLabelToElements(true, false);
 
@@ -105,6 +107,10 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
 
     PaddyCreator.prototype.destroyAll = function () {
+        $('#dialogForm').modal('hide');
+
+        $('#specialForm').modal('hide');
+
         $('#gridTotalValues').jqxGrid('destroy')
         $('#gridSingleCrops').jqxGrid('destroy');
 
@@ -120,6 +126,19 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         $('#fourthCheckBoxSingleCrops').jqxCheckBox('destroy');
         $('#fifthCheckBoxSingleCrops').jqxCheckBox('destroy');
 
+
+        var f = document.getElementById("dialogForm");
+
+        if (f && f !== null) {
+            f.remove()
+        }
+
+
+        var f = document.getElementById("specialForm");
+
+        if (f && f !== null) {
+            f.remove()
+        }
 
     }
 
@@ -280,7 +299,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
 
-        this.changeRadioBtnAndCheckBoxTotValue(formula)
+        return this.changeRadioBtnAndCheckBoxTotValue(formula)
 
     }
 
@@ -408,6 +427,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
     }
 
     PaddyCreator.prototype.changeLabelToElements = function (isMilledSelected, isTotal) {
+
+        debugger;
         var labelYield, labelProduction
 
         if (isMilledSelected) {

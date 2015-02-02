@@ -91,7 +91,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             accessorMap = Configurator.getAccessorMap();
             valueColumn = Configurator.getValueColumnConfiguration();
             indexValues = Configurator.getValueIndex();
-            modelView = viewModel.init(table, Configurator, supportUtility)
+            modelView = viewModel.init(table, Configurator, supportUtility, generalController)
             var grid = this.renderGrid(modelView)
             return grid;
         }

@@ -1,6 +1,3 @@
-/**
- * Created by fabrizio on 7/7/14.
- */
 define(["jquery", "view/GridDataView", "editorController/FormController",
         "exporter/controller/ExportController", "adapterGrid", "formulasAmis/controller/FormulaController",
         "editingSpecial/controller/ControllerEditors", "generalObserver/GeneralObserver" , "editHandler",
@@ -42,6 +39,12 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             thousandSeparator = 1
             elementShown = 1
             // visualization model
+
+            console.log('DATA************************************************')
+            console.log(JSON.stringify(tableModelWithFormula))
+
+            console.log('DATA************************************************')
+
             grid = ViewGrid.init(tableModelWithFormula, configurator, supportUtility, this)
             generalObserver.init(this, thousandSeparator, elementShown)
 
@@ -117,7 +120,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
             this.onExportingData();
 
-            this.onSwitchingPeriodModality();
+         //   this.onSwitchingPeriodModality();
 
             this.onCreatingNewForecast()
 
@@ -345,7 +348,25 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         }
 
+        GeneralController.prototype.lookIfEditedSomeValues = function(){
+            var objectDataToSave = ModelController.getDataToSave();
+            return (objectDataToSave['updatedData'].length >0||objectDataToSave['newData'].length >0  );
+        }
 
+
+        GeneralController.prototype.getDataToSaveFromController = function(){
+            return ModelController.getDataToSave();
+        }
+
+        GeneralController.prototype.getAllDataFromModel = function(){
+            return ModelController.getData();
+        }
+
+        GeneralController.prototype.getTableDataFromModel = function(){
+            return ModelController.getTableDataModel();
+        }
+
+/*
         GeneralController.prototype.onSwitchingPeriodModality = function () {
 
             $('#annualSelection').on("click", function (evt) {
@@ -353,7 +374,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 evt.stopImmediatePropagation();
                 $.publish('annual-added', '');
             })
-        }
+        }*/
 
 
         return GeneralController;

@@ -38,7 +38,8 @@ requirejs.config({
         urlConfigurator   :  "../services/configurator/ServicesConfigurator",
         databaseSaver     :  "../amis/saving",
         editHandler       :  "../amis/editing/direct/EditHandler",
-        FenixValidator         :  "FenixReports-Validator"
+        FenixValidator         :  "FenixReports-Validator",
+        othUsesPlugin     :  "../amis/otherUsesNotes/OtherUsesPluginNotes"
     },
     "shim": {
         "bootstrap": {

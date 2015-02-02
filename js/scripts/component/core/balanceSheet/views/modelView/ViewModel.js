@@ -1,7 +1,7 @@
-define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
+define(["jquery", "formatter/DatatypesFormatter", 'othUsesPlugin'], function ($, Formatter, OTHPlugin) {
 
     var configurator, fullModel, configurationKeys, valueColumn, indexValues, idOlapGrid, accessorMap, dsd, accessorModel,
-        formatter, supportUtility, particularFormatterCodes;
+        formatter, supportUtility, particularFormatterCodes, generalController, otherPlugin;
 
 
     var _IMG_URL = window.location.href+ "/css/images/notes/paperclip-icon.png"
@@ -9,9 +9,11 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
     function ViewModel() {
         particularFormatterCodes = {"Yield (Tonnes/Ha)":true, "Per capita food use (Kg/Yr)":true, "Yield Milled (Tonnes/Ha)":true,
         "Yield Paddy (Tonnes/Ha)":true}
+        otherPlugin= new OTHPlugin;
     }
 
-    ViewModel.prototype.init = function (tableData, Configurator, SupportUtility) {
+    ViewModel.prototype.init = function (tableData, Configurator, SupportUtility, GeneralController) {
+        generalController = GeneralController;
         supportUtility = SupportUtility;
         formatter = new Formatter;
         configurator = Configurator;
@@ -159,6 +161,11 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                 }
             }
             else {
+
+                if (item[0] == 'Other Uses (Thousand tonnes)') {
+                    debugger;
+                }
+
                 if (typeof item[accessorMap[firstCondition.substring(1)]] !== 'undefined' && item[accessorMap[firstCondition.substring(1)]] !==null && item[accessorMap[firstCondition.substring(1)]] !== 'null') {
                     var secondCondition = expression.match(valuesRegExpression)[0];
                     expression = expression.replace(valuesRegExpression, "")
@@ -167,9 +174,10 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
 
                         var returnedValue;
 
-                        if(match.substring(1) == "note"){
-                            returnedValue = "&nbsp<img src='"+_IMG_URL+"' width='16' height='16'>";
-                        }else{
+                        if(match.substring(1) == "note") {
+                            returnedValue = "&nbsp<img src='" + _IMG_URL + "' width='16' height='16'>";
+                        }
+                        else{
                             returnedValue = " &nbsp  "+item[accessorMap[match.substring(1)]];
                         }
 
@@ -177,6 +185,36 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                     })
                     result +=stringAppend;
                 }
+
+
+
+
+               // Other uses case
+               else   if (item[0] == 'Other Uses (Thousand tonnes)' && firstCondition.substring(1) == 'note') {
+
+                    debugger;
+                    var secondCondition = expression.match(valuesRegExpression)[0];
+                    expression = expression.replace(valuesRegExpression, "")
+                    secondCondition = secondCondition.slice(0, -1);
+                    var stringAppend = secondCondition.replace(onlyValue, function (match) {
+
+                        var returnedValue;
+
+                            debugger;
+                            if(!otherPlugin.checkIfNotesAreNotPresent(generalController.getAllDataFromModel(),item[2],generalController.getTableDataFromModel())) {
+                                returnedValue = "&nbsp<img src='" + _IMG_URL + "' width='16' height='16'>";
+                            }else{
+                                returnedValue = '&nbsp'
+                            }
+
+
+
+                        return returnedValue;
+                    })
+
+                    result +=stringAppend;
+                }
+
                 else {
                     expression = expression.replace(valuesRegExpression, "")
                 }

@@ -1,11 +1,11 @@
-/**
- * Created by fabrizio on 9/25/14.
- */
-define(['jquery', 'jqwidgets', 'amplify'], function($){
 
-    var generalController
+define(['jquery', 'bootstrap-dialog','jqwidgets', 'amplify' ], function($, BootstrapDialog){
 
-    function GeneralObserver(){}
+    var generalController, bootstrapDialog;
+
+    function GeneralObserver(){
+        bootstrapDialog = BootstrapDialog;
+    }
 
 
     GeneralObserver.prototype.init = function(GeneralController, initThousand, initElement){
@@ -88,12 +88,36 @@ define(['jquery', 'jqwidgets', 'amplify'], function($){
             e.stopImmediatePropagation();
             var storeValue = amplify.store();
             var isMonthly = storeValue.isMonthlyModality
-            if(isMonthly){
-                amplify.publish("changeOnAnnualModality",{preloadingData: filterData})
-            }else{
-                amplify.publish("changeOnMonthlyModality",{preloadingData: filterData})
+
+            if(generalController.lookIfEditedSomeValues()) {
+
+                bootstrapDialog.confirm('ATTENTION: you edited some values. ' +
+                    'Are you sure to change modality and lose every changes ?', function (result) {
+                    if(result){
+
+                        var data = generalController.getDataToSaveFromController();
+                        data.updatedData.length = 0
+                        data.newData.length = 0;
+
+                        if (isMonthly) {
+                            amplify.publish("changeOnAnnualModality", {preloadingData: filterData})
+                        } else {
+                            amplify.publish("changeOnMonthlyModality", {preloadingData: filterData})
+                        }
+
+                    }
+                })
+            }
+
+            else{
+                if (isMonthly) {
+                    amplify.publish("changeOnAnnualModality", {preloadingData: filterData})
+                } else {
+                    amplify.publish("changeOnMonthlyModality", {preloadingData: filterData})
+                }
             }
         })
+
     }
 
 

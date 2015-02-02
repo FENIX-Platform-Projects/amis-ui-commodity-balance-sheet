@@ -524,14 +524,14 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                     $('#form').append("<div class ='row'>" +
                         "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                         + "</label></div>" +
-                        "<div class='col-xs-6'><input type='number' class='input-group-xs' name='name' id='" + container + "' value='" + value +
+                        "<div class='col-xs-6'><input class='input-group-xs' name='name' id='" + container + "' value='" + value +
                         "' min='" + numberFrom + "' max='" + numberTo + "'  step='any' style='width:100%'></div>" +
                         "</div><br>")
                 } else {
                     $('#form').append("<div class ='row'>" +
                         "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                         + "</label></div>" +
-                        "<div class='col-xs-6'><input type='number' class='input-group-xs' name='name' id='" + container + "' value='" + value +
+                        "<div class='col-xs-6'><input class='input-group-xs' name='name' id='" + container + "' value='" + value +
                         "' min='" + numberFrom + "' max='" + numberTo + "'  step='any' readonly></div>" +
                         "</div><br>")
                 }

@@ -10,11 +10,13 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
     // ---------------------------------------------//
 
     function PaddyObserver() {
-        isMilledTotSelected = true
-        isMilledSingleSelected = true;
+
     }
 
     PaddyObserver.prototype.init = function (Controller, PaddyEditableHandler, formulaTotInit) {
+        isMilledTotSelected = true
+        isMilledSingleSelected = true;
+
         paddyEditableHandler = PaddyEditableHandler;
         controllerPaddy = Controller;
         formulaToApplyTot = formulaTotInit;
@@ -24,6 +26,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         if(formulaTotInit != 'init' && (formulaTotInit.substr(formulaTotInit.length -6)) != 'Milled'){
             isMilledTotSelected = false;
         }
+
     }
 
     PaddyObserver.prototype.applyListeners = function () {
@@ -42,7 +45,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         this.listenToSingleCropsEditable();
 
         // this.listenToCloseModal()
-        // this.listenToCloseButton()
+        this.listenToCloseButton()
         this.listenToChangeRadioButtonValue();
 
     }
@@ -76,11 +79,16 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
     }
 
     PaddyObserver.prototype.listenToChangeRadioButtonValue = function () {
+
+        var self = this;
         $('#radioBtnPaddyTot').on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
+            debugger;
 
             if (event.args.checked == isMilledTotSelected) {
+                debugger;
+                self.setTotalValuesOnModified();
                 debugger;
                 isMilledTotSelected = !event.args.checked;
                 formulaToApplyTot = controllerPaddy.onChangeFormulaWithRadio(formulaToApplyTot)
@@ -740,7 +748,8 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
     }
 
     PaddyObserver.prototype.listenToCloseButton = function () {
-        $('#closeModal').on('click', function () {
+        $('#closeModalTotal').on('click', function () {
+            debugger;
             controllerPaddy.destroyAll()
         })
     }
@@ -752,6 +761,10 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     PaddyObserver.prototype.setTotalValuesOnModified = function () {
         totalValuesModified = true;
+    }
+
+    PaddyObserver.prototype.setSingleCropsOnModified = function () {
+        singleCropsValuesModified = true;
     }
 
     PaddyObserver.prototype.unbindEventsFromTotalValues = function () {
