@@ -1,4 +1,4 @@
-define([], function(){
+define(['amplify'], function(){
 
     var ELEMENTS_MAP = [15,21,21,34,28,29,30,31,32,33]
 
@@ -7,11 +7,22 @@ define([], function(){
     OtherUsesPluginNotes.prototype.checkIfNotesAreNotPresent = function(allData, date, tableData){
 
         var notFound = true;
+        var keyDate;
 
+
+        alert()
 
         debugger;
 
-        var keyDate = moment(date).format("YYYYMMDD");
+        var storeModality = amplify.store()
+        if (storeModality.isMonthlyModality) {
+             keyDate =(date.substr(4,1)=='/')?
+                 "20000103":
+                 moment(date).format("YYYYMMDD");
+
+        }else{
+            keyDate = date;
+        }
 
         var checkNotes = function(data, index){
             return (typeof data[index][5] !='undefined' &&

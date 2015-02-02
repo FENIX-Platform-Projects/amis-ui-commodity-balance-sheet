@@ -107,6 +107,10 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
 
     PaddyCreator.prototype.destroyAll = function () {
+        $('#dialogForm').modal('hide');
+
+        $('#specialForm').modal('hide');
+
         $('#gridTotalValues').jqxGrid('destroy')
         $('#gridSingleCrops').jqxGrid('destroy');
 
@@ -122,6 +126,19 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         $('#fourthCheckBoxSingleCrops').jqxCheckBox('destroy');
         $('#fifthCheckBoxSingleCrops').jqxCheckBox('destroy');
 
+
+        var f = document.getElementById("dialogForm");
+
+        if (f && f !== null) {
+            f.remove()
+        }
+
+
+        var f = document.getElementById("specialForm");
+
+        if (f && f !== null) {
+            f.remove()
+        }
 
     }
 

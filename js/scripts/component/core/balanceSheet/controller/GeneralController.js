@@ -1,6 +1,3 @@
-/**
- * Created by fabrizio on 7/7/14.
- */
 define(["jquery", "view/GridDataView", "editorController/FormController",
         "exporter/controller/ExportController", "adapterGrid", "formulasAmis/controller/FormulaController",
         "editingSpecial/controller/ControllerEditors", "generalObserver/GeneralObserver" , "editHandler",
@@ -42,6 +39,12 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             thousandSeparator = 1
             elementShown = 1
             // visualization model
+
+            console.log('DATA************************************************')
+            console.log(JSON.stringify(tableModelWithFormula))
+
+            console.log('DATA************************************************')
+
             grid = ViewGrid.init(tableModelWithFormula, configurator, supportUtility, this)
             generalObserver.init(this, thousandSeparator, elementShown)
 

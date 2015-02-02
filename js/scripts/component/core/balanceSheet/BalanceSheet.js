@@ -1,7 +1,3 @@
-/**
- * Created by fabrizio on 6/26/14.
- */
-
 define(["jquery", "configurator/Configurator", "modelController/ModelsController",
     "generalController/GeneralController", "utilities/SupportUtility"], function ($, Configurator, ModelController, GeneralController, Utility) {
 
