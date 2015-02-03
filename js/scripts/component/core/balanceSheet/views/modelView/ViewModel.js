@@ -4,12 +4,12 @@ define(["jquery", "formatter/DatatypesFormatter", 'othUsesPlugin'], function ($,
         formatter, supportUtility, particularFormatterCodes, generalController, otherPlugin;
 
 
-    var _IMG_URL = window.location.href+ "/css/images/notes/paperclip-icon.png"
+    var _IMG_URL = window.location.href + "/css/images/notes/paperclip-icon.png"
 
     function ViewModel() {
-        particularFormatterCodes = {"Yield (Tonnes/Ha)":true, "Per capita food use (Kg/Yr)":true, "Yield Milled (Tonnes/Ha)":true,
-        "Yield Paddy (Tonnes/Ha)":true}
-        otherPlugin= new OTHPlugin;
+        particularFormatterCodes = {"Yield (Tonnes/Ha)": true, "Per capita food use (Kg/Yr)": true, "Yield Milled (Tonnes/Ha)": true,
+            "Yield Paddy (Tonnes/Ha)": true}
+        otherPlugin = new OTHPlugin;
     }
 
     ViewModel.prototype.init = function (tableData, Configurator, SupportUtility, GeneralController) {
@@ -115,15 +115,15 @@ define(["jquery", "formatter/DatatypesFormatter", 'othUsesPlugin'], function ($,
             }
             else {
                 result[accessorIndexes[i]] = item[accessorIndexes[i]]
-                if( i ==2 && typeof item[accessorIndexes[i]] !='undefined' &&  item[accessorIndexes[i]] != null &&  item[accessorIndexes[i]] != 'null'){
+                if (i == 2 && typeof item[accessorIndexes[i]] != 'undefined' && item[accessorIndexes[i]] != null && item[accessorIndexes[i]] != 'null') {
                     notesInserted = true;
                 }
             }
         }
-      //  result[indexValues]  =formatter.fromDSDToVisualizationFormat(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator)
+        //  result[indexValues]  =formatter.fromDSDToVisualizationFormat(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator)
 
-        result[indexValues]  = (result[0] && particularFormatterCodes[result[0]])? formatter.convertParticularValues(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator):
-        formatter.fromDSDToVisualizationFormat(result[indexValues],valueColumn,configurator.getValueColumnOnDSD().dataTypes, configurator);
+        result[indexValues] = (result[0] && particularFormatterCodes[result[0]]) ? formatter.convertParticularValues(result[indexValues], valueColumn, configurator.getValueColumnOnDSD().dataTypes, configurator) :
+            formatter.fromDSDToVisualizationFormat(result[indexValues], valueColumn, configurator.getValueColumnOnDSD().dataTypes, configurator);
 
 
         var label = configurator.getValueLabel()
@@ -145,7 +145,7 @@ define(["jquery", "formatter/DatatypesFormatter", 'othUsesPlugin'], function ($,
             expression = expression.replace(conditionRegExpression, "")
             firstCondition = firstCondition.slice(0, -1);
             if (firstCondition.substring(1) == "value") {
-                if (typeof item[indexValue] !== 'undefined'  && item[indexValue] != null) {
+                if (typeof item[indexValue] !== 'undefined' && item[indexValue] != null) {
                     var secondCondition = expression.match(valuesRegExpression)[0];
                     expression = expression.replace(valuesRegExpression, "")
                     secondCondition = secondCondition.slice(0, -1);
@@ -161,60 +161,40 @@ define(["jquery", "formatter/DatatypesFormatter", 'othUsesPlugin'], function ($,
                 }
             }
             else {
-
-                if (item[0] == 'Other Uses (Thousand tonnes)') {
-                    debugger;
-                }
-
-                if (typeof item[accessorMap[firstCondition.substring(1)]] !== 'undefined' && item[accessorMap[firstCondition.substring(1)]] !==null && item[accessorMap[firstCondition.substring(1)]] !== 'null') {
+                if (typeof item[accessorMap[firstCondition.substring(1)]] !== 'undefined' && item[accessorMap[firstCondition.substring(1)]] !== null && item[accessorMap[firstCondition.substring(1)]] !== 'null') {
                     var secondCondition = expression.match(valuesRegExpression)[0];
                     expression = expression.replace(valuesRegExpression, "")
                     secondCondition = secondCondition.slice(0, -1);
                     var stringAppend = secondCondition.replace(onlyValue, function (match) {
-
                         var returnedValue;
-
-                        if(match.substring(1) == "note") {
+                        if (match.substring(1) == "note") {
                             returnedValue = "&nbsp<img src='" + _IMG_URL + "' width='16' height='16'>";
                         }
-                        else{
-                            returnedValue = " &nbsp  "+item[accessorMap[match.substring(1)]];
+                        else {
+                            returnedValue = " &nbsp  " + item[accessorMap[match.substring(1)]];
                         }
-
                         return returnedValue;
                     })
-                    result +=stringAppend;
+                    result += stringAppend;
                 }
 
 
-
-
-               // Other uses case
-               else   if (item[0] == 'Other Uses (Thousand tonnes)' && firstCondition.substring(1) == 'note') {
-
-                    debugger;
+                // Other uses case
+                else if (item[0] == 'Other Uses (Thousand tonnes)' && firstCondition.substring(1) == 'note') {
                     var secondCondition = expression.match(valuesRegExpression)[0];
                     expression = expression.replace(valuesRegExpression, "")
                     secondCondition = secondCondition.slice(0, -1);
                     var stringAppend = secondCondition.replace(onlyValue, function (match) {
-
                         var returnedValue;
-
-                            debugger;
-                            if(!otherPlugin.checkIfNotesAreNotPresent(generalController.getAllDataFromModel(),item[2],generalController.getTableDataFromModel())) {
-                                returnedValue = "&nbsp<img src='" + _IMG_URL + "' width='16' height='16'>";
-                            }else{
-                                returnedValue = '&nbsp'
-                            }
-
-
-
+                        if (!otherPlugin.checkIfNotesAreNotPresent(generalController.getAllDataFromModel(), item[2], generalController.getTableDataFromModel())) {
+                            returnedValue = "&nbsp<img src='" + _IMG_URL + "' width='16' height='16'>";
+                        } else {
+                            returnedValue = '&nbsp'
+                        }
                         return returnedValue;
                     })
-
-                    result +=stringAppend;
+                    result += stringAppend;
                 }
-
                 else {
                     expression = expression.replace(valuesRegExpression, "")
                 }
@@ -244,14 +224,14 @@ define(["jquery", "formatter/DatatypesFormatter", 'othUsesPlugin'], function ($,
                 break;
 
             case "date":
-                if(value != "20000103") {
+                if (value != "20000103") {
                     var yearFrom = value.substr(0, 4);
                     var mmFrom = value.substr(4, 2);
                     var ddFrom = value.substr(6, 2);
                     var dateFrom = new Date(yearFrom, mmFrom - 1, ddFrom)
                     // var date = (value !== 'undefined') ? moment(value).format("YYYYMMDD") : undefined;
                     result = moment(dateFrom).format(configurationKeyColumn.properties.cellProperties.dateFormat)
-                }else{
+                } else {
                     result = supportUtility.getPreviousSeasonLabel()
                 }
                 break;

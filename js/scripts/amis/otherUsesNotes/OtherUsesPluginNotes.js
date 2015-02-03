@@ -9,17 +9,10 @@ define(['amplify'], function(){
         var notFound = true;
         var keyDate;
 
-
-        alert()
-
-        debugger;
-
         var storeModality = amplify.store()
         if (storeModality.isMonthlyModality) {
              keyDate =(date.substr(4,1)=='/')?
-                 "20000103":
-                 moment(date).format("YYYYMMDD");
-
+                 "20000103": moment(date).format("YYYYMMDD");
         }else{
             keyDate = date;
         }
@@ -32,36 +25,22 @@ define(['amplify'], function(){
         }
 
         for(var i = 0, lengthMAP = ELEMENTS_MAP.length; i< lengthMAP && notFound; i++){
-
             for(var j= 0, lengthDATA = tableData.length; j<lengthDATA && notFound ;j++){
-
-                if(tableData[j][0] == ELEMENTS_MAP[i] && tableData[j][2] == keyDate){
-                    debugger;
-                }
-
                 if(tableData[j][0] == ELEMENTS_MAP[i] && tableData[j][2] == keyDate && checkNotes(tableData, j)) {
                     notFound = false
                 }
             }
         }
 
-
-
         if(notFound){
             for(var i = 0, lengthMAP = ELEMENTS_MAP.length; i< lengthMAP && notFound; i++){
-
                 for(var j= 0, lengthDATA = allData.length; j<lengthDATA && notFound ;j++){
-
                     if(allData[j][0] == ELEMENTS_MAP[i] && allData[j][2] == keyDate && checkNotes(allData, j)) {
                         notFound = false
                     }
                 }
             }
-
-
         }
-
-        debugger;
 
         return notFound
     }
