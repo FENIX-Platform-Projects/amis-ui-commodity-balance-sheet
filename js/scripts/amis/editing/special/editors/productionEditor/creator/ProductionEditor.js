@@ -3,9 +3,9 @@
  */
 define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/ProductionObserver",
         "productionEditor/model/ProductionModel", "specialFormulaConf/formulaHandler/FormulaHandler",
-        "productionEditor/controller/ProductionController", "text!productionEditor/view/_productionForm.html", "flagTranslator/controller/FlagController",
+        "productionEditor/controller/ProductionController", "text!productionEditor/view/_productionForm.html", "multiFlagJQAdapter",
         "text!productionEditor/view/_alertSelection.html", "productionEditor/formulaHandler/ProductionFormulaHandler","select2"],
-    function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller, HTLMProduction, FlagController, AlertSelection, ProductionHandler) {
+    function ($, Formatter, Observer, ModelProduction, FormulaHandler, Controller, HTLMProduction, MultiFlagAdapter, AlertSelection, ProductionHandler) {
 
 
         // ---------------------- SUPPORT FUNCTIONS -------------------------------------------
@@ -25,7 +25,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
 
 
         var observer, modelProduction, supportUtility, formulaHandler, originalTotCropsModel, productionController, controllerEditors,
-            flagController, modal, formulaToRenderTotVal, formulaToRenderSingleCrops, areaHarvSelected, callbackStyleTotGrid, callbackStyleSingleGrid,
+            multiFlagAdapter, modal, formulaToRenderTotVal, formulaToRenderSingleCrops, areaHarvSelected, callbackStyleTotGrid, callbackStyleSingleGrid,
             that, callbackMultiFlagCreation, callbackMultiFlagInit, callbackMultiFlagGetValues, alertSelection, productionHandler
 
 
@@ -36,7 +36,7 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             modelProduction = new ModelProduction;
             formulaHandler = new FormulaHandler;
             productionController = new Controller;
-            flagController = new FlagController;
+            multiFlagAdapter = new MultiFlagAdapter;
             productionHandler = new ProductionHandler;
             modal = HTLMProduction
             areaHarvSelected = true;
@@ -50,15 +50,15 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             }
 
             callbackMultiFlagCreation = function (row, cellValue, editor, cellText, width, height) {
-                that.createMultiFlagEditor(row, cellValue, editor, cellText, width, height)
+                multiFlagAdapter.createMultiFlagEditor(row, cellValue, editor, cellText, width, height)
             }
 
             callbackMultiFlagInit = function (row, cellValue, editor, cellText, width, height) {
-                that.createMultiFlagInit(row, cellValue, editor, cellText, width, height)
+                multiFlagAdapter.createMultiFlagInit(row, cellValue, editor, cellText, width, height)
             }
 
             callbackMultiFlagGetValues = function (row, cellValue, editor) {
-                return that.getFromMultiFlag(row, cellValue, editor);
+                return multiFlagAdapter.getFromMultiFlag(row, cellValue, editor);
             }
 
         }
@@ -75,12 +75,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             originalTotCropsModel = modelProduction.getTotalCropsModel(involvedItems, supportUtility);
 
             var formulaTotInit = productionHandler.getFormulaFromData(originalTotCropsModel);
-
-            console.log('**********************************************************')
-            console.log('TThe formula tot init is:')
-            console.log('is AreaHarvested slected: '+formulaTotInit['isAreaHarvSelected'])
-            console.log('formula tot init : '+formulaTotInit['formulaInit'])
-            console.log('**********************************************************')
 
             formulaToRenderTotVal = formulaTotInit['formulaInit'];
             productionController.init(this, formulaHandler, modelProduction)
@@ -291,29 +285,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             }
             return result;
 
-        }
-
-        ProductionEditor.prototype.createMultiFlagEditor = function (row, cellValue, editor, cellText, width, height) {
-            var stringValue = cellValue;
-            var oldInput = document.getElementById(editor[0].id)
-            oldInput.parentNode.className = oldInput.parentNode.className + " flagClass"
-            var newInput = document.createElement('div')
-            newInput.id = oldInput.id;
-            newInput.className = oldInput.className;
-            oldInput.parentNode.replaceChild(newInput, oldInput)
-            var stringToAppend = '<select multiple tabindex="-1" id="multiFlag" style="width:100%" class="input-group-lg">';
-            stringToAppend += flagController.getOptions(stringValue)
-            stringToAppend += '</select>'
-            $('#' + editor[0].id).append(stringToAppend)
-        }
-
-        ProductionEditor.prototype.createMultiFlagInit = function (row, cellValue, editor, cellText, width, height) {
-            $('#multiFlag').select2({placeholder: "Click to select the flags"});
-        }
-
-        ProductionEditor.prototype.getFromMultiFlag = function (row, cellValue, editor) {
-            var codes = $('#multiFlag').select2("val");
-            return  flagController.getStringFromCodes(codes);
         }
 
         ProductionEditor.prototype.showAlertTotal = function () {

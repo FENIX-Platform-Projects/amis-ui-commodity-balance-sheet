@@ -1,14 +1,14 @@
-define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/FlagController", "text!paddyEditor/view/_paddyForm.html",
-    "text!productionEditor/view/_alertSelection.html", "jqwidgets", "select2"], function ($, Formatter, FlagController, HTMLPaddy, AlertSelection) {
+define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!paddyEditor/view/_paddyForm.html",
+    "text!productionEditor/view/_alertSelection.html", "jqwidgets", "select2"], function ($, Formatter, MultiFlagAdapter, HTMLPaddy, AlertSelection) {
 
-    var observer, formulaToRenderTotVal, formulaToRenderSingleCrops, flagController, modal, callbackStyleTotGrid, callbackStyleSingleGrid,
+    var observer, formulaToRenderTotVal, formulaToRenderSingleCrops, multiFlagAdapter, modal, callbackStyleTotGrid, callbackStyleSingleGrid,
         that, callbackMultiFlagCreation, callbackMultiFlagInit, callbackMultiFlagGetValues, that, alertSelection, paddyEditableHandler;
 
     function PaddyCreator() {
 
         alertSelection = AlertSelection;
         that = this;
-        flagController = new FlagController;
+        multiFlagAdapter = new MultiFlagAdapter;
         modal = HTMLPaddy;
 
         callbackStyleTotGrid = function (row, column, value, data) {
@@ -20,15 +20,15 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         }
 
         callbackMultiFlagCreation = function (row, cellValue, editor, cellText, width, height) {
-            that.createMultiFlagEditor(row, cellValue, editor, cellText, width, height)
+            multiFlagAdapter.createMultiFlagEditor(row, cellValue, editor, cellText, width, height)
         }
 
         callbackMultiFlagInit = function (row, cellValue, editor, cellText, width, height) {
-            that.createMultiFlagInit(row, cellValue, editor, cellText, width, height)
+            multiFlagAdapter.createMultiFlagInit(row, cellValue, editor, cellText, width, height)
         }
 
         callbackMultiFlagGetValues = function (row, cellValue, editor) {
-            return that.getFromMultiFlag(row, cellValue, editor);
+            return multiFlagAdapter.getFromMultiFlag(row, cellValue, editor);
         }
     }
 
@@ -155,6 +155,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
     }
 
+
+    /*
     PaddyCreator.prototype.createMultiFlagEditor = function (row, cellValue, editor, cellText, width, height) {
         var stringValue = cellValue;
         var oldInput = document.getElementById(editor[0].id)
@@ -177,6 +179,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         var codes = $('#multiFlag').select2("val");
         return  flagController.getStringFromCodes(codes);
     }
+
+    */
 
     PaddyCreator.prototype.showAlert = function (container) {
         console.log('alert trovato:')

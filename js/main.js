@@ -32,6 +32,7 @@ requirejs.config({
         productionEditor  :  "../amis/editing/special/editors/productionEditor",
         paddyEditor       :  "../amis/editing/special/editors/paddyEditor",
         otherUsesEditor   :  "../amis/editing/special/editors/otherUsesEditor",
+        multiFlagJQAdapter:  "../component/plugins/Amis/InputTool/utils/flagFormatter/adapters/jqwidgets/JQW_Select2Adapter",
         flagTranslator    :  "../component/plugins/Amis/InputTool/utils/flagFormatter",
         specialFormulaConf:  "../amis/editing/special/configuration",
         generalObserver   :  "../component/core/balanceSheet/observer",
@@ -39,7 +40,8 @@ requirejs.config({
         databaseSaver     :  "../amis/saving",
         editHandler       :  "../amis/editing/direct/EditHandler",
         FenixValidator         :  "FenixReports-Validator",
-        othUsesPlugin     :  "../amis/otherUsesNotes/OtherUsesPluginNotes"
+        othUsesPlugin     :  "../amis/otherUsesNotes/OtherUsesPluginNotes",
+        amis_population   :  "../amis/population"
     },
     "shim": {
         "bootstrap": {

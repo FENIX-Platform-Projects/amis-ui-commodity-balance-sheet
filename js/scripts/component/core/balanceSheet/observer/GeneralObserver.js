@@ -1,10 +1,13 @@
 
-define(['jquery', 'bootstrap-dialog','jqwidgets', 'amplify' ], function($, BootstrapDialog){
+define(['jquery', 'bootstrap-dialog',
+    'amis_population/controller/PopulationController','' +
+        'jqwidgets', 'amplify' ], function($, BootstrapDialog, PopController){
 
-    var generalController, bootstrapDialog;
+    var generalController, bootstrapDialog, popController;
 
     function GeneralObserver(){
         bootstrapDialog = BootstrapDialog;
+        popController = new PopController;
     }
 
 
@@ -56,6 +59,7 @@ define(['jquery', 'bootstrap-dialog','jqwidgets', 'amplify' ], function($, Boots
         });
     }
 
+
     GeneralObserver.prototype.listenToVisualizationOptions = function(check) {
 
         this.updateCheckingBox('separator',check)
@@ -80,6 +84,7 @@ define(['jquery', 'bootstrap-dialog','jqwidgets', 'amplify' ], function($, Boots
 
         });
     }
+
 
     GeneralObserver.prototype.onChangingLoadingModality = function(filterData){
         $('#changeModality').on('click', function(e){
@@ -179,6 +184,28 @@ define(['jquery', 'bootstrap-dialog','jqwidgets', 'amplify' ], function($, Boots
             }
         }
     }
+
+
+    GeneralObserver.prototype.listenToPopulationForm = function(){
+        var self = this;
+        var idBtnPopulation;
+        $('#'+idBtnPopulation).on('click', function(e){
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            popController.init();
+
+        })
+    }
+
+    GeneralObserver.prototype.reloadNewDataFromPopulationForm = function(){
+        var idReset = 'resetButton'
+        $('#'+idReset).click(function(e){
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        })
+    }
+
 
     return GeneralObserver;
 })

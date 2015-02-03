@@ -88,10 +88,14 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
 
     DataLoaderAnnual.prototype.substitueSeasonToDate = function (forecast, season) {
-
         for (var i = 0, length = forecast.length; i < length; i++) {
-            forecast[i][2] += season;
-        }
+
+            (typeof forecast[i] === 'undefined')?
+                forecast.splice(i,1):
+
+                forecast[i][2] += season;
+            }
+
 
         return forecast;
     }
