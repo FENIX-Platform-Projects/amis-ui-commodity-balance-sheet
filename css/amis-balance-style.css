@@ -198,11 +198,6 @@ h4 {
 
   START SPECIAL EDITING
 */
-
-.multiflagTreeTable{
-  position: absolute;
-  overflow-y: auto;
-}
 .modal {
   text-align: center;
   overflow-y: visible; }
@@ -359,5 +354,10 @@ h4 {
   width: 30px;
   height: 30px;
   background: url("images/report/ajax-loader%20.gif") !important; }
+
+/* Amis population Modal editing */
+.notEditableColumn {
+  background-color: rgba(191, 201, 238, 0.22);
+  font-style: oblique; }
 
 /*# sourceMappingURL=amis-balance-style.css.map */

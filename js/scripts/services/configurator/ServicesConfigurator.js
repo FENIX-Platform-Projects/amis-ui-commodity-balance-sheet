@@ -89,6 +89,13 @@ define(['jquery'], function($){
 
     }
 
+    ServicesConfigurator.prototype.getPopulationDataURL = function(){
+        if(!configuration){
+            this.init()
+        }
+        return configuration.services[1].loading[5].loadingPopulationData;
+    }
+
     ServicesConfigurator.prototype.getSavingDataUrlWithDate = function(){
         if(!configuration){
             this.init()
@@ -105,6 +112,15 @@ define(['jquery'], function($){
 
     }
 
+    ServicesConfigurator.prototype.getSavingPopulationURL = function(){
+        if(!configuration){
+            this.init()
+        }
+        return configuration.services[2].saving.savingPopulation;
+
+    }
+
+
 
     ServicesConfigurator.prototype.getExportingUrl = function(){
         if(!configuration){
@@ -112,6 +128,8 @@ define(['jquery'], function($){
         }
         return configuration.services[3].exportDataServletUrl;
     }
+
+
 
     return ServicesConfigurator;
 })

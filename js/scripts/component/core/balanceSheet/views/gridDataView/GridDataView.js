@@ -122,6 +122,9 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
         }
 
         GridDataView.prototype.createOtherOptions = function () {
+
+            var optionIDS = ['optionsPivotGrid', 'newForecast', 'populationFormBtn',
+            'resetGrid','changeModality']
             var filterData = supportUtility.getFilterData()
 
             document.getElementById('box').style.visibility = "visible";
@@ -136,24 +139,11 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                 toappend.remove()
             }
 
-            var f = document.getElementById('optionsPivotGrid');
-            if (typeof f != 'undefined' && f != null) {
-                f.remove();
-            }
-
-            var f = document.getElementById('newForecast');
-            if (typeof f != 'undefined' && f != null) {
-                f.remove();
-            }
-
-            var f = document.getElementById('resetGrid');
-            if (typeof f != 'undefined' && f != null) {
-                f.remove();
-            }
-
-            var f = document.getElementById('changeModality');
-            if (typeof f != 'undefined' && f != null) {
-                f.remove();
+            for(var i=0; i<optionIDS.length; i++){
+                var f = document.getElementById(optionIDS[i]);
+                if (typeof f != 'undefined' && f != null) {
+                    f.remove();
+                }
             }
 
             var fa = document.querySelectorAll('[view_id="grid"]');
@@ -171,12 +161,14 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
             if (storeModality.isMonthlyModality) {
 
                 buttonChangeModality = '<button class="btn btn-primary" id="newForecast">Create a new forecast for season ' + filterData.season + '</button>' +
-                    '<button class="btn btn-primary" id="changeModality">Switch to annual mode</button><button class="btn btn-primary" id="resetGrid">Reset</button>'
+                    '<button class="btn btn-primary" id="changeModality">Switch to annual mode</button><button class="btn btn-primary" id="resetGrid">Reset</button>' +
+                    '<button class="btn btn-primary" id="populationFormBtn">Edit Population</button>'
                 titleGrid.innerHTML = "Forecast for season: " + filterData.season + " , " + filterData.country +
                     " , " + filterData.product + " , " + filterData.dataSource
             } else {
 
-                buttonChangeModality = '<button class="btn btn-primary" id="changeModality">Switch to monthly mode</button><button class="btn btn-primary" id="resetGrid">Reset</button>';
+                buttonChangeModality = '<button class="btn btn-primary" id="changeModality">Switch to monthly mode</button><button class="btn btn-primary" id="resetGrid">Reset</button>' +
+                    '<button class="btn btn-primary" id="populationFormBtn">Edit Population</button>';
                 titleGrid.innerHTML = "Annual most recent Forecasts for  " + filterData.country +
                     " , " + filterData.product + " , " + filterData.dataSource
             }

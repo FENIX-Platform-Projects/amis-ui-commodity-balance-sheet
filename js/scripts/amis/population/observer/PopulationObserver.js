@@ -5,36 +5,45 @@ define(['jquery'], function($){
 
     var controller, iDContainer;
 
-    function PopulationObserver(Controller){
+    function PopulationObserver(Controller,Conf){
         controller = Controller;
-    }
-
-    PopulationObserver.prototype.init = function(Conf){
         if(Conf){
-            $.extend(true,Conf,this.o)
+            debugger;
+            this.o = $.extend(true,{},Conf)
             iDContainer = this.o.containerID
         }
-
     }
+
 
     PopulationObserver.prototype.applyListeners = function(){
 
         this.listenToEditableColumns();
         this.listenToEditPopulationGrid();
-        this.createNewPopulationYear()
+        this.listenToNewPopulationYear()
+        this.listenToCloseButton();
 
+    }
+
+    PopulationObserver.prototype.unbindEventsFromPopulationForm = function () {
+        $('#'+iDContainer).off()
+    }
+
+    PopulationObserver.prototype.rebindGridEvents = function(){
+        this.listenToEditableColumns();
+        this.listenToEditPopulationGrid();
     }
 
 
     PopulationObserver.prototype.listenToEditableColumns = function(){
 
+        var self = this;
         $('#'+iDContainer).bind('cellbeginedit', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation()
             var row = event.args.rowindex;
             var column = event.args.datafield
 
-            if(column == this.o.elementName || column== this.o.UM){
+            if(column == self.o.year || column== self.o.units){
                 $("#"+iDContainer).jqxGrid('endcelledit', row, column, true);
             }
         });
@@ -43,6 +52,7 @@ define(['jquery'], function($){
 
     PopulationObserver.prototype.listenToEditPopulationGrid = function() {
 
+        var self = this;
         $("#" + iDContainer).on('cellendedit', function (event) {
 
             event.preventDefault();
@@ -50,8 +60,10 @@ define(['jquery'], function($){
             var value = event.args.value;
             var column = event.args.datafield;
             var row = event.args.rowindex;
-
-            controller.updatePopGridOnEditing(row,column,value)
+            debugger;
+            if(event.args.oldvalue != value && (column !=self.o.units && column != self.o.year)) {
+                controller.updatePopGridOnEditing(row, column, value)
+            }
         });
     }
 
@@ -64,13 +76,25 @@ define(['jquery'], function($){
     }
 
 
-    PopulationObserver.prototype.createNewPopulationYear = function(){
+    PopulationObserver.prototype.listenToNewPopulationYear = function(){
 
-        $('#createNewPpopulationYear').on('click', function(e){
+        $('#createNewPopulationYear').on('click', function(e){
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            debugger;
+
+            controller.createNewYear()
+        })
+    }
+
+    PopulationObserver.prototype.onSavePopulationData = function(){
+
+        $('#savePopulationValues').on('click', function(e){
             e.preventDefault();
             e.stopImmediatePropagation();
 
-            controller.createNewYear()
+            controller.saveValues()
+
         })
     }
 

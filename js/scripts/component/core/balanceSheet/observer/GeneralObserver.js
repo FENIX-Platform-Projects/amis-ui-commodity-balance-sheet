@@ -1,6 +1,6 @@
 
 define(['jquery', 'bootstrap-dialog',
-    'amis_population/controller/PopulationController','' +
+    'amis_population/controller/PopulationController',
         'jqwidgets', 'amplify' ], function($, BootstrapDialog, PopController){
 
     var generalController, bootstrapDialog, popController;
@@ -16,6 +16,7 @@ define(['jquery', 'bootstrap-dialog',
         this.listenToVisualizationOptions(initThousand);
         this.listenToElementsOptions(initElement);
         this.listenToResetButton();
+        this.listenToPopulationForm()
     }
 
 
@@ -188,7 +189,7 @@ define(['jquery', 'bootstrap-dialog',
 
     GeneralObserver.prototype.listenToPopulationForm = function(){
         var self = this;
-        var idBtnPopulation;
+        var idBtnPopulation = 'populationFormBtn';
         $('#'+idBtnPopulation).on('click', function(e){
             e.preventDefault();
             e.stopImmediatePropagation();

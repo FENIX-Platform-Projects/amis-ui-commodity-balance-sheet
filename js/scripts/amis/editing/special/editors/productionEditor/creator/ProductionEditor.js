@@ -318,9 +318,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             $('#secondCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25});
             $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
 
-
-
-
             $('#radioBtnAreaHarvSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn", checked: true });
             $('#radioBtnAreaPltdSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn"});
 
@@ -376,25 +373,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             for(var key in checkBoxToDisable ){
                 $('#'+key).jqxCheckBox('disable');
             }
-
-            /*
-
-            $('#firstCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
-            $('#secondCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true});
-            $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true });
-
-
-            $('#firstCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
-            $('#secondCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true});
-            $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
-
-            $('#radioBtnAreaHarv').jqxRadioButton({ width: 120, height: 25, groupName: "totValueBtn", checked: true });
-            $('#radioBtnAreaPlanted').jqxRadioButton({ width: 120, groupName: "totValueBtn", height: 25 });
-
-            $('#radioBtnAreaHarvSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn", checked: true });
-            $('#radioBtnAreaPltdSingleCrops').jqxRadioButton({ width: 120, height: 25, groupName: "singleCropsBtn"});
-
-            */
 
 
         }

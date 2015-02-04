@@ -1,7 +1,7 @@
 define(['jquery',
     "multiFlagJQAdapter",
-    "text!amis_population/view/populationForm.html",
-    'select2', 'jqwidgets'], function ($, MultiFlagAdapter, PopulationTemplate) {
+    "text!amis_population/view/_populationForm.html",
+    'jqwidgets'], function ($, MultiFlagAdapter, PopulationTemplate) {
 
     var multiflagAdapter, modal, idContainer;
 
@@ -14,7 +14,9 @@ define(['jquery',
             this.o=configuration
         }
 
-        idContainer = o['containerID']
+        debugger;
+
+        idContainer =  this.o['containerID']
         var self = this
         multiflagAdapter = new MultiFlagAdapter;
         modal= PopulationTemplate;
@@ -38,14 +40,22 @@ define(['jquery',
 
 
     PopulationCreator.prototype.init = function(modelData){
+        this.destroyIfExistOtherModal()
 
         $("#pivotGrid").append(modal);
 
-        $("#"+idContainer).modal({
+        $("#populationForm").modal({
             backdrop: 'static',
             keyboard: false});
 
         this.updateRenderingGrid(modelData)
+
+        console.log($("#labelNatDB"))
+
+        debugger;
+
+        document.getElementById('labelTitlePopulation').innerHTML = modelData[0][ this.o['regionName']] + ', '+ $("#labelNatDB").html()
+
 
     }
 
@@ -60,11 +70,11 @@ define(['jquery',
 
         var dataField =
             [
-                { name: conf['elementName'], type: 'string' },
-                { name: conf['value'], type: 'float' },
-                { name: conf['units'], type: 'string' },
-                { name: conf['flags'], type: 'string'},
-                { name: conf['notes'], type: 'string'}
+                { name:  this.o['year'], type: 'string' },
+                { name:  this.o['units'], type: 'string' },
+                { name:  this.o['value'], type: 'float' },
+                { name:  this.o['flags'], type: 'string'},
+                { name:  this.o['notes'], type: 'string'}
             ]
 
 
@@ -81,12 +91,13 @@ define(['jquery',
 
         var columns =
             [
-                { text: 'Element Name', datafield: conf['elementName'], cellclassname: callbackStylePopGrid, width: '25%' },
-                { text: 'UM', datafield: conf['units'], cellclassname: callbackStylePopGrid, width: '15%'},
-                { text: 'Flags', datafield: conf['flags'], cellclassname: callbackStylePopGrid, width: '25%',
+                { text: 'Year', datafield:  this.o['year'], cellclassname: callbackStylePopGrid, width: '12%' },
+                { text: 'UM', datafield:  this.o['units'], cellclassname: callbackStylePopGrid, width: '15%'},
+                { text: 'Value', datafield:  this.o['value'], cellclassname: callbackStylePopGrid, width: '15%'},
+                { text: 'Flags', datafield:  this.o['flags'], cellclassname: callbackStylePopGrid, width: '25%',
                     createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250
                 },
-                { text: 'Notes', datafield: conf['notes'], cellclassname: callbackStylePopGrid, width: '35%'}
+                { text: 'Notes', datafield:  this.o['notes'], cellclassname: callbackStylePopGrid, width: '33%'}
             ]
 
         return columns;
@@ -98,8 +109,8 @@ define(['jquery',
         var result;
 
         switch (true) {
-            case column == conf['elementName']:
-            case column == conf['units']:
+            case column ==  this.o['year']:
+            case column ==  this.o['units']:
                 result = 'notEditableColumn'
                 break;
             default :
@@ -131,7 +142,11 @@ define(['jquery',
 
         $('#populationForm').modal('hide');
 
-        $('#'+idContainer).jqxgrid('destroy')
+
+        if(  $('#'+idContainer).length >0) {
+
+            $('#' + idContainer).jqxGrid('destroy')
+        }
 
         var g = document.getElementById("populationForm");
 
@@ -157,6 +172,60 @@ define(['jquery',
         if (f && f !== null) {
             f.remove()
         }
+
+        /*****/
+
+
+
+    }
+
+    PopulationCreator.prototype.destroyAllForm = function(){
+        /*$('#dialogForm').modal('hide');
+
+        $('#specialForm').modal('hide');
+
+        $('#populationForm').modal('hide');*/
+
+        $('#'+idContainer).jqxGrid('destroy')
+        $('#populationForm').modal('hide');
+
+        /* $('#gridSingleCrops').jqxGrid('destroy');
+
+         $('#radioBtnMilledTot').jqxRadioButton('destroy');
+         $('#radioBtnPaddyTot').jqxRadioButton('destroy');
+         $('#thirdCheckBoxTotVal').jqxCheckBox('destroy');
+         $('#fourthCheckBoxTotVal').jqxCheckBox('destroy');
+         $('#fifthCheckBoxTotVal').jqxCheckBox('destroy');
+
+         $('#radioBtnMilledSingle').jqxRadioButton('destroy');
+         $('#radioBtnPaddySingle').jqxRadioButton('destroy');
+         $('#thirdCheckBoxSingleCrops').jqxCheckBox('destroy');
+         $('#fourthCheckBoxSingleCrops').jqxCheckBox('destroy');
+         $('#fifthCheckBoxSingleCrops').jqxCheckBox('destroy');*/
+
+
+        var f = document.getElementById("dialogForm");
+
+        if (f && f !== null) {
+            f.remove()
+        }
+
+
+        var f = document.getElementById("specialForm");
+
+        if (f && f !== null) {
+            f.remove()
+        }
+
+        var f = document.getElementById("populationForm");
+
+        if (f && f !== null) {
+            f.remove()
+        }
+
+
+
+
     }
 
 
