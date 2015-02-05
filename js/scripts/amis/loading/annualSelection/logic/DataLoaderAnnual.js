@@ -75,7 +75,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             // insert date
             population[0].splice(2, 0, mostRecentDate);
             // insert null notes
-            population[0].push(null);
         }
 
         mostRecentForecast[0].push(population[0])

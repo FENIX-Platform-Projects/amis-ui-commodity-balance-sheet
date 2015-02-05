@@ -211,8 +211,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             var populationCopy = $.extend(true,[],population)
             if (populationCopy.length > 0) {
                 populationCopy[0].splice(2, 0,date);
-                populationCopy[0].push(null);
-
                 forecast.splice([setDatesObject[date]],0,populationCopy[0])
             }
         }
