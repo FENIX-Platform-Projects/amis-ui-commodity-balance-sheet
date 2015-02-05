@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <button type="button" class="close"  id="closeModalPopulation"><span
                         aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Population Form Form</h4>
+                <h4 class="modal-title" id="myModalLabel">Population Form</h4>
             </div>
 
             <div class="modal-body">
@@ -16,11 +16,17 @@
                             <h5 class="labelTitlePopulation">Population data for <strong
                                     id="labelTitlePopulation"></strong></h5>
                         </div>
-                    </div><br>
+                    </div>
+
+                    <div class="btn-group amis-btn-group">
+                        <button type="button" class="btn btn-primary" id="createNewPopulationYear">Create new year</button>
+                        <button type="button" class="btn btn-primary" id="resetPopulationValues">Reset Values</button>
+
+                    </div><br><br>
 
                     <div class="row">
                         <div class="col-xs-12">
-                            <div id="gridPopulation"></div>
+                            <div id="gridPopulation" style="height: 20px"></div>
                         </div>
                     </div>
                     <div class="col-lg-10 col-lg-offset-1" id="alertTotal"/>
@@ -30,10 +36,20 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="closeModal">Close</button>
-                <button type="button" class="btn btn-primary" id="createNewPopulationYear">Create new year</button>
-                <button type="button" class="btn btn-danger" id="savePopulationValues">Save changes</button>
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-xs-6">
+                            <button type="button" class="btn btn-default pull-left" id="closePopulationForm">Close Population</button>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <button type="button" class="btn btn-danger" id="savePopulationValues">Save changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
 
         </div>
     </div>

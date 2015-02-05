@@ -7,7 +7,7 @@ define(['jquery', 'bootstrap-dialog',
 
     function GeneralObserver(){
         bootstrapDialog = BootstrapDialog;
-        popController = new PopController;
+        popController = new PopController(this);
     }
 
 
@@ -16,7 +16,7 @@ define(['jquery', 'bootstrap-dialog',
         this.listenToVisualizationOptions(initThousand);
         this.listenToElementsOptions(initElement);
         this.listenToResetButton();
-        this.listenToPopulationForm()
+        this.listenToPopulationForm();
     }
 
 
@@ -200,11 +200,7 @@ define(['jquery', 'bootstrap-dialog',
     }
 
     GeneralObserver.prototype.reloadNewDataFromPopulationForm = function(){
-        var idReset = 'resetButton'
-        $('#'+idReset).click(function(e){
-            e.preventDefault();
-            e.stopImmediatePropagation();
-        })
+        $('#loadData').click();
     }
 
 

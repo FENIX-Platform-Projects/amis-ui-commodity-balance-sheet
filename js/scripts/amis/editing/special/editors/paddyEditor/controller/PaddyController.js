@@ -63,6 +63,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
             var totalCropsCalc = this.changeFormulaOnTotalGrid(formulaInit,'normal');
         }
 
+        modelPaddy.setCalculatedTotalModel(totalCropsCalc)
         modelPaddy.createSingleCropsModel(involvedItems, supportUtility)
         var singleCropsModel = modelPaddy.getSingleCropsModel()
         editorPaddy.init(totalCropsCalc, singleCropsModel, observer, paddyEditableHandler, formulaInit)

@@ -20,13 +20,14 @@ define(['jquery',
             "containerID": "gridPopulation"
         }
 
-        var observer, model, creator
+        var observer, model, creator, componentObserver
 
 
-        function PopulationController() {
+        function PopulationController(COMPONENT_OBSERVER) {
             model = new Model(CONF);
             observer = new Observer(this, CONF);
             creator = new Creator(CONF)
+            componentObserver= COMPONENT_OBSERVER;
         }
 
 
@@ -66,6 +67,15 @@ define(['jquery',
         PopulationController.prototype.saveValues = function(){
             model.savePopulationData();
             this.destroyAll()
+            debugger;
+            componentObserver.reloadNewDataFromPopulationForm();
+
+        }
+
+        PopulationController.prototype.reloadPreviousValues = function(){
+            observer.unbindEventsFromPopulationForm()
+            creator.updateRenderingGrid (model.restorePreviousData());
+            observer.rebindGridEvents()
         }
 
 

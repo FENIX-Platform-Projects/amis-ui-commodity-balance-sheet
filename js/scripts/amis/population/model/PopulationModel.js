@@ -36,8 +36,6 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
             modelData = result;
         })
 
-
-        debugger;
         originalData = $.extend(true,[],modelData)
 
     }
@@ -107,7 +105,7 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
         newArrayToInsert[yearPos] = mostRecentYear+1;
 
         for(var i =0; i< newArrayToInsert.length; i++){
-            if(typeof newArrayToInsert[i] === 'undefined'){
+            if(typeof newArrayToInsert[i] === 'undefined' || newArrayToInsert[i]== ''){
                 newArrayToInsert[i] = null;
             }
         }
@@ -126,6 +124,8 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
         var payload = {}
 
         payload['filter']=filter;
+
+        this.cleanPopulationData(modelData)
         payload['data']= modelData;
 
         $.ajax({
@@ -138,8 +138,25 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
         }).done(function (result) {
             alert('saved')
         })
+    }
 
 
+    PopulationModel.prototype.cleanPopulationData = function(modelData){
+
+        for(var i =0; i< modelData.length; i++){
+            for(var j=0; j<modelData.length; j++){
+                if(modelData[i][j] == ''){
+                    modelData[i][j] = null;
+                }
+            }
+        }
+    }
+
+
+    PopulationModel.prototype.restorePreviousData = function(){
+        debugger;
+        modelData = $.extend(true,[],originalData);
+        return modelData
     }
 
 

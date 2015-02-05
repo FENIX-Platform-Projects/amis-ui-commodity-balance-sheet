@@ -88,7 +88,7 @@ define(['jquery',
         var columns =
             [
                 { text: 'Year', datafield:  this.o['year'], cellclassname: callbackStylePopGrid, width: '12%' },
-                { text: 'UM', datafield:  this.o['units'], cellclassname: callbackStylePopGrid, width: '15%'},
+                { text: 'Units', datafield:  this.o['units'], cellclassname: callbackStylePopGrid, width: '15%'},
                 { text: 'Value', datafield:  this.o['value'], cellclassname: callbackStylePopGrid, width: '15%'},
                 { text: 'Flags', datafield:  this.o['flags'], cellclassname: callbackStylePopGrid, width: '25%',
                     createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250
@@ -125,11 +125,11 @@ define(['jquery',
             source: dataAdapter,
             width: "100%",
             editable: true,
-            rowsheight: 40,
+            rowsheight: 30,
             selectionmode: 'singlecell',
             pageable: false,
-            autoheight: true,
-            columns: columns
+            columns: columns,
+            height: '400px'
         });
     }
 
@@ -168,36 +168,12 @@ define(['jquery',
         if (f && f !== null) {
             f.remove()
         }
-
-        /*****/
-
-
-
     }
 
     PopulationCreator.prototype.destroyAllForm = function(){
-        /*$('#dialogForm').modal('hide');
-
-        $('#specialForm').modal('hide');
-
-        $('#populationForm').modal('hide');*/
 
         $('#'+idContainer).jqxGrid('destroy')
         $('#populationForm').modal('hide');
-
-        /* $('#gridSingleCrops').jqxGrid('destroy');
-
-         $('#radioBtnMilledTot').jqxRadioButton('destroy');
-         $('#radioBtnPaddyTot').jqxRadioButton('destroy');
-         $('#thirdCheckBoxTotVal').jqxCheckBox('destroy');
-         $('#fourthCheckBoxTotVal').jqxCheckBox('destroy');
-         $('#fifthCheckBoxTotVal').jqxCheckBox('destroy');
-
-         $('#radioBtnMilledSingle').jqxRadioButton('destroy');
-         $('#radioBtnPaddySingle').jqxRadioButton('destroy');
-         $('#thirdCheckBoxSingleCrops').jqxCheckBox('destroy');
-         $('#fourthCheckBoxSingleCrops').jqxCheckBox('destroy');
-         $('#fifthCheckBoxSingleCrops').jqxCheckBox('destroy');*/
 
 
         var f = document.getElementById("dialogForm");
@@ -218,9 +194,6 @@ define(['jquery',
         if (f && f !== null) {
             f.remove()
         }
-
-
-
 
     }
 

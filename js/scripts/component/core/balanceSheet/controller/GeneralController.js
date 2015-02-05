@@ -261,7 +261,8 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 grid = ViewGrid.init(tableModelWithFormula, Configurator, supportUtility, this)
                 generalObserver.listenToVisualizationOptions(thousandSeparator)
                 generalObserver.listenToElementsOptions(elementShown)
-                generalObserver.listenToResetButton()
+                generalObserver.listenToResetButton();
+                generalObserver.listenToPopulationForm();
                 this.onChangeModalityEditing()
                 console.log('onchangeModalityEditin(GC)')
             }

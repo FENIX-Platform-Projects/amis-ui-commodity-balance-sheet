@@ -1,6 +1,3 @@
-/**
- * Created by fabrizio on 9/11/14.
- */
 define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function ($, Formatter, ServicesURL) {
 
 
@@ -68,6 +65,8 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         }).done(function (result) {
             populationActual = result;
         })
+
+        debugger;
 
 
         // Inside of population insert the date(s)

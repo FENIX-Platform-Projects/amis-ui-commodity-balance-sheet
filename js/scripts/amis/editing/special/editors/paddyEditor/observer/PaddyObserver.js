@@ -623,9 +623,9 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             console.log('listenToSaveTotal values')
             event.preventDefault();
             event.stopImmediatePropagation();
-            if (totalValuesModified) {
-                controllerPaddy.saveTotalValues(formulaToApplyTot)
-            }
+
+            controllerPaddy.saveTotalValues(formulaToApplyTot)
+
         })
     }
 

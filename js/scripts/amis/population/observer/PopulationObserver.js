@@ -19,9 +19,11 @@ define(['jquery'], function($){
 
         this.listenToEditableColumns();
         this.listenToEditPopulationGrid();
-        this.listenToNewPopulationYear()
+        this.listenToNewPopulationYear();
         this.listenToCloseButton();
-        this.listenToSavePopulationData()
+        this.listenToClosePopulationForm();
+        this.listenToSavePopulationData();
+        this.listenToResetButton();
 
     }
 
@@ -97,6 +99,31 @@ define(['jquery'], function($){
 
             controller.saveValues()
 
+        })
+    }
+
+
+    PopulationObserver.prototype.listenToClosePopulationForm = function(){
+
+        $('#closePopulationForm').on('click', function(e){
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+
+            controller.destroyAll()
+        })
+    }
+
+
+    PopulationObserver.prototype.listenToResetButton = function(){
+
+        $('#resetPopulationValues').on('click', function(e){
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+
+            debugger;
+            controller.reloadPreviousValues()
         })
     }
 
