@@ -52,11 +52,7 @@ define(['jquery',
 
         console.log($("#labelNatDB"))
 
-        debugger;
-
         document.getElementById('labelTitlePopulation').innerHTML = modelData[0][ this.o['regionName']] + ', '+ $("#labelNatDB").html()
-
-
     }
 
 

@@ -21,6 +21,7 @@ define(['jquery'], function($){
         this.listenToEditPopulationGrid();
         this.listenToNewPopulationYear()
         this.listenToCloseButton();
+        this.listenToSavePopulationData()
 
     }
 
@@ -81,17 +82,18 @@ define(['jquery'], function($){
         $('#createNewPopulationYear').on('click', function(e){
             e.preventDefault();
             e.stopImmediatePropagation();
-            debugger;
 
             controller.createNewYear()
         })
     }
 
-    PopulationObserver.prototype.onSavePopulationData = function(){
+    PopulationObserver.prototype.listenToSavePopulationData = function(){
 
         $('#savePopulationValues').on('click', function(e){
             e.preventDefault();
             e.stopImmediatePropagation();
+
+            debugger;
 
             controller.saveValues()
 

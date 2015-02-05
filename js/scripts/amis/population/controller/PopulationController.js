@@ -13,8 +13,8 @@ define(['jquery',
             "elementCode":  2,
             "elementName":  3,
             "units":        4,
-            "value":        5,
-            "year":         6,
+            "value":        6,
+            "year":         5,
             "flags":        7,
             "notes":        8,
             "containerID": "gridPopulation"
@@ -65,7 +65,7 @@ define(['jquery',
 
         PopulationController.prototype.saveValues = function(){
             model.savePopulationData();
-            creator.destroyIfExistOtherModal()
+            this.destroyAll()
         }
 
 

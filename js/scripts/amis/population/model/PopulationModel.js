@@ -2,7 +2,7 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
 
     'use strict'
 
-    var servicesURL, modelData, originalData;
+    var servicesURL, modelData, originalData, regionCode;
 
     var o={}
 
@@ -11,30 +11,19 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
 
         if(CONF) this.o = CONF;
         servicesURL = new ServicesUrl
-        servicesURL.init()
+        servicesURL.init();
     }
 
 
     PopulationModel.prototype.init = function () {
 
-        /*
 
-        var url = './js/scripts/amis/population/example/dataExample.js'
-
-        $.ajax({
-            async: false,
-            type: 'GET',
-            url: url,
-            success: function (result) {
-                modelData = JSON.parse(result);
-            }
-
-        })*/
-
+        var region =  $("#selectionCountryBox").jqxComboBox('getSelectedItem');
+        regionCode= region.value
 
         var ulrPopulationDataLoading = servicesURL.getPopulationDataURL()
         var filter = {}
-        filter['regionCode'] = $("#selectionCountryBox").jqxComboBox('getSelectedItem').value
+        filter['regionCode'] = regionCode
 
         $.ajax({
             async: false,
@@ -66,9 +55,11 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
 
     PopulationModel.prototype.addNewYearToModel = function(){
 
-        var elementName, units, mostRecentYear, elementNamePos, unitsPos, yearPos, elemCodePos, elemCode, regionCodePos, regionCode;
+        var elementName, units, mostRecentYear, elementNamePos, unitsPos, yearPos, elemCodePos, elemCode, regionCodePos, regionCode, regionNamePos, regionName;
 
         regionCodePos= this.o['regionCode']
+        regionNamePos = this.o['regionName']
+
         elemCodePos= this.o['elementCode']
         elementNamePos = this.o['elementName'];
         unitsPos = this.o['units'];
@@ -93,6 +84,10 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
                 units = modelData[i][unitsPos]
             }
 
+            if(typeof  regionName === 'undefined' && modelData[i][regionNamePos] && modelData[i][regionNamePos]!=null ){
+                regionName = modelData[i][regionNamePos]
+            }
+
 
             if(typeof  mostRecentYear ==='undefined' ||
                 (typeof  modelData[i][yearPos]!== 'undefined' && modelData[i][yearPos]!= null
@@ -104,6 +99,7 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
         var newArrayToInsert = []
         newArrayToInsert.length = Object.keys(this.o).length
 
+        newArrayToInsert[regionNamePos] = regionName
         newArrayToInsert[regionCodePos] = regionCode;
         newArrayToInsert[elemCodePos] = elemCode;
         newArrayToInsert[elementNamePos]  =elementName;
@@ -121,6 +117,28 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
 
 
     PopulationModel.prototype.savePopulationData = function(){
+
+
+        var ulrPopulationSaving = servicesURL.getSavingPopulationURL()
+        var filter = {}
+        filter['regionCode'] = regionCode;
+
+        var payload = {}
+
+        payload['filter']=filter;
+        payload['data']= modelData;
+
+        $.ajax({
+            async: false,
+            url: ulrPopulationSaving,
+            type: 'PUT',
+            contentType: "application/json",
+            dataType: 'json',
+            data: JSON.stringify(payload)
+        }).done(function (result) {
+            alert('saved')
+        })
+
 
     }
 
