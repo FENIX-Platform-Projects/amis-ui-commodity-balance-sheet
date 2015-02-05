@@ -6,20 +6,18 @@ define(['jquery',
     var multiflagAdapter, modal, idContainer;
 
 
-    var o={}
+    var o = {}
 
     function PopulationCreator(configuration) {
 
-        if(configuration){
-            this.o=configuration
+        if (configuration) {
+            this.o = configuration
         }
 
-        debugger;
-
-        idContainer =  this.o['containerID']
+        idContainer = this.o['containerID']
         var self = this
         multiflagAdapter = new MultiFlagAdapter;
-        modal= PopulationTemplate;
+        modal = PopulationTemplate;
 
         callbackMultiFlagCreation = function (row, cellValue, editor, cellText, width, height) {
             multiflagAdapter.createMultiFlagEditor(row, cellValue, editor, cellText, width, height)
@@ -39,7 +37,7 @@ define(['jquery',
     }
 
 
-    PopulationCreator.prototype.init = function(modelData){
+    PopulationCreator.prototype.init = function (modelData) {
         this.destroyIfExistOtherModal()
 
         $("#pivotGrid").append(modal);
@@ -52,12 +50,12 @@ define(['jquery',
 
         console.log($("#labelNatDB"))
 
-        document.getElementById('labelTitlePopulation').innerHTML = modelData[0][ this.o['regionName']] + ', '+ $("#labelNatDB").html()
+        document.getElementById('labelTitlePopulation').innerHTML = modelData[0][ this.o['regionName']] + ', ' + $("#labelNatDB").html()
     }
 
 
-    PopulationCreator.prototype.updateRenderingGrid = function(modelData){
-        this.createAndDrawGrid( this.setDataForGrid(modelData)) ;
+    PopulationCreator.prototype.updateRenderingGrid = function (modelData) {
+        this.createAndDrawGrid(this.setDataForGrid(modelData));
     }
 
 
@@ -66,11 +64,11 @@ define(['jquery',
 
         var dataField =
             [
-                { name:  this.o['year'], type: 'string' },
-                { name:  this.o['units'], type: 'string' },
-                { name:  this.o['value'], type: 'float' },
-                { name:  this.o['flags'], type: 'string'},
-                { name:  this.o['notes'], type: 'string'}
+                { name: this.o['year'], type: 'string' },
+                { name: this.o['units'], type: 'string' },
+                { name: this.o['value'], type: 'float' },
+                { name: this.o['flags'], type: 'string'},
+                { name: this.o['notes'], type: 'string'}
             ]
 
 
@@ -87,13 +85,13 @@ define(['jquery',
 
         var columns =
             [
-                { text: 'Year', datafield:  this.o['year'], cellclassname: callbackStylePopGrid, width: '12%' },
-                { text: 'Units', datafield:  this.o['units'], cellclassname: callbackStylePopGrid, width: '15%'},
-                { text: 'Value', datafield:  this.o['value'], cellclassname: callbackStylePopGrid, width: '15%'},
-                { text: 'Flags', datafield:  this.o['flags'], cellclassname: callbackStylePopGrid, width: '25%',
+                { text: 'Year', datafield: this.o['year'], cellclassname: callbackStylePopGrid, width: '12%' },
+                { text: 'Units', datafield: this.o['units'], cellclassname: callbackStylePopGrid, width: '15%'},
+                { text: 'Value', datafield: this.o['value'], cellclassname: callbackStylePopGrid, width: '15%'},
+                { text: 'Flags', datafield: this.o['flags'], cellclassname: callbackStylePopGrid, width: '25%',
                     createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250
                 },
-                { text: 'Notes', datafield:  this.o['notes'], cellclassname: callbackStylePopGrid, width: '33%'}
+                { text: 'Notes', datafield: this.o['notes'], cellclassname: callbackStylePopGrid, width: '33%'}
             ]
 
         return columns;
@@ -105,8 +103,8 @@ define(['jquery',
         var result;
 
         switch (true) {
-            case column ==  this.o['year']:
-            case column ==  this.o['units']:
+            case column == this.o['year']:
+            case column == this.o['units']:
                 result = 'notEditableColumn'
                 break;
             default :
@@ -134,12 +132,12 @@ define(['jquery',
     }
 
 
-    PopulationCreator.prototype.destroyIfExistOtherModal = function(){
+    PopulationCreator.prototype.destroyIfExistOtherModal = function () {
 
         $('#populationForm').modal('hide');
 
 
-        if(  $('#'+idContainer).length >0) {
+        if ($('#' + idContainer).length > 0) {
 
             $('#' + idContainer).jqxGrid('destroy')
         }
@@ -170,9 +168,9 @@ define(['jquery',
         }
     }
 
-    PopulationCreator.prototype.destroyAllForm = function(){
+    PopulationCreator.prototype.destroyAllForm = function () {
 
-        $('#'+idContainer).jqxGrid('destroy')
+        $('#' + idContainer).jqxGrid('destroy')
         $('#populationForm').modal('hide');
 
 

@@ -1,21 +1,20 @@
-define(['jquery'], function($){
+define(['jquery'], function ($) {
 
     'use strict'
 
 
     var controller, iDContainer;
 
-    function PopulationObserver(Controller,Conf){
+    function PopulationObserver(Controller, Conf) {
         controller = Controller;
-        if(Conf){
-            debugger;
-            this.o = $.extend(true,{},Conf)
+        if (Conf) {
+            this.o = $.extend(true, {}, Conf)
             iDContainer = this.o.containerID
         }
     }
 
 
-    PopulationObserver.prototype.applyListeners = function(){
+    PopulationObserver.prototype.applyListeners = function () {
 
         this.listenToEditableColumns();
         this.listenToEditPopulationGrid();
@@ -28,43 +27,40 @@ define(['jquery'], function($){
     }
 
     PopulationObserver.prototype.unbindEventsFromPopulationForm = function () {
-        $('#'+iDContainer).off()
+        $('#' + iDContainer).off()
     }
 
-    PopulationObserver.prototype.rebindGridEvents = function(){
+    PopulationObserver.prototype.rebindGridEvents = function () {
         this.listenToEditableColumns();
         this.listenToEditPopulationGrid();
     }
 
 
-    PopulationObserver.prototype.listenToEditableColumns = function(){
+    PopulationObserver.prototype.listenToEditableColumns = function () {
 
         var self = this;
-        $('#'+iDContainer).bind('cellbeginedit', function (event) {
+        $('#' + iDContainer).bind('cellbeginedit', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation()
             var row = event.args.rowindex;
             var column = event.args.datafield
-
-            if(column == self.o.year || column== self.o.units){
-                $("#"+iDContainer).jqxGrid('endcelledit', row, column, true);
+            if (column == self.o.year || column == self.o.units) {
+                $("#" + iDContainer).jqxGrid('endcelledit', row, column, true);
             }
         });
     }
 
 
-    PopulationObserver.prototype.listenToEditPopulationGrid = function() {
+    PopulationObserver.prototype.listenToEditPopulationGrid = function () {
 
         var self = this;
         $("#" + iDContainer).on('cellendedit', function (event) {
-
             event.preventDefault();
             event.stopImmediatePropagation()
             var value = event.args.value;
             var column = event.args.datafield;
             var row = event.args.rowindex;
-            debugger;
-            if(event.args.oldvalue != value && (column !=self.o.units && column != self.o.year)) {
+            if (event.args.oldvalue != value && (column != self.o.units && column != self.o.year)) {
                 controller.updatePopGridOnEditing(row, column, value)
             }
         });
@@ -79,50 +75,41 @@ define(['jquery'], function($){
     }
 
 
-    PopulationObserver.prototype.listenToNewPopulationYear = function(){
+    PopulationObserver.prototype.listenToNewPopulationYear = function () {
 
-        $('#createNewPopulationYear').on('click', function(e){
+        $('#createNewPopulationYear').on('click', function (e) {
             e.preventDefault();
             e.stopImmediatePropagation();
-
             controller.createNewYear()
         })
     }
 
-    PopulationObserver.prototype.listenToSavePopulationData = function(){
+    PopulationObserver.prototype.listenToSavePopulationData = function () {
 
-        $('#savePopulationValues').on('click', function(e){
+        $('#savePopulationValues').on('click', function (e) {
             e.preventDefault();
             e.stopImmediatePropagation();
-
-            debugger;
-
             controller.saveValues()
 
         })
     }
 
 
-    PopulationObserver.prototype.listenToClosePopulationForm = function(){
+    PopulationObserver.prototype.listenToClosePopulationForm = function () {
 
-        $('#closePopulationForm').on('click', function(e){
+        $('#closePopulationForm').on('click', function (e) {
             e.preventDefault();
             e.stopImmediatePropagation();
-
-
             controller.destroyAll()
         })
     }
 
 
-    PopulationObserver.prototype.listenToResetButton = function(){
+    PopulationObserver.prototype.listenToResetButton = function () {
 
-        $('#resetPopulationValues').on('click', function(e){
+        $('#resetPopulationValues').on('click', function (e) {
             e.preventDefault();
             e.stopImmediatePropagation();
-
-
-            debugger;
             controller.reloadPreviousValues()
         })
     }

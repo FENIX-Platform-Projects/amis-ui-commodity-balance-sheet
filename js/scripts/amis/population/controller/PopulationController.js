@@ -8,15 +8,15 @@ define(['jquery',
 
 
         var CONF = {
-            "regionCode":   0,
-            "regionName" :  1,
-            "elementCode":  2,
-            "elementName":  3,
-            "units":        4,
-            "value":        6,
-            "year":         5,
-            "flags":        7,
-            "notes":        8,
+            "regionCode": 0,
+            "regionName": 1,
+            "elementCode": 2,
+            "elementName": 3,
+            "units": 4,
+            "value": 6,
+            "year": 5,
+            "flags": 7,
+            "notes": 8,
             "containerID": "gridPopulation"
         }
 
@@ -27,7 +27,7 @@ define(['jquery',
             model = new Model(CONF);
             observer = new Observer(this, CONF);
             creator = new Creator(CONF)
-            componentObserver= COMPONENT_OBSERVER;
+            componentObserver = COMPONENT_OBSERVER;
         }
 
 
@@ -49,14 +49,12 @@ define(['jquery',
 
         PopulationController.prototype.destroyAll = function () {
             creator.destroyAllForm()
-
-            var root = document.getElementsByTagName( 'html' )[0]; // '0' to assign the first (and only `HTML` tag)
-
-            root.setAttribute( "class", "settingOverflow" );
+            var root = document.getElementsByTagName('html')[0]; // '0' to assign the first (and only `HTML` tag)
+            root.setAttribute("class", "settingOverflow");
 
         }
-        
-        PopulationController.prototype.createNewYear = function(){
+
+        PopulationController.prototype.createNewYear = function () {
             observer.unbindEventsFromPopulationForm()
             model.addNewYearToModel();
             creator.updateRenderingGrid(model.getModelData())
@@ -64,17 +62,16 @@ define(['jquery',
         }
 
 
-        PopulationController.prototype.saveValues = function(){
+        PopulationController.prototype.saveValues = function () {
             model.savePopulationData();
             this.destroyAll()
-            debugger;
             componentObserver.reloadNewDataFromPopulationForm();
 
         }
 
-        PopulationController.prototype.reloadPreviousValues = function(){
+        PopulationController.prototype.reloadPreviousValues = function () {
             observer.unbindEventsFromPopulationForm()
-            creator.updateRenderingGrid (model.restorePreviousData());
+            creator.updateRenderingGrid(model.restorePreviousData());
             observer.rebindGridEvents()
         }
 
