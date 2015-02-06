@@ -18,12 +18,14 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             formulaController = new FormulaController;
             specialControlEditor = new SpecialEditorController;
             generalObserver = new GeneralObserver;
-            editingOnCell = false
+            debugger;
 
         }
 
 
         GeneralController.prototype.init = function (gridModel, tableModel, configurator, modelController, utility, NProgress) {
+
+            editingOnCell = false
 
             ModelController = modelController;
             dsd = configurator.getDSD();
@@ -39,11 +41,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             thousandSeparator = 1
             elementShown = 1
             // visualization model
-
-            console.log('DATA************************************************')
-            console.log(JSON.stringify(tableModelWithFormula))
-
-            console.log('DATA************************************************')
 
             grid = ViewGrid.init(tableModelWithFormula, configurator, supportUtility, this)
             generalObserver.init(this, thousandSeparator, elementShown)

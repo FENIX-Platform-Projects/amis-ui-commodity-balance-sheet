@@ -30,6 +30,11 @@ define(['jquery', 'amplify'], function ($) {
     Configurator.prototype.init = function (dsd, component) {
         dsdConf = dsd;
         compConfiguration = component;
+        debugger;
+        decimalNumberValue = null;
+        labelValue = '';
+        $.extend(true,decimalNumberValue,compConfiguration.gridConfiguration.otherColumns.valueColumn.properties.cellProperties.numericFormat);
+        labelValue += compConfiguration.gridConfiguration.otherColumns.valueColumn.label
         var storage = amplify.store();
         if (storage.isMonthlyModality) {
             dsdConf.dsd.columns[INDEX_DATES].dataTypes[0] = "date"
@@ -279,7 +284,7 @@ define(['jquery', 'amplify'], function ($) {
     }
 
 
-    // Get an accessor column from the grid configuration ; @parameter: column id
+    // Get an accessor column from the grid configuration ; https://docs.google.com/document/d/1XXAha7ydwFjhAREvhqBjmP0Dy3FwoBSNESFGu6uD-RM/edit#@parameter: column id
     Configurator.prototype.lookForAccessorColumnByIdOnConfiguration = function (id) {
         var result;
         var found = false
@@ -357,21 +362,12 @@ define(['jquery', 'amplify'], function ($) {
     }
 
     Configurator.prototype.getThousandSeparator = function () {
-
-        if (!decimalNumberValue) {
-            decimalNumberValue = compConfiguration.gridConfiguration.otherColumns.valueColumn.properties.cellProperties.numericFormat
-        }
-
         return decimalNumberValue;
 
     }
 
     Configurator.prototype.getValueLabel = function () {
         // Get the value
-        if (!labelValue) {
-            labelValue = compConfiguration.gridConfiguration.otherColumns.valueColumn.label
-        }
-
         return labelValue
     }
 

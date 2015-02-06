@@ -134,10 +134,12 @@ define(['jquery',
 
     PopulationCreator.prototype.destroyIfExistOtherModal = function () {
 
+        debugger;
+
         $('#populationForm').modal('hide');
 
 
-        if ($('#' + idContainer).length > 0) {
+        if (typeof $('#' + idContainer)!== 'undefined' &&$('#' + idContainer)!= null && $('#' + idContainer).length > 0) {
 
             $('#' + idContainer).jqxGrid('destroy')
         }

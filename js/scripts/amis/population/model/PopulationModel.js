@@ -35,6 +35,8 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
             modelData = result;
         })
 
+        debugger;
+
         originalData = $.extend(true, [], modelData)
     }
 
@@ -108,7 +110,7 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
             }
         }
 
-        modelData.push(newArrayToInsert);
+        modelData.unshift(newArrayToInsert);
     }
 
 
