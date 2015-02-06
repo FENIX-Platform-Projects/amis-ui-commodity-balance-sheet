@@ -86,5 +86,19 @@
 }
 
 
+/* HACK TO BE REMOVED */
+
+.webix_hs_left{
+  table{
+    tbody{
+      tr:first-child{
+        display:none;
+      }
+    }
+  }
+}
+
+
+
 /* END  GRID  */
 /* -------------------------------------------- */
