@@ -55,6 +55,7 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
         var startIndex, indexRow;
         // set the start index and the range
         var codeValue = formula.variable.value[0]
+
         if (formula.otherColumn) {
             var indexColumnVariable = formula.columnNumber;
             startIndex = numberOfRows * indexColumnVariable;
@@ -66,6 +67,8 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
 
 
         indexRow = supportModel.lookForCode(codeValue, model, startIndex, numberOfRows)
+
+
 
         var rowModel = model[indexRow]
 
@@ -132,7 +135,7 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                     for (var j = 0; j < operations.length; j++) {
                         switch (operations[j]) {
                             case "+":
-                                if (typeof addendums[j + 1] !== 'undefined' && addendums[j + 1] != null && addendums[j + 1] != '') {
+                                if (typeof addendums[j + 1] !== 'undefined' && addendums[j + 1] != null && addendums[j + 1] !== '') {
                                     value += addendums[j + 1]
                                 } else {
                                     notRealizeable = true;
@@ -141,7 +144,7 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                                 break;
 
                             case "-":
-                                if (typeof addendums[j + 1] !== 'undefined' && addendums[j + 1] != null && addendums[j + 1] != '') {
+                                if (typeof addendums[j + 1] !== 'undefined' && addendums[j + 1] != null && addendums[j + 1] !== '') {
                                     value -= addendums[j + 1];
                                 } else {
                                     notRealizeable = true;
@@ -150,7 +153,7 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                                 break;
 
                             case "*":
-                                if (typeof addendums[j + 1] !== 'undefined' && addendums[j + 1] != null && addendums[j + 1] != '') {
+                                if (typeof addendums[j + 1] !== 'undefined' && addendums[j + 1] != null && addendums[j + 1] !=='') {
                                     value = value * addendums[j + 1]
                                 } else {
                                     notRealizeable = true;
@@ -159,7 +162,7 @@ define(["jquery", "formulasAmis/support/FormulaConfigurator", "formulasAmis/supp
                                 break;
 
                             case "/":
-                                if (typeof addendums[j + 1] !== 'undefined' && addendums[j + 1] != 0 && addendums[j + 1] != null && addendums[j + 1] != '') {
+                                if (typeof addendums[j + 1] !== 'undefined' && addendums[j + 1] != 0 && addendums[j + 1] != null && addendums[j + 1] !== '') {
                                     value = value / addendums[j + 1]
                                 } else {
                                     notRealizeable = true;

@@ -11,11 +11,26 @@ define(['amplify'], function(){
 
         var storeModality = amplify.store()
         if (storeModality.isMonthlyModality) {
-             keyDate =(date.substr(4,1)=='/')?
-                 "20000103": moment(date).format("YYYYMMDD");
+
+            // previous year
+            if(date.substr(4,1)=='/'){
+                keyDate = "20000103";
+            }else{
+                // normal forecast date
+                var day = date.substr(0,2);
+                var month = date.substr(3,2)
+                var year = date.substr(6,4);
+                var newDate = new Date(year,month-1,day);
+                keyDate = moment(newDate).format("YYYYMMDD");
+            }
         }else{
+            // annual mode
             keyDate = date;
         }
+
+        console.log('*******************************************************')
+        console.log(keyDate);
+        console.log('*******************************************************')
 
         var checkNotes = function(data, index){
             return (typeof data[index][5] !='undefined' &&
@@ -24,6 +39,8 @@ define(['amplify'], function(){
                )
         }
 
+        debugger;
+
         for(var i = 0, lengthMAP = ELEMENTS_MAP.length; i< lengthMAP && notFound; i++){
             for(var j= 0, lengthDATA = tableData.length; j<lengthDATA && notFound ;j++){
                 if(tableData[j][0] == ELEMENTS_MAP[i] && tableData[j][2] == keyDate && checkNotes(tableData, j)) {
@@ -31,6 +48,9 @@ define(['amplify'], function(){
                 }
             }
         }
+
+        debugger;
+
 
         if(notFound){
             for(var i = 0, lengthMAP = ELEMENTS_MAP.length; i< lengthMAP && notFound; i++){
@@ -41,6 +61,9 @@ define(['amplify'], function(){
                 }
             }
         }
+
+        debugger;
+
 
         return notFound
     }

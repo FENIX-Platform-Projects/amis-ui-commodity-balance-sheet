@@ -1,6 +1,4 @@
-/**
- * Created by fabrizio on 5/20/14.
- */
+
 define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
 
     var combo, productCode, Services;

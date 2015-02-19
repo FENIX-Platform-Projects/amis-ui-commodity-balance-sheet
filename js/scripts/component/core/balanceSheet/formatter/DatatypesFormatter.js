@@ -157,7 +157,6 @@ define(["jquery", "moment", "numeral"], function ($) {
                 result = result.replace(',',' ')
 
             }else if(formatConf == '0.0'){
-                debugger;
                 result = numeral(value).format('0,0.00')
                 result =result.replace('.',' ')
                 result =result.replace(',','.')

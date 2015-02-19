@@ -1,12 +1,12 @@
-define(['jquery', "exportLoader/controller/HandlerExportSelection",  "urlConfigurator", "FenixReports"],
-    function ($, HandlerSelection, URLConfigurator, FenixExport) {
+define(['jquery', "urlConfigurator", "FenixReports"],
+    function ($, URLConfigurator, FenixExport) {
 
         var handlerSelection, supportUtility, formExcel, urlConfigurator, commodityCodeSelected, fenixExporter, url;
         var COMMODITY_CODES = [1, 4, 5, 6]
 
         function ExcelExporter() {
             urlConfigurator = new URLConfigurator;
-            handlerSelection = new HandlerSelection;
+       //     handlerSelection = new HandlerSelection;
             fenixExporter = new FenixExport;
 
         }
@@ -15,8 +15,11 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection",  "urlConfigu
             supportUtility = SupportUtility;
             url = urlConfigurator.getExportingUrl()
 
-            var totalValues = [];
+            var totalValues;
+
             var preloadingData = supportUtility.getPreloadingData();
+
+            /*
 
             var items = $("#selectionYear").jqxComboBox('getItems');
             var selectedIndex = $("#selectionYear").jqxComboBox('getSelectedIndex');
@@ -29,6 +32,11 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection",  "urlConfigu
                 totalValues = totalValues.concat(forecastCommodity);
 
             }
+            debugger;
+
+            */
+
+debugger;
 
             var filterData = supportUtility.getFilterData();
 
@@ -37,11 +45,25 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection",  "urlConfigu
             var product = filterData.product;
             var dataSource = filterData.dataSource
 
+            $.ajax({
+                async: false,
+                url: urlConfigurator.getExportDataServiceUrl(),
+                type: 'POST',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({"regionCode": preloadingData.post.regionCode})
+
+            }).done(function (result) {
+                totalValues = result;
+            })
+
+            console.log(totalValues)
+
             this.createFormAndExport(totalValues, season, region, product, dataSource)
 
         }
 
-
+/*
         ExcelExporter.prototype.createForecastForCommodity = function (commodity, dataFiltered ,items, selectedIndex) {
 
             var forecast;
@@ -66,6 +88,8 @@ define(['jquery', "exportLoader/controller/HandlerExportSelection",  "urlConfigu
 
             return forecast;
         }
+
+        */
 
 
         ExcelExporter.prototype.createFormAndExport = function (totalValues, season, region, product, dataSource) {

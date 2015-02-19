@@ -1,6 +1,4 @@
-/**
- * Created by fabrizio on 10/3/14.
- */
+
 define(['jquery'], function($){
 
     var urlConfiguration  =   './js/scripts/services/configuration/servicesTestLocal.json'
@@ -129,6 +127,12 @@ define(['jquery'], function($){
         return configuration.services[3].exportDataServletUrl;
     }
 
+    ServicesConfigurator.prototype.getExportDataServiceUrl = function(){
+        if(!configuration){
+            this.init()
+        }
+        return configuration.services[3].exportData;
+    }
 
 
     return ServicesConfigurator;

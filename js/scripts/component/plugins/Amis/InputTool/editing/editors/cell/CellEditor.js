@@ -82,6 +82,8 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
         var containerVal = "valueInput";
 
         // value column
+
+        debugger;
         this.appendRigthInputFormat('Value', valueVal, columnDSDVal, columnCONFVal, containerVal);
 
         // accessorColumn
@@ -507,6 +509,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
                 break;
             case ("number" || "enum"):
+
                 var maxLength, numberFrom, numberTo;
                 if ((ConfColumn.values.dataRepresentation == 'distinct' || ConfColumn.values.dataRepresentation == 'hybrid')
                     && typeof dsdColumn.values !== 'undefined' && dsdColumn.values.length > 1) {
@@ -519,13 +522,18 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                     numberTo = dsdColumn.domain.period.to;
                 }
 
+                debugger;
+
+                if(typeof value === 'undefined' || value ==null || isNaN(value)){
+                    value = '';
+                }
+
 
                 if (ConfColumn.values.editable) {
                     $('#form').append("<div class ='row'>" +
                         "<div class='col-xs-6'><label class='titlesForm' for='" + container + "'>" + title
                         + "</label></div>" +
-                        "<div class='col-xs-6'><input class='input-group-xs' name='name' id='" + container + "' value='" + value +
-                        "' min='" + numberFrom + "' max='" + numberTo + "'  step='any' style='width:100%'></div>" +
+                        "<div class='col-xs-6'><input class='input-group-xs' name='name' id='" + container + "' min='" + numberFrom + "' max='" + numberTo + "'  step='any' style='width:100%' placeholder ='  Type some value'></div>" +
                         "</div><br>")
                 } else {
                     $('#form').append("<div class ='row'>" +
@@ -535,6 +543,10 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                         "' min='" + numberFrom + "' max='" + numberTo + "'  step='any' readonly></div>" +
                         "</div><br>")
                 }
+                if(value !== ''){
+                    document.getElementById(container).value = value;
+                }
+
                 var previous = {};
                 previous[container] = [value, "number"];
                 mapPreviousValues.push(previous);
@@ -586,7 +598,7 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                     // Case Multiple flag
                     else if (title == "Flags") {
                         $('#form').append(this.getMultipleFlagToAppend(value, container, title))
-                        $('#' + container).select2({placeholder: "Click to select the flags"})
+                        $('#' + container).select2({placeholder: " Click to select the flags"})
                     }
 
                     else {

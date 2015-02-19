@@ -18,7 +18,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             formulaController = new FormulaController;
             specialControlEditor = new SpecialEditorController;
             generalObserver = new GeneralObserver;
-            debugger;
 
         }
 
@@ -73,6 +72,8 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 if (id.column != 'data0' && resultedClicked != -1) {
                     var cellTableModel2 = ModelController.getTableDataModel();
                     var cellTableModel = $.extend(true, {}, cellTableModel2);
+
+
                     // To identify when the first new nested row starts
                     var indexesObject = ModelController.getIndexesNewFirstColumnLeft();
                     resultedClicked = adapterGrid.getClickedCell(cellTableModel, Configurator, id, this, indexesObject);
@@ -303,7 +304,8 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
                 generalObserver.listenToVisualizationOptions(thousandSeparator)
                 generalObserver.listenToElementsOptions(elementShown)
-                generalObserver.listenToResetButton()
+                generalObserver.listenToResetButton();
+                generalObserver.listenToPopulationForm();
 
 
                 this.onChangeModalityEditing(typeOfVisualization)

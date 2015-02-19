@@ -15,7 +15,6 @@ define(["jquery" ], function ($) {
 
 
     SupportModel.prototype.getMapCodes = function () {
-        var result;
         var result = {}
         var allDSDCodes = configuratorDSD.getLeftKeyColumn().leftColumns[0].domain.codes;
         for (var i = 0; i < allDSDCodes.length; i++)

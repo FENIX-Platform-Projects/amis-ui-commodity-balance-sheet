@@ -1,6 +1,4 @@
-/**
- * Created by fabrizio on 7/7/14.
- */
+
 define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "webix", "amplify"],
     function ($, ViewModel, AdapterGrid, Nprogress) {
 
@@ -29,12 +27,15 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
 
         GridDataView.prototype.createAndDrawGrid = function (columns, dataSource) {
             var self = this;
+
+            console.log(dataSource)
             var gridUi =
                 webix.ui({
                     container: "pivotGrid",
                     view: "datatable",
                     rowHeight: 29,
                     columnWidth: 300,
+                    responsive:true,
                     clipboard: "selection",
                     id: "grid",
                     editable: true,
@@ -80,6 +81,7 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                     ], editor: 'text', fillspace: true, minWidth: 100, css: "datesColumns"})
                 }
             }
+
             return columns;
         }
 

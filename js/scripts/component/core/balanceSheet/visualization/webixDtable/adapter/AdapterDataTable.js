@@ -4,6 +4,8 @@
 define(['jquery'], function($){
 
     var numberOfColumns, differentDates,mapTitles
+
+
     function AdapterDataTable(){
         differentDates = [];
         mapTitles = {}
@@ -16,11 +18,8 @@ define(['jquery'], function($){
 
         // starts from -1, because it includes the first column
         var columnsNumber = -1;
-        grid.eachColumn(
-            function (col){
-                columnsNumber++;
-            }
-        )
+        grid.eachColumn( function (col){ columnsNumber++ })
+
         var numberLeftKeyColumns = Configurator.getLeftKeyColumn().leftColumns.length
 
         // columnIndex

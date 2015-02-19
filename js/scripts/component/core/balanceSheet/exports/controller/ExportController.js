@@ -1,6 +1,4 @@
-/**
- * Created by fabrizio on 8/5/14.
- */
+
 define(["jquery", "exporter/excelExporter/ExcelExporter"], function($, Export ){
 
     function ExportController(){}
