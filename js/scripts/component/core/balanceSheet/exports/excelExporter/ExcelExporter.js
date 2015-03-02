@@ -36,7 +36,6 @@ define(['jquery', "urlConfigurator", "FenixReports"],
 
             */
 
-debugger;
 
             var filterData = supportUtility.getFilterData();
 

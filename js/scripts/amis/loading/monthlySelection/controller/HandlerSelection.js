@@ -18,6 +18,8 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
 
         var currentYearFilter = parseInt(preloadingData.years.currentYearLabel.substring(0, 4));
 
+        debugger;
+
         // if a previous year exist
         if (preloadingData.years.previousYearLabel != -1) {
             var previousYearFilter = parseInt(preloadingData.years.previousYearLabel.substring(0, 4));
@@ -25,8 +27,8 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
             notPreviousYear = true;
         }
 
-        filterActual = { "region": region, "product": product, "year": currentYearFilter}
-        var filterPreviousYear = { "region": region, "product": product, "year": previousYearFilter}
+        filterActual = { "region": region, "product": product, "year": currentYearFilter, "season": preloadingData.years.currentYearLabel }
+        var filterPreviousYear = { "region": region, "product": product, "year": previousYearFilter, "season": preloadingData.years.previousYearLabel }
 
         var filterPrevPopulation = {
             "region": region,

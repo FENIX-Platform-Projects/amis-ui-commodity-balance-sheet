@@ -56,6 +56,7 @@ define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoade
 
 
     HandlerAnnualSelection.prototype.createFilterForSeasons = function (region, product, selectedSeason) {
+        debugger;
         return { "region": region, "product": product, "year": selectedSeason.value}
     }
 
