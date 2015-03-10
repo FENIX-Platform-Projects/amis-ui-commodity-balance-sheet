@@ -56,7 +56,6 @@ define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoade
 
 
     HandlerAnnualSelection.prototype.createFilterForSeasons = function (region, product, selectedSeason) {
-        debugger;
         return { "region": region, "product": product, "year": selectedSeason.value}
     }
 
@@ -80,8 +79,6 @@ define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoade
             var season = forecasts[i][2];
             seasonMap[season] = date;
         }
-
-        debugger;
 
         return forecasts;
     }

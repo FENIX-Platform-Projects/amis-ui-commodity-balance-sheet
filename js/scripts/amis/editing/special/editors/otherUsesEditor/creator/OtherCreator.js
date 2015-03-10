@@ -56,7 +56,6 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
 
 
         OtherCreator.prototype.changeRow = function(rowID) {
-            console.log('changeROW' + rowID)
             rowNumber = rowID;
         }
 
@@ -143,7 +142,6 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
 
 
         OtherCreator.prototype.destroyAll = function () {
-            debugger;
             if (grid)
                 grid.destructor();
 
@@ -198,13 +196,10 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
 
             return {
                 focus:function(){
-                    console.log('focus')
                     $('#multiflagOtherUses').append(multiFlagController.getOptions(this.node.value))
                     $('#multiflagOtherUses').select2({placeholder: "Click to select the flags"});
                 },
                 getValue:function(){
-                    console.log('getValue')
-
                     var codes = $('select').select2("val");
                     $('select').select2("destroy");
 
@@ -215,16 +210,12 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
                     return  multiFlagController.getStringFromCodes(codes);
                 },
                 setValue:function(value){
-                    console.log('setValue')
-
                     this.node.value = value;
                 },
                 getInputNode:function(){
-                    console.log('getInputNode')
                     return this.config.node.firstChild;
                 },
                 render:function(){
-                    console.log('render')
                     var stringToAppend = '<select multiple tabindex="-1" id="multiflagOtherUses" style="width:100%" class="input-group-lg">';
                     stringToAppend += '</select>';
                     var result =webix.html.create("div", {

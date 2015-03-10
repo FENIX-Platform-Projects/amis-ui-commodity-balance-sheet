@@ -40,11 +40,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         var copyOriginalModelTot = $.extend(true, [], originalTotCropsModel);
 
         var formulaInit = paddyEditableHandler.getFormulaFromData(copyOriginalModelTot)
-        console.log('***********************************************************')
-        console.log('prova FORMULA')
-        console.log(formulaInit)
-        console.log('***********************************************************')
-
 
         if(formulaInit == 'init') {
             var formulaTotCrops = formulaHandler.getInitFormulaFromConf(2, 'totalValues')
@@ -74,7 +69,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
     PaddyController.prototype.updateTotGridOnEditing = function (rowNumber, newValue, formulaToApply, columnValue, typeOfEditing) {
 
-        console.log('updateTOT grid on EDITIING: controller')
         var formulaToUpdate
         if (formulaToApply == 'init') {
             formulaToUpdate = formulaHandler.getInitFormulaFromConf(2, 'totalValues')
@@ -161,8 +155,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     }
 
     PaddyController.prototype.updateSingleCropsGridOnFormulaChanges = function (formulaToApply, typeOfEditing) {
-        console.log('formulaToApply -------SINGLE------------')
-        console.log(formulaToApply)
         var formulaToUpdate = formulaHandler.getUpdateFormula(2, 'singleCrops', formulaToApply, typeOfEditing)
         var dataUpdated = modelPaddy.getSingleCropsModel();
         var modelSingleCrops = $.extend(true, [], dataUpdated);
@@ -230,7 +222,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         if (formulaTotToApply == 'init') {
             formulaTotToApply = 'milled'
         }
-        console.log('formulaSingleToApply')
 
         observer.setTotalValuesOnModified()
 
@@ -252,8 +243,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     }
 
     PaddyController.prototype.showAlerts = function (isTotal) {
-        console.log('controller.showalerts!!!!!!!!!!')
-            debugger;
        (isTotal)? editorPaddy.showAlert('alertTotal') : editorPaddy.showAlert('alertSingle');
     }
 

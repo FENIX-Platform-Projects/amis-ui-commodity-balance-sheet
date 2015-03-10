@@ -24,7 +24,6 @@ define(['jquery', 'bootstrap-dialog',
         $('#resetGrid').on('click', function(e){
             e.preventDefault();
             e.stopImmediatePropagation();
-            debugger;
             $('#loadData').click();
 
         })

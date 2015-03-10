@@ -30,7 +30,6 @@ define(['jquery', 'amplify'], function ($) {
     Configurator.prototype.init = function (dsd, component) {
         dsdConf = dsd;
         compConfiguration = component;
-        debugger;
         decimalNumberValue = null;
         labelValue = '';
         $.extend(true,decimalNumberValue,compConfiguration.gridConfiguration.otherColumns.valueColumn.properties.cellProperties.numericFormat);

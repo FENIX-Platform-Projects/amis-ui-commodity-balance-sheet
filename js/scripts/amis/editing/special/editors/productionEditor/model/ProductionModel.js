@@ -40,7 +40,6 @@ define(["jquery", "urlConfigurator"], function ($, ServicesURL) {
     }
 
     ProductionModel.prototype.getOriginalTotalCropsModelOriginalConverted = function () {
-        console.log('getOrinalTotalCro')
         var model = $.extend(true, [], this.getOriginalTotalCropsModel())
         for (var i = 0; i < model.length; i++) {
             model[i].splice(6, 1)
@@ -128,7 +127,6 @@ define(["jquery", "urlConfigurator"], function ($, ServicesURL) {
         var dataModel = $.extend([], true, modelData);
         var copyMap = $.extend([], true, map);
         for (var j = 0; j < cropsNumber; j++) {
-            console.log('converting!!')
             for (var i = 0; i < dataModel.length; i++) {
                 var index = (j * dataModel.length ) + i;
 

@@ -87,7 +87,6 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
 
         LoadingController.prototype.checkIfNewValues = function () {
             if (balanceSheet) {
-                console.log('blaanceSheet exists')
                 var data = balanceSheet.getDataToSave()
                 return (data.updatedData.length > 0 || data.newData.length > 0)
             } else {

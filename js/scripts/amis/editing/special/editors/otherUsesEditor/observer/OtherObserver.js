@@ -43,8 +43,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             // columnIndex
             var columnIndex = grid.getColumnIndex(idCell.column) - 1;
             var numberOfRow = grid.getIndexById(idCell);
-
-            console.log('cellEdit: listener Active')
             totalValuesModified = true;
             var columnValue = editor.column;
             var oldvalue = state.old;
@@ -64,7 +62,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     OtherObserver.prototype.listenToSaveTotalValuesButton = function () {
         $('#saveTotalValues').on('click', function (event) {
-            console.log('listenToSaveTotal values')
             event.preventDefault();
             event.stopImmediatePropagation();
             if (totalValuesModified) {

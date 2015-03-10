@@ -56,10 +56,6 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
     }
 
     ControllerEditors.prototype.saveFormRiceProduction = function (calculatedData, originalData) {
-        console.log('saveFormRice Production: Controller Editors')
-
-        console.log('data calcluated to be saved: ')
-        console.log(calculatedData)
 
         for(var i=0; i<calculatedData.length; i++){
             calculatedData[i].length = 6;
@@ -71,7 +67,6 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
     }
 
     ControllerEditors.prototype.saveFormOtherUses = function (calculatedData, originalData) {
-        console.log('saveFormRice Production: Controller Editors')
         generalController.saveDataFromAllForms(calculatedData, originalData, clickedCellInfo, 'otherUses')
     }
 

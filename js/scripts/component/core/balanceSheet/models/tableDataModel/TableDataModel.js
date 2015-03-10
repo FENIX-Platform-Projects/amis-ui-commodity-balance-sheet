@@ -416,8 +416,6 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
         var backupIndexesAllData = $.extend(true,{}, indexes);
         var indexesAllData = this.getAllIndexesRequested(allData, indexes, dateInvolved);
 
-        debugger;
-
         // insert new Data in AllData
         if(dataFromForm.length - (indexesTableData.length +indexesAllData.length) >0){
             var remainingData = this.fetchRemainingData(dataFromForm, indexesTableData, indexesAllData);

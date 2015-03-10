@@ -65,10 +65,7 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
 
         this.createAndDrawGrid(this.setDataForGrid(totalModel, true), "gridTotalValues");
-
         this.createAndDrawGrid(this.setDataForGrid(singleModel, false), "gridSingleCrops");
-
-        debugger;
 
         this.changeLabelToElements(isMilledSelected, true);
         this.changeLabelToElements(true, false);
@@ -183,8 +180,6 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
     */
 
     PaddyCreator.prototype.showAlert = function (container) {
-        console.log('alert trovato:')
-        console.log(document.getElementById(''+container).firstChild)
         if (!document.getElementById(''+container).firstChild) {
             $("#"+container).append(alertSelection);
         }
@@ -308,9 +303,6 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
     }
 
     PaddyCreator.prototype.changeRadioBtnAndCheckBoxTotValue = function(formula){
-
-        debugger;
-
         var isMilledSelected;
 
         var checkBoxToEnable = {}
@@ -413,8 +405,6 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
             g.remove()
         }
 
-        debugger;
-
         $('#dialogForm').modal('hide');
 
 
@@ -432,7 +422,6 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
     PaddyCreator.prototype.changeLabelToElements = function (isMilledSelected, isTotal) {
 
-        debugger;
         var labelYield, labelProduction
 
         if (isMilledSelected) {

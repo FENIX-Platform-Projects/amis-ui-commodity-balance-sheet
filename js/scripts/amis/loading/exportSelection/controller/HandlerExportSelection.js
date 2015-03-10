@@ -52,10 +52,6 @@ define(['jquery', "exportLoader/logic/DataExportLoader", "underscore-min"], func
             yearSelected = items[selectedIndex].value;
 
         }
-        console.log('YEARSSSs')
-        console.log(years)
-
-
 
         // USe operator of minus(-) for the order of the seasons
         var seasonChecked = [items[selectedIndex].label]
@@ -87,24 +83,14 @@ define(['jquery', "exportLoader/logic/DataExportLoader", "underscore-min"], func
                 // if two seasons exist and the selected is the first
                 if(precedentSeasons.length >1 && i==0){
                     var seasonForecasts = dataLoader.getAndCreateTwoMostRecentForecast(filterSeason, filterSeason, filterPopulation, preloadingData, precedentSeasons[i].label)[0]
-                    console.log('after GET and create 2 most')
-                    console.log(seasonForecasts)
                 }else{
-
                     var seasonForecasts = dataLoader.getAndCreateActualYearForecastMostRecent(filterSeason, filterSeason, filterPopulation, preloadingData, precedentSeasons[i].label)
-                    console.log('after GET and create FIRST most')
-                    console.log(seasonForecasts)
-
                 }
                 resultForecast = resultForecast.concat(seasonForecasts);
             }
         }
 
         resultForecast.reverse();
-        console.log('resultForecast after precedent seasons: ')
-
-        console.log(resultForecast);
-
 
         // Selected season:
         var filterSeason = this.createFilterForSeasons(region, product, items[selectedIndex])

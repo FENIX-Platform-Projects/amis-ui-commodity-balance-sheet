@@ -35,8 +35,6 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
             modelData = result;
         })
 
-        debugger;
-
         originalData = $.extend(true, [], modelData)
     }
 

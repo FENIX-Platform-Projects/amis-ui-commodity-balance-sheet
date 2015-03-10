@@ -48,8 +48,6 @@ define(['jquery',
 
         this.updateRenderingGrid(modelData)
 
-        console.log($("#labelNatDB"))
-
         document.getElementById('labelTitlePopulation').innerHTML = modelData[0][ this.o['regionName']] + ', ' + $("#labelNatDB").html()
     }
 
@@ -133,8 +131,6 @@ define(['jquery',
 
 
     PopulationCreator.prototype.destroyIfExistOtherModal = function () {
-
-        debugger;
 
         $('#populationForm').modal('hide');
 

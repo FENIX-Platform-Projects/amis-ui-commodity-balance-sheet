@@ -11,13 +11,11 @@ define(['jquery', 'FenixValidator'], function ($, Validator) {
     }
 
 
-    FenixReports.prototype.exportData = function (payload, url) {
+    FenixReports.prototype.exportData = function (payload, url, results) {
 
         validator.checkPayload(payload, url)
 
         var that = this;
-
-        debugger;
 
         $.ajax({
             url: url,
@@ -53,7 +51,6 @@ define(['jquery', 'FenixValidator'], function ($, Validator) {
         'width: 30px;'+
         'height: 30px;'+
         'background: url("images/report/ajax-loader%20.gif") !important;"></div>');
-        debugger;
     }
 
     FenixReports.prototype.removeAnimatedGif = function(){
