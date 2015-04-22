@@ -15,8 +15,12 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
         998: "Production Paddy",
         996: "Yield Paddy",
         3: "Extraction Rate (%)"
+    }
 
-
+    var positionDB = {
+        "code":0,
+        "value":3,
+        "flag":4
     }
 
     function PaddyModel() {
@@ -33,19 +37,12 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
         var result = []
         supportUtility = utilitySupport;
         var dataModel = $.extend(true, [], itemsInvolved);
-        ;
         for (var i = 0; i < dataModel.length; i++) {
             if (dataModel[i].length == 3 || dataModel[i].length == 2) {
                 dataModel[i] = this.initializePaddyProduction(dataModel[i])
             }
-            var code = dataModel[i][0]
-            if (i > 5) {
-                result[i - 1] = $.extend(true, [], dataModel[i])
-                result[i - 1].push(copyMap[code])
-            } else if (code != 37) {
-                result[i] = $.extend(true, [], dataModel[i])
-                result[i].push(copyMap[code])
-            }
+           result[i] = $.extend(true, [], dataModel[i])
+           result[i].push(copyMap[dataModel[i][positionDB.code]])
         }
         originalTotalCropsModel = $.extend(true, [], result);
     }
@@ -86,7 +83,7 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
                             result[index][x] = null;
                             break;
                         case dataModel[i].length:
-                            result[index][x] = copyMap[dataModel[i][0]];
+                            result[index][x] = copyMap[dataModel[i][positionDB.code]];
                             break;
                         case dataModel[i].length + 1 :
                             result[index][x] = j + 1;
@@ -104,7 +101,7 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
 
     PaddyModel.prototype.initializePaddyProduction = function (row) {
         var result = []
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < Object.keys(map).length; i++) {
             if (i == 0 || i == 2) {
                 result[i] = row[i]
             } else {
@@ -175,7 +172,7 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
             for (var k = 0; k < calculatedDataFromCrops[i].length; k++) {
                 for (var j = 0; j < originalData.length; j++) {
                     if (calculatedDataFromCrops[i][k][7] == originalData[j][7] &&
-                        calculatedDataFromCrops[i][k][0] == originalData[j][0]) {
+                        calculatedDataFromCrops[i][k][positionDB.code] == originalData[j][positionDB.code]) {
                         calculatedSingleModel[j] = calculatedDataFromCrops[i][k]
                     }
                 }
@@ -219,15 +216,15 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
             // case number of crops ==1
             var elementPosition = 0
             for (var i = 0; i < singleCropsData.length; i++) {
-                var code = singleCropsData[i][0]
-                if (code != 'undefined' && code != null && code != "" && typeof listChecked[singleCropsData[i][0]] == 'undefined') {
-                    listChecked[singleCropsData[i][0]] = elementPosition;
-                    var row = [ singleCropsData[i][0], singleCropsData[i][1], singleCropsData[i][2], singleCropsData[i][3], null, null , singleCropsData[i][6] ]
+                var code = singleCropsData[i][positionDB.code]
+                if (code != 'undefined' && code != null && code != "" && typeof listChecked[singleCropsData[i][positionDB.code]] == 'undefined') {
+                    listChecked[singleCropsData[i][positionDB.code]] = elementPosition;
+                    var row = [ singleCropsData[i][positionDB.code], singleCropsData[i][1], singleCropsData[i][2], singleCropsData[i][positionDB.value], null, null , singleCropsData[i][6] ]
                     result.push(row)
                     elementPosition++;
                 } else {
-                    var indexList = listChecked[singleCropsData[i][0]]
-                    result[indexList][3] += singleCropsData[i][3]
+                    var indexList = listChecked[singleCropsData[i][positionDB.code]]
+                    result[indexList][positionDB.value] += singleCropsData[i][positionDB.value]
                 }
             }
         }
@@ -237,7 +234,7 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
     PaddyModel.prototype.checkIfCompletedSingleCrops = function (singleCropsData) {
         var result = false;
         for (var i = 0; i < singleCropsData.length && !result; i++) {
-            var flag = singleCropsData[i][4]
+            var flag = singleCropsData[i][positionDB.flag]
             if (typeof flag != "undefined" && flag != null && flag != "")
                 result = true;
         }

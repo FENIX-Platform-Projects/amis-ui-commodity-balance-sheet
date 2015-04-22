@@ -3,8 +3,24 @@ define(['jquery'],function($){
     function PaddyFormulaHandler(){}
 
 
-    PaddyFormulaHandler.prototype.checkIfBlocked = function(formulaToApply, row, isTotalValueSection){
+    var PRODUCTION_PADDY_CODE = 998;
+    var PRODUCTION_CODE = 5;
+    var YIELD_PADDY_CODE = 996;
+    var YIELD_CODE = 4;
+    var AH_CODE = 2;
+    var APL_CODE = 37;
 
+    var POSITIONS = {
+        "AH":0,
+        "PROD_PADDY":1,
+        "EX_RATE":2,
+        "Y_MILL":3,
+        "PROD":4,
+        "AP":5,
+        "Y_PADDY":6
+    }
+
+    PaddyFormulaHandler.prototype.checkIfBlocked = function(formulaToApply, row, isTotalValueSection){
 
         var toBlock = false;
         if(isTotalValueSection) {
@@ -14,10 +30,10 @@ define(['jquery'],function($){
                 case 'milled':
                 case 'init':
                     var conditionCalculated =
-                        ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
-                            (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
-                            (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
-                            (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
+                        ((row == POSITIONS.PROD_PADDY + 7 * 0    || row == POSITIONS.Y_MILL + 7 * 0 || row == POSITIONS.Y_PADDY + 7 * 0) ||
+                            (row == POSITIONS.PROD_PADDY + 7 * 1 || row == POSITIONS.Y_MILL + 7 * 1 || row == POSITIONS.Y_PADDY + 7 * 1) ||
+                            (row == POSITIONS.PROD_PADDY + 7 * 2 || row == POSITIONS.Y_MILL + 7 * 2 || row == POSITIONS.Y_PADDY + 7 * 2) ||
+                            (row == POSITIONS.PROD_PADDY + 7 * 3 || row == POSITIONS.Y_MILL + 7 * 3 || row == POSITIONS.Y_PADDY + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -27,10 +43,10 @@ define(['jquery'],function($){
                 case 'areaHarvestedMilled':
 
                     var conditionCalculated =
-                        ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
-                            (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
-                            (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
-                            (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
+                        ((row ==  POSITIONS.AH  + 7 * 0 || row == POSITIONS.PROD_PADDY + 7 * 0  || row == POSITIONS.Y_PADDY + 7 * 0) ||
+                            (row == POSITIONS.AH + 7 * 1 || row == POSITIONS.PROD_PADDY + 7 * 1 || row == POSITIONS.Y_PADDY + 7 * 1) ||
+                            (row == POSITIONS.AH + 7 * 2 || row == POSITIONS.PROD_PADDY + 7 * 2 || row == POSITIONS.Y_PADDY + 7 * 2) ||
+                            (row == POSITIONS.AH + 7 * 3 || row == POSITIONS.PROD_PADDY + 7 * 3 || row == POSITIONS.Y_PADDY + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -40,10 +56,10 @@ define(['jquery'],function($){
                 case 'productionMilled':
 
                     var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 5 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 5 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 5 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 5 + 7 * 3))
+                        ((   row == POSITIONS.PROD + 7 * 0 || row == POSITIONS.PROD_PADDY + 7 * 0 || row == POSITIONS.Y_PADDY + 7 * 0) ||
+                            (row == POSITIONS.PROD + 7 * 1 || row == POSITIONS.PROD_PADDY + 7 * 1 || row == POSITIONS.Y_PADDY + 7 * 1) ||
+                            (row == POSITIONS.PROD + 7 * 2 || row == POSITIONS.PROD_PADDY + 7 * 2 || row == POSITIONS.Y_PADDY + 7 * 2) ||
+                            (row == POSITIONS.PROD + 7 * 3 || row == POSITIONS.PROD_PADDY + 7 * 3 || row == POSITIONS.Y_PADDY + 7 * 3))
 
 
                     if (conditionCalculated) {
@@ -54,10 +70,10 @@ define(['jquery'],function($){
                 case 'yieldPaddy':
 
                     var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 5 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 5 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 5 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 5 + 7 * 3))
+                        ((   row == POSITIONS.PROD + 7 * 0 || row == POSITIONS.Y_MILL + 7 * 0 || row == POSITIONS.Y_PADDY + 7 * 0) ||
+                            (row == POSITIONS.PROD + 7 * 1 || row == POSITIONS.Y_MILL + 7 * 1 || row == POSITIONS.Y_PADDY + 7 * 1) ||
+                            (row == POSITIONS.PROD + 7 * 2 || row == POSITIONS.Y_MILL + 7 * 2 || row == POSITIONS.Y_PADDY + 7 * 2) ||
+                            (row == POSITIONS.PROD + 7 * 3 || row == POSITIONS.Y_MILL + 7 * 3 || row == POSITIONS.Y_PADDY + 7 * 3))
 
 
                     if (conditionCalculated) {
@@ -67,10 +83,10 @@ define(['jquery'],function($){
 
                 case 'areaHarvestedPaddy':
                     var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
+                        ((   row == POSITIONS.PROD + 7 * 0 || row == POSITIONS.Y_MILL + 7 * 0 || row == POSITIONS.AH + 7 * 0) ||
+                            (row == POSITIONS.PROD + 7 * 1 || row == POSITIONS.Y_MILL + 7 * 1 || row == POSITIONS.AH + 7 * 1) ||
+                            (row == POSITIONS.PROD + 7 * 2 || row == POSITIONS.Y_MILL + 7 * 2 || row == POSITIONS.AH + 7 * 2) ||
+                            (row == POSITIONS.PROD + 7 * 3 || row == POSITIONS.Y_MILL + 7 * 3 || row == POSITIONS.AH + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -80,10 +96,10 @@ define(['jquery'],function($){
                 case 'productionPaddy':
 
                     var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 3 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 3 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 3 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 3 + 7 * 3))
+                        ((   row == POSITIONS.PROD + 7 * 0 || row == POSITIONS.PROD_PADDY + 7 * 0 || row == POSITIONS.Y_MILL + 7 * 0) ||
+                            (row == POSITIONS.PROD + 7 * 1 || row == POSITIONS.PROD_PADDY + 7 * 1 || row == POSITIONS.Y_MILL + 7 * 1) ||
+                            (row == POSITIONS.PROD + 7 * 2 || row == POSITIONS.PROD_PADDY + 7 * 2 || row == POSITIONS.Y_MILL + 7 * 2) ||
+                            (row == POSITIONS.PROD + 7 * 3 || row == POSITIONS.PROD_PADDY + 7 * 3 || row == POSITIONS.Y_MILL + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -99,10 +115,10 @@ define(['jquery'],function($){
                 case 'init':
 
                     var conditionCalculated =
-                        ((row == 1 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
-                            (row == 1 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
-                            (row == 1 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
-                            (row == 1 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
+                        ((row == POSITIONS.PROD_PADDY + 7 * 0    || row == POSITIONS.Y_MILL + 7 * 0 || row == POSITIONS.Y_PADDY + 7 * 0) ||
+                            (row == POSITIONS.PROD_PADDY + 7 * 1 || row == POSITIONS.Y_MILL + 7 * 1 || row == POSITIONS.Y_PADDY + 7 * 1) ||
+                            (row == POSITIONS.PROD_PADDY + 7 * 2 || row == POSITIONS.Y_MILL + 7 * 2 || row == POSITIONS.Y_PADDY + 7 * 2) ||
+                            (row == POSITIONS.PROD_PADDY + 7 * 3 || row == POSITIONS.Y_MILL + 7 * 3 || row == POSITIONS.Y_PADDY + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -112,10 +128,10 @@ define(['jquery'],function($){
                 case 'areaHarvestedMilled':
 
                     var conditionCalculated =
-                        ((row == 0 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
-                            (row == 0 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
-                            (row == 0 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
-                            (row == 0 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
+                        ((row ==    POSITIONS.AH + 7 * 0 || row == POSITIONS.PROD_PADDY + 7 * 0 || row == POSITIONS.Y_PADDY + 7 * 0) ||
+                            (row == POSITIONS.AH + 7 * 1 || row == POSITIONS.PROD_PADDY + 7 * 1 || row == POSITIONS.Y_PADDY + 7 * 1) ||
+                            (row == POSITIONS.AH + 7 * 2 || row == POSITIONS.PROD_PADDY + 7 * 2 || row == POSITIONS.Y_PADDY + 7 * 2) ||
+                            (row == POSITIONS.AH + 7 * 3 || row == POSITIONS.PROD_PADDY + 7 * 3 || row == POSITIONS.Y_PADDY + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -125,10 +141,10 @@ define(['jquery'],function($){
                 case 'productionMilled':
 
                     var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 6 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 6 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 6 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 6 + 7 * 3))
+                        ((row ==    POSITIONS.PROD + 7 * 0 || row == POSITIONS.PROD_PADDY + 7 * 0 || row == POSITIONS.Y_PADDY + 7 * 0) ||
+                            (row == POSITIONS.PROD + 7 * 1 || row == POSITIONS.PROD_PADDY + 7 * 1 || row == POSITIONS.Y_PADDY + 7 * 1) ||
+                            (row == POSITIONS.PROD + 7 * 2 || row == POSITIONS.PROD_PADDY + 7 * 2 || row == POSITIONS.Y_PADDY + 7 * 2) ||
+                            (row == POSITIONS.PROD + 7 * 3 || row == POSITIONS.PROD_PADDY + 7 * 3 || row == POSITIONS.Y_PADDY + 7 * 3))
 
 
                     if (conditionCalculated) {
@@ -139,10 +155,10 @@ define(['jquery'],function($){
                 case 'yieldPaddy':
 
                     var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 6 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 6 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 6 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 6 + 7 * 3))
+                        ((   row == POSITIONS.PROD + 7 * 0 || row == POSITIONS.Y_MILL + 7 * 0 || row == POSITIONS.Y_PADDY + 7 * 0) ||
+                            (row == POSITIONS.PROD + 7 * 1 || row == POSITIONS.Y_MILL + 7 * 1 || row == POSITIONS.Y_PADDY + 7 * 1) ||
+                            (row == POSITIONS.PROD + 7 * 2 || row == POSITIONS.Y_MILL + 7 * 2 || row == POSITIONS.Y_PADDY + 7 * 2) ||
+                            (row == POSITIONS.PROD + 7 * 3 || row == POSITIONS.Y_MILL + 7 * 3 || row == POSITIONS.Y_PADDY + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -152,10 +168,10 @@ define(['jquery'],function($){
                 case 'areaHarvestedPaddy':
 
                     var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 3 + 7 * 0 || row == 0 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 3 + 7 * 1 || row == 0 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 3 + 7 * 2 || row == 0 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 3 + 7 * 3 || row == 0 + 7 * 3))
+                        ((   row == POSITIONS.PROD + 7 * 0 || row == POSITIONS.Y_MILL + 7 * 0 || row == POSITIONS.AH + 7 * 0) ||
+                            (row == POSITIONS.PROD + 7 * 1 || row == POSITIONS.Y_MILL + 7 * 1 || row == POSITIONS.AH + 7 * 1) ||
+                            (row == POSITIONS.PROD + 7 * 2 || row == POSITIONS.Y_MILL + 7 * 2 || row == POSITIONS.AH + 7 * 2) ||
+                            (row == POSITIONS.PROD + 7 * 3 || row == POSITIONS.Y_MILL + 7 * 3 || row == POSITIONS.AH + 7 * 3))
 
 
                     if (conditionCalculated) {
@@ -166,10 +182,10 @@ define(['jquery'],function($){
                 case 'productionPaddy':
 
                     var conditionCalculated =
-                        ((row == 4 + 7 * 0 || row == 1 + 7 * 0 || row == 3 + 7 * 0) ||
-                            (row == 4 + 7 * 1 || row == 1 + 7 * 1 || row == 3 + 7 * 1) ||
-                            (row == 4 + 7 * 2 || row == 1 + 7 * 2 || row == 3 + 7 * 2) ||
-                            (row == 4 + 7 * 3 || row == 1 + 7 * 3 || row == 3 + 7 * 3))
+                        ((row ==    POSITIONS.PROD + 7 * 0 || row == POSITIONS.PROD_PADDY + 7 * 0 ||    row == POSITIONS.Y_MILL + 7 * 0) ||
+                            (row == POSITIONS.PROD + 7 * 1 || row == POSITIONS.PROD_PADDY + 7 * 1 || row == POSITIONS.Y_MILL + 7 * 1) ||
+                            (row == POSITIONS.PROD + 7 * 2 || row == POSITIONS.PROD_PADDY + 7 * 2 || row == POSITIONS.Y_MILL + 7 * 2) ||
+                            (row == POSITIONS.PROD + 7 * 3 || row == POSITIONS.PROD_PADDY + 7 * 3 || row == POSITIONS.Y_MILL + 7 * 3))
 
                     if (conditionCalculated) {
                         toBlock = true;
@@ -202,20 +218,20 @@ define(['jquery'],function($){
         }
 
 
-        var productionPaddy = data[positionDataPaddy[998]];
-        var productionMilled = data[positionDataPaddy[5]];
+        var productionPaddy = data[positionDataPaddy[PRODUCTION_PADDY_CODE]];
+        var productionMilled = data[positionDataPaddy[PRODUCTION_CODE]];
 
 
         if(foundCalcFlagOnRow(productionPaddy)){
 
-            var yPaddy = data[positionDataPaddy[996]]
+            var yPaddy = data[positionDataPaddy[YIELD_PADDY_CODE]]
 
 
             if(foundCalcFlagOnRow(yPaddy)){
 
                 switch (true){
 
-                    case foundCalcFlagOnRow(data[positionDataPaddy[2]]):
+                    case foundCalcFlagOnRow(data[positionDataPaddy[AH_CODE]]):
                         result = 'areaHarvestedMilled'
                         break;
 
@@ -230,7 +246,7 @@ define(['jquery'],function($){
 
                 }
             }
-            else if(foundCalcFlagOnRow(productionMilled) && foundCalcFlagOnRow(data[positionDataPaddy[4]])){
+            else if(foundCalcFlagOnRow(productionMilled) && foundCalcFlagOnRow(data[positionDataPaddy[YIELD_CODE]])){
                 result = 'productionPaddy'
             }
             else{
@@ -242,18 +258,18 @@ define(['jquery'],function($){
         else if(foundCalcFlagOnRow(productionMilled)){
 
 
-            var yMilled = data[positionDataPaddy[4]]
+            var yMilled = data[positionDataPaddy[YIELD_CODE]]
 
             if(foundCalcFlagOnRow(yMilled)){
 
                 switch (true){
 
-                    case foundCalcFlagOnRow(data[positionDataPaddy[2]]):
+                    case foundCalcFlagOnRow(data[positionDataPaddy[AH_CODE]]):
                         result = 'areaHarvestedPaddy'
                         break;
 
 
-                    case foundCalcFlagOnRow(data[positionDataPaddy[996]]):
+                    case foundCalcFlagOnRow(data[positionDataPaddy[YIELD_PADDY_CODE]]):
                         result = 'yieldPaddy'
                         break;
 
@@ -267,7 +283,7 @@ define(['jquery'],function($){
 
                 }
             }
-            else if(foundCalcFlagOnRow(productionPaddy) && foundCalcFlagOnRow(data[positionDataPaddy[996]])){
+            else if(foundCalcFlagOnRow(productionPaddy) && foundCalcFlagOnRow(data[positionDataPaddy[YIELD_PADDY_CODE]])){
                 result = 'productionMilled'
             }
             else{

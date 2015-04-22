@@ -42,12 +42,24 @@ define(["jquery"], function ($) {
 
             case 2:
                 var typeOfForm = config.formulaPlugins[numberOfFormUsed - 1];
+                console.log(typeOfForm)
                 if (type == "totalValues") {
+                    //areaHSelected and areaPlSelected
+                    result = typeOfForm.totalValues.init[0]
+                } else if (type == "singleCrops") {
+                    result = typeOfForm.singleCrops.init[0]
+                } else if (type == "totalValuesAPlanted") {
+                    result = typeOfForm.totalValuesAPlanted.init[0]
+                } else if (type == "singleCropsAPlanted") {
+                    result = typeOfForm.singleCropsAPlanted.init[0]
+                }
+                break;
+               /* if (type == "totalValues") {
                     result = typeOfForm.totalValues.init
                 } else if (type == "singleCrops") {
                     result = typeOfForm.singleCrops.init
                 }
-                break;
+                break;*/
         }
         return result;
     }
@@ -120,6 +132,7 @@ define(["jquery"], function ($) {
         }
         return result;
     }
+
 
     return FormulaConfigurator;
 

@@ -113,12 +113,21 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
         $('#radioBtnMilledTot').jqxRadioButton('destroy');
         $('#radioBtnPaddyTot').jqxRadioButton('destroy');
+
+        $('#radioBtnAreaHarvestedTot').jqxRadioButton('destroy');
+        $('#radioBtnAreaPlantedTot').jqxRadioButton('destroy');
+
+
         $('#thirdCheckBoxTotVal').jqxCheckBox('destroy');
         $('#fourthCheckBoxTotVal').jqxCheckBox('destroy');
         $('#fifthCheckBoxTotVal').jqxCheckBox('destroy');
 
         $('#radioBtnMilledSingle').jqxRadioButton('destroy');
         $('#radioBtnPaddySingle').jqxRadioButton('destroy');
+
+        $('#radioBtnAreaHarvestedSingle').jqxRadioButton('destroy');
+        $('#radioBtnAreaPlantedSingle').jqxRadioButton('destroy');
+
         $('#thirdCheckBoxSingleCrops').jqxCheckBox('destroy');
         $('#fourthCheckBoxSingleCrops').jqxCheckBox('destroy');
         $('#fifthCheckBoxSingleCrops').jqxCheckBox('destroy');
@@ -248,12 +257,22 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
         $('#radioBtnMilledTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy", checked: true});
         $('#radioBtnPaddyTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
+
+        $('#radioBtnAreaHarvestedTot').jqxRadioButton({ width: 120, height: 25, groupName: "areaTot", checked: true});
+        $('#radioBtnAreaPlantedTot').jqxRadioButton({ width: 120, height: 25, groupName: "areaTot"});
+
+
         $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fourthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true });
 
         $('#radioBtnMilledSingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25, checked: true});
         $('#radioBtnPaddySingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25});
+
+        $('#radioBtnAreaHarvestedSingle').jqxRadioButton({ width: 120, height: 25, groupName: "areaSingle", checked: true});
+        $('#radioBtnAreaPlantedSingle').jqxRadioButton({ width: 120, height: 25, groupName: "areaSingle"});
+
+
         $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
@@ -263,12 +282,21 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
         $('#radioBtnMilledTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
         $('#radioBtnPaddyTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
+
+        $('#radioBtnAreaHarvestedTot').jqxRadioButton({ width: 120, height: 25, groupName: "areaTot"});
+        $('#radioBtnAreaPlantedTot').jqxRadioButton({ width: 120, height: 25, groupName: "areaTot"});
+
         $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
         $('#fourthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
         $('#fifthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
 
         $('#radioBtnMilledSingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25, checked: true});
         $('#radioBtnPaddySingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25});
+
+        $('#radioBtnAreaHarvestedSingle').jqxRadioButton({ width: 120, height: 25, groupName: "areaSingle", checked: true});
+        $('#radioBtnAreaPlantedSingle').jqxRadioButton({ width: 120, height: 25, groupName: "areaSingle"});
+
+
         $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
         $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
