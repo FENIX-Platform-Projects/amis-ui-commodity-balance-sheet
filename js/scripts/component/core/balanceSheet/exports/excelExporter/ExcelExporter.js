@@ -1,42 +1,23 @@
 define(['jquery', "urlConfigurator", "FenixReports"],
     function ($, URLConfigurator, FenixExport) {
 
-        var handlerSelection, supportUtility, formExcel, urlConfigurator, commodityCodeSelected, fenixExporter, url;
-        var COMMODITY_CODES = [1, 4, 5, 6]
+        var handlerSelection, supportUtility, formExcel,results, urlConfigurator, commodityCodeSelected, fenixExporter, url;
 
         function ExcelExporter() {
             urlConfigurator = new URLConfigurator;
-       //     handlerSelection = new HandlerSelection;
             fenixExporter = new FenixExport;
 
         }
 
         ExcelExporter.prototype.init = function (SupportUtility) {
+
+            results = this.getWdsRequest(SupportUtility.getPreloadingData().post.regionCode);
             supportUtility = SupportUtility;
             url = urlConfigurator.getExportingUrl()
 
             var totalValues;
 
             var preloadingData = supportUtility.getPreloadingData();
-
-            /*
-
-            var items = $("#selectionYear").jqxComboBox('getItems');
-            var selectedIndex = $("#selectionYear").jqxComboBox('getSelectedIndex');
-
-            commodityCodeSelected = $("#selectionCommodity").jqxComboBox('getSelectedItem').value;
-
-            for (var i = 0; i < COMMODITY_CODES.length; i++) {
-                var commodity = COMMODITY_CODES[i];
-                var forecastCommodity = this.createForecastForCommodity(commodity, preloadingData, items, selectedIndex);
-                totalValues = totalValues.concat(forecastCommodity);
-
-            }
-            debugger;
-
-            */
-
-debugger;
 
             var filterData = supportUtility.getFilterData();
 
@@ -45,55 +26,31 @@ debugger;
             var product = filterData.product;
             var dataSource = filterData.dataSource
 
+
+            var dataRegionCodes = []
+            for(var i =0; i<5; i++){
+                dataRegionCodes.push(parseInt(preloadingData.post.regionCode))
+            }
+
+
             $.ajax({
                 async: false,
                 url: urlConfigurator.getExportDataServiceUrl(),
                 type: 'POST',
                 contentType: "application/json",
                 dataType: 'json',
-                data: JSON.stringify({"regionCode": preloadingData.post.regionCode})
+                data: JSON.stringify({"regionCode": dataRegionCodes})
 
             }).done(function (result) {
                 totalValues = result;
             })
 
-            console.log(totalValues)
 
             this.createFormAndExport(totalValues, season, region, product, dataSource)
-
         }
-
-/*
-        ExcelExporter.prototype.createForecastForCommodity = function (commodity, dataFiltered ,items, selectedIndex) {
-
-            var forecast;
-            var isDifferentCommodity = false;
-            var copyDataFiltered = $.extend(true, {}, dataFiltered)
-            if( commodityCodeSelected !=  commodity) {
-                copyDataFiltered.post.productCode = commodity;
-                isDifferentCommodity = true;
-            }
-
-            var isExport = false;
-
-            forecast = handlerSelection.init(copyDataFiltered,  isExport, items, selectedIndex,isDifferentCommodity);
-
-            console.log('commodity: '+commodity + '  , and forecast :')
-            console.log(forecast)
-
-
-            for (var i = 0, length = forecast.length; i < length; i++) {
-                forecast[i].unshift(commodity);
-            }
-
-            return forecast;
-        }
-
-        */
 
 
         ExcelExporter.prototype.createFormAndExport = function (totalValues, season, region, product, dataSource) {
-
 
             var payload = {};
 
@@ -114,17 +71,68 @@ debugger;
                             "region": region,
                             "product": product,
                             "datasource": dataSource
-                        }
+                        },
+                        "marketingYear": results
                     }
 
                 }
             }
 
-            fenixExporter.exportData(payload,url);
+            fenixExporter.exportData(payload,url, results);
+        }
 
 
 
+        ExcelExporter.prototype.getWdsRequest = function( season) {
 
+
+            var result;
+            var URL = "http://statistics.amis-outlook.org/wds/rest/table/json";
+            var FIRSTQUERY = "select tablename from customdataset where code ='AMIS_MARKET_TRADE_YEAR'";
+            var DS = "FENIX";
+
+            var obj = {};
+            obj.query = FIRSTQUERY;
+
+            var data = {};
+            data.datasource = DS;
+            data.json = JSON.stringify(obj);
+            $.ajax({
+                async: false,
+                type: 'POST',
+                url: URL,
+                data: data,
+                success: function (response) {
+                    obj.query =
+                        "select "+
+                        "product_code, "+
+                        "COALESCE(national_marketing_year,'-1'), "+
+                        "COALESCE(nmy_starting_year,'-1'), "+
+                        "COALESCE(nmy_finishing_year,'-1'), "+
+                        "COALESCE(international_trade_year,'-1'), "+
+                        "COALESCE(ity_starting_year,'-1'), "+
+                        "COALESCE(ity_finishing_year,'-1'), "+
+                        "COALESCE(beginning_of_harvest,'-1'), "+
+                        "COALESCE(beginning_of_harvest_starting_year,'-1'), "+
+                        "COALESCE(end_of_harvest,'-1'), "+
+                        "COALESCE(end_of_harvest_starting_year,'-1') "+
+                        " from " +  response[0] + " where region_code='"+season+"' and database='NATIONAL' order by product_code";
+                    data.json = JSON.stringify(obj);
+                    $.ajax({
+                        async: false,
+                        type: 'POST',
+                        url: URL,
+                        data: data,
+                        success: function (finalResponse) {
+                            result= finalResponse;
+                        },
+                        error: function (err, b, c) {
+                        }
+                    });
+                }
+            });
+
+            return result;
         }
 
 

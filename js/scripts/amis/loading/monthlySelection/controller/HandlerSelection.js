@@ -25,8 +25,8 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
             notPreviousYear = true;
         }
 
-        filterActual = { "region": region, "product": product, "year": currentYearFilter}
-        var filterPreviousYear = { "region": region, "product": product, "year": previousYearFilter}
+        filterActual = { "region": region, "product": product, "year": currentYearFilter, "season": preloadingData.years.currentYearLabel }
+        var filterPreviousYear = { "region": region, "product": product, "year": previousYearFilter, "season": preloadingData.years.previousYearLabel }
 
         var filterPrevPopulation = {
             "region": region,

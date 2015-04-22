@@ -29,7 +29,6 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
     }
 
     PaddyModel.prototype.createTotalValuesModel = function (itemsInvolved, utilitySupport) {
-        console.log('paddyModel: createTotalValues Model')
         var copyMap = $.extend([], true, map);
         var result = []
         supportUtility = utilitySupport;
@@ -48,8 +47,6 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
                 result[i].push(copyMap[code])
             }
         }
-        console.log('originalTotalCrospModel')
-        console.log(originalTotalCropsModel)
         originalTotalCropsModel = $.extend(true, [], result);
     }
 
@@ -75,7 +72,6 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
         var dataModel = $.extend(true, [], itemsInvolved);
         var cropsNumber = this.getCropsNumber();
         for (var j = 0; j < cropsNumber; j++) {
-            console.log('converting!!')
             for (var i = 0; i < dataModel.length; i++) {
                 var index = (j * dataModel.length ) + i;
 
@@ -169,7 +165,6 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
     }
 
     PaddyModel.prototype.setCalculatedSingleModel = function (calculatedModel) {
-        console.log('setCalucaletd model')
         calculatedSingleModel = calculatedModel;
     }
 
@@ -202,7 +197,6 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
     }
 
     PaddyModel.prototype.getAndConvertOriginalTotValues = function () {
-        console.log('getAnd convert originalTot Values')
         var model = $.extend(true, [], this.getTotalValuesModel())
         for (var i = 0; i < model.length; i++) {
             model[i].splice(6, 1)
@@ -217,7 +211,6 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
 
 
     PaddyModel.prototype.unifySingleCropsData = function (singleCropsData) {
-        console.log('unifySingleCropsDAta')
         var result = [];
         var listChecked = {}
         // check if total values need to be changed

@@ -28,18 +28,12 @@ define(['amplify'], function(){
             keyDate = date;
         }
 
-        console.log('*******************************************************')
-        console.log(keyDate);
-        console.log('*******************************************************')
-
         var checkNotes = function(data, index){
             return (typeof data[index][5] !='undefined' &&
                 data[index][5] != null &&
                 data[index][5] != ''
                )
         }
-
-        debugger;
 
         for(var i = 0, lengthMAP = ELEMENTS_MAP.length; i< lengthMAP && notFound; i++){
             for(var j= 0, lengthDATA = tableData.length; j<lengthDATA && notFound ;j++){
@@ -48,9 +42,6 @@ define(['amplify'], function(){
                 }
             }
         }
-
-        debugger;
-
 
         if(notFound){
             for(var i = 0, lengthMAP = ELEMENTS_MAP.length; i< lengthMAP && notFound; i++){
@@ -61,9 +52,6 @@ define(['amplify'], function(){
                 }
             }
         }
-
-        debugger;
-
 
         return notFound
     }

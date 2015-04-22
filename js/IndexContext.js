@@ -1,6 +1,3 @@
-/**
- * Created by fabrizio on 5/20/14.
- */
 define(["preloading/PreloadingObserver"], function( PreloadingObserver ) {
 
     var observerpreLoading;

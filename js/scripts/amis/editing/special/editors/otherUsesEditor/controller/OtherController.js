@@ -52,18 +52,14 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
 
             switch (rowNumber) {
                 case 0:
-                    console.log('case 0')
                     // Direct Editing
                     modelOther.setOriginalTotalData(rowNumber, newValue, columnValue);
                     var dataUpdated = modelOther.getTotalValuesModel()
-                    console.log('dataUpdated:')
-                    console.log(dataUpdated)
                     break;
                 case 1:
                 case 2:
                 case 3:
                     // Other Uses
-                    console.log('otherUSes case')
                     modelOther.deleteOtherUsesIfExists();
                     modelOther.setOriginalTotalData(rowNumber, newValue, columnValue)
                     var model = modelOther.getTotalValuesModel()
@@ -72,15 +68,11 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
                         this.applyFormula(1, model)
                     }
                     var dataUpdated = modelOther.getTotalValuesModel()
-                    console.log('dataUpdated:')
-                    console.log(dataUpdated)
                     break;
 
                 default :
                     // Industrial Uses
-                    console.log('Industrial Uses case')
                     modelOther.deleteIndustrialUsesIfExists();
-
                     modelOther.setOriginalTotalData(rowNumber, newValue, columnValue)
                     var model = modelOther.getTotalValuesModel()
 
@@ -92,8 +84,6 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
                         modelOther.setOriginalTotalData(rowNumber, newValue, columnValue)
                     }
                     var dataUpdated = modelOther.getTotalValuesModel()
-                    console.log('dataUpdated:')
-                    console.log(dataUpdated)
                     break;
 
             }
@@ -153,17 +143,11 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
         }
 
         OtherController.prototype.sendToObs =function(rowId){
-            console.log('othController: sendToObs '+rowId)
             editorOther.changeRow(rowId);
         }
 
         OtherController.prototype.saveTotalValues = function (formulaToApply) {
-
-            console.log('OtherController: saveTotalValues')
             var dataOriginal = modelOther.getAndConvertOriginalTotValues();
-
-            console.log('dataToSave:')
-            console.log(dataOriginal)
             this.destroyModal()
             editorsController.saveFormOtherUses(dataOriginal, dataOriginal); // this is FALSE!! true is up
         }
@@ -176,13 +160,10 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
             editorOther.destroyAll()
 
             editorOther.destroyIfExistOtherModalOtherUses();
-            debugger;
 
             var root = document.getElementsByTagName( 'html' )[0]; // '0' to assign the first (and only `HTML` tag)
 
             root.setAttribute( "class", "settingOverflow" );
-
-
         }
 
 

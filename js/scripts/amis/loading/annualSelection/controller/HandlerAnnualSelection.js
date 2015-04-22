@@ -80,8 +80,6 @@ define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoade
             seasonMap[season] = date;
         }
 
-        debugger;
-
         return forecasts;
     }
 

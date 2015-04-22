@@ -128,8 +128,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
         }
 
         ProductionEditor.prototype.saveDataTotGrid = function (dataCalculated, originalData) {
-            console.log(dataCalculated)
-            console.log(originalData)
             controllerEditors.saveFormProduction(dataCalculated, originalData);
         }
 
@@ -363,9 +361,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             }
 
             (isAreaHarvSelected)?  $('#radioBtnAreaHarv').jqxRadioButton('check'):   $('#radioBtnAreaPlanted').jqxRadioButton('check');
-
-            debugger;
-
             for(var key in checkBoxToEnable ){
                 $('#'+key).jqxCheckBox('check');
             }
@@ -455,8 +450,6 @@ define(["jquery", "formatter/DatatypesFormatter", "productionEditor/observer/Pro
             if (g && g !== null) {
                 g.remove()
             }
-
-            debugger;
 
             $('#dialogForm').modal('hide');
 

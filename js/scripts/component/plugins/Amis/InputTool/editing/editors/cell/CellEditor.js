@@ -83,7 +83,6 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
 
         // value column
 
-        debugger;
         this.appendRigthInputFormat('Value', valueVal, columnDSDVal, columnCONFVal, containerVal);
 
         // accessorColumn
@@ -522,8 +521,6 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                     numberTo = dsdColumn.domain.period.to;
                 }
 
-                debugger;
-
                 if(typeof value === 'undefined' || value ==null || isNaN(value)){
                     value = '';
                 }
@@ -692,7 +689,6 @@ define(["jquery", "formatter/DatatypesFormatter", "flagTranslator/controller/Fla
                     result = flagController.getStringFromCodes(codes);
 
                 } else {
-                    debugger;
                     result = $("#" + htmlvalue.id).val();
                     if (typeof result == 'undefined' || result == '' ) {
                         result = null

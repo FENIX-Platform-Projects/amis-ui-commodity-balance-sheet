@@ -87,7 +87,6 @@ define(['jquery'], function ($) {
 
         console.log('clean And Set data: saving Model')
         console.log(dataNew)
-        debugger;
         var result = []
         for (var i = 0; i < dataNew.length; i++) {
             // clean data

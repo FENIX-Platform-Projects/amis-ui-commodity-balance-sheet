@@ -30,8 +30,6 @@ define(['jquery'], function($){
         var areaHarvested = data[positionProduction[2]];
         var areaPlanted = data[positionProduction[37]]
 
-        debugger;
-
         if(foundAreaSelected(areaHarvested)){
             isAreaHarvSelected = true;
             if(foundCalcFlagOnRow(areaHarvested)) {

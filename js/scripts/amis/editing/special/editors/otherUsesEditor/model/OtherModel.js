@@ -75,7 +75,6 @@ define(['jquery'], function ($) {
     }
 
     OtherModel.prototype.getAndConvertOriginalTotValues = function () {
-        console.log('getAnd convert originalTot Values')
         var model = $.extend(true, [], this.getTotalValuesModel())
         for (var i = 0; i < model.length; i++) {
             model[i].splice(6, 1)

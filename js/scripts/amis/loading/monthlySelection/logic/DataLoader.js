@@ -66,8 +66,7 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             populationActual = result;
         })
 
-        debugger;
-
+        var a = {"region":46,  "product":5,  "year": 2015,  "season": "2015/16"}
 
         // Inside of population insert the date(s)
 

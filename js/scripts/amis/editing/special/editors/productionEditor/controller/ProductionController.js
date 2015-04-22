@@ -19,8 +19,6 @@ define(['jquery'], function ($) {
 
     ProductionController.prototype.updateTotGridOnEditing = function (rowNumber, newValue, formulaToApply, columnValue, isAreaHarvested) {
 
-        console.log('updateTotGrid on editing!!!')
-
         var typeofTotalValue = (isAreaHarvested) ? 'totalValues' : 'totalValuesAPlanted';
         isAreaHarvestedSelectedTot = isAreaHarvested;
 
@@ -136,7 +134,6 @@ define(['jquery'], function ($) {
     ProductionController.prototype.saveTotalValues = function () {
 
         var dataOriginal = modelProduction.getOriginalTotalCropsModelOriginalConverted();
-        debugger;
         var areaPlanted = modelProduction.getAreaPlanted();
 
         if (areaPlanted) {
@@ -172,7 +169,6 @@ define(['jquery'], function ($) {
                 }
             }
         }
-        console.log('formulaSingleToApply')
         if (formulaSingleToApply == 'init') {
             formulaSingleToApply = 'yield'
         }

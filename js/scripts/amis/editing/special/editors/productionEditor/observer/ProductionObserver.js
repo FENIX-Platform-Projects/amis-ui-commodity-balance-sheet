@@ -235,9 +235,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             // third is disabled on default
             evt.preventDefault();
             evt.stopImmediatePropagation();
-
-            debugger;
-            console.log('recalucalteButtonTotalValues')
             var counter = 0;
             counter += $("#firstCheckBoxTotVal").val() ? 1 : 0;
             counter += $("#secondCheckBoxTotVal").val() ? 1 : 0;
@@ -264,7 +261,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
 
     ProductionObserver.prototype.listenToRecalculateButtonSingleCrops = function () {
         $('#applyRulesFormulaSingle').on('click', function (evt) {
-            console.log('click')
             // third is disabled on default
             evt.preventDefault();
             evt.stopImmediatePropagation();
@@ -273,7 +269,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             counter += $("#secondCheckBoxSingleCrops").val() ? 1 : 0;
             counter += $("#thirdCheckBoxSingleCrops").val() ? 1 : 0;
             singleCropsValuesModified = true;
-            console.log(counter)
             if (counter == 2) { //OK
                 isTotalSelectionModified = false;
                 var typeOfForm = (isAreaHarvestedSelectedTot) ? 'singleCrops' : 'singleCropsAPlanted';
@@ -327,7 +322,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             event.stopImmediatePropagation();
 
             if (event.args.checked == isAreaHarvestedSelectedTot) {
-                debugger;
                 isAreaHarvestedSelectedTot = !event.args.checked;
                 controllerProduction.onChangeAreaSelected(formulaToApplyTot, isAreaHarvestedSelectedTot, true)
 
@@ -339,7 +333,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             event.stopImmediatePropagation();
 
             if (event.args.checked == isAreaHarvestedSelectedSingle) {
-                debugger;
                 isAreaHarvestedSelectedSingle = !event.args.checked;
                 controllerProduction.onChangeAreaSelected(formulaToApplySingle, isAreaHarvestedSelectedSingle, false)
 
@@ -353,8 +346,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         $("#gridTotalValues").on('cellendedit', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
-
-            console.log('cellEdit: listener Active')
 
             totalValuesModified = true;
             var columnValue = event.args.datafield;
@@ -396,19 +387,12 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                 value = parseFloat(value)
             }
 
-
             if (columnValue == 3 && (oldvalue != value)) {
                 var numberOfRow = event.args.rowindex;
                 var value2 = parseFloat(value)
-                console.log('formulaTOApply on edit Single grid:')
-                console.log(formulaToApplySingle)
-
                 controllerProduction.updateSingleCropsGridOnEditing(numberOfRow, value2, formulaToApplySingle, columnValue, isAreaHarvestedSelectedSingle)
             } else if (columnValue != 3 && (oldvalue != value)) { // if modified only flag/notes
                 var numberOfRow = event.args.rowindex;
-                console.log('formulaTOApply on edit Single grid:')
-                console.log(formulaToApplySingle)
-
                 controllerProduction.updateSingleCropsGridOnEditing(numberOfRow, value, formulaToApplySingle, columnValue, isAreaHarvestedSelectedSingle)
             }
         })

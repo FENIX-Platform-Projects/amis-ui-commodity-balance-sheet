@@ -186,7 +186,6 @@ define(["jquery", "formatter/DatatypesFormatter", 'othUsesPlugin'], function ($,
                     secondCondition = secondCondition.slice(0, -1);
                     var stringAppend = secondCondition.replace(onlyValue, function (match) {
                         var returnedValue;
-                        debugger;
                         if (!otherPlugin.checkIfNotesAreNotPresent(generalController.getAllDataFromModel(), item[2], generalController.getTableDataFromModel())) {
                             returnedValue = "&nbsp<img src='" + _IMG_URL + "' width='16' height='16'>";
                         } else {

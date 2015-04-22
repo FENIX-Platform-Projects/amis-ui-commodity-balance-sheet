@@ -55,7 +55,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         var that = this;
 
         $("#thirdCheckBoxSingleCrops").on('change', function (event) {
-            debugger;
             event.preventDefault();
             event.stopImmediatePropagation();
             controllerPaddy.showAlerts(false);
@@ -84,12 +83,9 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         $('#radioBtnPaddyTot').on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
-            debugger;
 
             if (event.args.checked == isMilledTotSelected) {
-                debugger;
                 self.setTotalValuesOnModified();
-                debugger;
                 isMilledTotSelected = !event.args.checked;
                 formulaToApplyTot = controllerPaddy.onChangeFormulaWithRadio(formulaToApplyTot)
                 controllerPaddy.onChangeKindOfRice(formulaToApplyTot, isMilledTotSelected, true)
@@ -234,8 +230,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             (event.args.checked)? that.onCheckBoxTotal(3) : that.onUncheckBoxTotal(3);
         })
         $("#fourthCheckBoxTotVal").on('change', function (event) {
-            debugger;
-
             event.preventDefault();
             event.stopImmediatePropagation();
             controllerPaddy.showAlerts(true);
@@ -365,7 +359,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             event.stopPropagation();
             event.stopImmediatePropagation();
 
-            console.log('cellEdit: listener Active')
             totalValuesModified = true;
             var columnValue = event.args.datafield;
             var oldvalue = event.args.oldvalue;
@@ -395,8 +388,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     PaddyObserver.prototype.listenToRecalculateButtonSingleCrops = function () {
         $('#applyRulesFormulaSingle').on('click', function (evt) {
-
-            console.log(formulaToApplySingle)
 
             // third is disabled on default
             evt.preventDefault();
@@ -441,8 +432,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
             singleCropsValuesModified = true;
             if (counter == 2) { //OK
-                console.log('FormualToAppply')
-                console.log(formulaToApplyTot)
                 if (formulaToApplyTot == 'init') {
                     formulaToApplyTot = 'milled'
                 }
@@ -466,7 +455,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
             event.preventDefault();
             event.stopImmediatePropagation();
-            debugger;
             var toBlock = false;
             var row = event.args.rowindex;
             var column = event.args.datafield
@@ -620,7 +608,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     PaddyObserver.prototype.listenToSaveTotalValuesButton = function () {
         $('#saveTotalValues').on('click', function (event) {
-            console.log('listenToSaveTotal values')
             event.preventDefault();
             event.stopImmediatePropagation();
 
@@ -647,7 +634,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 }else{
                     isChanged = false
                 }
-                debugger;
                 controllerPaddy.onSwitchingCropsValues(formulaToApplySingle,isChanged, isMilledTotSelected)
             } else if (newly.hash == '#totalValues' && !singleCropsValuesModified) {
                 controllerPaddy.onSwitchingSimpleTotal(formulaToApplyTot)
@@ -666,7 +652,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
 
     PaddyObserver.prototype.listenToCloseButton = function () {
         $('#closeModalTotal').on('click', function () {
-            debugger;
             controllerPaddy.destroyAll()
         })
     }

@@ -44,8 +44,6 @@ define(["jquery", "editor/cell/CellEditor", "formatter/DatatypesFormatter",
             }
         }
         // validation (TODO)
-
-        debugger;
         if (EditorValidator.init(result, configurator)) {
 
             FormEditor.destroyIfExist()

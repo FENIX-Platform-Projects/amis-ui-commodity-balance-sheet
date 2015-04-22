@@ -42,8 +42,8 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
         var mostRecentDate = dates[dates.length - 1][0]
 
-
         filterPreviousYear["date"] = mostRecentDate;
+        filterPreviousYear.season = seasonLabel
 
         $.ajax({
             async: false,
