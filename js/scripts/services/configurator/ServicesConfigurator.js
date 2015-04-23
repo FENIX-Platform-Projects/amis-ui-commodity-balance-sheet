@@ -1,7 +1,7 @@
 
 define(['jquery'], function($){
 
-    var urlConfiguration  =   './js/scripts/services/configuration/servicesTestLocal.json'
+    var urlConfiguration  =   './js/scripts/services/configuration/services.json'
 
     function ServicesConfigurator(){}
 

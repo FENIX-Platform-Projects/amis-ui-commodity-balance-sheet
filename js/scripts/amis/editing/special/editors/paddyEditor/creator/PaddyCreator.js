@@ -2,7 +2,8 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
     "text!productionEditor/view/_alertSelection.html", "jqwidgets", "select2"], function ($, Formatter, MultiFlagAdapter, HTMLPaddy, AlertSelection) {
 
     var observer, formulaToRenderTotVal, formulaToRenderSingleCrops, multiFlagAdapter, modal, callbackStyleTotGrid, callbackStyleSingleGrid,
-        that, callbackMultiFlagCreation, callbackMultiFlagInit, callbackMultiFlagGetValues, that, alertSelection, paddyEditableHandler;
+        that, callbackMultiFlagCreation, callbackMultiFlagInit, callbackMultiFlagGetValues, that, alertSelection, paddyEditableHandler,
+        isAreaHSelectedTot, isAreaHSelectedSingle;
 
     function PaddyCreator() {
 
@@ -32,7 +33,11 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
         }
     }
 
-    PaddyCreator.prototype.init = function (totalValuesModel, singleCropsModel, Observer, PaddyEditableHandler, formulaTotInit) {
+    PaddyCreator.prototype.init = function (totalValuesModel, singleCropsModel, Observer, PaddyEditableHandler, formulaTotInit, isAreaHSelected) {
+
+        isAreaHSelectedTot = isAreaHSelected;
+        isAreaHSelectedSingle = isAreaHSelected;
+
         paddyEditableHandler = PaddyEditableHandler;
 
         this.destroyIfExistOtherModal();
@@ -77,9 +82,11 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
 
 
-    PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply, changeLabel) {
+    PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply, changeLabel, isAreaHSelected) {
 
         formulaToRenderTotVal = formulaToApply
+
+        isAreaHSelectedTot = isAreaHSelected;
 
         observer.unbindEventsFromTotalValues()
 
@@ -150,13 +157,13 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
     PaddyCreator.prototype.createStyleClassGridTotal = function (row, column, value, data) {
         var result;
-        result = ( paddyEditableHandler.checkIfBlocked(formulaToRenderTotVal, row,true)) ? 'calculatedRowGrid' : 'notCalculatedRows';
+        result = ( paddyEditableHandler.checkIfBlocked(formulaToRenderTotVal,isAreaHSelectedTot, row,true)) ? 'calculatedRowGrid' : 'notCalculatedRows';
         return result;
     }
 
     PaddyCreator.prototype.createStyleClassGridSingle = function (row, column, value, data) {
         var result;
-        result = ( paddyEditableHandler.checkIfBlocked(formulaToRenderSingleCrops, row,false)) ? 'calculatedRowGrid' : 'notCalculatedRows';
+        result = ( paddyEditableHandler.checkIfBlocked(formulaToRenderSingleCrops,isAreaHSelectedTot, row,false)) ? 'calculatedRowGrid' : 'notCalculatedRows';
         return result;
 
     }
@@ -395,8 +402,14 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
         }
 
 
-        return isMilledSelected;
-    }
+        (isAreaHSelectedTot)?
+                $('#radioBtnAreaHarvestedTot').jqxRadioButton('check'):
+                $('#radioBtnAreaPlantedTot').jqxRadioButton('check');
+
+        return isMilledSelected
+
+    };
+
 
 
     PaddyCreator.prototype.destroyIfExistOtherModal = function () {

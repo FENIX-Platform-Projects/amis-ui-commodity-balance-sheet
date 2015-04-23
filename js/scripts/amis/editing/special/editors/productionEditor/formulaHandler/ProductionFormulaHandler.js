@@ -3,6 +3,7 @@ define(['jquery'], function($){
     function ProductionFormulaHandler(){}
 
 
+
     ProductionFormulaHandler.prototype.getFormulaFromData = function(data){
 
 

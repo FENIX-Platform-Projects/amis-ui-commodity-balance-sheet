@@ -1,6 +1,4 @@
-/**
- * Created by fabrizio on 9/15/14.
- */
+
 define(["jquery"], function ($) {
 
 
@@ -20,7 +18,7 @@ define(["jquery"], function ($) {
 
     }
 
-    // 1: Production; 2: OtherUses; 3: Paddy
+    // 1: Production; 2: Paddy
     // Get one or mor formulas
     FormulaConfigurator.prototype.getInitFormula = function (numberOfFormUsed, type) {
 
@@ -41,6 +39,7 @@ define(["jquery"], function ($) {
                 break;
 
             case 2:
+                debugger;
                 var typeOfForm = config.formulaPlugins[numberOfFormUsed - 1];
                 console.log(typeOfForm)
                 if (type == "totalValues") {
@@ -54,12 +53,7 @@ define(["jquery"], function ($) {
                     result = typeOfForm.singleCropsAPlanted.init[0]
                 }
                 break;
-               /* if (type == "totalValues") {
-                    result = typeOfForm.totalValues.init
-                } else if (type == "singleCrops") {
-                    result = typeOfForm.singleCrops.init
-                }
-                break;*/
+
         }
         return result;
     }
