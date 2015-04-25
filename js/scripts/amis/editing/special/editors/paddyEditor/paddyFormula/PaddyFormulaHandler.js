@@ -32,11 +32,28 @@ define(['jquery'],function($){
     }
 
 
+    PaddyFormulaHandler.prototype.checkIfDisabled = function(row, isAreaHSelected) {
+
+
+        console.log('AREA H')
+        console.log(isAreaHSelected)
+
+        var conditionDisable =
+            ((row === this.o.positions.AH && !isAreaHSelected) || ((row == this.o.positions.AP && isAreaHSelected)) ||
+            ((row === this.o.positions.AH + (7 * 1) && !isAreaHSelected) || ((row == this.o.positions.AP + (7 * 1) && isAreaHSelected))) ||
+            ((row === this.o.positions.AH + (7 * 2) && !isAreaHSelected) || ((row == this.o.positions.AP + (7 * 2) && isAreaHSelected))));
+        return conditionDisable
+    }
+
+
     PaddyFormulaHandler.prototype.checkIfBlocked = function(formulaToApply,isAreaHSelected, row, isTotalValueSection){
 
 
         var POSITIONS = this.o.positions;
         var toBlock = false;
+
+
+
 
         var areaPosition = (isAreaHSelected)? POSITIONS.AH : POSITIONS.AP;
         if(isTotalValueSection) {

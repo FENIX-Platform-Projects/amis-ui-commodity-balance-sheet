@@ -82,6 +82,7 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
 
 
+
     PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply, changeLabel, isAreaHSelected) {
 
         formulaToRenderTotVal = formulaToApply
@@ -157,7 +158,12 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
     PaddyCreator.prototype.createStyleClassGridTotal = function (row, column, value, data) {
         var result;
-        result = ( paddyEditableHandler.checkIfBlocked(formulaToRenderTotVal,isAreaHSelectedTot, row,true)) ? 'calculatedRowGrid' : 'notCalculatedRows';
+        var conditionBlock = paddyEditableHandler.checkIfBlocked(formulaToRenderTotVal,isAreaHSelectedTot, row,true);
+        if(conditionBlock) {
+            result = 'calculatedRowGrid'
+        }else{
+            result = (paddyEditableHandler.checkIfDisabled(row, isAreaHSelectedTot))? 'areaDisabled':'notCalculatedRows';
+        }
         return result;
     }
 

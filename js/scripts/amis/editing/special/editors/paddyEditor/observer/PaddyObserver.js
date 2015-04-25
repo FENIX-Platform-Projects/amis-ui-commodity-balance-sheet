@@ -484,8 +484,12 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             event.stopImmediatePropagation();
             var toBlock = false;
             var row = event.args.rowindex;
+            console.log(row);
+
+
+            //formulaToApply,isAreaHSelected, row, isTotalValueSection
             var column = event.args.datafield
-            var toBlock =  paddyEditableHandler.checkIfBlocked(formulaToApplyTot, row,true);
+            var toBlock =  paddyEditableHandler.checkIfBlocked(formulaToApplyTot,isAreaHSelectedTot, row,true);
 
 
             if (column == 6) {

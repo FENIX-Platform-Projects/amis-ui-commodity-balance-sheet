@@ -308,8 +308,13 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
     PaddyController.prototype.onChangeKindOfRice = function (formulaToApply, isMilledSelected, isTotalSection) {
 
-        (isTotalSection) ? this.updateTotGridOnFormulaChanges(formulaToApply, "normal") : this.updateSingleCropsGridOnFormulaChanges(formulaToApply, "normal");
+        if(isTotalSection){
+            this.updateTotGridOnFormulaChanges(formulaToApply, "normal")
+        }else{
+            this.updateSingleCropsGridOnFormulaChanges(formulaToApply, "normal")
+        }
         editorPaddy.changeLabelToElements(isMilledSelected, isTotalSection)
+
 
     }
 
