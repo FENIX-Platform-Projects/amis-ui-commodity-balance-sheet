@@ -34,10 +34,6 @@ define(['jquery'],function($){
 
     PaddyFormulaHandler.prototype.checkIfDisabled = function(row, isAreaHSelected) {
 
-
-        console.log('AREA H')
-        console.log(isAreaHSelected)
-
         var conditionDisable =
             ((row === this.o.positions.AH && !isAreaHSelected) || ((row == this.o.positions.AP && isAreaHSelected)) ||
             ((row === this.o.positions.AH + (7 * 1) && !isAreaHSelected) || ((row == this.o.positions.AP + (7 * 1) && isAreaHSelected))) ||
@@ -272,6 +268,10 @@ define(['jquery'],function($){
                         result = 'areaHarvestedMilled'
                         break;
 
+                    case foundCalcFlagOnRow(data[positionDataPaddy[this.o.codes.APL_CODE]]):
+                        result = 'areaHarvestedMilled'
+                        break;
+
 
                     case foundCalcFlagOnRow(productionMilled):
                         result = 'productionMilled'
@@ -300,6 +300,10 @@ define(['jquery'],function($){
                 switch (true){
 
                     case foundCalcFlagOnRow(data[positionDataPaddy[this.o.codes.AH_CODE]]):
+                        result = 'areaHarvestedPaddy'
+                        break;
+
+                    case foundCalcFlagOnRow(data[positionDataPaddy[this.o.codes.APL_CODE]]):
                         result = 'areaHarvestedPaddy'
                         break;
 
@@ -334,7 +338,13 @@ define(['jquery'],function($){
             'formulaInit':result,
             'isAreaHarvSelected':isAreaHarvSelected
         }
+    }
 
+
+    PaddyFormulaHandler.prototype.getElementPositionOnGrid = function (isAreaHarvestedSelected) {
+
+        var result = (isAreaHarvestedSelected)? this.o.positions.AP: this.o.positions.AH;
+        return result;
 
     }
 

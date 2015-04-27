@@ -20,7 +20,8 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
     var positionDB = {
         "code":0,
         "value":3,
-        "flag":4
+        "flag":4,
+        "notes":5
     }
 
     function PaddyModel() {
@@ -239,6 +240,41 @@ define(['jquery', "urlConfigurator"], function ($, ServicesUrl) {
                 result = true;
         }
         return result;
+    }
+
+    PaddyModel.prototype.eraseOldValues = function (rowNumber, isTotalValue) {
+        if (isTotalValue) {
+
+            this.resetOldValues(originalTotalCropsModel,rowNumber,positionDB.value, null )
+            this.resetOldValues(originalTotalCropsModel,rowNumber,positionDB.flag, null )
+            this.resetOldValues(originalTotalCropsModel,rowNumber,positionDB.notes, null )
+        }
+        else {
+
+            for (var i = 1; i < 3; i++) {
+                var rowNumber = rowNumber +(i*7)
+
+                this.resetOldValues(originalSingleCropsModel,rowNumber,positionDB.value, null )
+                this.resetOldValues(originalSingleCropsModel,rowNumber,positionDB.flag,null )
+                this.resetOldValues(originalSingleCropsModel,rowNumber,positionDB.notes, null )
+            }
+        }
+
+    }
+
+
+    PaddyModel.prototype.resetOldValues = function(model, rowNumber, columnNumber, newValue) {
+        if (typeof model[rowNumber] !== 'undefined') {
+
+            if(columnNumber=== positionDB.value) {
+                if (newValue !== 'undefined' && newValue != null && !isNaN(newValue)) {
+                    newValue = parseFloat(newValue)
+                } else if (isNaN(newValue) || newValue == '' || newValue == "") {
+                    newValue = null;
+                }
+            }
+            model[rowNumber][columnNumber] = newValue;
+        }
     }
 
     return PaddyModel;

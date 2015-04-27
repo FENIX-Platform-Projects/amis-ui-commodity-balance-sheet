@@ -52,8 +52,10 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
         var singleModel = $.extend(true, [], singleCropsModel);
 
 
-        $("#specialForm").modal({ backdrop: 'static',
-            keyboard: false});
+        $("#specialForm").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
 
         $('#singleCrops').click(function (e) {
             e.preventDefault()
@@ -62,51 +64,40 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
         var isMilledSelected = this.initAllCheckBoxesWithFormula(formulaToRenderTotVal)
 
-
         $('#totalValues').click(function (e) {
             e.preventDefault()
             $(this).tab('show')
         })
-
 
         this.createAndDrawGrid(this.setDataForGrid(totalModel, true), "gridTotalValues");
         this.createAndDrawGrid(this.setDataForGrid(singleModel, false), "gridSingleCrops");
 
         this.changeLabelToElements(isMilledSelected, true);
         this.changeLabelToElements(true, false);
-
         observer.applyListeners()
-
     }
-
-
-
 
 
     PaddyCreator.prototype.updateTotGrid = function (calculatedModel, formulaToApply, changeLabel, isAreaHSelected) {
 
         formulaToRenderTotVal = formulaToApply
-
         isAreaHSelectedTot = isAreaHSelected;
 
         observer.unbindEventsFromTotalValues()
-
-        if(changeLabel){
+        if (changeLabel) {
             var isMilledSelected = this.changeRadioBtnAndCheckBoxTotValue(formulaToRenderTotVal)
             this.createAndDrawGrid(this.setDataForGrid(calculatedModel, true), "gridTotalValues");
             this.changeLabelToElements(isMilledSelected, true);
-        }else {
+        } else {
             this.createAndDrawGrid(this.setDataForGrid(calculatedModel, true), "gridTotalValues");
         }
 
         observer.reBindEventsFromTotalValues()
-
     }
 
     PaddyCreator.prototype.updateSingleGrid = function (calculatedModel, formulaToApply) {
 
         formulaToRenderSingleCrops = formulaToApply;
-
         this.createAndDrawGrid(this.setDataForGrid(calculatedModel, false), "gridSingleCrops");
     }
 
@@ -140,16 +131,12 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
         $('#fourthCheckBoxSingleCrops').jqxCheckBox('destroy');
         $('#fifthCheckBoxSingleCrops').jqxCheckBox('destroy');
 
-
         var f = document.getElementById("dialogForm");
-
         if (f && f !== null) {
             f.remove()
         }
 
-
         var f = document.getElementById("specialForm");
-
         if (f && f !== null) {
             f.remove()
         }
@@ -158,27 +145,25 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
     PaddyCreator.prototype.createStyleClassGridTotal = function (row, column, value, data) {
         var result;
-        var conditionBlock = paddyEditableHandler.checkIfBlocked(formulaToRenderTotVal,isAreaHSelectedTot, row,true);
-        if(conditionBlock) {
+        var conditionBlock = paddyEditableHandler.checkIfBlocked(formulaToRenderTotVal, isAreaHSelectedTot, row, true);
+        this.changeLabelToAreaPaddy(isAreaHSelectedTot, 'secondCheckBoxTotValLabelPaddy')
+        if (conditionBlock) {
             result = 'calculatedRowGrid'
-        }else{
-            result = (paddyEditableHandler.checkIfDisabled(row, isAreaHSelectedTot))? 'areaDisabled':'notCalculatedRows';
+        } else {
+            result = (paddyEditableHandler.checkIfDisabled(row, isAreaHSelectedTot)) ? 'areaDisabled' : 'notCalculatedRows';
         }
         return result;
     }
 
     PaddyCreator.prototype.createStyleClassGridSingle = function (row, column, value, data) {
         var result;
-        result = ( paddyEditableHandler.checkIfBlocked(formulaToRenderSingleCrops,isAreaHSelectedTot, row,false)) ? 'calculatedRowGrid' : 'notCalculatedRows';
+        result = ( paddyEditableHandler.checkIfBlocked(formulaToRenderSingleCrops, isAreaHSelectedTot, row, false)) ? 'calculatedRowGrid' : 'notCalculatedRows';
         return result;
-
     }
 
-
-
     PaddyCreator.prototype.showAlert = function (container) {
-        if (!document.getElementById(''+container).firstChild) {
-            $("#"+container).append(alertSelection);
+        if (!document.getElementById('' + container).firstChild) {
+            $("#" + container).append(alertSelection);
         }
     }
 
@@ -210,49 +195,51 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
             autoheight: true,
             columns: columns
         });
-
     }
-
 
     PaddyCreator.prototype.createColumnsForGrid = function (idContainer) {
 
         var columns = (idContainer == "gridTotalValues") ?
             [
-                { text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid  },
-                { text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid },
-                { text: 'Flags', datafield: 4, cellclassname: callbackStyleTotGrid,
-                    createeditor: callbackMultiFlagCreation, initeditor: callbackMultiFlagInit, geteditorvalue: callbackMultiFlagGetValues, heigth: 250 },
-                { text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid }
+                {text: 'Element', datafield: 6, cellclassname: callbackStyleTotGrid},
+                {text: 'Value', datafield: 3, cellclassname: callbackStyleTotGrid},
+                {
+                    text: 'Flags',
+                    datafield: 4,
+                    cellclassname: callbackStyleTotGrid,
+                    createeditor: callbackMultiFlagCreation,
+                    initeditor: callbackMultiFlagInit,
+                    geteditorvalue: callbackMultiFlagGetValues,
+                    heigth: 250
+                },
+                {text: 'Notes', datafield: 5, cellclassname: callbackStyleTotGrid}
             ] :
             [
-                { text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid },
-                { text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid },
-                { text: 'Value', datafield: 3, cellclassname: callbackStyleSingleGrid  },
-                { text: 'Flag', datafield: 4, cellclassname: callbackStyleSingleGrid  }
+                {text: 'Element', datafield: 6, cellclassname: callbackStyleSingleGrid},
+                {text: 'Crop', datafield: 7, cellclassname: callbackStyleSingleGrid},
+                {text: 'Value', datafield: 3, cellclassname: callbackStyleSingleGrid},
+                {text: 'Flag', datafield: 4, cellclassname: callbackStyleSingleGrid}
             ]
-
         return columns;
     }
 
 
     PaddyCreator.prototype.setDataForGrid = function (data, isTotalModel) {
 
-
         var dataField = (isTotalModel) ?
             [
-                { name: 6, type: 'string' },
-                { name: 3, type: 'float' },
-                { name: 4, type: 'string'},
+                {name: 6, type: 'string'},
+                {name: 3, type: 'float'},
+                {name: 4, type: 'string'},
                 {name: 5, type: 'string'}
             ] :
             [
-                { name: 6, type: 'string'},
-                { name: 7, type: 'string'},
-                { name: 3, type: 'float' },
-                { name: 4, type: 'string'},
-                { name: 5, type: 'string'}
+                {name: 6, type: 'string'},
+                {name: 7, type: 'string'},
+                {name: 3, type: 'float'},
+                {name: 4, type: 'string'},
+                {name: 5, type: 'string'}
             ]
-
 
         var source = {
             datatype: "array",
@@ -260,81 +247,96 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
             id: 'grid' + isTotalModel,
             localdata: data
         };
-
-
         return new $.jqx.dataAdapter(source);
     }
 
 
     PaddyCreator.prototype.initAllCheckBoxes = function () {
 
-        $('#radioBtnMilledTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy", checked: true});
-        $('#radioBtnPaddyTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
+        $('#radioBtnMilledTot').jqxRadioButton({width: 120, height: 25, groupName: "totValuePaddy", checked: true});
+        $('#radioBtnPaddyTot').jqxRadioButton({width: 120, height: 25, groupName: "totValuePaddy"});
 
-        $('#radioBtnAreaHarvestedTot').jqxRadioButton({ width: 120, height: 25, groupName: "areaTot", checked: true});
-        $('#radioBtnAreaPlantedTot').jqxRadioButton({ width: 120, height: 25, groupName: "areaTot"});
-
-
-        $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
-        $('#fourthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, checked: true });
-        $('#fifthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25, disabled: true });
-
-        $('#radioBtnMilledSingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25, checked: true});
-        $('#radioBtnPaddySingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25});
-
-        $('#radioBtnAreaHarvestedSingle').jqxRadioButton({ width: 120, height: 25, groupName: "areaSingle", checked: true});
-        $('#radioBtnAreaPlantedSingle').jqxRadioButton({ width: 120, height: 25, groupName: "areaSingle"});
+        $('#radioBtnAreaHarvestedTot').jqxRadioButton({width: 120, height: 25, groupName: "areaTot", checked: true});
+        $('#radioBtnAreaPlantedTot').jqxRadioButton({width: 120, height: 25, groupName: "areaTot"});
 
 
-        $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
-        $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
-        $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
+        $('#thirdCheckBoxTotVal').jqxCheckBox({width: 120, height: 25, checked: true});
+        $('#fourthCheckBoxTotVal').jqxCheckBox({width: 120, height: 25, checked: true});
+        $('#fifthCheckBoxTotVal').jqxCheckBox({width: 120, height: 25, disabled: true});
+
+        $('#radioBtnMilledSingle').jqxRadioButton({
+            width: 120,
+            groupName: "singleCropPaddy",
+            height: 25,
+            checked: true
+        });
+        $('#radioBtnPaddySingle').jqxRadioButton({width: 120, groupName: "singleCropPaddy", height: 25});
+
+        $('#radioBtnAreaHarvestedSingle').jqxRadioButton({
+            width: 120,
+            height: 25,
+            groupName: "areaSingle",
+            checked: true
+        });
+        $('#radioBtnAreaPlantedSingle').jqxRadioButton({width: 120, height: 25, groupName: "areaSingle"});
+
+
+        $('#thirdCheckBoxSingleCrops').jqxCheckBox({width: 120, height: 25, checked: true});
+        $('#fourthCheckBoxSingleCrops').jqxCheckBox({width: 120, height: 25, checked: true});
+        $('#fifthCheckBoxSingleCrops').jqxCheckBox({width: 120, height: 25, disabled: true});
     }
 
     PaddyCreator.prototype.initAllCheckBoxesWithFormula = function (formula) {
 
-        $('#radioBtnMilledTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
-        $('#radioBtnPaddyTot').jqxRadioButton({ width: 120, height: 25, groupName: "totValuePaddy"});
+        $('#radioBtnMilledTot').jqxRadioButton({width: 120, height: 25, groupName: "totValuePaddy"});
+        $('#radioBtnPaddyTot').jqxRadioButton({width: 120, height: 25, groupName: "totValuePaddy"});
 
-        $('#radioBtnAreaHarvestedTot').jqxRadioButton({ width: 120, height: 25, groupName: "areaTot"});
-        $('#radioBtnAreaPlantedTot').jqxRadioButton({ width: 120, height: 25, groupName: "areaTot"});
+        $('#radioBtnAreaHarvestedTot').jqxRadioButton({width: 120, height: 25, groupName: "areaTot"});
+        $('#radioBtnAreaPlantedTot').jqxRadioButton({width: 120, height: 25, groupName: "areaTot"});
 
-        $('#thirdCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
-        $('#fourthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
-        $('#fifthCheckBoxTotVal').jqxCheckBox({ width: 120, height: 25 });
+        $('#thirdCheckBoxTotVal').jqxCheckBox({width: 120, height: 25});
+        $('#fourthCheckBoxTotVal').jqxCheckBox({width: 120, height: 25});
+        $('#fifthCheckBoxTotVal').jqxCheckBox({width: 120, height: 25});
 
-        $('#radioBtnMilledSingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25, checked: true});
-        $('#radioBtnPaddySingle').jqxRadioButton({ width: 120, groupName: "singleCropPaddy", height: 25});
+        $('#radioBtnMilledSingle').jqxRadioButton({
+            width: 120,
+            groupName: "singleCropPaddy",
+            height: 25,
+            checked: true
+        });
+        $('#radioBtnPaddySingle').jqxRadioButton({width: 120, groupName: "singleCropPaddy", height: 25});
 
-        $('#radioBtnAreaHarvestedSingle').jqxRadioButton({ width: 120, height: 25, groupName: "areaSingle", checked: true});
-        $('#radioBtnAreaPlantedSingle').jqxRadioButton({ width: 120, height: 25, groupName: "areaSingle"});
+        $('#radioBtnAreaHarvestedSingle').jqxRadioButton({
+            width: 120,
+            height: 25,
+            groupName: "areaSingle",
+            checked: true
+        });
+        $('#radioBtnAreaPlantedSingle').jqxRadioButton({width: 120, height: 25, groupName: "areaSingle"});
 
 
-        $('#thirdCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
-        $('#fourthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, checked: true });
-        $('#fifthCheckBoxSingleCrops').jqxCheckBox({ width: 120, height: 25, disabled: true });
+        $('#thirdCheckBoxSingleCrops').jqxCheckBox({width: 120, height: 25, checked: true});
+        $('#fourthCheckBoxSingleCrops').jqxCheckBox({width: 120, height: 25, checked: true});
+        $('#fifthCheckBoxSingleCrops').jqxCheckBox({width: 120, height: 25, disabled: true});
 
         return this.changeRadioBtnAndCheckBoxTotValue(formula)
-
     }
 
-    PaddyCreator.prototype.changeRadioBtnAndCheckBoxTotValue = function(formula){
+    PaddyCreator.prototype.changeRadioBtnAndCheckBoxTotValue = function (formula) {
         var isMilledSelected;
 
         var checkBoxToEnable = {}
         var radioBtnToEnable = {}
         var checkBoxToDisable = {}
 
-
-        switch (formula){
+        switch (formula) {
             case 'init':
 
                 radioBtnToEnable['radioBtnMilledTot'] = true
                 checkBoxToEnable['thirdCheckBoxTotVal'] = true
                 checkBoxToEnable['fourthCheckBoxTotVal'] = true
                 checkBoxToDisable['fifthCheckBoxTotVal'] = true
-                isMilledSelected =true;
-
+                isMilledSelected = true;
                 break;
 
             case 'areaHarvestedMilled':
@@ -343,9 +345,7 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
                 checkBoxToEnable['thirdCheckBoxTotVal'] = true
                 checkBoxToEnable['fifthCheckBoxTotVal'] = true
                 checkBoxToDisable['fourthCheckBoxTotVal'] = true
-                isMilledSelected =true;
-
-
+                isMilledSelected = true;
                 break;
 
             case 'productionMilled':
@@ -354,9 +354,7 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
                 checkBoxToEnable['fourthCheckBoxTotVal'] = true
                 checkBoxToEnable['fifthCheckBoxTotVal'] = true
                 checkBoxToDisable['thirdCheckBoxTotVal'] = true
-                isMilledSelected =true;
-
-
+                isMilledSelected = true;
                 break;
 
             case 'yieldPaddy':
@@ -365,9 +363,7 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
                 checkBoxToEnable['thirdCheckBoxTotVal'] = true
                 checkBoxToEnable['fourthCheckBoxTotVal'] = true
                 checkBoxToDisable['fifthCheckBoxTotVal'] = true
-                isMilledSelected =false;
-
-
+                isMilledSelected = false;
                 break;
 
             case 'areaHarvestedPaddy':
@@ -376,10 +372,7 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
                 checkBoxToEnable['thirdCheckBoxTotVal'] = true
                 checkBoxToEnable['fifthCheckBoxTotVal'] = true
                 checkBoxToDisable['fourthCheckBoxTotVal'] = true
-                isMilledSelected =false;
-
-
-
+                isMilledSelected = false;
                 break;
 
             case 'productionPaddy':
@@ -388,34 +381,37 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
                 checkBoxToEnable['fourthCheckBoxTotVal'] = true
                 checkBoxToEnable['fifthCheckBoxTotVal'] = true
                 checkBoxToDisable['thirdCheckBoxTotVal'] = true
-                isMilledSelected =false;
-
-
+                isMilledSelected = false;
                 break;
-
         }
 
-        for(var key in checkBoxToEnable ){
-            $('#'+key).jqxCheckBox('check');
+        for (var key in checkBoxToEnable) {
+            $('#' + key).jqxCheckBox('check');
         }
 
-        for(var key in radioBtnToEnable ){
-            $('#'+key).jqxRadioButton('check');
+        for (var key in radioBtnToEnable) {
+            $('#' + key).jqxRadioButton('check');
         }
 
-        for(var key in checkBoxToDisable ){
-            $('#'+key).jqxCheckBox('disable');
+        for (var key in checkBoxToDisable) {
+            $('#' + key).jqxCheckBox('disable');
         }
 
+        (isAreaHSelectedTot) ?
+            $('#radioBtnAreaHarvestedTot').jqxRadioButton('check') :
+            $('#radioBtnAreaPlantedTot').jqxRadioButton('check');
 
-        (isAreaHSelectedTot)?
-                $('#radioBtnAreaHarvestedTot').jqxRadioButton('check'):
-                $('#radioBtnAreaPlantedTot').jqxRadioButton('check');
+        // change Label to area
+        this.changeLabelToAreaPaddy(isAreaHSelectedTot, 'secondCheckBoxTotValLabelPaddy')
 
         return isMilledSelected
-
     };
 
+
+    PaddyCreator.prototype.changeLabelToAreaPaddy = function (isAreaH, container_id) {
+        var value = (isAreaH) ? 'Area Harvested' : 'Area Planted';
+        $('#' + container_id).html(value);
+    }
 
 
     PaddyCreator.prototype.destroyIfExistOtherModal = function () {

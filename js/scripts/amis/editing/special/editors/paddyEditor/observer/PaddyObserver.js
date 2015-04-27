@@ -110,11 +110,11 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             if (event.args.checked == isAreaHSelectedTot) {
                 console.log('after')
 
-                debugger;
-
                 self.setTotalValuesOnModified();
                 isAreaHSelectedTot = !event.args.checked;
-                controllerPaddy.onChangeKindOfArea(true, isAreaHSelectedTot)
+
+                console.log(isAreaHSelectedTot)
+                formulaToApplyTot = controllerPaddy.onChangeKindOfArea(true, isAreaHSelectedTot, formulaToApplyTot)
                 controllerPaddy.onChangeKindOfRice(formulaToApplyTot, isMilledTotSelected, true)
 
             }

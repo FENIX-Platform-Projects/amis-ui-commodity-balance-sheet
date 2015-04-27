@@ -39,7 +39,6 @@ define(["jquery"], function ($) {
                 break;
 
             case 2:
-                debugger;
                 var typeOfForm = config.formulaPlugins[numberOfFormUsed - 1];
                 console.log(typeOfForm)
                 if (type == "totalValues") {

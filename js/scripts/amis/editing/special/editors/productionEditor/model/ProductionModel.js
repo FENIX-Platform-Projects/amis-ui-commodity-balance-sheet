@@ -191,7 +191,6 @@ define(["jquery", "urlConfigurator"], function ($, ServicesURL) {
     }
 
     ProductionModel.prototype.setOriginalCropsData = function (newValue, rowNumber, columnValue) {
-        ;
         if (typeof originalSingleCropsModel[rowNumber] !== 'undefined') {
             originalSingleCropsModel[rowNumber][columnValue] = newValue;
         }
