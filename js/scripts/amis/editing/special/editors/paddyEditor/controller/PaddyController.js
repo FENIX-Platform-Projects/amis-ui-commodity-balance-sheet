@@ -167,7 +167,7 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
         var modelCalculated = $.extend(true, [], newCalculatedData);
         modelPaddy.setCalculatedSingleModel(modelCalculated)
-        editorPaddy.updateSingleGrid(modelCalculated, formulaToApply);
+        editorPaddy.updateSingleGrid(modelCalculated, formulaToApply, isAreaHSelectedSingle);
     }
 
     PaddyController.prototype.updateTotGridOnFormulaChanges = function (formulaToApply, typeOfEditing, haveLabelsToBeChanged) {
@@ -191,9 +191,10 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         } else {
             var calculatedModel = formulaHandler.createFormula(modelSingleCrops, formulaToUpdate)
         }
+        debugger;
         var modelCalculated = $.extend(true, [], calculatedModel);
         modelPaddy.setCalculatedSingleModel(modelCalculated)
-        editorPaddy.updateSingleGrid(calculatedModel, formulaToApply);
+        editorPaddy.updateSingleGrid(calculatedModel, formulaToApply, isAreaHSelectedSingle);
 
     }
 
@@ -229,7 +230,12 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         editorsController.saveFormRiceProduction(dataCalculated, dataOriginal); // this is FALSE!! true is up
     }
 
-    PaddyController.prototype.onSwitchingCropsValues = function (formulaTotToApply, isElementChanged, isMilledTotSelected) {
+    PaddyController.prototype.onSwitchingCropsValues = function (formulaTotToApply, isElementChanged, isMilledTotSelected, isAreaHarvInherit) {
+
+        if(isAreaHarvInherit!= isAreaHSelectedTot) {
+
+        }
+        isAreaHSelectedTot = isAreaHarvInherit;
         var originalSingleCropsModel = modelPaddy.getSingleCropsModel()
         var dataSingleCrops = $.extend(true, [], originalSingleCropsModel)
 

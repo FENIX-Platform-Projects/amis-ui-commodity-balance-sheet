@@ -26,10 +26,7 @@ define(['jquery'],function($){
         }
     }
 
-    function PaddyFormulaHandler(){
-
-        this.o = o;
-    }
+    function PaddyFormulaHandler(){ this.o = o; }
 
 
     PaddyFormulaHandler.prototype.checkIfDisabled = function(row, isAreaHSelected) {
@@ -44,12 +41,8 @@ define(['jquery'],function($){
 
     PaddyFormulaHandler.prototype.checkIfBlocked = function(formulaToApply,isAreaHSelected, row, isTotalValueSection){
 
-
         var POSITIONS = this.o.positions;
-        var toBlock = false;
-
-
-
+        var toBlock = false
 
         var areaPosition = (isAreaHSelected)? POSITIONS.AH : POSITIONS.AP;
         if(isTotalValueSection) {
@@ -136,7 +129,8 @@ define(['jquery'],function($){
                     break;
             }
 
-        }else{
+        }
+        else{
 
             switch (formulaToApply) {
 
@@ -221,11 +215,13 @@ define(['jquery'],function($){
                     }
                     break;
             }
-
         }
 
-        return toBlock;
+/*
+        toBlock = (row == areaPosition);
+*/
 
+        return toBlock;
     }
 
 
@@ -242,16 +238,13 @@ define(['jquery'],function($){
         for(var i=0; i<data.length; i++)
             positionDataPaddy[data[i][indexCode]] = i;
 
-
         var foundAreaSelected = function(row){
             return (typeof row[indexValue] !== 'undefined' && row[indexValue] !=null && row[indexValue] !='')
         }
 
-
         var foundCalcFlagOnRow = function(row){
             return (typeof row[indexFlags] !== 'undefined' &&row[indexFlags] !=null && row[indexFlags].split(',')[0] == 'C')
         }
-
 
         var productionPaddy = data[positionDataPaddy[this.o.codes.PRODUCTION_PADDY_CODE]];
         var productionMilled = data[positionDataPaddy[this.o.codes.PRODUCTION_CODE]];
@@ -330,9 +323,11 @@ define(['jquery'],function($){
             }
         }
 
-        else{
+
+        else {
             result = 'init'
         }
+
 
         return{
             'formulaInit':result,
@@ -345,8 +340,10 @@ define(['jquery'],function($){
 
         var result = (isAreaHarvestedSelected)? this.o.positions.AP: this.o.positions.AH;
         return result;
-
     }
+
+
+
 
 
     return PaddyFormulaHandler;

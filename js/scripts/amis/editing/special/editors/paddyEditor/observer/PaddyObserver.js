@@ -120,6 +120,29 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             }
         })
 
+        $('#radioBtnAreaPlantedSingle').on('change', function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            console.log('befr')
+            console.log(isAreaHSelectedSingle)
+
+            if (event.args.checked == isAreaHSelectedSingle) {
+                console.log('after')
+
+                self.setSingleCropsOnModified();
+                isAreaHSelectedSingle = !event.args.checked;
+
+                console.log(isAreaHSelectedSingle)
+                //(isTotalSection, isAreaHSelected, formulaToApply)
+                formulaToApplySingle = controllerPaddy.onChangeKindOfArea(false, isAreaHSelectedSingle, formulaToApplySingle)
+                console.log('formulaTOApply')
+                console.log(formulaToApplySingle)
+                //(formulaToApply, isMilledSelected, isTotalSection)
+                controllerPaddy.onChangeKindOfRice(formulaToApplySingle, isMilledSingleSelected, false)
+
+            }
+        })
+
         $('#radioBtnPaddySingle').on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
@@ -378,40 +401,7 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         }
     }
 
-    PaddyObserver.prototype.listenToEditCellTotGrid = function () {
 
-        $("#gridTotalValues").on('cellendedit', function (event) {
-
-            event.preventDefault();
-            event.stopPropagation();
-            event.stopImmediatePropagation();
-
-            totalValuesModified = true;
-            var columnValue = event.args.datafield;
-            var oldvalue = event.args.oldvalue;
-            var value = event.args.value;
-            if (checkAll(oldvalue) && columnValue == 3) {
-                oldvalue = parseFloat(oldvalue)
-            }
-            if (checkAll(value) && columnValue == 3) {
-                value = parseFloat(value)
-            }
-
-            if (columnValue == 3 && (oldvalue != value)) {
-                var numberOfRow = event.args.rowindex;
-                var value2 = parseFloat(value)
-                if (formulaToApplyTot == 'init') {
-                    formulaToApplyTot = 'milled'
-                }
-                var specialEditing = 'normal'
-
-                controllerPaddy.updateTotGridOnEditing(numberOfRow, value2, formulaToApplyTot, columnValue, specialEditing)
-            } else if (columnValue != 3 && (oldvalue != value)) {
-                var numberOfRow = event.args.rowindex;
-                controllerPaddy.updateTotGridOnEditing(numberOfRow, value, formulaToApplyTot, columnValue, 'normal')
-            }
-        })
-    }
 
     PaddyObserver.prototype.listenToRecalculateButtonSingleCrops = function () {
         $('#applyRulesFormulaSingle').on('click', function (evt) {
@@ -486,11 +476,19 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             var row = event.args.rowindex;
             console.log(row);
 
+            debugger;
+
 
             //formulaToApply,isAreaHSelected, row, isTotalValueSection
             var column = event.args.datafield
             var toBlock =  paddyEditableHandler.checkIfBlocked(formulaToApplyTot,isAreaHSelectedTot, row,true);
 
+            if(!toBlock){
+                toBlock = paddyEditableHandler.checkIfDisabled(row,isAreaHSelectedTot);
+            }
+
+            console.log('TOBLOCK')
+            console.log(toBlock)
 
             if (column == 6) {
                 toBlock = true;
@@ -511,7 +509,11 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             event.stopImmediatePropagation()
             var row = event.args.rowindex;
             var column = event.args.datafield
-            var toBlock =  paddyEditableHandler.checkIfBlocked(formulaToApplySingle, row,false);
+            // (formulaToApply,isAreaHSelected, row, isTotalValueSection)
+            var toBlock =  paddyEditableHandler.checkIfBlocked(formulaToApplySingle,isAreaHSelectedSingle, row,false);
+            if(!toBlock){
+                toBlock = paddyEditableHandler.checkIfDisabled(row,isAreaHSelectedTot);
+            }
 
             if (column == 6 || column == 7) {
                 toBlock = true;
@@ -548,7 +550,41 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 }
             }
         })
+    }
 
+    PaddyObserver.prototype.listenToEditCellTotGrid = function () {
+
+        $("#gridTotalValues").on('cellendedit', function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+
+            totalValuesModified = true;
+            var columnValue = event.args.datafield;
+            var oldvalue = event.args.oldvalue;
+            var value = event.args.value;
+            if (checkAll(oldvalue) && columnValue == 3) {
+                oldvalue = parseFloat(oldvalue)
+            }
+            if (checkAll(value) && columnValue == 3) {
+                value = parseFloat(value)
+            }
+
+            if (columnValue == 3 && (oldvalue != value)) {
+                var numberOfRow = event.args.rowindex;
+                var value2 = parseFloat(value)
+                if (formulaToApplyTot == 'init') {
+                    formulaToApplyTot = 'milled'
+                }
+                var specialEditing = 'normal'
+
+                controllerPaddy.updateTotGridOnEditing(numberOfRow, value2, formulaToApplyTot, columnValue, specialEditing)
+            } else if (columnValue != 3 && (oldvalue != value)) {
+                var numberOfRow = event.args.rowindex;
+                controllerPaddy.updateTotGridOnEditing(numberOfRow, value, formulaToApplyTot, columnValue, 'normal')
+            }
+        })
     }
 
     PaddyObserver.prototype.listenToSaveTotalValuesButton = function () {
@@ -575,11 +611,12 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
                 var isChanged;
                 if(isMilledTotSelected!= isMilledSingleSelected){
                     isMilledTotSelected = isMilledSingleSelected
+                    isAreaHSelectedTot = isAreaHSelectedSingle;
                     isChanged = true;
                 }else{
                     isChanged = false
                 }
-                controllerPaddy.onSwitchingCropsValues(formulaToApplySingle,isChanged, isMilledTotSelected)
+                controllerPaddy.onSwitchingCropsValues(formulaToApplySingle,isChanged, isMilledTotSelected, isAreaHSelectedSingle)
             } else if (newly.hash == '#totalValues' && !singleCropsValuesModified) {
                 controllerPaddy.onSwitchingSimpleTotal(formulaToApplyTot)
             } else if (newly.hash == '#singleCrops') {
