@@ -1,5 +1,6 @@
 *~
 *.class
 *.iml
+js/scripts/services/configurator/ServicesConfigurator.js
 .idea/
 *.DS_Store
