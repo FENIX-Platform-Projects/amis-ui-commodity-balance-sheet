@@ -15,8 +15,11 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
         dataFiltered = preloadingData;
 
         var isDateFormatted = (isExport) ? true : false;
-
+/*
         var currentYearFilter = parseInt(preloadingData.years.currentYearLabel.substring(0, 4));
+        debugger;*/
+        var currentYearFilter = parseInt(preloadingData.years.currentYear);
+
 
         // if a previous year exist
         if (preloadingData.years.previousYearLabel != -1) {
