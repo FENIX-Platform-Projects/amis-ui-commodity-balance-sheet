@@ -23,7 +23,7 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
 
         // if a previous year exist
         if (preloadingData.years.previousYearLabel != -1) {
-            var previousYearFilter = parseInt(preloadingData.years.previousYearLabel.substring(0, 4));
+            var previousYearFilter = parseInt(preloadingData.years.previousYear);
         } else {
             notPreviousYear = true;
         }
