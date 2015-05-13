@@ -104,8 +104,6 @@ define(["jquery", "moment", "numeral"], function ($) {
             case "code" || "codeList" || "customCode":
 
                 var columnsCodes = configurator.lookForCode(configurationKeyColumn.columnId);
-                console.log('columnsCodes')
-                console.log(columnsCodes)
                 result = columnsCodes.mapCodeLabel[value];
                 break;
 

@@ -27,8 +27,6 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
         var table2 = $.extend(true,[],realTable);
         var table = this.filterValues(table2)
 
-        console.log(JSON.stringify(table))
-
         var string = "<table id='tablePivot'><tr>"
         for (var i = 0; i < dsd.dsd.columns.length; i++) {
             var title = dsd.dsd.columns[i].domain.title[language];

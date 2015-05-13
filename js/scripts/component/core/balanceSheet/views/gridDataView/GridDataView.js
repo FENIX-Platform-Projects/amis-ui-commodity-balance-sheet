@@ -27,8 +27,6 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
 
         GridDataView.prototype.createAndDrawGrid = function (columns, dataSource) {
             var self = this;
-
-            console.log(dataSource)
             var gridUi =
                 webix.ui({
                     container: "pivotGrid",

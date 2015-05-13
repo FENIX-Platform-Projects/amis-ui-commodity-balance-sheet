@@ -77,7 +77,9 @@ requirejs.config({
 
 
 require(["../../IndexContext", "domReady!", "bootstrap"], function(IndexContext) {
+/*
     console.log("index.js() - require() on domReady!");
+*/
 
    var indexContext = new IndexContext;
     indexContext.init();

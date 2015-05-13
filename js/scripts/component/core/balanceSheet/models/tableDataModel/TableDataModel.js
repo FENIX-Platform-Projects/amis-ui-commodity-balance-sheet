@@ -419,8 +419,6 @@ define(["jquery", "formulasAmis/support/SupportModel" ], function ($, SupportMod
         // insert new Data in AllData
         if(dataFromForm.length - (indexesTableData.length +indexesAllData.length) >0){
             var remainingData = this.fetchRemainingData(dataFromForm, indexesTableData, indexesAllData);
-            console.log('REMAINING DATA')
-            console.log(remainingData)
             this.insertNewDataIntoAllData(remainingData)
             indexesAllData = this.getAllIndexesRequested(allData, backupIndexesAllData, dateInvolved);
         }

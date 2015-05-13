@@ -85,8 +85,6 @@ define(['jquery'], function ($) {
 
     SavingModel.prototype.cleanAndSetDate = function (dataNew) {
 
-        console.log('clean And Set data: saving Model')
-        console.log(dataNew)
         var result = []
         for (var i = 0; i < dataNew.length; i++) {
             // clean data
@@ -109,11 +107,9 @@ define(['jquery'], function ($) {
                 }
 
                 for(var k=0; k<dataNew[i].length; k++) {
-                    if (dataNew[i][k] == '') dataNew[i][k] = null
+                    if (dataNew[i][k] === '') dataNew[i][k] = null
                 }
-
-
-                    result.push(dataNew[i])
+                result.push(dataNew[i])
                 
             }
         }
@@ -137,8 +133,6 @@ define(['jquery'], function ($) {
         }
 
         if(toAdd.length>0) this.addInRightPositionForDate(toAdd,result)
-
-        console.log(result);
 
         return result;
     }

@@ -47,8 +47,7 @@ define(['jquery', 'databaseSaver/annualSaving/model/SavingAnnualModel', 'databas
 
             data.updatedData.length = 0
             data.newData.length = 0;
-
-            if (document.getElementById('alertNewValues').childNodes.length == 0 && document.getElementById('alertChangeGrid').childNodes.length == 0) {
+            if (document.getElementById('alertNewValues')!= null && document.getElementById('alertNewValues').childNodes.length == 0 && document.getElementById('alertChangeGrid').childNodes.length == 0) {
                 var f = document.getElementById('alertNewValues');
                 if(f){
                     f.remove()

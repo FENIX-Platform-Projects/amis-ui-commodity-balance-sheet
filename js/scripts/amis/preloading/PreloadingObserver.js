@@ -30,20 +30,17 @@ define(["jquery", "./PreloadingController"],
             });
 
             combo.bind('select', function (event) {
-                console.log("countryChnged")
                 controller.onChangingCountry(event);
 
             });
 
             comboComm.bind('select', function (event) {
-                console.log("commodity")
                 controller.onChangingCommodity(event);
 
             });
 
             natDB.bind('change', function (event) {
                 if (event.args.checked) {
-                    console.log("natdb")
                     controller.onSelectNatDB(event);
                 }
 
@@ -51,13 +48,11 @@ define(["jquery", "./PreloadingController"],
 
             cbs.bind('change', function (event) {
                 if (event.args.checked) {
-                    console.log("cbs")
                     controller.onSelectCBS(event);
                 }
             });
 
             comboYear.bind('change', function (event) {
-                console.log("CHANGE Year")
                 controller.onSelectingYear(event)
             })
 

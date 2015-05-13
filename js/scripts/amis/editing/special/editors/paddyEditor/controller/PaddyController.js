@@ -171,7 +171,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
     }
 
     PaddyController.prototype.updateTotGridOnFormulaChanges = function (formulaToApply, typeOfEditing, haveLabelsToBeChanged) {
-        console.log('CONTR: update tot grid on formula Changes')
         editorPaddy.updateTotGrid(this.changeFormulaOnTotalGrid(formulaToApply, typeOfEditing), formulaToApply, haveLabelsToBeChanged, isAreaHSelectedTot);
     }
 
@@ -191,7 +190,6 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
         } else {
             var calculatedModel = formulaHandler.createFormula(modelSingleCrops, formulaToUpdate)
         }
-        debugger;
         var modelCalculated = $.extend(true, [], calculatedModel);
         modelPaddy.setCalculatedSingleModel(modelCalculated)
         editorPaddy.updateSingleGrid(calculatedModel, formulaToApply, isAreaHSelectedSingle);

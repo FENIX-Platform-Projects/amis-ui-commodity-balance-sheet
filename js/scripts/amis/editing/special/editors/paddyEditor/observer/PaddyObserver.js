@@ -18,8 +18,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         isMilledTotSelected = true
         isMilledSingleSelected = true;
 
-        console.log('observer.oinit()')
-        console.log(isAreaHSelected)
         isAreaHSelectedTot = isAreaHSelected;
         isAreaHSelectedSingle = isAreaHSelected;
 
@@ -104,16 +102,12 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         $('#radioBtnAreaPlantedTot').on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
-            console.log('befr')
-            console.log(isAreaHSelectedTot)
 
             if (event.args.checked == isAreaHSelectedTot) {
-                console.log('after')
 
                 self.setTotalValuesOnModified();
                 isAreaHSelectedTot = !event.args.checked;
 
-                console.log(isAreaHSelectedTot)
                 formulaToApplyTot = controllerPaddy.onChangeKindOfArea(true, isAreaHSelectedTot, formulaToApplyTot)
                 controllerPaddy.onChangeKindOfRice(formulaToApplyTot, isMilledTotSelected, true)
 
@@ -123,20 +117,14 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
         $('#radioBtnAreaPlantedSingle').on('change', function (event) {
             event.preventDefault();
             event.stopImmediatePropagation();
-            console.log('befr')
-            console.log(isAreaHSelectedSingle)
 
             if (event.args.checked == isAreaHSelectedSingle) {
-                console.log('after')
 
                 self.setSingleCropsOnModified();
                 isAreaHSelectedSingle = !event.args.checked;
 
-                console.log(isAreaHSelectedSingle)
                 //(isTotalSection, isAreaHSelected, formulaToApply)
                 formulaToApplySingle = controllerPaddy.onChangeKindOfArea(false, isAreaHSelectedSingle, formulaToApplySingle)
-                console.log('formulaTOApply')
-                console.log(formulaToApplySingle)
                 //(formulaToApply, isMilledSelected, isTotalSection)
                 controllerPaddy.onChangeKindOfRice(formulaToApplySingle, isMilledSingleSelected, false)
 
@@ -474,10 +462,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             event.stopImmediatePropagation();
             var toBlock = false;
             var row = event.args.rowindex;
-            console.log(row);
-
-            debugger;
-
 
             //formulaToApply,isAreaHSelected, row, isTotalValueSection
             var column = event.args.datafield
@@ -486,9 +470,6 @@ define(["jquery", "formatter/DatatypesFormatter", "jqwidgets"], function ($, For
             if(!toBlock){
                 toBlock = paddyEditableHandler.checkIfDisabled(row,isAreaHSelectedTot);
             }
-
-            console.log('TOBLOCK')
-            console.log(toBlock)
 
             if (column == 6) {
                 toBlock = true;

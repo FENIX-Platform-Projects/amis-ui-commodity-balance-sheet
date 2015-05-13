@@ -80,8 +80,6 @@ define(['jquery'], function ($) {
 
         if(toAdd.length>0) this.addInRightPositionForDate(toAdd,result)
 
-        console.log(result);
-
         return result;
     }
 
@@ -112,7 +110,7 @@ define(['jquery'], function ($) {
                 // put real date previous year
 
                 for(var k=0; k<dataNew[i].length; k++) {
-                    if (dataNew[i][k] == '') dataNew[i][k] = null
+                    if (dataNew[i][k] === '') dataNew[i][k] = null
                 }
 
                 if(dataNew[i][3]!= null && dataNew[i][2]!=null && typeof dataNew[i][2]!= 'undefined') {

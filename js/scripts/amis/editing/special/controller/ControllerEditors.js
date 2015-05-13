@@ -23,8 +23,6 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
         supportUtility = Utility;
         clickedCellInfo = resultedClicked
 
-        debugger;
-
         var takenCell = resultedClicked.clickedCell
         specialFormulaController = formulaController;
         // first take all the involvedCodes

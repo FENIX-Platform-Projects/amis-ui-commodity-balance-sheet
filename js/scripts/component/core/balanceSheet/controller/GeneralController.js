@@ -127,7 +127,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
 
         GeneralController.prototype.startSpecialEditing = function (resultedClicked) {
-            console.log('GC: startSpecialEditing')
             var allData = ModelController.getData();
             var tableData = $.extend(true, {}, ModelController.getTableDataModel());
             specialControlEditor.init(allData, tableData, resultedClicked, formulaController, Configurator, supportUtility, this, filterData.productCode);
@@ -161,7 +160,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
 
         GeneralController.prototype.updateGrid = function (newCell, indTable, rowIndex, columnIndex, eventGrid) {
-            console.log('GC: updateGrid ')
 
             var bindedKeys = formulaController.getBindedKeys();
             ModelController.updateModels(newCell, indTable, rowIndex, columnIndex)
@@ -184,17 +182,13 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 // at the end, order like initially
                 formulaController.sortInitialValue(modelWithFormulas);
                 ViewGrid.updateBatchGridView(modelWithFormulas, rowsChanged, xCoordinate, yCoordinate);
-                console.log('afterUpdateGridViewBatch')
-
             } else {
                 ViewGrid.updateGridView(newCell, indTable, xCoordinate, yCoordinate);
-                console.log('afterUpdateGridView')
             }
         }
 
 
         GeneralController.prototype.saveDataFromAllForms = function (newCalculatedData, newOriginalData, cellClickedInfo, typeOfForm) {
-            console.log('GC: saveDataFrom All Forms')
             // HERE!!!!
             var indexes = ModelController.saveDataFromSpecialForm(newCalculatedData, cellClickedInfo.indTable, cellClickedInfo.rowGridIndex, cellClickedInfo.columnGridIndex, typeOfForm)
             var tableModel = ModelController.getTableDataModel();
@@ -251,7 +245,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
 
         GeneralController.prototype.updateWithNewForecast = function () {
-            console.log('GC: updateWithNewForecast')
             var tableModel = ModelController.createNewForecast();
             if (tableModel) {
                 var tableModelWithFormula = $.extend(true, [], tableModel);
@@ -262,7 +255,6 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 generalObserver.listenToResetButton();
                 generalObserver.listenToPopulationForm();
                 this.onChangeModalityEditing()
-                console.log('onchangeModalityEditin(GC)')
             }
         }
 

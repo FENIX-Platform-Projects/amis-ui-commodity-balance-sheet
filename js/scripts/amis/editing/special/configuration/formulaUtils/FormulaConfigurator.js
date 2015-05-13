@@ -40,7 +40,6 @@ define(["jquery"], function ($) {
 
             case 2:
                 var typeOfForm = config.formulaPlugins[numberOfFormUsed - 1];
-                console.log(typeOfForm)
                 if (type == "totalValues") {
                     //areaHSelected and areaPlSelected
                     result = typeOfForm.totalValues.init[0]
