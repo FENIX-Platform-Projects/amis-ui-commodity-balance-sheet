@@ -1,7 +1,6 @@
 
-define(['jquery'], function($){
+define(['jquery', '../services/configuration/services'], function($, C){
 
-    var urlConfiguration  =   './js/scripts/services/configuration/services.json'
 
     function ServicesConfigurator(){}
 
@@ -9,15 +8,7 @@ define(['jquery'], function($){
 
     ServicesConfigurator.prototype.init = function(){
 
-        // dsd
-        $.ajax({
-            async: false,
-            type: 'GET',
-            url: urlConfiguration,
-            success: function (data) {
-                configuration = data;
-            }
-        })
+      configuration = C;
     }
 
     ServicesConfigurator.prototype.getDataSourceUrl = function(){
