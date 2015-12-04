@@ -81,8 +81,18 @@ require(["../../IndexContext", "domReady!", "bootstrap"], function(IndexContext)
     console.log("index.js() - require() on domReady!");
 */
 
-   var indexContext = new IndexContext;
-    indexContext.init();
+
+    // TODO: AMIS INTEGRATION:
+    // TO IMPROVA SECURITY: add AND CONDITION:
+    // if( window.parent.location.href === 'http://statistics.amis-outlook.org/data/index.html#INPUT'
+/*
+    if(window.location !== window.parent.location ) {
+*/
+        var indexContext = new IndexContext;
+        indexContext.init();
+/*
+    }
+*/
 
 });
 
