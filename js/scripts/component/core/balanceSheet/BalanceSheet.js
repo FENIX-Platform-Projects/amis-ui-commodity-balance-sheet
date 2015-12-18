@@ -75,6 +75,10 @@ define(["jquery", "configurator/Configurator", "modelController/ModelsController
         return modelController.getDataToSave();
     }
 
+    BalanceSheet.prototype.getCalculatedElements = function(data) {
+        return generalController.getCalculatedElementsFromData(data);
+    }
+
     return BalanceSheet;
 
 })

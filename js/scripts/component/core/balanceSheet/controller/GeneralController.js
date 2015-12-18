@@ -1,8 +1,9 @@
 define(["jquery", "view/GridDataView", "editorController/FormController",
         "exporter/controller/ExportController", "adapterGrid", "formulasAmis/controller/FormulaController",
-        "editingSpecial/controller/ControllerEditors", "generalObserver/GeneralObserver" , "editHandler",
+        "editingSpecial/controller/ControllerEditors", "generalObserver/GeneralObserver", "editHandler", "calculatedCodes",
         "jquery.sidebar"],
-    function ($, GridDataView, EditorController, ExportController, Adapter, FormulaController, SpecialEditorController, GeneralObserver, EditHandler) {
+    function ($, GridDataView, EditorController, ExportController, Adapter, FormulaController, SpecialEditorController, GeneralObserver, EditHandler,
+              CalculatedCodes) {
 
         var ViewGrid, ModelController, FormController, dsd, Configurator, adapterGrid, formulaController, supportUtility,
             specialControlEditor, editingOnCell, generalObserver, filterData, xCoordinate, yCoordinate, grid, editHandler,
@@ -18,6 +19,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
             formulaController = new FormulaController;
             specialControlEditor = new SpecialEditorController;
             generalObserver = new GeneralObserver;
+            this.calculated_codes = CalculatedCodes.calculated_codes;
 
         }
 
@@ -36,6 +38,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
             // formula
             formulaController.init(tableModelWithFormula, Configurator, filterData)
+
 
             thousandSeparator = 1
             elementShown = 1
@@ -118,7 +121,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
             this.onExportingData();
 
-         //   this.onSwitchingPeriodModality();
+            //   this.onSwitchingPeriodModality();
 
             this.onCreatingNewForecast()
 
@@ -317,11 +320,11 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
                 var tableModelWithFormula = $.extend(true, [], table);
                 filterData = supportUtility.getFilterData()
 
-       //       ---- OLD EXPORT FUNCTION
-       //         formulaController.init(tableModelWithFormula, Configurator, filterData)
-       //         ExportControl.init(tableModelWithFormula, Configurator, grid, supportUtility)
+                //       ---- OLD EXPORT FUNCTION
+                //         formulaController.init(tableModelWithFormula, Configurator, filterData)
+                //         ExportControl.init(tableModelWithFormula, Configurator, grid, supportUtility)
 
-               ExportControl.init(tableModelWithFormula, Configurator, grid, supportUtility)
+                ExportControl.init(tableModelWithFormula, Configurator, grid, supportUtility)
 
             })
 
@@ -330,7 +333,7 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         GeneralController.prototype.onCreatingNewForecast = function () {
 
-            var self =this;
+            var self = this;
 
             $('#newForecast').on("click", function (evt) {
                 evt.preventDefault();
@@ -340,33 +343,37 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         }
 
-        GeneralController.prototype.lookIfEditedSomeValues = function(){
+        GeneralController.prototype.lookIfEditedSomeValues = function () {
             var objectDataToSave = ModelController.getDataToSave();
-            return (objectDataToSave['updatedData'].length >0||objectDataToSave['newData'].length >0  );
+            return (objectDataToSave['updatedData'].length > 0 || objectDataToSave['newData'].length > 0  );
         }
 
 
-        GeneralController.prototype.getDataToSaveFromController = function(){
+        GeneralController.prototype.getDataToSaveFromController = function () {
             return ModelController.getDataToSave();
         }
 
-        GeneralController.prototype.getAllDataFromModel = function(){
+        GeneralController.prototype.getAllDataFromModel = function () {
             return ModelController.getData();
         }
 
-        GeneralController.prototype.getTableDataFromModel = function(){
+        GeneralController.prototype.getTableDataFromModel = function () {
             return ModelController.getTableDataModel();
         }
 
-/*
-        GeneralController.prototype.onSwitchingPeriodModality = function () {
+        GeneralController.prototype.getCalculatedElementsFromData = function (modelWithFormulas) {
 
-            $('#annualSelection').on("click", function (evt) {
-                evt.preventDefault();
-                evt.stopImmediatePropagation();
-                $.publish('annual-added', '');
-            })
-        }*/
+            formulaController.init(modelWithFormulas, Configurator, filterData);
+            var result = [];
+            for (var i = 0; i < modelWithFormulas.length; i++) {
+                if (this.calculated_codes.indexOf(modelWithFormulas[i][0]) != -1) {
+
+                    result.push(modelWithFormulas[i]);
+                }
+            }
+
+            return result;
+        };
 
 
         return GeneralController;

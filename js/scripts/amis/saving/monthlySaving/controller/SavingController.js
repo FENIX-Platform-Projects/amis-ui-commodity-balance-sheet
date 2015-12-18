@@ -1,6 +1,3 @@
-/**
- * Created by fabrizio on 10/4/14.
- */
 define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSaver/observer/SavingObserver', 'urlConfigurator',
     'utilities/SupportUtility'], function ($, SavingModel, SavingObserver, ServicesURL, SupportUtility) {
 
@@ -29,14 +26,17 @@ define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSave
 
         var allDataOriginal = balanceSheet.getData()
         var tableDataOriginal = balanceSheet.getTableData()
-        var newDataOriginal = balanceSheet.getDataToSave()
+        var newDataOriginal = balanceSheet.getDataToSave();
 
         var allData = $.extend(true, [], allDataOriginal);
         var tableData = $.extend(true, [], tableDataOriginal);
         var newdata = $.extend(true, [], newDataOriginal);
 
+        var elementsCalculated = balanceSheet.getCalculatedElements(tableData);
+        var dataClear = modelSaving.mergeInputDataWithCalculatedElements(elementsCalculated,allData);
+
         modelSaving.init(supportUtility)
-        modelSaving.prepareData(allData, tableData, newdata, actualFilter, realPreviousYearDate);
+        modelSaving.prepareData(dataClear, tableData, newdata, actualFilter, realPreviousYearDate);
 
         var payloadActual = modelSaving.preparePutPayload(true)
         var payloadPrevious = modelSaving.preparePutPayload(false)
@@ -60,11 +60,6 @@ define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSave
             }
         }
 
-
-
-
-
-        // clean updated Data
     }
 
 

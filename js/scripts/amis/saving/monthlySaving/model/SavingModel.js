@@ -7,6 +7,12 @@ define(['jquery'], function ($) {
         actualYearForecasts, previousYearForecast, supportUtility, realPreviousDate;
 
     function SavingModel() {
+
+        this.opt = {
+            element_pos : 0,
+            date_pos : 2
+
+        }
     }
 
     SavingModel.prototype.init = function (SupportUtility) {
@@ -47,6 +53,7 @@ define(['jquery'], function ($) {
     SavingModel.prototype.prepareData = function (alldata, tableData, newData, actualFilter, realPreviousYearDate) {
         realPreviousDate = realPreviousYearDate;
         filterActual = actualFilter;
+
 
         //   STEP 0) Divide actualYear from Previous Year
 
@@ -257,6 +264,24 @@ define(['jquery'], function ($) {
                 actualYearForecasts.push(model[i])
             }
         }
+    }
+
+    SavingModel.prototype.mergeInputDataWithCalculatedElements = function (elements,data ) {
+
+        for(var i=0; i<elements.length; i++) {
+            for(var j=0; j <data.length; j++) {
+                if(data[j] && data[j][this.opt.element_pos] &&  data[j][this.opt.element_pos]!= null
+                    && data[j][this.opt.element_pos] == parseInt(elements[i][this.opt.element_pos])
+                    &&  data[j][this.opt.date_pos] &&  data[j][this.opt.date_pos]!= null
+                    && data[j][this.opt.date_pos] == elements[i][this.opt.date_pos] ) {
+                        data[j] = elements[i]
+                }
+            }
+        }
+
+        return data;
+
+
     }
 
     return SavingModel;

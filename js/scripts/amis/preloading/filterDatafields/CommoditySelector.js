@@ -64,10 +64,8 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
     CommoditySelector.prototype.change = function (event) {
 
         // To pass the value
-        var args = event.args;
-        var item = combo.jqxComboBox('getItem', args.index);
 
-        this.productCode = item.value;
+        this.productCode = event.args.item.originalItem.code;
         return this.productCode;
     };
 
@@ -75,7 +73,7 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
     CommoditySelector.prototype.sortAndFilter = function (data) {
 
         // Sort
-        var localdata = data.rootCodes.sort(function (a, b) {
+        var localdata = data.data.sort(function (a, b) {
             if (a.title.EN < b.title.EN)
                 return -1;
             if (a.title.EN > b.title.EN)

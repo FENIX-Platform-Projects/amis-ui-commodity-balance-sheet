@@ -1,45 +1,51 @@
 define([], function() {
     
-    var url = "http://fenixapps2.fao.org";
-    //var url = "http://168.202.28.87:8080";
+    var previuosURL = "http://fenixapps2.fao.org/amis-services";
+
+    var urlD3S = "http://fenixservices.fao.org";
+    var url = "http://statistics.amis-outlook.org/amis-cbs-services";
+/*
+    var url = "http://statistics.amis-outlook.org/cbsmonths";
+*/
+   // var url = "http://168.202.28.87:8080";
 
     return {
         "services":[
             {
                 "filters": [
                     {
-                        "dataSourceUrl": url + "/amis-services/dataset/datasource"
+                        "dataSourceUrl": url + "/dataset/datasource"
                     },
                     {
-                        "yearUrl": url + "/amis-services/dataset/year"
+                        "yearUrl": url + "/dataset/year"
                     },
                     {
-                        "countryUrl": url + "/d3sp/service/msd/cl/system/AMIS_GAUL/1.0"
+                        "countryUrl": urlD3S + "/d3s/msd/resources/uid/amis_countries"
                     },
                     {
-                        "commodityUrl" : url + "/d3sp/service/msd/cl/system/AMIS_PRODUCTS/1.0"
+                        "commodityUrl" : urlD3S + "/d3s/msd/resources/uid/amis_commodities"
                     }
                 ]
             },
             {
                 "loading": [
                     {
-                        "loadingElements" : url + "/amis-services/dataset/national"
+                        "loadingElements" : url + "/dataset/national"
                     },
                     {
-                        "loadingPopulation" :url + "/amis-services/dataset/population"
+                        "loadingPopulation" :url + "/dataset/population"
                     },
                     {
-                        "mostRecentDate" : url + "/amis-services/dataset/recentDate"
+                        "mostRecentDate" : url + "/dataset/recentDate"
                     },
                     {
-                        "previousYear" : url + "/amis-services/dataset/previousYear"
+                        "previousYear" : url + "/dataset/previousYear"
                     },
                     {
-                        "numberOfCrops" : url + "/amis-services/dataset/crops"
+                        "numberOfCrops" : url + "/dataset/crops"
                     },
                     {
-                        "loadingPopulationData" :url + "/amis-services/dataset/populationData"
+                        "loadingPopulationData" :url + "/dataset/populationData"
 
                     }
                 ]
@@ -47,15 +53,15 @@ define([], function() {
             {
                 "saving":{
 
-                    "savingWithoutDate" : url + "/amis-services/dataset/national",
-                    "savingWithDate"    : url + "/amis-services/dataset/previous/national",
-                    "savingPopulation" : url + "/amis-services/dataset/populationData"
+                    "savingWithoutDate" : url + "/dataset/national",
+                    "savingWithDate"    : url + "/dataset/previous/national",
+                    "savingPopulation" : url + "/dataset/populationData"
 
                 }
             },
             {
-                "exportDataServletUrl": url + "/amis-services/amisCBS/export",
-                "exportData" : url + "/amis-services/dataset/annualExport"
+                "exportDataServletUrl": url + "/amisCBS/export",
+                "exportData" : url + "/dataset/annualExport"
             }
         ]
     }

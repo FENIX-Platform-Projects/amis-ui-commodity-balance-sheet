@@ -41,7 +41,8 @@ requirejs.config({
         editHandler       :  "../amis/editing/direct/EditHandler",
         FenixValidator         :  "FenixReports-Validator",
         othUsesPlugin     :  "../amis/otherUsesNotes/OtherUsesPluginNotes",
-        amis_population   :  "../amis/population"
+        amis_population   :  "../amis/population",
+        calculatedCodes   :  "../amis/saving/configuration/calculated_data"
     },
     "shim": {
         "bootstrap": {
