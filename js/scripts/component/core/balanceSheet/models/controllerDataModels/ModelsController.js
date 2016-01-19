@@ -114,14 +114,10 @@ define(["jquery", "models/tableDataModel/TableDataModel",
                     var notFound = true;
                     for(var k = 0; k<tableModel.length && notFound; k++){
                         if(tableModel[k][2] != "20000103" && tableModel[k][0] == 1){
-
-
                                 result[i][3] = (tableModel[k][3]) ? tableModel[k][3] : null;
                                 result[i][4] = (tableModel[k][4]) ? tableModel[k][4] : null;
                                 result[i][5] = (tableModel[k][5]) ? tableModel[k][5] : null;
-
                                 notFound = false;
-
                         }
                     }
                 }else {

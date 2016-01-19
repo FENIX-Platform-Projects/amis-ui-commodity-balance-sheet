@@ -1,6 +1,3 @@
-/**
- * Created by fabrizio on 5/20/14.
- */
 define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFactory",
         "databaseSaver/proxyFactory/SavingFactory",
         "subscriberLoader", "nprogress", "amplify"],

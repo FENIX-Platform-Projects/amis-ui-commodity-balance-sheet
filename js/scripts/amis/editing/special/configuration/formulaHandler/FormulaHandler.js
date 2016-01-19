@@ -23,7 +23,7 @@ define(["jquery", "specialFormulaConf/formulaUtils/FormulaConfigurator", "specia
 
         FormulaHandler.prototype.getUpdateFormula = function (numberOfForm, typeOfForm, dependentElement, typeOfEditing, isAreaHarvested) {
 
-            ;
+
             if (isAreaHarvested) {
                 var areaH = isAreaHarvested
             }

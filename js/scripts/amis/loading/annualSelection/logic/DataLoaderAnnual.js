@@ -25,15 +25,19 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
         var mostRecentForecast = []
         // tak all dates
-        var dates, prevYearForecast;
+        var dates, prevYearForecast,
+            filter = filterPreviousYear;
 
+        debugger;
+
+        filter['season'] = seasonLabel;
         $.ajax({
             async: false,
             url: urlMostRecentDate,
             type: 'POST',
             contentType: "application/json",
             dataType: 'json',
-            data: JSON.stringify(mostRecentDateFilter)
+            data: JSON.stringify(filter)
 
         }).done(function (result) {
             dates = result;

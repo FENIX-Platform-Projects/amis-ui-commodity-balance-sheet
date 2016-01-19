@@ -24,14 +24,10 @@ define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoade
         for (var i = 0, length = items.length; i < length; i++) {
             var temporaryForecast = this.createLastForecastCurrentSeason(items, region, product, items[i])
             seasonYearMap[items[i].label] = items[i].value
-
             resultForecast = resultForecast.concat(temporaryForecast);
-
         }
 
         resultForecast = this.createSeasonMapDate(resultForecast);
-
-
         return resultForecast;
     }
 
