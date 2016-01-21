@@ -206,7 +206,14 @@ define(["jquery", "preloading/filterDatafields/CountrySelector",
                     }
                 }
             }
-        }
+        };
+
+        PreloadingController.prototype.addNewSeason = function() {
+
+            yearSelector.addNewSeason();
+
+
+        };
 
 
         return PreloadingController;

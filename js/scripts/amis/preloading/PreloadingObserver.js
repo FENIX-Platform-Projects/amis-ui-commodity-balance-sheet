@@ -11,11 +11,12 @@ define(["jquery", "./PreloadingController"],
         var controller;
 
         // vars returned from the models
-        var combo, comboComm, natDB, cbs, comboYear;
+        var combo, comboComm, natDB, cbs, comboYear, newSeasonBtn;
 
 
         function PreloadingObserver() {
             controller = new PreloadingController;
+            newSeasonBtn = $('#new_season_btn');
         };
 
 
@@ -54,6 +55,12 @@ define(["jquery", "./PreloadingController"],
 
             comboYear.bind('change', function (event) {
                 controller.onSelectingYear(event)
+            });
+
+            newSeasonBtn.on('click', function(){
+
+                controller.addNewSeason();
+
             })
 
         };

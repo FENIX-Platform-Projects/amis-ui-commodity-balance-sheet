@@ -5,6 +5,11 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
 
     var combo, year, yearsSelected, size, previousYear, Services, urlYear;
 
+    var s = {
+        "year_label":"yearLabel",
+        "year":"year"
+    }
+
     function YearSelector() {
         Services = new ServicesUrl;
         urlYear = Services.getYearUrl()
@@ -17,6 +22,21 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
             previousYearLabel: -1
         }
     }
+
+
+    YearSelector.prototype._create_new_year = function(item) {
+        if(item){
+            var first_season = parseInt(item['label'].substring(0, 4)) + 1;
+            var second_season = parseInt(item['label'].substring(5, 7)) + 1;
+            var object_to_add = {
+                "label" : ""+first_season+"/"+second_season+"",
+                "value" : first_season
+            }
+        }
+
+        return object_to_add;
+
+    };
 
 
     YearSelector.prototype.init = function (oldBody) {
@@ -39,7 +59,10 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
             data: JSON.stringify(body),
             success: function (data) {
 
+                // TEST
                 size = data.length;
+
+                debugger;
 
                 var source = that.prepareComboData(data)
                 var dataAdapter = new $.jqx.dataAdapter(source);
@@ -111,7 +134,7 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
             localdata: data
         };
         return source;
-    }
+    };
 
 
     YearSelector.prototype.hasPreviousYear = function (index) {
@@ -122,7 +145,22 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
         else {
             return false;
         }
-    }
+    };
+
+    YearSelector.prototype.addNewSeason = function () {
+
+        var index =0;
+
+        var firstElement =combo.jqxComboBox('getItems')[index];
+
+        var newItem = this._create_new_year(firstElement);
+
+        if(newItem) {
+            combo.jqxComboBox('insertAt', newItem, index );
+            this.change({'args':{'index':index}})
+        }
+
+    };
 
 
     return YearSelector;

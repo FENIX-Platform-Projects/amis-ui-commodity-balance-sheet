@@ -90,7 +90,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     DataLoader.prototype.getPreviousYearForecast = function (mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, isDateFormatted, preloadingData) {
         var dates, prevYearForecast,
             filter = filterPreviousYear;
-        debugger;
         $.ajax({
             async: false,
             url: urlMostRecentDate,
