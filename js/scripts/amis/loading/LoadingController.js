@@ -33,10 +33,14 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
 
             // Inside of selectionFactory module stored the global value on session storage variable
             handlerSelection = selectionFactory.init(isMonthlyLoading);
-            var totalForecast = handlerSelection.init(dataFiltered, region, product, isExport)
-            this.createBalanceSheet(totalForecast, handlerSelection)
+            var totalForecast = handlerSelection.init(dataFiltered, region, product, isExport);
 
-
+            debugger;
+            if(totalForecast && totalForecast.length >0) {
+                this.createBalanceSheet(totalForecast, handlerSelection)
+            }else{
+                NProgress.done();
+            }
         }
 
         LoadingController.prototype.createBalanceSheet = function (totalForecast, Selector) {

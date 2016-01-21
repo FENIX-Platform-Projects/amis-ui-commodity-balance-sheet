@@ -49,7 +49,7 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
 
             var prevYearForecast = dataLoader.getPreviousYearForecast(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, isDateFormatted, preloadingData)
 
-            var totalForecast = prevYearForecast.concat(actualForecast)
+            var totalForecast = (prevYearForecast && prevYearForecast.length >0)?prevYearForecast.concat(actualForecast): prevYearForecast;
         } else {
             var totalForecast = actualForecast;
         }

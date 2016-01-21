@@ -102,69 +102,73 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             dates = result;
         })
 
-        var mostRecentDate = dates[dates.length - 1][0]
-        // set the most recent date to make the query
-        filterPreviousYear["date"] = mostRecentDate;
+        if (dates.length>0) {
+            var mostRecentDate = dates[dates.length - 1][0]
+            // set the most recent date to make the query
+            filterPreviousYear["date"] = mostRecentDate;
 
-        var prevYearForecast
-        $.ajax({
-            async: false,
-            url: urlPreviousYear,
-            type: 'POST',
-            contentType: "application/json",
-            dataType: 'json',
-            data: JSON.stringify(filterPreviousYear)
+            var prevYearForecast
+            $.ajax({
+                async: false,
+                url: urlPreviousYear,
+                type: 'POST',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify(filterPreviousYear)
 
-        }).done(function (result) {
-            prevYearForecast = result;
-        })
+            }).done(function (result) {
+                prevYearForecast = result;
+            })
 
-        var fakeData
-        if (isDateFormatted) {
-            // Put dates in DSD format
-            realPreviousDate = prevYearForecast[0][2]
-            for (var i = 0; i < prevYearForecast.length; i++) {
-                fakeData = "20000103"
-                prevYearForecast[i][2] = fakeData;
+            var fakeData
+            if (isDateFormatted) {
+                // Put dates in DSD format
+                realPreviousDate = prevYearForecast[0][2]
+                for (var i = 0; i < prevYearForecast.length; i++) {
+                    fakeData = "20000103"
+                    prevYearForecast[i][2] = fakeData;
 
-                // also for updateDate
+                    // also for updateDate
+                }
+            } else {
+                var previousSeason = preloadingData.years.previousYearLabel;
+
+                for (var i = 0; i < prevYearForecast.length; i++) {
+                    prevYearForecast[i][2] = previousSeason;
+                }
+            }
+
+            var populationPrevYear;
+            $.ajax({
+                async: false,
+                url: urlPopulation,
+                type: 'POST',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify(filterPrevPopulation)
+            }).done(function (result) {
+                populationPrevYear = result;
+            })
+
+
+            // Inside of population insert the date(s)
+
+            if (populationPrevYear.length > 0) {
+                if (isDateFormatted) {
+
+                    populationPrevYear[0].splice(2, 0, fakeData);
+                    populationPrevYear[0].push(null);
+
+                } else {
+                    populationPrevYear[0].splice(2, 0, previousSeason);
+                    populationPrevYear[0].push(null);
+                }
+
+                // Insert population into actual forecast
+                prevYearForecast.push(populationPrevYear[0])
             }
         } else {
-            var previousSeason = preloadingData.years.previousYearLabel;
-
-            for (var i = 0; i < prevYearForecast.length; i++) {
-                prevYearForecast[i][2] = previousSeason;
-            }
-        }
-
-        var populationPrevYear;
-        $.ajax({
-            async: false,
-            url: urlPopulation,
-            type: 'POST',
-            contentType: "application/json",
-            dataType: 'json',
-            data: JSON.stringify(filterPrevPopulation)
-        }).done(function (result) {
-            populationPrevYear = result;
-        })
-
-
-        // Inside of population insert the date(s)
-
-        if (populationPrevYear.length > 0) {
-            if (isDateFormatted) {
-
-                populationPrevYear[0].splice(2, 0, fakeData);
-                populationPrevYear[0].push(null);
-
-            } else {
-                populationPrevYear[0].splice(2, 0, previousSeason);
-                populationPrevYear[0].push(null);
-            }
-
-            // Insert population into actual forecast
-            prevYearForecast.push(populationPrevYear[0])
+            alert('no data found into db for the previous season: please, change your selection');
         }
         return prevYearForecast;
     }
