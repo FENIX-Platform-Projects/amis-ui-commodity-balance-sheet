@@ -15,9 +15,7 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
         dataFiltered = preloadingData;
 
         var isDateFormatted = (isExport) ? true : false;
-/*
-        var currentYearFilter = parseInt(preloadingData.years.currentYearLabel.substring(0, 4));
-        debugger;*/
+
         var currentYearFilter = parseInt(preloadingData.years.currentYear);
 
 
@@ -49,7 +47,8 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
 
             var prevYearForecast = dataLoader.getPreviousYearForecast(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, isDateFormatted, preloadingData)
 
-            var totalForecast = (prevYearForecast && prevYearForecast.length >0)?prevYearForecast.concat(actualForecast): prevYearForecast;
+            var totalForecast = (prevYearForecast && prevYearForecast.length >0)?prevYearForecast.concat(actualForecast): prevYearForecasts
+                ;
         } else {
             var totalForecast = actualForecast;
         }

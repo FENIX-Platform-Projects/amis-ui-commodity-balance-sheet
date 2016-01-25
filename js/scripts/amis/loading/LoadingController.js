@@ -6,7 +6,7 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
         var urlDSD = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructure.json'
         var urlDSDRice = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureRice.json'
         var ulrDSDSoyBean = './js/scripts/component/core/balanceSheet/configuration/dsd/dsdStructureSoybeans.json'
-        var balanceSheet, dataFiltered, handlerSelection, selectionFactory , firstIstance,
+        var balanceSheet, dataFiltered, handlerSelection, selectionFactory, firstIstance,
             product, savingController, savingFactory, NProgress, subscriberLoader, isMonthlyLoading;
 
         function LoadingController() {
@@ -34,11 +34,9 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
             // Inside of selectionFactory module stored the global value on session storage variable
             handlerSelection = selectionFactory.init(isMonthlyLoading);
             var totalForecast = handlerSelection.init(dataFiltered, region, product, isExport);
-
-            debugger;
-            if(totalForecast && totalForecast.length >0) {
+            if (totalForecast && totalForecast.length > 0) {
                 this.createBalanceSheet(totalForecast, handlerSelection)
-            }else{
+            } else {
                 NProgress.done();
             }
         }

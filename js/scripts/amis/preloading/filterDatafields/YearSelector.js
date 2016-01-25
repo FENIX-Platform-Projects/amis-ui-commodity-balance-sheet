@@ -6,8 +6,8 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
     var combo, year, yearsSelected, size, previousYear, Services, urlYear;
 
     var s = {
-        "year_label":"yearLabel",
-        "year":"year"
+        "year_label": "yearLabel",
+        "year": "year"
     }
 
     function YearSelector() {
@@ -24,13 +24,13 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
     }
 
 
-    YearSelector.prototype._create_new_year = function(item) {
-        if(item){
+    YearSelector.prototype._create_new_year = function (item) {
+        if (item) {
             var first_season = parseInt(item['label'].substring(0, 4)) + 1;
             var second_season = parseInt(item['label'].substring(5, 7)) + 1;
             var object_to_add = {
-                "label" : ""+first_season+"/"+second_season+"",
-                "value" : first_season
+                "label": "" + first_season + "/" + second_season + "",
+                "value": first_season
             }
         }
 
@@ -62,8 +62,6 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
                 // TEST
                 size = data.length;
 
-                debugger;
-
                 var source = that.prepareComboData(data)
                 var dataAdapter = new $.jqx.dataAdapter(source);
 
@@ -80,13 +78,17 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
         });
 
         // Take the Preselected Value
-        yearsSelected.currentYear = combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).value;
-        yearsSelected.currentYearLabel = combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).label;
+        if (size > 0) {
+            yearsSelected.currentYear = combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).value;
+            yearsSelected.currentYearLabel = combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).label;
 
-        var index = combo.jqxComboBox('listBox').selectedIndex
+            var index = combo.jqxComboBox('listBox').selectedIndex
 
-        yearsSelected.previousYear = combo.jqxComboBox('getItem', index + 1).value;
-        yearsSelected.previousYearLabel = combo.jqxComboBox('getItem', index + 1).label;
+            yearsSelected.previousYear = combo.jqxComboBox('getItem', index + 1).value;
+            yearsSelected.previousYearLabel = combo.jqxComboBox('getItem', index + 1).label;
+        } else {
+            alert('No data available for the current selection: please, change your selection')
+        }
 
         return yearsSelected;
     };
@@ -128,8 +130,8 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
         {
             datatype: "json",
             datafields: [
-                { name: 'yearLabel'},
-                { name: 'year' }
+                {name: 'yearLabel'},
+                {name: 'year'}
             ],
             localdata: data
         };
@@ -149,15 +151,15 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
 
     YearSelector.prototype.addNewSeason = function () {
 
-        var index =0;
+        var index = 0;
 
-        var firstElement =combo.jqxComboBox('getItems')[index];
+        var firstElement = combo.jqxComboBox('getItems')[index];
 
         var newItem = this._create_new_year(firstElement);
 
-        if(newItem) {
-            combo.jqxComboBox('insertAt', newItem, index );
-            this.change({'args':{'index':index}})
+        if (newItem) {
+            combo.jqxComboBox('insertAt', newItem, index);
+            this.change({'args': {'index': index}})
         }
 
     };

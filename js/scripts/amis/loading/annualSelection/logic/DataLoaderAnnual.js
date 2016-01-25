@@ -4,7 +4,7 @@
 define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function ($, Formatter, ServicesURL) {
 
 
-    var urlActualForecast , urlPopulation , urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
+    var urlActualForecast, urlPopulation, urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
         formatter, realPreviousDate, Services;
 
 
@@ -27,8 +27,6 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
         // tak all dates
         var dates, prevYearForecast,
             filter = filterPreviousYear;
-
-        debugger;
 
         filter['season'] = seasonLabel;
         $.ajax({
@@ -93,11 +91,11 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
     DataLoaderAnnual.prototype.substitueSeasonToDate = function (forecast, season) {
         for (var i = 0, length = forecast.length; i < length; i++) {
 
-            (typeof forecast[i] === 'undefined')?
-                forecast.splice(i,1):
+            (typeof forecast[i] === 'undefined') ?
+                forecast.splice(i, 1) :
 
                 forecast[i][2] += season;
-            }
+        }
 
 
         return forecast;
