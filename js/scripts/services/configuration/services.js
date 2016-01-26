@@ -1,13 +1,18 @@
 define([], function() {
 
     var previuosURL = "http://fenixapps2.fao.org/amis-services";
-
+    var url = "http://168.202.28.87:8080";
+/*
+    var url = "http://statistics.amis-outlook.org/amis-cbs-services";
+*/
     var urlD3S = "http://fenixservices.fao.org";
   //  var url = "http://statistics.amis-outlook.org/amis-cbs-services";
 /*
     var url = "http://statistics.amis-outlook.org/cbsmonths";
 */
+/*
     var url = "http://168.202.28.87:8080";
+*/
 
     return {
         "services":[

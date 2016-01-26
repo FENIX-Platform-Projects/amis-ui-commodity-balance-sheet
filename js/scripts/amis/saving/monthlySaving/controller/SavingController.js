@@ -1,5 +1,8 @@
-define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSaver/observer/SavingObserver', 'urlConfigurator',
-    'utilities/SupportUtility'], function ($, SavingModel, SavingObserver, ServicesURL, SupportUtility) {
+define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel',
+    'databaseSaver/observer/SavingObserver',
+    'text!databaseSaver/monthlySaving/template/template_css.html',
+    'urlConfigurator',
+    'utilities/SupportUtility'], function ($, SavingModel, SavingObserver,Template, ServicesURL, SupportUtility) {
 
     var balanceSheet, modelSaving, observerSaving, actualFilter, realPreviousYearDate, servicesURL, urlSavingPreviousYear, urlSavingActualYear, supportUtility;
 
@@ -65,8 +68,11 @@ define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSave
 
     SavingController.prototype.finalSave = function (payload, isActualYear) {
 
-        var urlSaving = (isActualYear) ? urlSavingActualYear : urlSavingPreviousYear
-        $.ajax({
+        var urlSaving = (isActualYear) ? urlSavingActualYear : urlSavingPreviousYear;
+        ($('#loading-saving-data').length === 0)?  $('.bootstrap-dialog-body').append(Template): null;
+
+
+    $.ajax({
             async: false,
             url: urlSaving,
             type: 'PUT',
@@ -75,7 +81,8 @@ define(['jquery', 'databaseSaver/monthlySaving/model/SavingModel', 'databaseSave
             data: JSON.stringify(payload)
         }).done(function (result) {
             alert('saved')
-        })
+        });
+
     }
 
     return SavingController;

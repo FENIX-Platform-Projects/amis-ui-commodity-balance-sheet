@@ -996,6 +996,7 @@
                 cssClass: 'btn-primary',
                 action: function(dialog) {
                     typeof dialog.getData('callback') === 'function' && dialog.getData('callback')(true);
+                    $('#loading-saving-data').remove();
                     dialog.close();
                 }
             }]

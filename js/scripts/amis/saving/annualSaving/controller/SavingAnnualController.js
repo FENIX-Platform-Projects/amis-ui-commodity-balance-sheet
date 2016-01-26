@@ -1,6 +1,10 @@
-define(['jquery', 'databaseSaver/annualSaving/model/SavingAnnualModel', 'databaseSaver/observer/SavingObserver', 'urlConfigurator',
+define(['jquery',
+        'databaseSaver/annualSaving/model/SavingAnnualModel',
+        'databaseSaver/observer/SavingObserver',
+        'text!databaseSaver/monthlySaving/template/template_css.html',
+        'urlConfigurator',
         'utilities/SupportUtility'],
-    function ($, SavingModel, SavingObserver, ServicesURL, SupportUtility) {
+    function ($, SavingModel, SavingObserver,Template, ServicesURL, SupportUtility) {
 
         var handlerAnnual
         var balanceSheet, modelSaving, observerSaving, actualFilter, realPreviousYearDate, servicesURL, urlSaving, supportUtility;
@@ -63,6 +67,9 @@ define(['jquery', 'databaseSaver/annualSaving/model/SavingAnnualModel', 'databas
         }
 
         SavingAnnualController.prototype.finalSave = function (arrayData) {
+            debugger;
+            ($('#loading-saving-data').length === 0)?  $('.bootstrap-dialog-body').append(Template): null;
+
             for (var i = 0, length = arrayData.length; i < length; i++) {
                 $.ajax({
                     async: false,

@@ -167,17 +167,21 @@ define(["jquery", "preloading/filterDatafields/CountrySelector",
             }
 
             // delete the alerts
-            if (document.getElementById('alertChangeGrid').firstChild || document.getElementById('alertNewValues').firstChild) {
+            if (document.getElementById('alertChangeGrid').hasChildNodes() || document.getElementById('alertNewValues').hasChildNodes) {
 
-                var myNode = document.getElementById('alertChangeGrid')
-                var myNode2 = document.getElementById('alertNewValues')
-                while (myNode.firstChild) {
-                    myNode.removeChild(myNode.firstChild);
-                }
-                while (myNode2.firstChild) {
-                    myNode2.removeChild(myNode2.firstChild);
+                var myNode = document.getElementById('alertChangeGrid');
+                var myNode2 = document.getElementById('alertNewValues');
+                if(myNode && myNode.hasChildNodes()) {
+                    while (myNode.firstChild) {
+                        myNode.removeChild(myNode.firstChild);
+                    }
                 }
 
+                if(myNode2 && myNode2.hasChildNodes()) {
+                    while (myNode2.firstChild) {
+                        myNode2.removeChild(myNode2.firstChild);
+                    }
+                }
             }
 
             loadingController.init(preloadingData, true);
@@ -197,7 +201,9 @@ define(["jquery", "preloading/filterDatafields/CountrySelector",
                     $('#alertNewValues').append(alert2);
                 }
                 else {
-                    if (document.getElementById('alertNewValues').childNodes.length == 0 && document.getElementById('alertChangeGrid').childNodes.length == 0) {
+                    debugger;
+                    if (document.getElementById('alertNewValues')!== null && document.getElementById('alertNewValues').childNodes >0 &&
+                        document.getElementById('alertNewValues').childNodes.length == 0 && document.getElementById('alertChangeGrid').childNodes.length == 0) {
                         var alert1 = '<div class="alert alert-info alert-dismissible" role="alert">' +
                             '<button type="button" class="close" data-dismiss="alert">' +
                             '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
