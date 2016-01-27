@@ -58,10 +58,13 @@ define([], function() {
             {
                 "saving":{
 
-                    "savingWithoutDate" : url + "/dataset/national",
-                    "savingWithDate"    : url + "/dataset/previous/national",
-                    "savingPopulation" : url + "/dataset/populationData"
+                    "savingAnnualMode" : url+ "/dataset/annual/national",
 
+                    "savingWithoutDate" : url + "/dataset/national",
+
+                    "savingWithDate"    : url + "/dataset/previous/national",
+
+                    "savingPopulation" : url + "/dataset/populationData"
                 }
             },
             {

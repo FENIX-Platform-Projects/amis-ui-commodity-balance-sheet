@@ -123,6 +123,13 @@ define(['jquery', '../services/configuration/services'], function($, C){
             this.init()
         }
         return configuration.services[3].exportData;
+    };
+
+    ServicesConfigurator.prototype.getSavingAnnualData = function(){
+        if(!configuration){
+            this.init()
+        }
+        return configuration.services[2].saving.savingAnnualMode;
     }
 
 

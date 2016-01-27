@@ -167,7 +167,8 @@ define(["jquery", "preloading/filterDatafields/CountrySelector",
             }
 
             // delete the alerts
-            if (document.getElementById('alertChangeGrid').hasChildNodes() || document.getElementById('alertNewValues').hasChildNodes) {
+            if ((document.getElementById('alertChangeGrid') && document.getElementById('alertChangeGrid').hasChildNodes()) ||
+                (document.getElementById('alertNewValues') && document.getElementById('alertNewValues').hasChildNodes) ) {
 
                 var myNode = document.getElementById('alertChangeGrid');
                 var myNode2 = document.getElementById('alertNewValues');
@@ -201,7 +202,6 @@ define(["jquery", "preloading/filterDatafields/CountrySelector",
                     $('#alertNewValues').append(alert2);
                 }
                 else {
-                    debugger;
                     if (document.getElementById('alertNewValues')!== null && document.getElementById('alertNewValues').childNodes >0 &&
                         document.getElementById('alertNewValues').childNodes.length == 0 && document.getElementById('alertChangeGrid').childNodes.length == 0) {
                         var alert1 = '<div class="alert alert-info alert-dismissible" role="alert">' +

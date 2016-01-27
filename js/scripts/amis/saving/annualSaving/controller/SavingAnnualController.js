@@ -16,7 +16,7 @@ define(['jquery',
             supportUtility = new SupportUtility
             servicesURL = new ServicesURL;
             servicesURL.init()
-            urlSaving = servicesURL.getSavingDataUrlWithDate()
+            urlSaving = servicesURL.getSavingAnnualData()
         }
 
         SavingAnnualController.prototype.init = function (BalanceSheet, filterActual, dataFiltered, Handler) {
@@ -67,23 +67,42 @@ define(['jquery',
         }
 
         SavingAnnualController.prototype.finalSave = function (arrayData) {
-            debugger;
-            ($('#loading-saving-data').length === 0)?  $('.bootstrap-dialog-body').append(Template): null;
 
-            for (var i = 0, length = arrayData.length; i < length; i++) {
+            var payload =  this.prepareNewPayload(arrayData);
+            ($('#loading-saving-data').length === 0)?  $('.bootstrap-dialog-body').append(Template): null;
                 $.ajax({
                     async: false,
                     url: urlSaving,
                     type: 'PUT',
                     contentType: "application/json",
                     dataType: 'json',
-                    data: JSON.stringify(arrayData[i])
+                    data: JSON.stringify(payload)
                 }).done(function (result) {
                     alert('saved')
-                })
+                });
+        };
+
+
+        SavingAnnualController.prototype.prepareNewPayload = function (arrayData) {
+            var result = {};
+            for(var i= 0,overallLength = arrayData.length; i<overallLength; i++ ) {
+                if(i===0) {
+                    result['product'] = arrayData[i].filter.product;
+                    result['datasource'] = arrayData[i].filter.datasource;
+                    result['region'] = arrayData[i].filter.region;
+                    result['filters'] =[];
+                }
+                result['filters'].push({
+                    "season":  arrayData[i].filter.season,
+                    "year":  arrayData[i].filter.year,
+                    "date": arrayData[i].filter.date,
+                    "data":  arrayData[i].data
+                });
             }
-        }
+
+          return result;
+        };
+
 
         return SavingAnnualController;
-
     })
