@@ -60,7 +60,7 @@ define(["jquery", "editingSpecial/utils/DataHandler", "productionEditor/creator/
         for(var i=0; i<calculatedData.length; i++) {
             calculatedData[i].length = 6;
             if (calculatedData[i][3] != null) {
-                (calculatedData[i][0] != 4 && calculatedData[i][0] != 996) ?
+                (calculatedData[i][0] != 4 && calculatedData[i][0] != 996 && calculatedData[i][0] != 3) ?
                     calculatedData[i][3] = parseInt(calculatedData[i][3]) :
                     calculatedData[i][3] = parseFloat(calculatedData[i][3])
             }

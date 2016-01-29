@@ -26,12 +26,13 @@ define(['jquery', "urlConfigurator", "FenixReports"],
             var product = filterData.product;
             var dataSource = filterData.dataSource
 
+            this.mapRegionCodes = this.getMapForEachProduct(preloadingData.post.regionCode);
+
 
             var dataRegionCodes = []
             for(var i =0; i<5; i++){
                 dataRegionCodes.push(parseInt(preloadingData.post.regionCode))
             }
-
 
             $.ajax({
                 async: false,
@@ -48,6 +49,30 @@ define(['jquery', "urlConfigurator", "FenixReports"],
 
             this.createFormAndExport(totalValues, season, region, product, dataSource)
         }
+
+
+
+        ExcelExporter.prototype.getMapForEachProduct = function(regionCode) {
+
+
+
+            console.log(regionCode)
+            var self = this;
+
+            $.ajax({
+                async: false,
+                url: urlConfigurator.getMostRecentExportDate(regionCode),
+                type: 'POST',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify({"regionCode": regionCode})
+
+            }).done(function (result) {
+                self.mapRecents = result;
+            })
+
+
+        };
 
 
         ExcelExporter.prototype.createFormAndExport = function (totalValues, season, region, product, dataSource) {
@@ -70,7 +95,8 @@ define(['jquery', "urlConfigurator", "FenixReports"],
                             "season": season,
                             "region": region,
                             "product": product,
-                            "datasource": dataSource
+                            "datasource": dataSource,
+                            "mostRecentDateByProducts": this.mapRecents
                         },
                         "marketingYear": results
                     }

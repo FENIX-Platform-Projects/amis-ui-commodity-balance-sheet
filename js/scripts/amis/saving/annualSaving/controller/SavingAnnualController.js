@@ -22,10 +22,8 @@ define(['jquery',
         SavingAnnualController.prototype.init = function (BalanceSheet, filterActual, dataFiltered, Handler) {
 
             handlerAnnual = Handler
-
             supportUtility.init(dataFiltered)
             balanceSheet = BalanceSheet;
-
             actualFilter = filterActual;
             modelSaving.init()
             observerSaving.init(this)
@@ -62,8 +60,6 @@ define(['jquery',
                     $('#alertChangeGrid').append(alert1);
                 }
             }
-
-
         }
 
         SavingAnnualController.prototype.finalSave = function (arrayData) {

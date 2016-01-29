@@ -69,7 +69,8 @@ define([], function() {
             },
             {
                 "exportDataServletUrl": url + "/amisCBS/export",
-                "exportData" : url + "/dataset/annualExport"
+                "exportData" : url + "/dataset/annualExport",
+                "exportMostRecentDate" : url+"/dataset/mostRecentDateForYears"
             }
         ]
     };

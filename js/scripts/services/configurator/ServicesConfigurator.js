@@ -132,6 +132,13 @@ define(['jquery', '../services/configuration/services'], function($, C){
         return configuration.services[2].saving.savingAnnualMode;
     }
 
+    ServicesConfigurator.prototype.getMostRecentExportDate = function(){
+        if(!configuration){
+            this.init()
+        }
+        return configuration.services[3].exportMostRecentDate;
+    }
+
 
     return ServicesConfigurator;
 })

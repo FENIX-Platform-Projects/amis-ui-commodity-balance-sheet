@@ -8,7 +8,7 @@ define(["jquery", "formatter/DatatypesFormatter", 'othUsesPlugin'], function ($,
 
     function ViewModel() {
         particularFormatterCodes = {"Yield (Tonnes/Ha)": true, "Per capita food use (Kg/Yr)": true, "Yield Milled (Tonnes/Ha)": true,
-            "Yield Paddy (Tonnes/Ha)": true}
+            "Yield Paddy (Tonnes/Ha)": true, "Extraction Rate (%)" : true }
         otherPlugin = new OTHPlugin;
     }
 
