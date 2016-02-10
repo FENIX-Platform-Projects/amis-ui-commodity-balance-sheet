@@ -1,0 +1,756 @@
+{
+  "product": 1,
+  "region": 12,
+  "datasource": "Ministerio de Agricultura, Ganadería y Pesca",
+  "filters": [
+    {
+      "season": "2015/16",
+      "year": 2015,
+      "date": "2015-12-28",
+      "data": [
+        [
+          19,
+          "Thousand tonnes",
+          "2015-12-28",
+          15133,
+          "C",
+          null
+        ],
+        [
+          27,
+          "Thousand tonnes",
+          "2015-12-28",
+          15130,
+          "C",
+          null
+        ],
+        [
+          18,
+          "Thousand tonnes",
+          "2015-12-28",
+          4230,
+          null,
+          null
+        ],
+        [
+          5,
+          "Thousand tonnes",
+          "2015-12-28",
+          10900,
+          null,
+          null
+        ],
+        [
+          7,
+          "Thousand tonnes",
+          "2015-12-28",
+          3,
+          null,
+          null
+        ],
+        [
+          35,
+          "Thousand tonnes",
+          "2015-12-28",
+          15130,
+          "C",
+          null
+        ],
+        [
+          20,
+          "Thousand tonnes",
+          "2015-12-28",
+          6800,
+          "C",
+          null
+        ],
+        [
+          14,
+          "Thousand tonnes",
+          "2015-12-28",
+          6000,
+          null,
+          null
+        ],
+        [
+          13,
+          "Thousand tonnes",
+          "2015-12-28",
+          200,
+          null,
+          null
+        ],
+        [
+          15,
+          "Thousand tonnes",
+          "2015-12-28",
+          600,
+          null,
+          null
+        ],
+        [
+          10,
+          "Thousand tonnes",
+          "2015-12-28",
+          7000,
+          null,
+          null
+        ],
+        [
+          16,
+          "Thousand tonnes",
+          "2015-12-28",
+          1330,
+          null,
+          null
+        ],
+        [
+          17,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          8,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          12,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          2,
+          "Thousand Ha",
+          "2015-12-28",
+          4020,
+          null,
+          null
+        ],
+        [
+          37,
+          "Thousand Ha",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          43,
+          "Tonnes/Ha",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          38,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          32,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          30,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          28,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          34,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          21,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          36,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          40,
+          "Thousand Ha",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          42,
+          "Tonnes/Ha",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          25,
+          "Kg/Yr",
+          "2015-12-28",
+          141.1764705882353,
+          "C",
+          null
+        ],
+        [
+          3,
+          "%",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          4,
+          "Tonnes/Ha",
+          "2015-12-28",
+          2.71,
+          null,
+          null
+        ],
+        [
+          41,
+          "Thousand Ha",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          39,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "season": "2015/16",
+      "year": 2015,
+      "date": "2016-02-10",
+      "data": [
+        [
+          32,
+          "Thousand tonnes",
+          "2016-02-10",
+          null,
+          null,
+          null
+        ],
+        [
+          31,
+          "Thousand tonnes",
+          "2016-02-10",
+          null,
+          null,
+          null
+        ],
+        [
+          30,
+          "Thousand tonnes",
+          "2016-02-10",
+          null,
+          null,
+          null
+        ],
+        [
+          29,
+          "Thousand tonnes",
+          "2016-02-10",
+          null,
+          null,
+          null
+        ],
+        [
+          28,
+          "Thousand tonnes",
+          "2016-02-10",
+          null,
+          null,
+          null
+        ],
+        [
+          34,
+          "Thousand tonnes",
+          "2016-02-10",
+          null,
+          null,
+          null
+        ],
+        [
+          21,
+          "Thousand tonnes",
+          "2016-02-10",
+          null,
+          null,
+          null
+        ],
+        [
+          15,
+          "Thousand tonnes",
+          "2016-02-10",
+          2,
+          null,
+          null
+        ],
+        [
+          37,
+          "Thousand Ha",
+          "2016-02-10",
+          null,
+          null,
+          null
+        ],
+        [
+          5,
+          "Thousand tonnes",
+          "2016-02-10",
+          3,
+          null,
+          null
+        ],
+        [
+          4,
+          "Tonnes/Ha",
+          "2016-02-10",
+          1.5,
+          "C",
+          null
+        ],
+        [
+          2,
+          "Thousand Ha",
+          "2016-02-10",
+          2,
+          null,
+          null
+        ],
+        [
+          17,
+          "Thousand tonnes",
+          "2016-02-10",
+          23,
+          null,
+          null
+        ],
+        [
+          12,
+          "Thousand tonnes",
+          "2016-02-10",
+          3,
+          null,
+          null
+        ],
+        [
+          8,
+          "Thousand tonnes",
+          "2016-02-10",
+          2,
+          null,
+          null
+        ],
+        [
+          16,
+          "Thousand tonnes",
+          "2016-02-10",
+          5,
+          null,
+          null
+        ],
+        [
+          10,
+          "Thousand tonnes",
+          "2016-02-10",
+          4,
+          null,
+          null
+        ],
+        [
+          13,
+          "Thousand tonnes",
+          "2016-02-10",
+          3,
+          null,
+          null
+        ],
+        [
+          14,
+          "Thousand tonnes",
+          "2016-02-10",
+          2,
+          null,
+          null
+        ],
+        [
+          7,
+          "Thousand tonnes",
+          "2016-02-10",
+          3,
+          null,
+          null
+        ],
+        [
+          18,
+          "Thousand tonnes",
+          "2016-02-10",
+          232,
+          null,
+          null
+        ],
+        [
+          19,
+          "Thousand tonnes",
+          "2016-02-10",
+          238,
+          "C",
+          null
+        ],
+        [
+          27,
+          "Thousand tonnes",
+          "2016-02-10",
+          235,
+          "C",
+          null
+        ],
+        [
+          35,
+          "Thousand tonnes",
+          "2016-02-10",
+          16,
+          "C",
+          null
+        ],
+        [
+          20,
+          "Thousand tonnes",
+          "2016-02-10",
+          7,
+          "C",
+          null
+        ],
+        [
+          25,
+          "%",
+          "2016-02-10",
+          0.047058823529411764,
+          "C",
+          null
+        ],
+        [
+          33,
+          "Thousand tonnes",
+          "2016-02-10",
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    {
+      "season": "2014/15",
+      "year": 2014,
+      "date": "2015-12-28",
+      "data": [
+        [
+          4,
+          "Tonnes/Ha",
+          "2015-12-28",
+          2.7,
+          null,
+          null
+        ],
+        [
+          3,
+          "%",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          25,
+          "Kg/Yr",
+          "2015-12-28",
+          141.1764705882353,
+          "C",
+          null
+        ],
+        [
+          42,
+          "Tonnes/Ha",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          43,
+          "Tonnes/Ha",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          19,
+          "Thousand tonnes",
+          "2015-12-28",
+          15433,
+          "C",
+          null
+        ],
+        [
+          27,
+          "Thousand tonnes",
+          "2015-12-28",
+          15430,
+          "C",
+          null
+        ],
+        [
+          18,
+          "Thousand tonnes",
+          "2015-12-28",
+          1530,
+          null,
+          null
+        ],
+        [
+          5,
+          "Thousand tonnes",
+          "2015-12-28",
+          13900,
+          null,
+          null
+        ],
+        [
+          7,
+          "Thousand tonnes",
+          "2015-12-28",
+          3,
+          null,
+          null
+        ],
+        [
+          35,
+          "Thousand tonnes",
+          "2015-12-28",
+          15430,
+          "C",
+          null
+        ],
+        [
+          20,
+          "Thousand tonnes",
+          "2015-12-28",
+          6800,
+          "C",
+          null
+        ],
+        [
+          14,
+          "Thousand tonnes",
+          "2015-12-28",
+          6000,
+          null,
+          null
+        ],
+        [
+          13,
+          "Thousand tonnes",
+          "2015-12-28",
+          200,
+          null,
+          null
+        ],
+        [
+          36,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          15,
+          "Thousand tonnes",
+          "2015-12-28",
+          600,
+          null,
+          null
+        ],
+        [
+          21,
+          "Thousand tonnes",
+          "2015-12-28",
+          400,
+          null,
+          null
+        ],
+        [
+          34,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          28,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          30,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          32,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          10,
+          "Thousand tonnes",
+          "2015-12-28",
+          4400,
+          null,
+          null
+        ],
+        [
+          16,
+          "Thousand tonnes",
+          "2015-12-28",
+          4230,
+          null,
+          null
+        ],
+        [
+          17,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          8,
+          "Thousand tonnes",
+          "2015-12-28",
+          3,
+          null,
+          null
+        ],
+        [
+          12,
+          "Thousand tonnes",
+          "2015-12-28",
+          3920,
+          null,
+          null
+        ],
+        [
+          38,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          39,
+          "Thousand tonnes",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          2,
+          "Thousand Ha",
+          "2015-12-28",
+          5150,
+          null,
+          null
+        ],
+        [
+          37,
+          "Thousand Ha",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          40,
+          "Thousand Ha",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ],
+        [
+          41,
+          "Thousand Ha",
+          "2015-12-28",
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  ]
+}

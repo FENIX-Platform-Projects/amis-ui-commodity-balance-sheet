@@ -1,6 +1,10 @@
 define([], function() {
 
     var previuosURL = "http://fenixapps2.fao.org/amis-services";
+
+/*
+    var url = "http://exlpramis1.ext.fao.org:10400/amis-cbs-services";
+*/
     var url = "http://168.202.28.87:8080";
 /*
     var url = "http://statistics.amis-outlook.org/amis-cbs-services";

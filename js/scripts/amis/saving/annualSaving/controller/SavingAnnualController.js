@@ -65,6 +65,7 @@ define(['jquery',
         SavingAnnualController.prototype.finalSave = function (arrayData) {
 
             var payload =  this.prepareNewPayload(arrayData);
+            debugger;
             ($('#loading-saving-data').length === 0)?  $('.bootstrap-dialog-body').append(Template): null;
                 $.ajax({
                     async: false,
