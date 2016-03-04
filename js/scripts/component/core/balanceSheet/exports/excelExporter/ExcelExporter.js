@@ -53,10 +53,6 @@ define(['jquery', "urlConfigurator", "FenixReports"],
 
 
         ExcelExporter.prototype.getMapForEachProduct = function(regionCode) {
-
-
-
-            console.log(regionCode)
             var self = this;
 
             $.ajax({

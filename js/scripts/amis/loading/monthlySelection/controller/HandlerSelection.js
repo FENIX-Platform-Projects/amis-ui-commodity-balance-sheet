@@ -32,13 +32,14 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
         var filterPrevPopulation = {
             "region": region,
             "element": 1,
-            "year": previousYearFilter}
+            "year": preloadingData.years.previousYearLabel != -1? previousYearFilter:parseInt(preloadingData.years.previousYearLabel.substr(0,4))
+        }
         var mostRecentDateFilter = {"region": region, "product": product, "year": previousYearFilter }
 
         var filterPopulationActual = {
             "region": region,
             "element": 1,
-            "year": currentYearFilter
+            "year": parseInt(preloadingData.years.currentYearLabel.substr(0,4))
         }
         // take the actual forecast
         var actualForecast = dataLoader.getActualYearForecast(filterActual, filterPopulationActual, isDateFormatted);
