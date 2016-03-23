@@ -46,7 +46,7 @@ define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoade
         return  {
             "region": region,
             "element": 1,
-            "year": season.value
+            "year": parseInt(season.label.substr(0,4))
         }
     }
 

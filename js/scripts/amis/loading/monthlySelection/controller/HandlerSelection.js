@@ -32,7 +32,7 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
         var filterPrevPopulation = {
             "region": region,
             "element": 1,
-            "year": preloadingData.years.previousYearLabel != -1? previousYearFilter:parseInt(preloadingData.years.previousYearLabel.substr(0,4))
+            "year": preloadingData.years.previousYearLabel && preloadingData.years.previousYearLabel != -1? parseInt(preloadingData.years.previousYearLabel.substr(0,4)): preloadingData.years.previousYear
         }
         var mostRecentDateFilter = {"region": region, "product": product, "year": previousYearFilter }
 
@@ -48,7 +48,7 @@ define(['jquery', "monthlyLoader/logic/DataLoader"], function ($, DataLoader) {
 
             var prevYearForecast = dataLoader.getPreviousYearForecast(mostRecentDateFilter, filterPreviousYear, filterPrevPopulation, isDateFormatted, preloadingData)
 
-            var totalForecast = (prevYearForecast && prevYearForecast.length >0)?prevYearForecast.concat(actualForecast): prevYearForecasts
+            var totalForecast = (prevYearForecast && prevYearForecast.length >0)?prevYearForecast.concat(actualForecast): prevYearForecast
                 ;
         } else {
             var totalForecast = actualForecast;
