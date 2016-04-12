@@ -1,9 +1,11 @@
 /**
  * Created by fabrizio on 9/8/14.
  */
-define(["jquery" ], function ($) {
+define(["jquery", "amplify" ], function ($) {
 
-    var ulrFormulas = "./js/scripts/amis/formulas/configuration/formula.json"
+
+    var urlFormulas;
+
 
     var config, mapSpecialFormulas;
 
@@ -11,12 +13,16 @@ define(["jquery" ], function ($) {
     }
 
     FormulaConfigurator.prototype.init = function () {
+        
+        urlFormulas = amplify.store().dsd == 6?
+            "./js/scripts/amis/formulas/configuration/formulaSoybeans.json"
+            :"./js/scripts/amis/formulas/configuration/formula.json";
 
         // Get json configuration
         $.ajax({
             async: false,
             type: 'GET',
-            url: ulrFormulas,
+            url: urlFormulas,
             success: function (data) {
                 config = data;
             }

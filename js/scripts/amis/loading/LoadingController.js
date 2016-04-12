@@ -49,14 +49,20 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
 
                 case 4:
                     url = urlDSDRice;
+                    amplify.store('dsd', 4);
+
                     break;
 
                 case 6:
                     url = ulrDSDSoyBean;
+                    amplify.store('dsd', 6);
+
                     break;
 
                 default :
                     url = urlDSD;
+                    amplify.store('dsd', 0);
+
             }
 
             if (!firstIstance) {
