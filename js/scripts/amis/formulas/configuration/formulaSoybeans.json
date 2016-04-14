@@ -158,9 +158,26 @@
           "condition": "exists",
           "dataType": "code",
           "value": [
+            13
+          ],
+          "otherValue": [],
+          "otherColumn": false,
+          "columnNumber": ""
+        },
+        {
+          "dataType": "operation",
+          "value": "+",
+          "otherColumn": false,
+          "columnNumber": ""
+        },
+        {
+          "hasCondition": true,
+          "condition": "exists",
+          "dataType": "code",
+          "value": [
             36
           ],
-          "otherValue": [13],
+          "otherValue": [],
           "otherColumn": false,
           "columnNumber": ""
         },
@@ -337,7 +354,7 @@
   ],
   "onUpdate": {
     "bindedKeys": [
-      7, 14, 36, 10, 18, 16
+      7, 14, 36, 10, 18, 16, 13
     ],
     "formulas": [
       {
@@ -351,6 +368,14 @@
       {
         "updateFormulaID": 2,
         "key": [14],
+        "otherColumns": false,
+        "columnNumber": "",
+        "conditions": "",
+        "formulasBinded": [4, 5, 6, 7]
+      },
+      {
+        "updateFormulaID": 2,
+        "key": [13],
         "otherColumns": false,
         "columnNumber": "",
         "conditions": "",
