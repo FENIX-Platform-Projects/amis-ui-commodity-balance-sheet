@@ -995,9 +995,13 @@
                 label: 'OK',
                 cssClass: 'btn-primary',
                 action: function(dialog) {
+                    var d = new Date();
                     typeof dialog.getData('callback') === 'function' && dialog.getData('callback')(true);
                     $('#loading-saving-data').remove();
-                    dialog.close();
+                    window.setTimeout(function(){ dialog.close()  ;
+                        console.log( new Date().getSeconds())
+                    ;}, 3500);
+
                 }
             }]
         }).open();
