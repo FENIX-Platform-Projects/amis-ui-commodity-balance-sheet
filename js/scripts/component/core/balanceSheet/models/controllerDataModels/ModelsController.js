@@ -2,15 +2,20 @@
  * Created by fabrizio on 7/24/14.
  */
 define(["jquery", "models/tableDataModel/TableDataModel",
-    "models/gridDataModel/GridDataModel", "models/creator/HandlerCreationModels", "moment"], function ($, TableDataModel, GridDataModel, ModelCreator) {
+    "models/gridDataModel/GridDataModel",
+    "models/creator/HandlerCreationModels",
+    "models/configUM/config_um",
+    "moment",
+    "amplify"], function ($, TableDataModel, GridDataModel, ModelCreator,C) {
 
     var TableModel, GridModel, indexes, instanceGridDataModel, instanceTableDataModel, fullTableModel, newValues, dataTable, CreatorModels,
-        modelForCreation, Configurator;
+        modelForCreation, Configurator, config;
 
     function ModelsController() {
         TableModel = new TableDataModel;
         GridModel = new GridDataModel;
         CreatorModels = new ModelCreator;
+        config = C;
     }
 
     ModelsController.prototype.init = function (tableData, configurator) {
@@ -93,10 +98,21 @@ define(["jquery", "models/tableDataModel/TableDataModel",
     }
 
     ModelsController.prototype.createNewForecast = function(){
-        var muArray = ["Thousand tonnes", "Thousand tonnes","Thousand tonnes","Thousand tonnes","Thousand tonnes",
-            "Thousand tonnes","Thousand tonnes","Thousand tonnes","Thousand tonnes","Thousand tonnes",
-            "Thousand tonnes","Thousand tonnes","Thousand tonnes","Thousand tonnes","Thousand tonnes","Thousand tonnes",
-            "Thousand Ha","Thousand Ha","Tonnes/Ha","1000s","%","Kg/Yr"]
+
+        var muArray;
+        switch (amplify.store().dsd) {
+            case 6:
+                muArray = config.soybeans
+                break;
+            case 4:
+                muArray = config.rice
+                break;
+            default:
+                muArray = config.default
+                break;
+
+        }
+  
         var codes = Configurator.getLeftKeyColumn().leftColumns[0].domain.codes;
         var result = []
         var dateOfForecast = new Date();

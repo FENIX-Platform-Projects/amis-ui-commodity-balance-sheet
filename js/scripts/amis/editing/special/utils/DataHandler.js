@@ -103,10 +103,10 @@ define(['jquery'], function($){
                var measurementUnit;
                switch(model[i][0]){
                    case 37:
-                       measurementUnit=  'Thousand Tonnes';
+                       measurementUnit=  'Thousand Ha';
                        break;
                    default :
-                       measurementUnit=  'Thousand Tonnes';
+                       measurementUnit=  'Thousand tonnes';
                         break;
                }
                 var row = []
