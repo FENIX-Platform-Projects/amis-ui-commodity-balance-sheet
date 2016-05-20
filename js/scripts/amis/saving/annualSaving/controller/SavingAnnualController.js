@@ -39,9 +39,12 @@ define(['jquery',
             var tableData = $.extend(true, [], tableDataOriginal);
             var newdata = $.extend(true, [], newDataOriginal);
 
+            var elementsCalculated = balanceSheet.getCalculatedElements(tableData);
+            var dataClear = modelSaving.mergeInputDataWithCalculatedElements(elementsCalculated, allData);
+
             // fino a qui!
             modelSaving.init(supportUtility)
-            var dataWithPayload = modelSaving.prepareData(allData, tableData, newdata, actualFilter, handlerAnnual);
+            var dataWithPayload = modelSaving.prepareData(dataClear, tableData, newdata, actualFilter, handlerAnnual);
 
             this.finalSave(dataWithPayload)
 

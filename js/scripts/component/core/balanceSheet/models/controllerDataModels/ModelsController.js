@@ -112,7 +112,7 @@ define(["jquery", "models/tableDataModel/TableDataModel",
                 break;
 
         }
-  
+
         var codes = Configurator.getLeftKeyColumn().leftColumns[0].domain.codes;
         var result = []
         var dateOfForecast = new Date();

@@ -4,6 +4,11 @@ define(['jquery'], function ($) {
 
 
     function SavingAnnualModel() {
+        this.opt = {
+            element_pos : 0,
+            date_pos : 2
+
+        }
     }
 
 
@@ -203,6 +208,25 @@ define(['jquery'], function ($) {
         }
 
         return payLoads;
+    }
+
+
+    SavingAnnualModel.prototype.mergeInputDataWithCalculatedElements = function (elements,data ) {
+
+        for(var i=0; i<elements.length; i++) {
+            for(var j=0; j <data.length; j++) {
+                if(data[j] && data[j][this.opt.element_pos] &&  data[j][this.opt.element_pos]!= null
+                    && data[j][this.opt.element_pos] == parseInt(elements[i][this.opt.element_pos])
+                    &&  data[j][this.opt.date_pos] &&  data[j][this.opt.date_pos]!= null
+                    && data[j][this.opt.date_pos] == elements[i][this.opt.date_pos] ) {
+                    data[j] = elements[i]
+                }
+            }
+        }
+
+        return data;
+
+
     }
 
 
