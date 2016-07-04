@@ -60,7 +60,7 @@ define(["jquery", "urlConfigurator" , "jqwidgets"], function ($, ServicesConf) {
             async: false,
             type: 'post',
             url: urlDB,
-            contentType: "application/json",
+            contentType: "application/json; charset=utf-8",
             dataType: 'json',
             data: JSON.stringify(filterRegionCode),
             success: function (data) {

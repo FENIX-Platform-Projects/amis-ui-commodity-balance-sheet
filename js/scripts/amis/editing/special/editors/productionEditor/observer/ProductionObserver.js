@@ -472,9 +472,9 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
             }
 
             // condition follows
-            if (toBlock) {
+           /* if (toBlock) {
                 $("#gridTotalValues").jqxGrid('endcelledit', row, column, true);
-            }
+            }*/
         });
     }
 
@@ -523,9 +523,9 @@ define(["jquery", "formatter/DatatypesFormatter"], function ($, Formatter) {
                 toBlock = true;
             }
             // condition follows
-            if (toBlock) {
+          /*  if (toBlock) {
                 $("#gridSingleCrops").jqxGrid('endcelledit', row, column, true);
-            }
+            }*/
         });
     }
 

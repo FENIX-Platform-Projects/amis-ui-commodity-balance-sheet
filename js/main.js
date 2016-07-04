@@ -71,6 +71,9 @@ requirejs.config({
         },
         "FenixExports":{
             deps:["FenixValidator", "jquery"]
+        },
+        "jqwidgets":{
+            deps : ["jquery"]
         }
 
     }
