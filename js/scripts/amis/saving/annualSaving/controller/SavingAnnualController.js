@@ -56,9 +56,9 @@ define(['jquery',
 
             data.updatedData.length = 0;
             data.newData.length = 0;
-            if (document.getElementById('alertNewValues')!= null && document.getElementById('alertNewValues').childNodes.length == 0 && document.getElementById('alertChangeGrid').childNodes.length == 0) {
+            if (document.getElementById('alertNewValues') != null && document.getElementById('alertNewValues').childNodes.length != 0 && document.getElementById('alertChangeGrid').childNodes.length == 0) {
                 var f = document.getElementById('alertNewValues');
-                if(f){
+                if (f) {
                     f.remove();
                     var alert1 = '<div class="alert alert-info alert-dismissible" role="alert">' +
                         '<button type="button" class="close" data-dismiss="alert">' +
