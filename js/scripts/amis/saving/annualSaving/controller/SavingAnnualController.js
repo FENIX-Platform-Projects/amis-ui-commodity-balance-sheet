@@ -33,8 +33,6 @@ define(['jquery',
 
         SavingAnnualController.prototype.onSavingData = function () {
 
-            debugger;
-
             var allDataOriginal = balanceSheet.getData();
             var tableDataOriginal = balanceSheet.getTableData();
             var newDataOriginal = balanceSheet.getDataToSave();

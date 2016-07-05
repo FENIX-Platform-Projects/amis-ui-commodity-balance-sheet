@@ -86,29 +86,21 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
 
 
         OtherCreator.prototype.prepareDataForTreeGrid = function (model, isUpdated) {
+            var isSoybean = amplify.store().dsd==6;
 
             var result =
-                (isUpdated) ?
+                (isSoybean) ?
                     [
-                        {"0": model[0][0], "1": model[0][1], "2": model[0][2], "3": model[0][3], "4": model[0][4], "5": model[0[5]], "value": model[0][6], "open": true,
+                        {"0": model[0][0], "1": model[0][1], "2": model[0][2], "3": model[0][3], "4": model[0][4], "5": model[0[5]], "value": model[0][6], "open": isUpdated,
                             "data": [
                                 {  "0": model[1][0], "1": model[1][1], "2": model[1][2], "3": model[1][3], "4": model[1][4], "5": model[1][5], "value": model[1][6] },
                                 {  "0": model[2][0], "1": model[2][1], "2": model[2][2], "3": model[2][3], "4": model[2][4], "5": model[2][5], "value": model[2][6] },
-                                {  "0": model[3][0], "1": model[3][1], "2": model[3][2], "3": model[3][3], "4": model[3][4], "5": model[3][5], "value": model[3][6], "open": true,
-                                    "data": [
-                                        {  "0": model[4][0], "1": model[4][1], "2": model[4][2], "3": model[4][3], "4": model[4][4], "5": model[4][5], "value": model[4][6] },
-                                        {  "0": model[5][0], "1": model[5][1], "2": model[5][2], "3": model[5][3], "4": model[5][4], "5": model[5][5], "value": model[5][6] },
-                                        {  "0": model[6][0], "1": model[6][1], "2": model[6][2], "3": model[6][3], "4": model[6][4], "5": model[6][5], "value": model[6][6] },
-                                        {  "0": model[7][0], "1": model[7][1], "2": model[7][2], "3": model[7][3], "4": model[7][4], "5": model[7][5], "value": model[7][6] },
-                                        {  "0": model[8][0], "1": model[8][1], "2": model[8][2], "3": model[8][3], "4": model[8][4], "5": model[8][5], "value": model[8][6] }
-                                    ]
-                                }
                             ]
                         }
                     ]
                     :
                     [
-                        {"0": model[0][0], "1": model[0][1], "2": model[0][2], "3": model[0][3], "4": model[0][4], "5": model[0][5], "value": model[0][6], "open": false,
+                        {"0": model[0][0], "1": model[0][1], "2": model[0][2], "3": model[0][3], "4": model[0][4], "5": model[0][5], "value": model[0][6], "open": isUpdated,
                             "data": [
                                 {  "0": model[1][0], "1": model[1][1], "2": model[1][2], "3": model[1][3], "4": model[1][4], "5": model[1][5], "value": model[1][6] },
                                 {  "0": model[2][0], "1": model[2][1], "2": model[2][2], "3": model[2][3], "4": model[2][4], "5": model[2][5], "value": model[2][6] },

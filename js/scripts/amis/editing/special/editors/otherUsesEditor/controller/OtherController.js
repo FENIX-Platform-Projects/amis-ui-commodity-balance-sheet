@@ -1,9 +1,8 @@
-/**
- * Created by fabrizio on 10/1/14.
- */
 define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/OtherObserver', 'otherUsesEditor/creator/OtherCreator',
         "specialFormulaConf/formulaHandler/FormulaHandler"],
     function ($, OtherModel, OtherObserver, OtherEditor, FormulaHandler) {
+
+        'use strict';
 
         var editorsController, observer, modelOther, editorOther, supportUtility,
             originalTotCropsModel, formulaHandler;
@@ -95,7 +94,8 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
         OtherController.prototype.containsValuesFormula = function (rowNumber, numberFormula, model) {
             var result = true;
             if (numberFormula === 1) {
-                for (var i = 1; i < 4 && result; i++) {
+                var length = amplify.store().dsd == 6? 3:4;
+                for (var i = 1; i < length && result; i++) {
                     result = (!isNaN(model[i][3]) && model[i][3] != null && model[i][3] != "")
                 }
             }
@@ -111,7 +111,7 @@ define(['jquery', 'otherUsesEditor/model/OtherModel', 'otherUsesEditor/observer/
 
             switch (number) {
                 case 1:
-                    // O Uses
+                    // 1 Uses
                     var sum = 0, indexSum
                     for (var i = 0, length = model.length; i < length; i++) {
                         if (model[i][0] == 15) {

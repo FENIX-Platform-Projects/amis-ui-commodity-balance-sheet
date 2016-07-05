@@ -1,21 +1,26 @@
-/**
- * Created by fabrizio on 9/30/14.
- */
-define(['jquery'], function ($) {
+define(['jquery', 'amplify'], function ($) {
+
+    'use strict'
 
     var supportUtility, originalModel, newItems;
 
-    var map = {
-        '15': "Other Uses",
-        '21': "Seeds",
-        '34': "Post Harvest Losses",
-        '28': "Industrial Use",
-        '29': "Malt",
-        '30': "Biofuel",
-        '31': "Sweeteners",
-        '32': "Starch",
-        '33': "Others"
-
+    var o={
+        normalMap : {
+            '15': "Other Uses",
+            '21': "Seeds",
+            '34': "Post Harvest Losses",
+            '28': "Industrial Use",
+            '29': "Malt",
+            '30': "Biofuel",
+            '31': "Sweeteners",
+            '32': "Starch",
+            '33': "Others"
+        },
+        soybeanMap:{
+            '15': "Other Uses",
+            '21': "Seeds",
+            '34': "Post Harvest Losses"
+        }
     }
 
     function OtherModel() {
@@ -36,12 +41,14 @@ define(['jquery'], function ($) {
 
     OtherModel.prototype.createTotalValuesModel = function (itemsInvolved, utilitySupport) {
         newItems = []
+        var isSoybean = amplify.store().dsd==6;
+        var map = isSoybean?  o.soybeanMap:o.normalMap;
         var copyMap = $.extend([], true, map);
         var result = []
         supportUtility = utilitySupport;
         var dataModel = $.extend(true, [], itemsInvolved);
 
-        var keys = [15, 21, 34, 28, 29, 30, 31, 32, 33]
+        var keys = isSoybean?[15, 21, 34]:[15, 21, 34, 28, 29, 30, 31, 32, 33];
 
         for (var n = 0, length = keys.length; n < length; n++) {
             var found = false
