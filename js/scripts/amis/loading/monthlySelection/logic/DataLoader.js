@@ -1,4 +1,4 @@
-define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function ($, Formatter, ServicesURL) {
+define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator", "amplify"], function ($, Formatter, ServicesURL) {
 
 
     var urlActualForecast , urlPopulation , urlMostRecentDate, urlPreviousYear, firstForecastDateToInsert,
@@ -66,21 +66,10 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
             populationActual = result;
         })
 
-        var a = {"region":46,  "product":5,  "year": 2015,  "season": "2015/16"}
-
         // Inside of population insert the date(s)
 
         // Look for every date and put inside of each the population product
 
-        /*
-        firstForecastDateToInsert = actualForecast[0][2]
-        if (populationActual.length > 0) {
-            populationActual[0].splice(2, 0, firstForecastDateToInsert);
-            populationActual[0].push(null);
-
-            actualForecast.push(populationActual[0])
-        }
-        */
         this.putDateInEveryForecast(setDatesUnique,actualForecast,populationActual)
 
         return actualForecast;
@@ -211,12 +200,17 @@ define(["jquery", "formatter/DatatypesFormatter", "urlConfigurator"], function (
 
 
     DataLoader.prototype.putDateInEveryForecast = function(setDatesObject, forecast, population){
-        for(var date in setDatesObject){
-            var populationCopy = $.extend(true,[],population)
-            if (populationCopy.length > 0) {
-                populationCopy[0].splice(2, 0,date);
-                forecast.splice([setDatesObject[date]],0,populationCopy[0])
+        // if there is a new forecast
+        if(!($.isEmptyObject(setDatesObject))) {
+            for (var date in setDatesObject) {
+                var populationCopy = $.extend(true, [], population)
+                if (populationCopy.length > 0) {
+                    populationCopy[0].splice(2, 0, date);
+                    forecast.splice([setDatesObject[date]], 0, populationCopy[0])
+                }
             }
+        }else{
+            amplify.store('population_new_forecast', population[0])
         }
     }
 

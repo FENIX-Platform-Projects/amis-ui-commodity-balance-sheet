@@ -6,7 +6,7 @@ define(["jquery", "models/tableDataModel/TableDataModel",
     "models/creator/HandlerCreationModels",
     "models/configUM/config_um",
     "moment",
-    "amplify"], function ($, TableDataModel, GridDataModel, ModelCreator,C) {
+    "amplify"], function ($, TableDataModel, GridDataModel, ModelCreator, C) {
 
     var TableModel, GridModel, indexes, instanceGridDataModel, instanceTableDataModel, fullTableModel, newValues, dataTable, CreatorModels,
         modelForCreation, Configurator, config;
@@ -32,7 +32,7 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         TableModel.createFullTableData(modelForCreation)
 
         // if a full rows representation need to be visualized
-        var newTable =(configurator.getFullRowsRepresentation())?  TableModel.createColumnSparseTableData(modelForCreation) :
+        var newTable = (configurator.getFullRowsRepresentation()) ? TableModel.createColumnSparseTableData(modelForCreation) :
             TableModel.createTableModelFromGrid(instanceGridDataModel);
 
         TableModel.createSparseTableData(newTable);
@@ -93,11 +93,11 @@ define(["jquery", "models/tableDataModel/TableDataModel",
 
     }
 
-    ModelsController.prototype.getDataToSave = function(){
+    ModelsController.prototype.getDataToSave = function () {
         return TableModel.getDataToSave()
     }
 
-    ModelsController.prototype.createNewForecast = function(){
+    ModelsController.prototype.createNewForecast = function () {
 
         var muArray;
         switch (amplify.store().dsd) {
@@ -120,23 +120,28 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         var tableModel = TableModel.getTableData();
 
         // if not exist
-        if(this.checkBeforeCreateNewForecast(tableModel, dateDsdFormat)){
+        if (this.checkBeforeCreateNewForecast(tableModel, dateDsdFormat)) {
             for (var i = 0; i < codes.length; i++) {
                 result[i] = [];
                 result[i][0] = codes[i].code.code;
                 result[i][1] = muArray[i]
                 result[i][2] = dateDsdFormat;
-                if(codes[i].code.code == 1){
+                if (codes[i].code.code == 1) {
                     var notFound = true;
-                    for(var k = 0; k<tableModel.length && notFound; k++){
-                        if(tableModel[k][2] != "20000103" && tableModel[k][0] == 1){
-                                result[i][3] = (tableModel[k][3]) ? tableModel[k][3] : null;
-                                result[i][4] = (tableModel[k][4]) ? tableModel[k][4] : null;
-                                result[i][5] = (tableModel[k][5]) ? tableModel[k][5] : null;
-                                notFound = false;
+                    for (var k = 0; k < tableModel.length && notFound; k++) {
+                        if (tableModel[k][2] != "20000103" && tableModel[k][0] == 1) {
+                            result[i][3] = (tableModel[k][3]) ? tableModel[k][3] : null;
+                            result[i][4] = (tableModel[k][4]) ? tableModel[k][4] : null;
+                            result[i][5] = (tableModel[k][5]) ? tableModel[k][5] : null;
+                            notFound = false;
                         }
                     }
-                }else {
+                    if (notFound) {
+                        var forecast_population = amplify.store().population_new_forecast
+                        result[i][3] = forecast_population && forecast_population[2] != null ? forecast_population[2] : null;
+                        amplify.store("population_new_forecast", null);
+                    }
+                } else {
                     result[i][3] = null;
                     result[i][4] = null;
                     result[i][5] = null;
@@ -149,10 +154,10 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         return d;
     }
 
-    ModelsController.prototype.checkBeforeCreateNewForecast = function(model, date){
+    ModelsController.prototype.checkBeforeCreateNewForecast = function (model, date) {
         var notFound = true;
-        for(var i = 0, length = model.length; i<length && notFound; i++){
-            if(date == model[i][2]){
+        for (var i = 0, length = model.length; i < length && notFound; i++) {
+            if (date == model[i][2]) {
                 notFound = false
             }
         }
@@ -160,7 +165,7 @@ define(["jquery", "models/tableDataModel/TableDataModel",
     }
 
 
-    ModelsController.prototype.saveDataFromSpecialForm = function(newData, indTable, rowGridIndex, columnGridIndex, typeOfForm){
+    ModelsController.prototype.saveDataFromSpecialForm = function (newData, indTable, rowGridIndex, columnGridIndex, typeOfForm) {
         var indexesTableData = TableModel.updateDataFromSpecialForm(newData, typeOfForm)
         // TODO: save also grid data
         return indexesTableData;
