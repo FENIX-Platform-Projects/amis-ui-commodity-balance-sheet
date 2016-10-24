@@ -38,7 +38,7 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
                 var dataAdapter = new $.jqx.dataAdapter(source);
 
                 // comboBox
-                combo.jqxComboBox({
+                combo.jqxDropDownList({
                     source: dataAdapter,
                     displayMember: "label",
                     valueMember: "code",
@@ -50,7 +50,7 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
         });
 
         // Take the Preselected Value
-        productCode = combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).value;
+        productCode = combo.jqxDropDownList('getItem', combo.jqxDropDownList('selectedIndex')).value;
 
         return productCode;
     };

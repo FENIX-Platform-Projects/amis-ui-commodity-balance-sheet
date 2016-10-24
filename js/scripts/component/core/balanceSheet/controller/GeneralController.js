@@ -128,6 +128,14 @@ define(["jquery", "view/GridDataView", "editorController/FormController",
 
         }
 
+        GeneralController.prototype.unbindGridEvents = function (grid) {
+            grid.detachEvent("onItemClick");
+            grid.detachEvent("onBeforeEditStop");
+            $("#saveButton").off();
+
+
+        }
+
 
         GeneralController.prototype.startSpecialEditing = function (resultedClicked) {
             var allData = ModelController.getData();

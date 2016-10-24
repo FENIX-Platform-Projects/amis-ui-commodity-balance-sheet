@@ -20,7 +20,7 @@ define(['jquery', "annualLoader/logic/DataLoaderAnnual"], function ($, DataLoade
     HandlerAnnualSelection.prototype.startSelection = function () {
         seasonYearMap = {}
         var resultForecast = []
-        var items = $("#selectionYear").jqxComboBox('getItems');
+        var items = $("#selectionYear").jqxDropDownList('getItems');
         for (var i = 0, length = items.length; i < length; i++) {
             var temporaryForecast = this.createLastForecastCurrentSeason(items, region, product, items[i])
             seasonYearMap[items[i].label] = items[i].value

@@ -40,7 +40,7 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, servicesUrl) {
                 var dataAdapter = new $.jqx.dataAdapter(source);
 
                 // comboBox
-                combo.jqxComboBox({
+                combo.jqxDropDownList({
                     source: dataAdapter,
                     displayMember: "label",
                     valueMember: "code",
@@ -52,7 +52,7 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, servicesUrl) {
         });
 
         // Take the Preselected Value
-        regionCode = combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).value;
+        regionCode = combo.jqxDropDownList('getItem', combo.jqxDropDownList('selectedIndex')).value;
         return regionCode;
     };
 

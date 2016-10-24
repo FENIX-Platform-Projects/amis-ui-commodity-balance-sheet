@@ -22,17 +22,11 @@ define(['jquery', "bootstrap-dialog"], function ($, BootstrapDialog) {
             event.stopImmediatePropagation();
             bootstrapDialog.confirm('Are you sure to save the data ?', function (result) {
                 if (result) {
-                    console.log('1')
                     if($('.btn','.bootstrap-dialog')) {
-                        console.log('if')
-
                         $.each($('.btn','.bootstrap-dialog'), function(index, value){
-                            console.log('disbaled')
-
                             $(value).prop('disabled',true);
                         });
                     }
-                    console.log('else')
                     savingController.onSavingData()
                 }
             });

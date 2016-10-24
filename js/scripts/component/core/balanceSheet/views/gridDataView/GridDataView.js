@@ -108,8 +108,10 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
 
             this.createOtherOptions()
 
-            if (grid)
+            if (grid) {
+                generalController.unbindGridEvents(grid);
                 grid.destructor()
+            }
 
             grid = this.createAndDrawGrid(columns, dataSource);
             generalController.createListeners(grid);
@@ -173,6 +175,8 @@ define(["jquery" , "views/modelView/ViewModel", "adapterGrid", "nprogress", "web
                     " , " + filterData.product + " , " + filterData.dataSource
             }
 
+            if($('#options') && $('#options') != null && $('#options').children &&  $('#options').children!= null && $('#options').children.length >0)
+                $('#options').empty();
 
             $('#options').append('<div class="btn-group amis-btn-group">' +
                 buttonChangeModality +

@@ -17,7 +17,7 @@ define(['jquery', 'urlConfigurator'], function ($, ServicesUrl) {
 
     PopulationModel.prototype.init = function () {
 
-        var region = $("#selectionCountryBox").jqxComboBox('getSelectedItem');
+        var region = $("#selectionCountryBox").jqxDropDownList('getSelectedItem');
         regionCode = region.value
 
         var ulrPopulationDataLoading = servicesURL.getPopulationDataURL()

@@ -94,8 +94,8 @@ define(["jquery", "moment", "numeral"], function ($) {
                         var date = new Date(year, month - 1, day);
                         result = moment(date).format(configurationKeyColumn.properties.cellProperties.dateFormat)
                     } else {
-                        var indexPrevious  =    $("#selectionYear").jqxComboBox('getSelectedIndex')+1
-                        var season = $("#selectionYear").jqxComboBox('getItem', indexPrevious).label;
+                        var indexPrevious  =    $("#selectionYear").jqxDropDownList('getSelectedIndex')+1
+                        var season = $("#selectionYear").jqxDropDownList('getItem', indexPrevious).label;
                         result = season;
                     }
                 } else result = undefined

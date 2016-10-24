@@ -17,8 +17,8 @@ define(["jquery", "jqwidgets"], function($) {
         var datasourceFilt = filterData.post.databaseText;
          productCode = filterData.post.productCode;
          countryCode = filterData.post.regionCode;
-        var product = $("#selectionCommodity").jqxComboBox('getItemByValue', productCode).label;
-        var country = $("#selectionCountryBox").jqxComboBox('getItemByValue', countryCode).label;
+        var product = $("#selectionCommodity").jqxDropDownList('getItemByValue', productCode).label;
+        var country = $("#selectionCountryBox").jqxDropDownList('getItemByValue', countryCode).label;
 
         return {"season" : season, "dataSource": datasourceFilt, "product" : product, "country": country,
         "productCode" : productCode, "countryCode" : countryCode, "productCode": productCode}

@@ -132,10 +132,10 @@ define(["jquery", "preloading/filterDatafields/CountrySelector",
 
 
         PreloadingController.prototype.printUpdate = function () {
-            console.log("---------------- UPDATE  ------------------");
+          /*  console.log("---------------- UPDATE  ------------------");
             console.log('REGIONCODE: ' + yearPost.regionCode);
             console.log('DATABASE: ' + yearPost.databaseText);
-            console.log('COMMDOITY: ' + yearPost.productCode);
+            console.log('COMMDOITY: ' + yearPost.productCode);*/
         }
 
 
@@ -221,6 +221,11 @@ define(["jquery", "preloading/filterDatafields/CountrySelector",
 
         };
 
+
+        PreloadingController.prototype.removeOptionsButtons = function() {
+
+
+        };
 
         return PreloadingController;
     });

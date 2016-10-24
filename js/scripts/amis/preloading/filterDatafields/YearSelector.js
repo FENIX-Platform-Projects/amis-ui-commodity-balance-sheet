@@ -66,7 +66,7 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
                 var dataAdapter = new $.jqx.dataAdapter(source);
 
                 // comboBox
-                combo.jqxComboBox({
+                combo.jqxDropDownList({
                     source: dataAdapter,
                     displayMember: "yearLabel",
                     valueMember: "year",
@@ -79,13 +79,13 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
 
         // Take the Preselected Value
         if (size > 0) {
-            yearsSelected.currentYear = combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).value;
-            yearsSelected.currentYearLabel = combo.jqxComboBox('getItem', combo.jqxComboBox('selectedIndex')).label;
+            yearsSelected.currentYear = combo.jqxDropDownList('getItem', combo.jqxDropDownList('selectedIndex')).value;
+            yearsSelected.currentYearLabel = combo.jqxDropDownList('getItem', combo.jqxDropDownList('selectedIndex')).label;
 
-            var index = combo.jqxComboBox('listBox').selectedIndex
+            var index = combo.jqxDropDownList('listBox').selectedIndex
 
-            yearsSelected.previousYear = combo.jqxComboBox('getItem', index + 1).value;
-            yearsSelected.previousYearLabel = combo.jqxComboBox('getItem', index + 1).label;
+            yearsSelected.previousYear = combo.jqxDropDownList('getItem', index + 1).value;
+            yearsSelected.previousYearLabel = combo.jqxDropDownList('getItem', index + 1).label;
         } else {
             alert('No data available for the current selection: please, change your selection')
         }
@@ -103,15 +103,15 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
 
         // To pass the value
         var args = event.args;
-        var item = combo.jqxComboBox('getItem', args.index);
+        var item = combo.jqxDropDownList('getItem', args.index);
 
         yearsSelected.currentYear = item.value;
         yearsSelected.currentYearLabel = item.label;
 
 
         if (this.hasPreviousYear(args.index)) {
-            yearsSelected.previousYear = combo.jqxComboBox('getItem', args.index + 1).value;
-            yearsSelected.previousYearLabel = combo.jqxComboBox('getItem', args.index + 1).label;
+            yearsSelected.previousYear = combo.jqxDropDownList('getItem', args.index + 1).value;
+            yearsSelected.previousYearLabel = combo.jqxDropDownList('getItem', args.index + 1).label;
 
         } else {
             yearsSelected.previousYear = -1;
@@ -153,12 +153,12 @@ define(["jquery", "urlConfigurator", "jqwidgets"], function ($, ServicesUrl) {
 
         var index = 0;
 
-        var firstElement = combo.jqxComboBox('getItems')[index];
+        var firstElement = combo.jqxDropDownList('getItems')[index];
 
         var newItem = this._create_new_year(firstElement);
 
         if (newItem) {
-            combo.jqxComboBox('insertAt', newItem, index);
+            combo.jqxDropDownList('insertAt', newItem, index);
             this.change({'args': {'index': index}})
         }
 
