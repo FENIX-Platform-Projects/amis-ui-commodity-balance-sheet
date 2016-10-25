@@ -1,6 +1,4 @@
-/**
- * Created by fabrizio on 5/20/14.
- */
+
 define(["jquery", "preloading/filterDatafields/CountrySelector",
         "preloading/filterDatafields/DatabaseSelector",
         "preloading/filterDatafields/CommoditySelector",
@@ -55,6 +53,7 @@ define(["jquery", "preloading/filterDatafields/CountrySelector",
 
 
         PreloadingController.prototype.onChangingCountry = function (event) {
+
             this.showAlertIfExists()
 
             regionCode = countrySelector.change(event);
@@ -202,7 +201,7 @@ define(["jquery", "preloading/filterDatafields/CountrySelector",
                     $('#alertNewValues').append(alert2);
                 }
                 else {
-                    if (document.getElementById('alertNewValues')!== null && document.getElementById('alertNewValues').childNodes >0 &&
+                    if (document.getElementById('alertNewValues')!== null &&
                         document.getElementById('alertNewValues').childNodes.length == 0 && document.getElementById('alertChangeGrid').childNodes.length == 0) {
                         var alert1 = '<div class="alert alert-info alert-dismissible" role="alert">' +
                             '<button type="button" class="close" data-dismiss="alert">' +

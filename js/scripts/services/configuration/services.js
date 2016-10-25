@@ -5,12 +5,9 @@ define([], function() {
 */
 
 /*
-    var url = "http://statistics.amis-outlook.org/amis-cbs-services";
+    var url = "http://168.202.36.134:8080";
 */
-    var url = "http://127.0.0.1:8080";
-/*
     var url = "http://statistics.amis-outlook.org/amis-cbs-services";
-*/
     var urlD3S = "http://fenixservices.fao.org";
   //  var url = "http://statistics.amis-outlook.org/amis-cbs-services";
 /*
