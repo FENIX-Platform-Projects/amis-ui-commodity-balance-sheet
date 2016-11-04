@@ -4,7 +4,7 @@
 define(['jquery', 'amplify'], function ($) {
 
 
-    const INDEX_DATES = 2;
+    var INDEX_DATES = 2;
 
     var leftKeyColumns,              // DSD columns that represent the left key columns
         leftKeyIndexes,              // Index of the left key columns on the DSD
