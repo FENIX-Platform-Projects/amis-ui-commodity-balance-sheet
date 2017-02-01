@@ -25,43 +25,46 @@ define(["jquery", "./PreloadingController"],
 
             this.initializeParameters(that);
 
+            setTimeout(function() {
 
-            $("#loadData").bind('click', function () {
-                controller.passDataToLoading();
-            });
 
-            combo.bind('select', function (event) {
-                controller.onChangingCountry(event);
+                $("#loadData").bind('click', function () {
+                    controller.passDataToLoading();
+                });
 
-            });
+                combo.bind('select', function (event) {
+                    controller.onChangingCountry(event);
 
-            comboComm.bind('select', function (event) {
-                controller.onChangingCommodity(event);
+                });
 
-            });
+                comboComm.bind('select', function (event) {
+                    controller.onChangingCommodity(event);
 
-            natDB.bind('change', function (event) {
-                if (event.args.checked) {
-                    controller.onSelectNatDB(event);
-                }
+                });
 
-            });
+                natDB.bind('change', function (event) {
+                    if (event.args.checked) {
+                        controller.onSelectNatDB(event);
+                    }
 
-            cbs.bind('change', function (event) {
-                if (event.args.checked) {
-                    controller.onSelectCBS(event);
-                }
-            });
+                });
 
-            comboYear.bind('change', function (event) {
-                controller.onSelectingYear(event)
-            });
+                cbs.bind('change', function (event) {
+                    if (event.args.checked) {
+                        controller.onSelectCBS(event);
+                    }
+                });
 
-            newSeasonBtn.on('click', function(){
+                comboYear.bind('change', function (event) {
+                    controller.onSelectingYear(event)
+                });
 
-                controller.addNewSeason();
+                newSeasonBtn.on('click', function () {
 
-            })
+                    controller.addNewSeason();
+
+                })
+            },300)
 
         };
 
@@ -69,12 +72,13 @@ define(["jquery", "./PreloadingController"],
         PreloadingObserver.prototype.initializeParameters = function (that) {
 
             controller.init();
-
-            combo = controller.getCountrySelector().getcombo();
-            natDB = controller.getDbSelector().getNatDb();
-            cbs = controller.getDbSelector().getCBS();
-            comboComm = controller.getcommSelector().getcombo();
-            comboYear = controller.getYearSelector().getcombo();
+            setTimeout(function() {
+                combo = controller.getCountrySelector().getcombo();
+                natDB = controller.getDbSelector().getNatDb();
+                cbs = controller.getDbSelector().getCBS();
+                comboComm = controller.getcommSelector().getcombo();
+                comboYear = controller.getYearSelector().getcombo();
+            },300);
 
         };
 

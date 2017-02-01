@@ -102,13 +102,13 @@ define(["jquery", "models/tableDataModel/TableDataModel",
         var muArray;
         switch (amplify.store().dsd) {
             case 6:
-                muArray = config.soybeans
+                muArray = config["soybeans"]
                 break;
             case 4:
-                muArray = config.rice
+                muArray = config["rice"]
                 break;
             default:
-                muArray = config.default
+                muArray = config["default"]
                 break;
 
         }

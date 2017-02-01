@@ -572,7 +572,7 @@ define(["jquery", "formatter/DatatypesFormatter", "multiFlagJQAdapter", "text!pa
 
         switch(true) {
             case isAreaHarvested && isTotal:
-                container = this.o.config.sections.tot.
+                container = this.o.config.sections.tot
 
                 break;
 

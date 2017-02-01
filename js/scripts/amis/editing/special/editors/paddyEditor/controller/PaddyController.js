@@ -22,15 +22,15 @@ define(['jquery', 'paddyEditor/model/PaddyModel', 'paddyEditor/observer/PaddyObs
 
     var o = {
         "formula": {
-            'total': {
-                true: "totalValues",
-                false: "totalValuesAPlanted"
+            "total": {
+                "true": "totalValues",
+                "false": "totalValuesAPlanted"
             },
-            'single': {
-                true: "singleCrops",
-                false: "singleCropsAPlanted"
+            "single": {
+                "true": "singleCrops",
+                "false": "singleCropsAPlanted"
             },
-            'formNumber': 2
+            "formNumber": 2
         }
     }
 

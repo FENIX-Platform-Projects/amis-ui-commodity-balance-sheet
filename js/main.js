@@ -74,13 +74,30 @@ requirejs.config({
         },
         "jqwidgets":{
             deps : ["jquery"]
+        },
+        "select2":{
+            deps:["jquery"]
+        },
+        "amplify":{
+            deps:["jquery"]
         }
 
     }
 });
 
+requirejs(["jquery"], function($) {
+    window.$ = $;
+    if (typeof console == "undefined") {
+        this.console = {log: function() {}};
+    }
+    /*//this will invoke the script for the page
+    if (module){
+        require([module], function(module){});
+    }*/
+});
 
-require(["../../IndexContext", "domReady!", "bootstrap"], function(IndexContext) {
+
+require(["../../IndexContext", "jquery","domReady!", "bootstrap"], function(IndexContext) {
 /*
     console.log("index.js() - require() on domReady!");
 */
