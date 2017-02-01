@@ -78,7 +78,9 @@ define(['jquery',
 
         SavingController.prototype.finalSave = function (payload) {
 
+/*
             ($('#loading-saving-data').length === 0) ? $('.bootstrap-dialog-body').append(Template) : null;
+*/
 
             $.ajax({
                 async: false,
