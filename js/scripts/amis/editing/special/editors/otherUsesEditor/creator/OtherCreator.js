@@ -147,7 +147,8 @@ define(["jquery", "formatter/DatatypesFormatter", "text!otherUsesEditor/view/_ot
             for (var i = 0, length = model.length; i < length; i++) {
                 result[i] = []
                 for (var j = 0, length2 = model[i].length; j < length2; j++)
-                    result[i].push((!model[i][j] || model[i][j] == null || model[i][j] == 'null') ? "" : model[i][j]);
+                    result[i].push((
+                        typeof model[i][j] == "undefined" || model[i][j] == null || model[i][j] == 'null') ? "" : model[i][j]);
             }
             return result
 

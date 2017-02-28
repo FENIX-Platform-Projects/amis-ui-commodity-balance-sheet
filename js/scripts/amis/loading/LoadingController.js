@@ -74,13 +74,12 @@ define(["jquery", "balanceSheet/BalanceSheet", "loading/proxyFactory/SelectionFa
             }
 
             savingController = savingFactory.getSavingController();
+            var filterActual = Selector.getPreloadingData();
 
             if (isMonthlyLoading) {
                 var realPreviousYear = Selector.getRealPreviousYear()
-                var filterActual = Selector.getPreloadingData();
                 savingController.init(balanceSheet, filterActual, realPreviousYear, dataFiltered)
             } else {
-                var filterActual = Selector.getPreloadingData();
                 savingController.init(balanceSheet, filterActual, dataFiltered, handlerSelection)
             }
 

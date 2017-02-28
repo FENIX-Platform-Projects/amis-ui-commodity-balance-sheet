@@ -97,23 +97,28 @@ requirejs(["jquery"], function($) {
 });
 
 
-require(["../../IndexContext", "jquery","domReady!", "bootstrap"], function(IndexContext) {
+require(["../../IndexContext", "text!../services/configuration/404.html","jquery","domReady!", "bootstrap", ], function(IndexContext, PageNotFound) {
 /*
     console.log("index.js() - require() on domReady!");
 */
 
 
-    // TODO: AMIS INTEGRATION:
-    // TO IMPROVA SECURITY: add AND CONDITION:
-    // if( window.parent.location.href === 'http://statistics.amis-outlook.org/data/index.html#INPUT'
-/*
-    if(window.location !== window.parent.location ) {
-*/
+    if( /*true*/window.parent.location.href === 'http://statistics.amis-outlook.org/data/index.html#INPUT' &&
+        window.parent.$("#INPUT").is(":visible")) {
+
         var indexContext = new IndexContext;
         indexContext.init();
-/*
+    }else{
+        debugger;
+
+        $('.container.amis-main-container').remove();
+
+        $('body').html(PageNotFound)
+
+
+
     }
-*/
+
 
 });
 
