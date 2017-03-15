@@ -4,10 +4,10 @@ define([], function() {
     var previuosURL = "http://fenixapps2.fao.org/amis-services";
 */
 
-/*
     var url = "http://168.202.36.134:8080";
-*/
+/*
     var url = "http://statistics.amis-outlook.org/amis-cbs-services";
+*/
     var urlD3S = "http://fenixservices.fao.org";
   //  var url = "http://statistics.amis-outlook.org/amis-cbs-services";
 /*
@@ -26,10 +26,10 @@ define([], function() {
                         "yearUrl": url + "/dataset/year"
                     },
                     {
-                        "countryUrl": urlD3S + "/d3s/msd/resources/uid/amis_countries"
+                        "countryUrl": urlD3S + "/d3s/msd/resources/amis_countries/2015"
                     },
                     {
-                        "commodityUrl" : urlD3S + "/d3s/msd/resources/uid/amis_commodities"
+                        "commodityUrl" : urlD3S + "/d3s/msd/resources/amis_commodities/2015"
                     }
                 ]
             },
